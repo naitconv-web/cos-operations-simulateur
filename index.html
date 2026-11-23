@@ -32,20 +32,20 @@
         <div class="brand-mark">OM</div>
         <div class="brand-text">
           <strong>OMNISECUR</strong>
-          <span>Arsenal v3.2 · Hors CNAPS</span>
+          <span>COS Opérations · Hors CNAPS</span>
         </div>
       </a>
 
       <nav class="nav-links" aria-label="Navigation principale">
         <a href="#simulateur">Simulateur</a>
         <a href="#arsenal">14 Livrables</a>
-        <a href="#offres">Offres B2B</a>
-        <a href="#tunnel-section">Bon de Commande</a>
+        <a href="#presentation-cos">COS Opérations</a>
+        <a href="#tunnel-section">Demander une démo</a>
       </nav>
 
       <div class="header-actions">
-        <span id="slotStatusPill" class="slot-pill">Commando : 2/2 slots</span>
-        <a class="btn btn-primary btn-sm" href="#tunnel-section">Déposer un besoin</a>
+        <span id="slotStatusPill" class="slot-pill hidden"></span>
+        <a class="btn btn-primary btn-sm" href="#tunnel-section">Démo 15 min</a>
       </div>
     </div>
   </header>
@@ -122,7 +122,7 @@
           </p>
           <div class="hero-cta-row">
             <a class="btn btn-primary btn-lg" href="#simulateur">Tester mon tarif plancher (30 s)</a>
-            <a class="btn btn-lg" href="#offres">Voir les 3 formules B2B</a>
+            <a class="btn btn-lg" href="#presentation-cos">Découvrir COS Opérations</a>
           </div>
           <div class="trust-strip">
             <div class="trust-item">
@@ -147,15 +147,15 @@
           <div class="hero-proof-footer">
             <div class="proof-line">
               <span>Parité déterministe Excel ↔ Web</span>
-              <b class="pos">8/8 scénarios audités</b>
+              <b class="pos">8/8 scénarios testés</b>
             </div>
             <div class="proof-line">
               <span>Cynophile P07 (frais chien H10 non soumis)</span>
               <b>23,75 €/h base vérifiée</b>
             </div>
             <div class="proof-line">
-              <span>Clé API COS IA (BYOK local)</span>
-              <b class="pos">sessionStorage par défaut</b>
+              <span>Confidentialité &amp; maîtrise</span>
+              <b class="pos">Usage local sur votre poste</b>
             </div>
             <div class="proof-line">
               <span>Statut réglementaire prestataire</span>
@@ -368,7 +368,7 @@
           <ul class="offer-ul" style="margin-top:10px">
             <li><b>COS Opérations Phase 1</b> : pilotage centralisé des agents, cartes CNAPS/SST, repos 12h/11h, plannings et ordres de mission.</li>
             <li><b>Bouclier Anti-Pertes v3</b> : chiffrage déterministe des vacations, prix planchers et marges réelles IDCC 1351.</li>
-            <li><b>Arsenal du Dirigeant v3</b> : 5 modèles de Mémoires Techniques sectoriels + trames commerciales + guide utilisateur.</li>
+            <li><b>Arsenal du Dirigeant v3</b> : 6 Mémoires Techniques sectoriels Word + trames commerciales + guide utilisateur.</li>
             <li><b>Paramétrage personnalisé &amp; formation dirigeant</b> : mise en service adaptée à votre structure (présentée en démonstration).</li>
           </ul>
         </div>
@@ -506,14 +506,14 @@
     <section id="tunnel-section" class="section section-white">
       <div class="container">
         <div class="section-head">
-          <h2>Passez à l'action : Qualification, Prise de RDV &amp; Bon de Commande B2B</h2>
-          <p>Qualifiez votre besoin ci-dessous, téléchargez votre créneau calendrier ou éditez directement votre Bon de Commande avec CGV intégrées.</p>
+          <h2>Demander votre démonstration personnalisée (15 min)</h2>
+          <p>Choisissez votre créneau ci-dessous pour recevoir une démonstration de 15 minutes adaptée à votre société, ou contactez-nous directement par Email / WhatsApp.</p>
         </div>
 
         <div class="stepper no-print">
           <div id="stepPill1" class="step-pill active"><span class="step-num">1</span><span>Choix de la formule</span></div>
           <div id="stepPill2" class="step-pill"><span class="step-num">2</span><span>Qualification &amp; RDV / CRM</span></div>
-          <div id="stepPill3" class="step-pill"><span class="step-num">3</span><span>Bon de Commande &amp; Règlement</span></div>
+          <div id="stepPill3" class="step-pill hidden"><span class="step-num">3</span><span>Devis</span></div>
         </div>
 
         <div class="funnel-grid no-print">
@@ -548,10 +548,10 @@
               <div class="field">
                 <label for="leadRdvSlot">Créneau horaire (Europe/Paris)</label>
                 <select id="leadRdvSlot">
-                  <option value="09:00">09:00 – 09:45</option>
-                  <option value="11:00">11:00 – 11:45</option>
-                  <option value="14:30">14:30 – 15:15</option>
-                  <option value="17:00">17:00 – 17:45</option>
+                  <option value="09:00">09:00 – 09:15</option>
+                  <option value="11:00">11:00 – 11:15</option>
+                  <option value="14:30">14:30 – 14:45</option>
+                  <option value="17:00">17:00 – 17:15</option>
                 </select>
               </div>
               <div class="field">
@@ -663,7 +663,7 @@
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="cgv-rgpd.html">CGV &amp; RGPD (Art. 13/28)</a>
         <a href="#simulateur">Simulateur Bouclier</a>
-        <a href="#tunnel-section">Bon de Commande B2B</a>
+        <a href="#tunnel-section">Demander une démo</a>
         <button id="btnToggleAdmin" class="btn btn-sm hidden" type="button" style="background:rgba(255,255,255,0.08);color:#e2e8f0;border-color:rgba(255,255,255,0.22)" title="Paramètres émetteur, TVA et canaux">⚙️ Config Opérateur</button>
       </div>
     </div>
