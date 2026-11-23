@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https:; font-src 'self' data:; object-src 'none'; base-uri 'self';" />
+  <title>Accueil Post-Commande &amp; Vérification Paiement B2B — OMNISECUR</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b2239'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%2310b981' font-family='Arial,sans-serif' font-weight='900' font-size='28'%3EOM%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header no-print">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-mark">OM</div>
+        <div class="brand-text">
+          <strong>OMNISECUR × ARSENAL v3.2</strong>
+          <span>Accueil Post-Commande B2B</span>
+        </div>
+      </a>
+      <div class="header-actions">
+        <a class="btn btn-sm" href="cgv-rgpd.html">CGV &amp; RGPD</a>
+        <a class="btn btn-primary btn-sm" href="index.html">← Retour au site</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container" style="max-width:960px">
+      <div class="panel-card" style="margin-bottom:22px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;margin-bottom:14px">
+          <div style="flex:1 1 540px">
+            <span id="postPayBadge" class="offer-badge">Prévisualisation démarrage · En attente de confirmation paiement</span>
+            <h1 id="postPayTitle" style="margin:6px 0 4px;font-size:25px;color:var(--navy-deep)">Bordereau de démarrage OMNISECUR (en attente de confirmation)</h1>
+            <p id="postPaySubtitle" style="margin:0;color:var(--ink-muted)"></p>
+          </div>
+          <div id="postPayPrice" class="offer-price" style="margin:0;flex:0 0 auto"></div>
+        </div>
+        <div id="payVerificationBanner" class="status-box warn" style="margin-top:0;margin-bottom:12px">
+          Aucun paiement Stripe vérifié détecté sur cette URL : cet écran présente une prévisualisation de votre bordereau de démarrage.
+        </div>
+
+        <div class="action-cluster" style="margin-top:8px">
+          <button id="btnSelectPack1" class="btn btn-sm" type="button">Pack 1 (690 € HT)</button>
+          <button id="btnSelectPack2" class="btn btn-sm" type="button">Pack 2 (980 € HT)</button>
+          <button id="btnSelectPack3" class="btn btn-sm" type="button">Pack 3 Commando 48h (1 450 € HT)</button>
+        </div>
+
+        <div class="status-box ok" style="margin-top:16px">
+          <strong>Périmètre réglementaire &amp; confidentialité RGPD (Art. 28) :</strong> prestation 100 % hors activités CNAPS (art. L.611-1 CSI). Vos documents ne servent jamais à entraîner un modèle d'IA tiers et sont <strong>intégralement purgés sous 30 jours après clôture</strong>.
+        </div>
+      </div>
+
+      <div class="panel-card" style="margin-bottom:22px">
+        <h2 id="nextStepsHeading" style="margin:0 0 10px;font-size:20px;color:var(--navy-deep)">Vos actions immédiates (démarrage sans friction)</h2>
+        <div id="nextStepsContainer"></div>
+      </div>
+
+      <div id="pack3ChecklistCard" class="panel-card hidden" style="margin-bottom:22px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px">
+          <div>
+            <h2 style="margin:0;font-size:20px;color:var(--navy-deep)">Bordereau J0 — Remise des 6 pièces Commando 48h</h2>
+            <p style="margin:4px 0 0;font-size:13px;color:var(--ink-muted)">Conformément aux CGV (Art. 3), le délai de <b>48 heures ouvrées</b> démarre dès réception de <b>100 % des 6 éléments ci-dessous</b>.</p>
+          </div>
+          <span id="pack3CounterBadge" class="slot-pill full">0 / 6 pièces cochées</span>
+        </div>
+
+        <div class="form-grid-2" style="margin:14px 0">
+          <div class="field"><label for="p3Societe">Société / Entité cliente *</label><input id="p3Societe" type="text" placeholder="Ex : SECURITE OCCITANE SAS" /></div>
+          <div class="field"><label for="p3RefAo">Référence marché / Acheteur *</label><input id="p3RefAo" type="text" placeholder="Ex : BOAMP 26-XXXX — Lot 1 Gardiennage" /></div>
+          <div class="field"><label for="p3Deadline">Date &amp; heure limite de dépôt</label><input id="p3Deadline" type="text" placeholder="Ex : 25/11/2026 à 12h00" /></div>
+          <div class="field"><label for="p3Email">Email dirigeant pour réception</label><input id="p3Email" type="email" placeholder="direction@votre-societe.fr" /></div>
+        </div>
+
+        <div id="p3ChecksList" style="display:grid;gap:8px;margin-bottom:14px">
+          <label class="consent-check" style="margin:0"><input class="p3-chk" type="checkbox" value="1. Règlement de Consultation (RC) complet + critères de notation" /> <span><b>1. Règlement de Consultation (RC)</b> complet avec pondération technique/prix et cadre de réponse imposé</span></label>
+          <label class="consent-check" style="margin:0"><input class="p3-chk" type="checkbox" value="2. CCTP / Cahier des Charges / Acte d'Engagement" /> <span><b>2. CCTP / Cahier des Charges / AE</b> précisant les volumes horaires, sites, horaires nuit/dimanche/férié</span></label>
+          <label class="consent-check" style="margin:0"><input class="p3-chk" type="checkbox" value="3. BPU / DQE / DPGF vierge (format Excel acheteur)" /> <span><b>3. BPU / DQE / DPGF</b> format tableur acheteur prêt à remplir</span></label>
+          <label class="consent-check" style="margin:0"><input class="p3-chk" type="checkbox" value="4. Vos taux horaires chargés réels IDCC 1351 (ADS, SSIAP, Cyno, Structure)" /> <span><b>4. Vos taux chargés réels</b> par profil (ou validation des grilles Bouclier + % structure &amp; frais fixes)</span></label>
+          <label class="consent-check" style="margin:0"><input class="p3-chk" type="checkbox" value="5. Fiche entreprise : moyens humains/matériels, références similaires, agréments CNAPS du client" /> <span><b>5. Fiche société</b> (effectifs encadrement, références récentes, matériel &amp; numéro d'autorisation CNAPS de votre société)</span></label>
+          <label class="consent-check" style="margin:0"><input class="p3-chk" type="checkbox" value="6. Lien ou nom du profil acheteur (PLACE / AWS / Maximilien...)" /> <span><b>6. Plateforme acheteur &amp; contacts</b> (ex. PLACE, Maximilien, Marchespublics.info) pour vérif format dépôt</span></label>
+        </div>
+
+        <div id="p3PreviewBox" class="status-box warn" style="white-space:pre-line;font-family:var(--font-mono);font-size:12px"></div>
+
+        <div class="action-cluster" style="margin-top:14px">
+          <button id="btnP3Copy" class="btn btn-primary" type="button">📋 Copier le bordereau J0</button>
+          <button id="btnP3DownloadTxt" class="btn" type="button">⬇️ Télécharger Bordereau (.txt)</button>
+          <button id="btnP3Email" class="btn btn-emerald" type="button">✉️ Envoyer le bordereau par Email</button>
+          <button id="btnP3Wa" class="btn" type="button">💬 Confirmer via WhatsApp</button>
+          <button id="btnP3Cal" class="btn" type="button">📅 Planifier le point de cadrage / Atelier</button>
+        </div>
+      </div>
+
+      <div id="packDirectActionsCard" class="panel-card">
+        <h2 style="margin:0 0 8px;font-size:18px;color:var(--navy-deep)">Vos canaux directs OMNISECUR</h2>
+        <div id="directChannelStatus" class="status-box ok" style="margin-bottom:12px"></div>
+        <div class="action-cluster">
+          <button id="btnDirectCal" class="btn btn-emerald" type="button">📅 Réserver mon créneau visio (Atelier / Cadrage)</button>
+          <button id="btnDirectEmail" class="btn btn-primary" type="button">✉️ Écrire au support B2B</button>
+          <button id="btnDirectWa" class="btn" type="button">💬 Ouvrir WhatsApp Business</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="postToast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <script src="site-config.js"></script>
+  <script src="post-payment.js"></script>
+</body>
+</html>

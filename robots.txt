@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /integrations/
+Disallow: /merci-paiement.html
+Disallow: /404.html
