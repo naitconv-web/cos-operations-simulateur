@@ -7,7 +7,7 @@
   <title>OMNISECUR — COS Opérations : Rentabilité IDCC 1351, Planning &amp; Mémoires AO</title>
   <meta name="description" content="Verrouillez vos marges avant signature et déposez des mémoires techniques conformes CSI Livre VI &amp; Avenant n° 2 (6h min.). Simulateur IDCC 1351, pilotage agents/CNAPS/repos et 6 Mémoires Techniques conformes Avenant n° 2 (6h min.)." />
   <meta property="og:title" content="OMNISECUR — Ingénierie AO &amp; Rentabilité Sécurité Privée" />
-  <meta property="og:description" content="Simulateur Piège 23 €/h (-1 941,42 €), Bouclier Excel/Web, 6 Mémoires BOAMP et COS IA local sans abonnement captif." />
+  <meta property="og:description" content="Simulateur Piège 23 €/h (-1 941,42 €), Bouclier Excel/Web, 6 Mémoires BOAMP et pilotage centralisé COS Opérations sans abonnement mensuel." />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b2239'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%2310b981' font-family='Arial,sans-serif' font-weight='900' font-size='28'%3EOM%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
@@ -150,7 +150,7 @@
               <b class="pos">8/8 scénarios testés</b>
             </div>
             <div class="proof-line">
-              <span>Cynophile P07 (frais chien H10 non soumis)</span>
+              <span>Agent Cynophile P07 (indemnité chien non soumise)</span>
               <b>23,75 €/h base vérifiée</b>
             </div>
             <div class="proof-line">
@@ -290,7 +290,7 @@
 
               <div class="diag-actions">
                 <button id="btnInjectDiagToFunnel" class="btn btn-emerald" type="button">
-                  ➡️ Joindre ce diagnostic à ma demande d'audit / devis
+                  ➡️ Joindre ce diagnostic à ma demande de démo (15 min)
                 </button>
                 <button id="btnDownloadDiagTxt" class="btn" type="button">
                   ⬇️ Télécharger mémo (.txt)
@@ -320,7 +320,7 @@
         <div class="tabs-bar" role="tablist">
           <button class="tab-btn active" data-xray="bouclier" type="button">1. Bouclier Excel &amp; Web</button>
           <button class="tab-btn" data-xray="memoires" type="button">2. Les 6 Mémoires Word</button>
-          <button class="tab-btn" data-xray="cos" type="button">3. COS Opérations &amp; Bureau IA</button>
+          <button class="tab-btn" data-xray="cos" type="button">3. COS Opérations (Pilotage)</button>
           <button class="tab-btn" data-xray="conformite" type="button">4. Juridique &amp; RGPD</button>
         </div>
 
@@ -523,7 +523,7 @@
           <!-- ÉTAPE 2 : QUALIFICATION & CANAUX -->
           <div class="panel-card">
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
-              <h3>Qualification &amp; Prise de contact (SLA 2h ouvrées)</h3>
+              <h3>Qualification &amp; Prise de contact (Réponse sous 2h ouvrées)</h3>
               <span id="utmBadge" class="mono" style="font-size:11px;color:var(--ink-soft)"></span>
             </div>
 
@@ -547,7 +547,7 @@
                   <option value="Sur site Occitanie (sur RDV)">Sur site Occitanie (sur RDV)</option>
                 </select>
               </div>
-              <div class="field"><label for="leadRdvDate">Date souhaitée (pour .ics)</label><input id="leadRdvDate" type="date" /></div>
+              <div class="field"><label for="leadRdvDate">Date souhaitée</label><input id="leadRdvDate" type="date" /></div>
               <div class="field">
                 <label for="leadRdvSlot">Créneau horaire (Europe/Paris)</label>
                 <select id="leadRdvSlot">
@@ -637,7 +637,7 @@
         <div class="faq-grid">
           <details class="faq-item">
             <summary>Les taux et majorations sont-ils fiables si nos primes maison diffèrent ?</summary>
-            <p>Oui : dans le Bouclier Excel/Web, vos coûts réels issus de la paie remplacent nos repères. Tant que votre Direction n'a pas saisi « OUI » dans le verrou de validation, aucun devis ne passe à l'état PRET.</p>
+            <p>Oui : dans le Bouclier Excel/Web, vos coûts réels issus de la paie remplacent nos repères. Tant que votre Direction n'a pas validé ses taux réels, le simulateur bloque la validation finale pour éviter toute erreur de marge.</p>
           </details>
           <details class="faq-item">
             <summary>Que deviennent nos bordereaux de paie et pièces DCE après la mission ?</summary>
