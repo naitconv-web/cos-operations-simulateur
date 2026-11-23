@@ -15,9 +15,9 @@
     },
     2: {
       id: 2,
-      shortName: "Pack 2 — COS Bureau IA v4.2 (BYOK local) + Atelier 2h",
-      label: "Pack 2 — Déploiement local COS Bureau IA Sécurité v4.2 (BYOK mono-poste) + Atelier dirigeant 2h",
-      price: 980
+      shortName: "Pack Dirigeant COS Opérations (Démo 15 min)",
+      label: "Pack Dirigeant COS Opérations — Démo personnalisée 15 min (sur devis)",
+      price: 990
     },
     3: {
       id: 3,

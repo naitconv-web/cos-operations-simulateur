@@ -17,7 +17,7 @@ window.OMNISECUR_CONFIG = {
   },
   channels: {
     domainUrl: "https://naitconv-web.github.io/omnisecur-simulateur",
-    hostProvider: "GitHub Pages (GitHub, Inc.)",
+    hostProvider: "GitHub Pages (GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA)",
     email: "nait.conv@gmail.com",
     tel: "+33 6 17 17 99 74",
     whatsapp: "33617179974",
