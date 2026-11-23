@@ -736,7 +736,7 @@
       "Contact   : " + (p.contact || "[Non renseigné]"),
       "Email/Tél : " + [p.email, p.tel].filter(Boolean).join(" / "),
       "Secteur   : " + (p.ville || "[Non renseigné]"),
-      "Offre     : " + p.offreLabel + " (" + p.montantHT + " EUR HT)",
+      "Offre     : " + p.offreLabel,
       "Modalité  : " + p.modalite,
       "Créneau   : " + (p.rdvDate ? (p.rdvDate + " à " + p.rdvSlot) : "À confirmer"),
       "Réf AO    : " + (p.boampRef || "[Non précisée]"),
