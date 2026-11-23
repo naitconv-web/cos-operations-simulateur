@@ -78,7 +78,7 @@
       desc: "Chaque document et outil commercial trace une frontière nette entre l'outillage/ingénierie méthodologique (OMNISECUR) et les activités réglementées exercées exclusivement par les entreprises clientes.",
       bullets: [
         "Prestation 100 % hors champ CNAPS (art. L.611-1 CSI) : ni gardiennage, ni ronde, ni télésurveillance, ni intervention.",
-        "Unicité stricte du régime TVA émetteur sur Bon de Commande (art. 293 B CGI OU TVA 20 %, jamais les deux).",
+        "Unicité stricte du régime TVA émetteur sur Bon de Commande (art. L. 223-3 du CIBS (ex-293 B CGI) OU TVA 20 %, jamais les deux).",
         "CGV B2B intégrées : obligation de moyens (zéro promesse d'attribution), plafond de responsabilité au montant HT, L.441-10 + 40 €, et clause RGPD art. 28 avec purge à 30 jours."
       ],
       specs: [
@@ -567,7 +567,7 @@
     var iss = cfg.issuer;
     return [
       "Art. 1 — Objet & Périmètre (hors CSI Livre VI) : " + iss.raison + " (" + iss.enseigne + ") fournit des outils de gestion, chiffrages financiers et prestations d'ingénierie documentaire AO B2B. Ces prestations n'emportent ni exercice d'activité réglementée CNAPS (art. L.611-1 CSI) ni conseil juridique, comptable ou social réglementé.",
-      "Art. 2 — Prix, TVA & Règlement : Prix en euros HT. Régime fiscal émetteur actif : " + (iss.tvaRegime === "20" ? "TVA normale 20 %" : "TVA non applicable, art. 293 B du CGI (sous réserve des seuils légaux)") + ". Virement sur Bon de Commande : acompte à la commande et solde à livraison ; paiement CB Stripe (forfaits catalogue) : règlement comptant à la commande. Conformément aux art. L.441-10 et D.441-5 C. com., tout retard entraîne de plein droit des pénalités (3 × taux d'intérêt légal) et une indemnité forfaitaire de 40 €.",
+      "Art. 2 — Prix, TVA & Règlement : Prix en euros HT. Régime fiscal émetteur actif : " + (iss.tvaRegime === "20" ? "TVA normale 20 %" : "TVA non applicable, art. L. 223-3 du CIBS (ancien art. 293 B du CGI) (sous réserve des seuils légaux)") + ". Virement sur Bon de Commande : acompte à la commande et solde à livraison ; paiement CB Stripe (forfaits catalogue) : règlement comptant à la commande. Conformément aux art. L.441-10 et D.441-5 C. com., tout retard entraîne de plein droit des pénalités (3 × taux d'intérêt légal) et une indemnité forfaitaire de 40 €.",
       "Art. 3 — Délais & Obligation de moyens : Les délais (dont 48h ouvrées pour Pack 3 limité à 1 lot <= 15 p.) courent à réception intégrale des pièces requises (DCE, paie, agréments). Le prestataire est tenu à une obligation de moyens sans garantie d'attribution de marché.",
       "Art. 4 — Propriété intellectuelle : Licence d'usage interne, personnelle, non exclusive et non transférable accordée au Client après paiement complet. Toute revente, partage externe ou mise en ligne publique des gabarits est interdite.",
       "Art. 5 — Limitation de responsabilité : Sauf faute lourde ou dol, la responsabilité cumulée du prestataire est strictement plafonnée au montant total HT payé au titre du présent bon de commande, à l'exclusion de tout préjudice indirect, perte d'exploitation ou perte de chance commerciale.",
@@ -595,7 +595,7 @@
       ht: ht,
       tvaPct: tvaPct,
       tvaAmt: tvaAmt,
-      tvaMention: tvaPct === 0 ? "TVA non applicable, art. 293 B du CGI" : ("TVA 20 % (" + (cfg.issuer.tvaNum || "n° TVA à renseigner") + ") : " + fmtMoney(tvaAmt)),
+      tvaMention: tvaPct === 0 ? "TVA non applicable, art. L. 223-3 du CIBS (ancien art. 293 B du CGI)" : ("TVA 20 % (" + (cfg.issuer.tvaNum || "n° TVA à renseigner") + ") : " + fmtMoney(tvaAmt)),
       ttc: ttc,
       acPct: acPct,
       acTtc: acTtc,
@@ -606,7 +606,7 @@
   function renderBonCommande() {
     var cfg = loadCfg();
     var bc = buildBonCommandeData(cfg);
-    $("bcTvaHint").textContent = cfg.issuer.tvaRegime === "20" ? "Assujetti TVA 20 % (régime unique)" : "Franchise en base — art. 293 B CGI (régime unique)";
+    $("bcTvaHint").textContent = cfg.issuer.tvaRegime === "20" ? "Assujetti TVA 20 % (régime unique)" : "Franchise en base — art. L. 223-3 du CIBS (ex-293 B CGI) (régime unique)";
     var sirenHtml = cfg.issuer.siren.trim() ? esc(cfg.issuer.siren.trim()) : '<span style="color:#b45309">[SIREN/SIRET À RENSEIGNER AVANT ENVOI CLIENT]</span>';
     var cgvHtml = getCgvParagraphs(cfg).map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("");
     var contactParts = [cfg.channels.email, cfg.channels.tel].filter(Boolean);

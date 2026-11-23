@@ -12,8 +12,8 @@
   var PROFILES = [
     {
       code: "P01",
-      nom: "Surveillance humaine (ADS Coeff 140)",
-      classif: "IDCC 1351 — Coeff. 140",
+      nom: "Surveillance humaine (ADS Coeff. 120)",
+      classif: "IDCC 1351 — Coeff. 120",
       baseHoraire: 19.50,
       brutH: 12.42,
       fraisNonSoumisH: 0

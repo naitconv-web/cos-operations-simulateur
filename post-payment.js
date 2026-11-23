@@ -158,7 +158,7 @@
   function renderPack(pk) {
     currentPack = PACKS[pk] ? pk : 1;
     var d = PACKS[currentPack];
-    var tvaTxt = cfg.issuer.tvaRegime === "20" ? "+ TVA 20 %" : "TVA non applicable (293 B CGI)";
+    var tvaTxt = cfg.issuer.tvaRegime === "20" ? "+ TVA 20 %" : "TVA non applicable (art. L. 223-3 du CIBS)";
     document.getElementById("postPaySubtitle").textContent = d.sub;
     document.getElementById("postPayPrice").innerHTML = esc(d.price) + "<small>" + esc(tvaTxt) + "</small>";
     document.getElementById("nextStepsContainer").innerHTML =

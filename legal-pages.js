@@ -32,7 +32,7 @@
     if (tvaLabel) {
       tvaLabel.textContent = iss.tvaRegime === "20"
         ? "TVA normale 20 % (régime unique)"
-        : "Franchise en base — art. 293 B du CGI (régime unique)";
+        : "Franchise en base — art. L. 223-3 du CIBS (ancien art. 293 B du CGI) (régime unique)";
     }
 
     var jur = document.getElementById("cgvJuridiction");
@@ -52,7 +52,7 @@
     if (mlBox) {
       var tvaTxt = iss.tvaRegime === "20"
         ? ("Assujetti TVA 20 %" + (iss.tvaNum ? (" — N° " + iss.tvaNum) : " (n° à renseigner dans site-config.js)"))
-        : "Franchise en base de TVA — art. 293 B du CGI (régime unique)";
+        : "Franchise en base de TVA — art. L. 223-3 du CIBS (ancien art. 293 B du CGI) (régime unique)";
 
       var rows = [
         ["Raison sociale", iss.raison || "Mounir NAIT MOHAND (Entrepreneur Individuel)"],
