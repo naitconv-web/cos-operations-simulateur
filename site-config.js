@@ -21,7 +21,7 @@ window.COS_OPERATIONS_CONFIG = window.OMNISECUR_CONFIG = {
     email: "nait.conv@gmail.com",
     tel: "+33 6 17 17 99 74",
     whatsapp: "33617179974",
-    calUrl: "",
+    calUrl: "https://cal.com/nait-p5qttl",
     crmWebhookUrl: "",
     stripeVerifyUrl: "",
     iban: "",
