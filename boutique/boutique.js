@@ -72,52 +72,6 @@
         "Débriefing visio Direction (45 min) avant dépôt sur la plateforme acheteur."
       ],
       scopeNote: "Obligation de moyens sans garantie d'attribution · Hors activité CNAPS."
-    },
-    4: {
-      id: 4,
-      code: "BTP-RELANCE-KIT",
-      sector: "btp",
-      sectorLabel: "BTP & Rénovation",
-      badge: "Formule 4 · ROI Immédiat BTP",
-      featured: false,
-      title: "Kit Relance Devis BTP & Bouclier Conformité",
-      priceHt: 390,
-      monthlyPriceHt: 69,
-      monthlyLabel: "Ajouter le suivi & hébergement mensuel (+69 € HT/mois, sans engagement)",
-      defaultAcomptePct: 100,
-      allowSplit: false,
-      delai: "Mise à disposition du kit sous 24h ouvrées",
-      subtitle: "Pack produit prêt à l'emploi pour artisans et PME du bâtiment",
-      bullets: [
-        "Détection structurée des devis en attente (J+3 et J+7) sans changer de logiciel.",
-        "Séquences de relance courtoise prêtes à valider en 1 clic (08h30–19h00).",
-        "Tableau de vigilance attestations URSSAF & Décennales sous-traitants (L.8222-1).",
-        "Guide de démarrage express compatible Obat, Batigest, EBP, Excel et WhatsApp."
-      ],
-      scopeNote: "Un seul devis récupéré rembourse plusieurs fois l'investissement initial."
-    },
-    5: {
-      id: 5,
-      code: "SYN-AGENCE-7J",
-      sector: "agence",
-      sectorLabel: "Agence Clé en Main",
-      badge: "Formule 5 · Intégration 7 Jours SYNTESIA",
-      featured: true,
-      title: "Pack SYNTESIA — Déploiement Complet 7 Jours",
-      priceHt: 1490,
-      monthlyPriceHt: 190,
-      monthlyLabel: "Ajouter le suivi & ajustements mensuels (+190 € HT/mois, sans engagement)",
-      defaultAcomptePct: 40,
-      allowSplit: true,
-      delai: "Déploiement clé en main en 7 jours ouvrés + formation 45 min",
-      subtitle: "Audit 48h + Connexion à vos outils + Cockpit + Sas Dirigeant",
-      bullets: [
-        "Diagnostic flash (J1–J2) et raccordement à votre logiciel actuel (J3–J4).",
-        "Déploiement du Cockpit SYNTESIA (Relance Devis J+3/J+7 + Bouclier Conformité).",
-        "Installation du Sas de validation Dirigeant en 1 clic (zéro envoi autonome non validé).",
-        "Formation prise en main (45 min) + bibliothèque de 6 séquences + journal d'audit."
-      ],
-      scopeNote: "Acompte 40 % à la commande (596 € HT) et solde 60 % à la recette J+7."
     }
   };
 
