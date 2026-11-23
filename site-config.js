@@ -7,7 +7,7 @@
 window.COS_OPERATIONS_CONFIG = window.OMNISECUR_CONFIG = {
   issuer: {
     raison: "Mounir NAIT MOHAND (Entrepreneur Individuel)",
-    enseigne: "COS Opérations",
+    enseigne: "Securiaxe",
     rep: "M. Mounir NAIT MOHAND",
     capital: "Entreprise Individuelle — Micro-entreprise",
     siege: "Albi (81)",
@@ -17,7 +17,7 @@ window.COS_OPERATIONS_CONFIG = window.OMNISECUR_CONFIG = {
   },
   channels: {
     domainUrl: "https://naitconv-web.github.io/cos-operations-simulateur",
-    hostProvider: "GitHub Pages (GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA)",
+    hostProvider: "GitHub Pages / o2switch (securiaxe.fr)",
     email: "nait.conv@gmail.com",
     tel: "+33 6 17 17 99 74",
     whatsapp: "33617179974",

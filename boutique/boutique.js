@@ -183,7 +183,7 @@
     var base = {
       issuer: {
         raison: "Mounir NAIT MOHAND (Entrepreneur Individuel)",
-        enseigne: "COS Opérations × SYNTESIA",
+        enseigne: "Securiaxe",
         rep: "M. Mounir NAIT MOHAND",
         capital: "Entreprise Individuelle — Micro-entreprise",
         siege: "Albi (81)",
