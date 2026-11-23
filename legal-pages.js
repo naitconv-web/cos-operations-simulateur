@@ -9,7 +9,7 @@
 
   function loadCfg() {
     var cfg = { issuer: {}, channels: {} };
-    var ext = window.COS Opérations_CONFIG || {};
+    var ext = window.COS_OPERATIONS_CONFIG || window.OMNISECUR_CONFIG || {};
     if (ext.issuer) cfg.issuer = Object.assign({}, ext.issuer);
     if (ext.channels) cfg.channels = Object.assign({}, ext.channels);
     try {

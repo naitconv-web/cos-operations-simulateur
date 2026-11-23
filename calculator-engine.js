@@ -271,7 +271,7 @@
     };
   }
 
-  root.OMNISECUR_ENGINE = {
+  root.COS_OPERATIONS_ENGINE = root.OMNISECUR_ENGINE = {
     PROFILES: PROFILES,
     toNum: toNum,
     evaluateScenario: evaluateScenario,

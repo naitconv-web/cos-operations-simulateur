@@ -4,7 +4,7 @@
  * Émetteur légal actif : Entreprise Individuelle (Micro-entreprise)
  * Mounir NAIT MOHAND — SIREN 849 261 870
  */
-window.COS Opérations_CONFIG = {
+window.COS_OPERATIONS_CONFIG = window.OMNISECUR_CONFIG = {
   issuer: {
     raison: "Mounir NAIT MOHAND (Entrepreneur Individuel)",
     enseigne: "COS Opérations",

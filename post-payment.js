@@ -65,7 +65,7 @@
 
   function loadCfg() {
     var base = { issuer: {}, channels: {} };
-    var ext = window.OMNISECUR_CONFIG || {};
+    var ext = window.COS_OPERATIONS_CONFIG || window.OMNISECUR_CONFIG || {};
     if (ext.issuer) base.issuer = Object.assign({}, ext.issuer);
     if (ext.channels) base.channels = Object.assign({}, ext.channels);
     try {

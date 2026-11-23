@@ -117,7 +117,7 @@
         metaPixelId: ""
       }
     };
-    var ext = window.COS Opérations_CONFIG;
+    var ext = window.COS_OPERATIONS_CONFIG || window.OMNISECUR_CONFIG;
     if (ext && typeof ext === "object") {
       if (ext.issuer) Object.assign(base.issuer, ext.issuer);
       if (ext.channels) {
@@ -451,7 +451,7 @@
   }
 
   function refreshSimulator() {
-    var eng = window.COS Opérations_ENGINE;
+    var eng = window.COS_OPERATIONS_ENGINE || window.OMNISECUR_ENGINE;
     if (!eng) return;
 
     var prof = $("simProfile").value;
@@ -1093,7 +1093,7 @@
         saveCfg(nextCfg);
         renderAdminStatus(nextCfg);
         renderBonCommande();
-        var content = "/* Généré depuis COS Opérations Config Opérateur */\nwindow.COS Opérations_CONFIG = " + JSON.stringify(nextCfg, null, 2) + ";\n";
+        var content = "/* Généré depuis COS Opérations Config Opérateur */\nwindow.COS_OPERATIONS_CONFIG = window.OMNISECUR_CONFIG = " + JSON.stringify(nextCfg, null, 2) + ";\n";
         downloadFile("site-config.js", content, "application/javascript;charset=utf-8;");
         toast("site-config.js généré — déposez-le à la racine o2switch/Vercel.");
       } catch (e) {
@@ -1201,7 +1201,7 @@
       var cfgNow = loadCfg();
       var p = collectLeadPayload();
       var ics = buildIcsContent(p, cfgNow);
-      downloadFile("RDV-COS Opérations-" + (p.societe || "Cadrage").replace(/[^a-zA-Z0-9_-]+/g, "-") + ".ics", ics, "text/calendar;charset=utf-8;");
+      downloadFile("RDV-COS-Operations-" + (p.societe || "Cadrage").replace(/[^a-zA-Z0-9_-]+/g, "-") + ".ics", ics, "text/calendar;charset=utf-8;");
       toast("Fichier agenda .ics téléchargé.");
     });
 
