@@ -93,10 +93,10 @@
   function getBaseConfig() {
     var base = {
       issuer: {
-        raison: "SASU ATLAS GLOBAL TRADING",
+        raison: "Mounir NAIT MOHAND (Entrepreneur Individuel)",
         enseigne: "OMNISECUR",
         rep: "M. Mounir NAIT MOHAND, Président",
-        capital: "SASU — Capital 500 €",
+        capital: "Entreprise Individuelle — Micro-entreprise (SIREN 849 261 870)",
         siege: "Albi (81)",
         siren: "",
         tvaRegime: "293B",
@@ -364,10 +364,10 @@
 
     return {
       issuer: {
-        raison: $("admRaison").value.trim() || "SASU ATLAS GLOBAL TRADING",
+        raison: $("admRaison").value.trim() || "Mounir NAIT MOHAND (Entrepreneur Individuel)",
         enseigne: $("admEnseigne").value.trim() || "OMNISECUR",
         rep: $("admRep").value.trim() || "M. Mounir NAIT MOHAND, Président",
-        capital: $("admCapital").value.trim() || "SASU — Capital 500 €",
+        capital: $("admCapital").value.trim() || "Entreprise Individuelle — Micro-entreprise (SIREN 849 261 870)",
         siege: $("admSiege").value.trim() || "Albi (81)",
         siren: $("admSiren").value.trim(),
         tvaRegime: $("admTvaRegime").value === "20" ? "20" : "293B",

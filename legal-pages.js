@@ -55,9 +55,9 @@
         : "Franchise en base de TVA — art. 293 B du CGI (régime unique)";
 
       var rows = [
-        ["Raison sociale", iss.raison || "SASU ATLAS GLOBAL TRADING"],
+        ["Raison sociale", iss.raison || "Mounir NAIT MOHAND (Entrepreneur Individuel)"],
         ["Nom commercial", iss.enseigne || "OMNISECUR"],
-        ["Forme & Capital", iss.capital || "SASU — Capital 500 €"],
+        ["Forme & Capital", iss.capital || "Entreprise Individuelle — Micro-entreprise (SIREN 849 261 870)"],
         ["Directeur de publication", iss.rep || "M. Mounir NAIT MOHAND, Président"],
         ["Siège social / Ressort", iss.siege || "Albi (81)"],
         ["Identifiant SIREN / SIRET", iss.siren ? iss.siren : "[À compléter dans site-config.js avant mise en ligne publique]"],
