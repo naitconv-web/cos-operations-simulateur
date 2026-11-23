@@ -44,8 +44,8 @@
       subtitle: "Application locale souveraine BYOK + paramétrage + 2h dirigeant inclus",
       bullets: [
         "Inclut 100 % du Pack 1 (Bouclier Excel/Web + 6 Mémoires Techniques Word).",
-        "Déploiement de COS Bureau IA / Sentinelle IA (usage local, clé API en session).",
-        "Paramétrage sur votre Fiche Entreprise et vos agréments réels CNAPS/SSIAP.",
+        "Déploiement de COS Bureau IA / Sentinelle IA (usage local BYOK, clé API en sessionStorage, zéro transit serveur).",
+        "Contrôle préalable des autorisations d'exercice (CSI art. L.612-9), cartes pro (L.612-20), repos 11,0 h et modèles d'Ordres de Mission.",
         "Atelier de prise en main 2h (visio France entière ou sur site en Occitanie)."
       ],
       scopeNote: "Licence mono-poste sans abonnement mensuel obligatoire (alternative SaaS 99–299 €/mois)."
@@ -369,7 +369,7 @@
       monthlyTtc: monthlyTtc,
       tvaPct: tvaPct,
       tvaAmt: tvaAmt,
-      tvaMention: tvaPct === 0 ? "TVA non applicable — art. L. 223-3 du CIBS (ex-293 B CGI)" : ("TVA 20 % (" + (cfg.issuer.tvaNum || "FR...") + ")"),
+      tvaMention: tvaPct === 0 ? "TVA non applicable — art. 293 B du CGI / art. L. 223-3 du CIBS (franchise en base)" : ("TVA 20 % (" + (cfg.issuer.tvaNum || "FR...") + ")"),
       ttc: ttc,
       modeRaw: modeRaw,
       dueNowPct: dueNowPct,
@@ -472,11 +472,11 @@
   function getCgvParagraphs(cfg) {
     var iss = cfg.issuer;
     return [
-      "Art. 1 — Objet & Périmètre hors activité CNAPS : Prestation B2B d'ingénierie documentaire, d'outillage de chiffrage ou de systèmes opérationnels, strictement hors activités réglementées du Livre VI du Code de la sécurité intérieure (art. L.611-1 CSI).",
-      "Art. 2 — Prix, TVA & Règlements : Régime fiscal unique appliqué : " + (iss.tvaRegime === "20" ? "TVA normale 20 %" : "TVA non applicable, art. L. 223-3 du CIBS (ancien art. 293 B du CGI)") + ". Règlement par virement SEPA instantané sur Proforma/Bon de Commande (acompte ou comptant), lien bancaire CB ou prélèvement SEPA. Conformément aux art. L.441-10 et D.441-5 C. com., tout retard entraîne des pénalités (3 × taux légal) + indemnité forfaitaire de 40 €.",
-      "Art. 3 — Délais & Obligation de moyens : Livraison numérique immédiate dès confirmation d'encaissement pour les kits autonomes ; déploiement selon planning convenu pour les ateliers et intégrations 7 jours. Le prestataire est tenu à une obligation de moyens.",
+      "Art. 1 — Objet, Loyauté (art. L.121-1 C. com.) & Périmètre hors activité CNAPS : Prestation B2B d'ingénierie documentaire, d'outillage de chiffrage ou de systèmes opérationnels, strictement hors activités réglementées du Livre VI du Code de la sécurité intérieure (art. L.611-1 CSI) et hors conseil juridique ou comptable réglementé.",
+      "Art. 2 — Prix, TVA, Sécurité IBAN & Règlements : Régime fiscal unique appliqué : " + (iss.tvaRegime === "20" ? "TVA normale 20 %" : "TVA non applicable — art. 293 B du CGI / art. L. 223-3 du CIBS (franchise en base)") + ". Règlement par virement SEPA instantané sur Proforma/Bon de Commande (acompte ou comptant — Sécurité anti-fraude B2B : vérifiez systématiquement la concordance du RIB officiel Securiaxe rattaché au SIREN 849 261 870 avant virement), lien bancaire CB ou prélèvement SEPA. Conformément aux art. L.441-10 et D.441-5 C. com., tout retard entraîne des pénalités (3 × taux légal) + indemnité forfaitaire de 40 €.",
+      "Art. 3 — Délais & Obligation de moyens : Livraison numérique immédiate dès confirmation d'encaissement pour le Pack 1 ; atelier sous 48h ouvrées pour le Pack 2 ; livraison sous 48h ouvrées dès réception de 100 % des pièces J0 pour le Pack 3 (1 lot <= 15 p., max 2 dossiers simultanés). Le prestataire est tenu à une obligation de moyens sans garantie d'attribution.",
       "Art. 4 — Propriété intellectuelle : Licence d'usage interne, personnelle et non transférable accordée à l'entité cliente après paiement complet. Toute revente ou diffusion publique est interdite.",
-      "Art. 5 — Responsabilité & RGPD (Art. 13/28) : Responsabilité plafonnée au montant HT encaissé. Aucune donnée client n'est cédée à des tiers ni utilisée pour entraîner des modèles IA tiers (purge sous 30 jours après clôture).",
+      "Art. 5 — Responsabilité & RGPD (Art. 13/28 & BYOK) : Responsabilité plafonnée au montant HT encaissé. Module COS Bureau IA exécuté localement dans le navigateur du Client sous sa propre clé API en sessionStorage (zéro transit par un serveur Securiaxe, zéro entraînement IA tiers, purge des pièces sous 30 jours après clôture).",
       "Art. 6 — Juridiction : Droit français ; compétence exclusive du Tribunal de commerce du siège du prestataire (" + (iss.siege || "Albi") + ")."
     ];
   }
@@ -497,8 +497,9 @@
       '<div class="bc-head">' +
         '<div>' +
           '<h4>BON DE COMMANDE &amp; PROFORMA B2B — ' + esc(o.ref) + '</h4>' +
-          '<div><b>' + esc(cfg.issuer.enseigne || cfg.issuer.raison) + '</b></div>' +
+          '<div><b>' + esc(cfg.issuer.enseigne || cfg.issuer.raison) + ' — EI</b></div>' +
           '<div>' + esc(cfg.issuer.capital) + ' &middot; Siège : ' + esc(cfg.issuer.siege) + ' &middot; SIREN : ' + esc(cfg.issuer.siren) + '</div>' +
+          '<div style="font-size:11.5px;color:#475569">Mention légale EI (art. L.526-22 &amp; R.123-237 C. com.) : identité complète de l\'entrepreneur individuel figurant aux Mentions légales et sur la facture définitive émise.</div>' +
           (contactParts.length ? '<div>Contact : ' + esc(contactParts.join(" · ")) + '</div>' : '') +
         '</div>' +
         '<div style="text-align:right">' +
@@ -517,7 +518,8 @@
       '<div class="bc-totals">' +
         '<div>' +
           '<div><b>Modalité choisie :</b> ' + (o.modeRaw === "4x" ? ("Paiement en 4x (" + fmtMoney(o.q4x) + " / mois)") : ("Acompte " + o.dueNowPct + " % à la commande (" + fmtMoney(o.dueNowTtc) + ") · Solde (" + fmtMoney(o.soldeTtc) + ")")) + '</div>' +
-          (cfg.channels.iban ? '<div><b>Virement IBAN :</b> ' + esc(cfg.channels.iban) + (cfg.channels.bic ? ' · BIC : ' + esc(cfg.channels.bic) : '') + ' · <b>Libellé :</b> ' + esc(o.ref) + '</div>' : '<div><b>Règlement :</b> Virement SEPA (IBAN communiqué sur validation) / Lien Bancaire Pro / PayPal 4x</div>') +
+          (cfg.channels.iban ? '<div><b>Virement IBAN :</b> ' + esc(cfg.channels.iban) + (cfg.channels.bic ? ' · BIC : ' + esc(cfg.channels.bic) : '') + ' · <b>Libellé :</b> ' + esc(o.ref) + '</div>' : '<div><b>Règlement :</b> Virement SEPA sur RIB officiel Securiaxe (SIREN 849 261 870) / Lien Bancaire Pro / PayPal 4x</div>') +
+          '<div style="font-size:11.5px;color:#475569;margin-top:3px"><b>Sécurité anti-fraude B2B :</b> vérifiez systématiquement la concordance du RIB officiel Securiaxe (SIREN 849 261 870) rattaché à votre Bon de Commande avant exécution du virement.</div>' +
         '</div>' +
         '<div style="text-align:right">' +
           '<div>Total HT : <b>' + fmtMoney(o.ht) + '</b></div>' +
@@ -527,7 +529,7 @@
       '</div>' +
       '<div class="bc-cgv-box"><b>CONDITIONS GÉNÉRALES DE VENTE B2B SIMPLIFIÉES :</b>' + cgvHtml + '</div>' +
       '<div style="display:flex;justify-content:space-between;gap:20px;margin-top:18px;font-size:12px">' +
-        '<div style="flex:1;border-top:1px solid #cbd5e1;padding-top:6px"><b>Pour ' + esc(cfg.issuer.raison) + '</b><br>' + esc(cfg.issuer.rep) + '</div>' +
+        '<div style="flex:1;border-top:1px solid #cbd5e1;padding-top:6px"><b>Pour ' + esc(cfg.issuer.raison) + ' (EI — SIREN 849 261 870)</b><br>' + esc(cfg.issuer.rep) + '</div>' +
         '<div style="flex:1;border-top:1px solid #cbd5e1;padding-top:6px"><b>Bon pour accord &amp; acceptation des CGV — Le Client</b><br>Date, cachet et signature précédés de la mention « Bon pour accord »</div>' +
       '</div>';
   }

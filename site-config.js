@@ -15,7 +15,7 @@ window.COS_OPERATIONS_CONFIG = window.OMNISECUR_CONFIG = {
   },
   channels: {
     domainUrl: "https://idcc1351.fr",
-    hostProvider: "o2switch SASU, Clermont-Ferrand (France)",
+    hostProvider: "o2switch SASU — Chemin des Pardiaux, 63000 Clermont-Ferrand, France (RCS Clermont-Ferrand 510 909 807 — Tél. : +33 4 44 44 60 40)",
     email: "nait.conv@gmail.com",
     tel: "+33 6 17 17 99 74",
     whatsapp: "33617179974",

@@ -53,8 +53,8 @@
       ],
       specs: [
         ["Volume livré", "10 fichiers Word (.docx) mis en page avec tableaux verrouillés (cantSplit)"],
-        ["Plancher conventionnel", "Avenant n° 2 Annexe IV (6,0 h min., JORF 05/06/2026) + repos 11h / 12h cycles"],
-        ["Hygiène conformité", "0 promesse hors périmètre (équipements réglementés, faux labels ou véhicules spéciaux purgés)"],
+        ["Plancher conventionnel", "Avenant n° 2 Art. 1 & 2 (6,0 h min., JORF 05/06/2026) + repos 11,0 h (12,0 h cycles 12h)"],
+        ["Hygiène conformité", "0 promesse hors périmètre (art. L.121-1 C. com. — équipements et labels non détenus purgés)"],
         ["Usage", "Personnalisation rapide par balises [NOM SOCIETE] et [DELAI] avant dépôt"]
       ]
     },
@@ -68,7 +68,7 @@
       ],
       specs: [
         ["Sécurité applicative", "CSP stricte + sanitizeExternalUrl() HTTPS/localhost + esc() complet"],
-        ["Import chiffrage", "Rejet automatique si état != PRET, non validé ou marge nette < 0 €"],
+        ["Import chiffrage", "Rejet automatique si état != PRET, non validé ou marge opérationnelle < 0 €"],
         ["Modèle économique", "Licence locale mono-poste (Pack 2) distincte d'un futur SaaS 99–299 €/mois"],
         ["Atelier inclus", "2h de paramétrage sur votre Fiche Entreprise + prise en main dirigeant"]
       ]
@@ -77,13 +77,13 @@
       title: "Architecture Juridique, Contractuelle & RGPD B2B",
       desc: "Chaque document et outil commercial trace une frontière nette entre l'outillage/ingénierie méthodologique (Securiaxe / COS Opérations) et les activités réglementées exercées exclusivement par les entreprises clientes.",
       bullets: [
-        "Prestation 100 % hors champ CNAPS (art. L.611-1 CSI) : ni gardiennage, ni ronde, ni télésurveillance, ni intervention.",
-        "Unicité stricte du régime TVA émetteur sur Bon de Commande (art. L. 223-3 du CIBS (ex-293 B CGI) OU TVA 20 %, jamais les deux).",
+        "Prestation 100 % hors champ CNAPS (art. L.611-1 CSI & art. L.121-1 C. com.) : ni gardiennage, ni ronde, ni télésurveillance, ni intervention.",
+        "Unicité stricte du régime TVA émetteur sur Bon de Commande (art. 293 B du CGI / art. L. 223-3 du CIBS OU TVA 20 %, jamais les deux).",
         "CGV B2B intégrées : obligation de moyens (zéro promesse d'attribution), plafond de responsabilité au montant HT, L.441-10 + 40 €, et clause RGPD art. 28 avec purge à 30 jours."
       ],
       specs: [
-        ["Références CSI", "L.611-1 1°, L.612-9, L.613-6, L.612-5-1 (DC4) — contrôle strict Code sécurité intérieure"],
-        ["Convention collective", "IDCC 1351 — Nuit +10 %, Dimanche +10 %, Férié +100 %, Avenant n° 2 (6h)"],
+        ["Références CSI", "L.611-1 1°, L.612-9 (autorisation d'exercice), L.612-20 (cartes pro), L.613-6, L.612-5-1 (DC4)"],
+        ["Convention collective", "IDCC 1351 — Nuit +10 %, Dimanche +10 %, Férié +100 %, Avenant n° 2 Art. 1 & 2 (6,0 h)"],
         ["Sous-traitance RGPD", "Aucune donnée utilisée pour entraîner un modèle tiers ; suppression J+30"],
         ["Capacité Commando 48h", "Plafonnée contractuellement à 2 dossiers simultanés (1 lot <= 15 pages)"]
       ]
@@ -570,8 +570,8 @@
   function getCgvParagraphs(cfg) {
     var iss = cfg.issuer;
     return [
-      "Art. 1 — Objet & Périmètre (hors CSI Livre VI) : " + iss.raison + " (" + iss.enseigne + ") fournit des outils de gestion, chiffrages financiers et prestations d'ingénierie documentaire AO B2B. Ces prestations n'emportent ni exercice d'activité réglementée CNAPS (art. L.611-1 CSI) ni conseil juridique, comptable ou social réglementé.",
-      "Art. 2 — Prix, TVA & Règlement : Prix en euros HT. Régime fiscal émetteur actif : " + (iss.tvaRegime === "20" ? "TVA normale 20 %" : "TVA non applicable, art. L. 223-3 du CIBS (ancien art. 293 B du CGI) (sous réserve des seuils légaux)") + ". Virement sur Bon de Commande : acompte à la commande et solde à livraison ; paiement CB Stripe (forfaits catalogue) : règlement comptant à la commande. Conformément aux art. L.441-10 et D.441-5 C. com., tout retard entraîne de plein droit des pénalités (3 × taux d'intérêt légal) et une indemnité forfaitaire de 40 €.",
+      "Art. 1 — Objet & Périmètre (hors CSI Livre VI & art. L.121-1 C. com.) : " + iss.raison + " (" + iss.enseigne + ") fournit des outils de gestion, chiffrages financiers et prestations d'ingénierie documentaire AO B2B. Ces prestations n'emportent ni exercice d'activité réglementée CNAPS (art. L.611-1 CSI) ni conseil juridique, comptable ou social réglementé.",
+      "Art. 2 — Prix, TVA, Sécurité IBAN & Règlement : Prix en euros HT. Régime fiscal émetteur actif : " + (iss.tvaRegime === "20" ? "TVA normale 20 %" : "TVA non applicable — art. 293 B du CGI / art. L. 223-3 du CIBS (franchise en base de TVA, sous réserve des seuils légaux)") + ". Virement SEPA sur Bon de Commande : acompte à la commande et solde à livraison (Sécurité anti-fraude B2B : vérifiez systématiquement la concordance du RIB officiel Securiaxe rattaché au SIREN 849 261 870 avant tout virement). Conformément aux art. L.441-10 et D.441-5 C. com., tout retard entraîne de plein droit des pénalités (3 × taux d'intérêt légal) et une indemnité forfaitaire de 40 €.",
       "Art. 3 — Délais & Obligation de moyens : Les délais (dont 48h ouvrées pour Pack 3 limité à 1 lot <= 15 p.) courent à réception intégrale des pièces requises (DCE, paie, agréments). Le prestataire est tenu à une obligation de moyens sans garantie d'attribution de marché.",
       "Art. 4 — Propriété intellectuelle : Licence d'usage interne, personnelle, non exclusive et non transférable accordée au Client après paiement complet. Toute revente, partage externe ou mise en ligne publique des gabarits est interdite.",
       "Art. 5 — Limitation de responsabilité : Sauf faute lourde ou dol, la responsabilité cumulée du prestataire est strictement plafonnée au montant total HT payé au titre du présent bon de commande, à l'exclusion de tout préjudice indirect, perte d'exploitation ou perte de chance commerciale.",
@@ -599,7 +599,7 @@
       ht: ht,
       tvaPct: tvaPct,
       tvaAmt: tvaAmt,
-      tvaMention: tvaPct === 0 ? "TVA non applicable, art. L. 223-3 du CIBS (ancien art. 293 B du CGI)" : ("TVA 20 % (" + (cfg.issuer.tvaNum || "n° TVA à renseigner") + ") : " + fmtMoney(tvaAmt)),
+      tvaMention: tvaPct === 0 ? "TVA non applicable — art. 293 B du CGI / art. L. 223-3 du CIBS (franchise en base)" : ("TVA 20 % (" + (cfg.issuer.tvaNum || "n° TVA à renseigner") + ") : " + fmtMoney(tvaAmt)),
       ttc: ttc,
       acPct: acPct,
       acTtc: acTtc,
@@ -610,7 +610,7 @@
   function renderBonCommande() {
     var cfg = loadCfg();
     var bc = buildBonCommandeData(cfg);
-    $("bcTvaHint").textContent = cfg.issuer.tvaRegime === "20" ? "Assujetti TVA 20 % (régime unique)" : "Franchise en base — art. L. 223-3 du CIBS (ex-293 B CGI) (régime unique)";
+    $("bcTvaHint").textContent = cfg.issuer.tvaRegime === "20" ? "Assujetti TVA 20 % (régime unique)" : "Franchise en base — art. 293 B du CGI / art. L. 223-3 du CIBS (régime unique)";
     var sirenHtml = cfg.issuer.siren.trim() ? esc(cfg.issuer.siren.trim()) : '<span style="color:#b45309">[SIREN/SIRET À RENSEIGNER AVANT ENVOI CLIENT]</span>';
     var cgvHtml = getCgvParagraphs(cfg).map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("");
     var contactParts = [cfg.channels.email, cfg.channels.tel].filter(Boolean);
@@ -619,8 +619,9 @@
       '<div class="bc-head">' +
         '<div>' +
           '<h4>BON DE COMMANDE B2B — N° ' + esc(bc.ref) + '</h4>' +
-          '<div><b>' + esc(cfg.issuer.raison) + '</b> (' + esc(cfg.issuer.enseigne) + ') — ' + esc(cfg.issuer.capital) + '</div>' +
+          '<div><b>' + esc(cfg.issuer.raison) + ' — EI</b> (' + esc(cfg.issuer.enseigne) + ') — ' + esc(cfg.issuer.capital) + '</div>' +
           '<div>Siège : ' + esc(cfg.issuer.siege) + ' · SIREN/SIRET : ' + sirenHtml + '</div>' +
+          '<div style="font-size:11.5px;color:#475569">Mention légale EI (art. L.526-22 &amp; R.123-237 C. com.) : identité complète de l\'entrepreneur individuel figurant aux Mentions légales et sur la facture définitive émise.</div>' +
           '<div>Représentée par : <b>' + esc(cfg.issuer.rep) + '</b></div>' +
           (contactParts.length ? '<div>Contact : ' + esc(contactParts.join(" · ")) + '</div>' : '') +
         '</div>' +
@@ -638,6 +639,7 @@
         '<div>' +
           '<div><b>Échéancier :</b> Acompte ' + esc(bc.acPct) + ' % à la commande (<b>' + fmtMoney(bc.acTtc) + '</b>) · Solde ' + esc(100 - bc.acPct) + ' % à livraison (<b>' + fmtMoney(bc.soldeTtc) + '</b>)</div>' +
           (cfg.channels.iban ? '<div><b>Virement IBAN :</b> ' + esc(cfg.channels.iban) + '</div>' : '') +
+          '<div style="font-size:11.5px;color:#475569;margin-top:3px"><b>Sécurité anti-fraude B2B :</b> l\'IBAN officiel de règlement est rattaché à Securiaxe (SIREN 849 261 870). Vérifiez systématiquement la concordance du RIB rattaché au Bon de Commande avant exécution du virement.</div>' +
         '</div>' +
         '<div style="text-align:right">' +
           '<div>Total HT : <b>' + fmtMoney(bc.ht) + '</b></div>' +
@@ -647,7 +649,7 @@
       '</div>' +
       '<div class="bc-cgv-box"><b>CONDITIONS GÉNÉRALES DE VENTE SIMPLIFIÉES (CGV B2B) :</b>' + cgvHtml + '</div>' +
       '<div style="display:flex;justify-content:space-between;gap:20px;margin-top:20px;font-size:12px">' +
-        '<div style="flex:1;border-top:1px solid #cbd5e1;padding-top:6px"><b>Pour ' + esc(cfg.issuer.raison) + '</b><br>' + esc(cfg.issuer.rep) + '</div>' +
+        '<div style="flex:1;border-top:1px solid #cbd5e1;padding-top:6px"><b>Pour ' + esc(cfg.issuer.raison) + ' (EI — SIREN 849 261 870)</b><br>' + esc(cfg.issuer.rep) + '</div>' +
         '<div style="flex:1;border-top:1px solid #cbd5e1;padding-top:6px"><b>Bon pour accord &amp; acceptation des CGV — Le Client</b><br>Date, cachet et signature précédés de la mention « Bon pour accord »</div>' +
       '</div>';
 
@@ -749,7 +751,7 @@
     ];
     if (p.diagnosticBouclier) {
       var d = p.diagnosticBouclier;
-      lines.push("Diag Web  : " + d.profil + " · " + d.heures + "h @ " + d.tarifFactureH + " €/h -> Net " + d.resultatNetEUR + " € (" + d.verdict + ", cible " + d.prixCibleH + " €/h)" + (d.avenantFloorApplied ? (" [Plancher 6h : " + d.heuresPayees + "h payées]") : ""));
+      lines.push("Diag Web  : " + d.profil + " · " + d.heures + "h @ " + d.tarifFactureH + " €/h -> Résultat opérationnel " + d.resultatNetEUR + " € (" + d.verdict + ", cible " + d.prixCibleH + " €/h)" + (d.avenantFloorApplied ? (" [Plancher 6h : " + d.heuresPayees + "h payées]") : ""));
     }
     lines.push("RGPD Art13: Consentement explicite = " + (p.rgpdConsent ? "OUI (étude B2B, purge 30j)" : "NON COCHÉ"));
     return lines.join("\n");
@@ -759,7 +761,7 @@
     return [
       "===============================================================",
       "IDCC1351.FR (ÉDITÉ PAR SECURIAXE) — DIAGNOSTIC DE CONFORMITÉ ÉCONOMIQUE",
-      "Simulation indicative B2B (hors activités CNAPS art. L.611-1 CSI)",
+      "Simulation indicative B2B (hors activités CNAPS art. L.611-1 CSI & art. L.121-1 C. com.)",
       "===============================================================",
       "Date           : " + localIsoDate(),
       soc ? ("Société cible  : " + soc) : "",
@@ -772,13 +774,14 @@
       "Coût direct/h  : " + fmtMoney(d.directCostPerHour) + "/h",
       "Coût complet/h : " + fmtMoney(d.fullCostPerHour) + "/h (Complet total : " + fmtMoney(d.fullCost) + ")",
       "Chiffre d'aff. : " + fmtMoney(d.caTotal),
-      "Résultat net   : " + (d.netResult >= 0 ? "+" : "") + fmtMoney(d.netResult) + " / mois (" + fmtNum(d.netMarginPct, 2) + " %)",
-      "Impact 12 mois : " + (d.netResult >= 0 ? "+" : "") + fmtMoney(d.netResult * 12) + " / an",
+      "Résultat opér. : " + (d.netResult >= 0 ? "+" : "") + fmtMoney(d.netResult) + " / mois (Marge opérationnelle estimative sur CA : " + fmtNum(d.netMarginPct, 2) + " %)",
+      "Annualisation indicative sur 12 mois (à paramètres constants) : " + (d.netResult >= 0 ? "+" : "") + fmtMoney(d.netResult * 12) + " / an",
       "Verdict moteur : " + d.verdict,
       "Prix cible " + fmtNum(d.targetPct, 1) + "%: " + fmtMoney(d.targetPriceH) + " HT/h",
       "---------------------------------------------------------------",
-      "Point vigilance Avenant n° 2 (IDCC 1351 Annexe IV, JORF 05/06/2026, effet 01/07/2026) :",
-      "Plancher conventionnel étendu de 6,0 h rémunérées par vacation. Sur 300h, passer de 25x12h à 50x6h ajoute +393,75 EUR/mois.",
+      "Point vigilance Avenant n° 2 (IDCC 1351 Art. 1 & 2 — KALITEXT000053576553 / KALIARTI000053576557, JORF 05/06/2026, effet 01/07/2026) :",
+      "Plancher conventionnel étendu de 6,0 h rémunérées par vacation (Agents d'exploitation, Agents de maîtrise, hors Annexe VIII et astreintes ; coupure <= 2 h : cumul ; coupure > 2 h : nouvelle vacation).",
+      "Sur 300 h, passer de 25x12h à 50x6h ajoute +393,75 EUR/mois (doublement des prises de poste, paniers et trajets).",
       "À confirmer avec votre expert-comptable sur vos bulletins de paie réels (verrou Direction)."
     ].filter(Boolean).join("\n");
   }
@@ -789,26 +792,26 @@
     var deltaH = Math.max(0, d.targetPriceH - d.sellPrice);
     return [
       "OBJET : Demande de réévaluation du Bordereau des Prix Unitaires (BPU) — Entrée en vigueur de l'Avenant n° 2 (IDCC 1351)",
-      "RÉFÉRENCES RÉGLEMENTAIRES : Avenant n° 2 du 3 septembre 2025 (IDCC 1351 · Annexe IV) étendu par Arrêté ministériel du 27 mai 2026 (NOR : TRST2612786A, JORF n°0130 du 5 juin 2026), d'application obligatoire au 1er juillet 2026.",
+      "RÉFÉRENCES RÉGLEMENTAIRES : Avenant n° 2 du 3 septembre 2025 (IDCC 1351 · Art. 1 & 2 — KALITEXT000053576553 / KALIARTI000053576557) étendu par Arrêté ministériel du 27 mai 2026 (NOR : TRST2612786A, JORF n°0130 du 5 juin 2026, JORFTEXT000054200800), d'application obligatoire au 1er juillet 2026.",
       "--------------------------------------------------------------------------------",
       "",
       "Madame, Monsieur,",
       "",
-      "Dans le cadre du suivi d'exécution de nos prestations de sécurité privée réalisées par " + nomSoc + ", nous portons à votre attention l'impact économique direct des dispositions conventionnelles étendues par l'Arrêté du 27 mai 2026 (publié au Journal Officiel le 5 juin 2026) applicables à l'ensemble des entreprises relevant de la Convention Collective Nationale des Entreprises de Prévention et de Sécurité (IDCC 1351 — Brochure JO 3196).",
+      "Dans le cadre du suivi d'exécution de nos prestations de sécurité privée réalisées par " + nomSoc + ", nous portons à votre attention l'impact économique direct des dispositions conventionnelles étendues par l'Arrêté du 27 mai 2026 (publié au Journal Officiel le 5 juin 2026) applicables aux entreprises relevant de la Convention Collective Nationale des Entreprises de Prévention et de Sécurité (IDCC 1351 — Brochure JO 3196).",
       "",
-      "1. INCIDENCE CONVENTIONNELLE SUR L'ORGANISATION DES VACATIONS (ANNEXE IV) :",
-      "- La durée minimale conventionnelle étendue d'une période de travail (vacation) est désormais fixée à 6,0 heures rémunérées minimum (contre 4,0 heures antérieurement à temps partiel), hors exceptions conventionnelles limitatives.",
-      "- Le seuil de déclenchement de l'indemnité de panier (6,0 h continues, Annexe IV art. 6) et la multiplication des vacations courtes alourdissent mécaniquement la structure des coûts directs et des indemnités de transport.",
+      "1. INCIDENCE CONVENTIONNELLE SUR L'ORGANISATION DES VACATIONS (ART. 1 & 2 AVENANT N° 2) :",
+      "- La durée minimale conventionnelle étendue d'une période de travail (vacation) est désormais fixée à 6,0 heures rémunérées minimum (contre 4,0 heures antérieurement à temps partiel) pour les Agents d'exploitation et Agents de maîtrise (hors Annexe VIII, astreintes et exceptions conventionnelles limitatives ; deux vacations séparées par une coupure <= 2 h forment une seule période, toute coupure > 2 h ouvrant une nouvelle période soumise au plancher de 6,0 h).",
+      "- Le seuil de déclenchement de l'indemnité de panier (1 seule indemnité par vacation continue >= 6,0 h de travail effectif — Annexe IV art. 6, minimum conventionnel 4,48 € au 01/01/2026) et la multiplication des vacations de 6,0 h alourdissent mécaniquement la structure des coûts directs et des indemnités de transport.",
       "",
       "2. ÉTAT COMPARATIF DU COÛT DE REVIENT SUR VOTRE PÉRIMÈTRE (" + d.profile.code + " — " + d.profile.nom + " · " + d.moment.toUpperCase() + ") :",
       "- Volume mensuel considéré       : " + fmtNum(d.hours, 0) + " h travaillées (" + fmtNum(d.vacHours, 1) + " h/vacation -> " + fmtNum(d.paidHours, 1) + " h rémunérées au titre du plancher 6,0 h)",
       "- Coût direct salarial chargé    : " + fmtMoney(d.directCostPerHour) + " HT / heure",
       "- Coût de revient complet réel   : " + fmtMoney(d.fullCostPerHour) + " HT / heure (soit " + fmtMoney(d.fullCost) + " HT / mois)",
-      "- Tarif BPU actuellement facturé : " + fmtMoney(d.sellPrice) + " HT / heure (soit un écart net de " + (d.netResult >= 0 ? "+" : "") + fmtMoney(d.netResult) + " / mois)",
+      "- Tarif BPU actuellement facturé : " + fmtMoney(d.sellPrice) + " HT / heure (soit un écart opérationnel mensuel de " + (d.netResult >= 0 ? "+" : "") + fmtMoney(d.netResult) + " / mois)",
       "- Tarif d'équilibre cible (" + fmtNum(d.targetPct, 1) + "%): " + fmtMoney(d.targetPriceH) + " HT / heure" + (deltaH > 0 ? (" (réajustement nécessaire de +" + fmtMoney(deltaH) + " HT/h)") : ""),
       "",
       "3. DEMANDE D'AVENANT TARIFAIRE :",
-      "Afin de garantir la pleine conformité sociale des prestations, la stabilité des équipes affectées à votre site et le respect de l'équilibre économique du contrat (interdiction de revente ou prestation structurellement déficitaire), nous sollicitons une réunion d'ajustement de notre BPU sur la base du tarif plancher de " + fmtMoney(d.targetPriceH) + " HT/h à compter du prochain cycle de facturation.",
+      "Afin de garantir la pleine conformité sociale des prestations, la stabilité des équipes affectées à votre site et le respect de l'équilibre économique du contrat, nous sollicitons une réunion d'ajustement de notre BPU sur la base du tarif plancher de " + fmtMoney(d.targetPriceH) + " HT/h à compter du prochain cycle de facturation.",
       "",
       "Nous restons à votre disposition pour vous présenter le détail du diagnostic de conformité économique ci-joint.",
       "",
@@ -816,7 +819,7 @@
       "",
       "La Direction — " + nomSoc,
       "--------------------------------------------------------------------------------",
-      "[AVERTISSEMENT : Trame technique et économique générée via idcc1351.fr (édité par Securiaxe). Ce modèle d'aide à la négociation commerciale B2B ne constitue pas une consultation juridique ; vérifiez les clauses de révision de prix de votre contrat avant envoi.]"
+      "[AVERTISSEMENT : Trame technique et économique générée via idcc1351.fr (édité par Securiaxe — hors activités CNAPS L.611-1 CSI & conforme art. L.121-1 C. com.). Ce modèle d'aide à la négociation commerciale B2B ne constitue pas une consultation juridique ; vérifiez les clauses de révision de prix de votre contrat avant envoi.]"
     ].join("\n");
   }
 
@@ -826,12 +829,17 @@
     var cfg = loadCfg();
     var nomSoc = soc || "Entreprise de Sécurité Privée (Diagnostic interne)";
     var annualImpact = d.netResult * 12;
+    var beText = "Non applicable (Mode Express sans socle fixe séparé)";
+    if (d.breakEvenHours === 0) beText = "Dès la 1re heure";
+    else if (typeof d.breakEvenHours === "number" && Number.isFinite(d.breakEvenHours)) beText = fmtNum(d.breakEvenHours, 2) + " h / mois";
+    else if (d.mode === "recette") beText = "Déficitaire sur coût variable unitaire";
+
     sheet.innerHTML =
       '<div class="bc-head">' +
         '<div>' +
           '<h4>DIAGNOSTIC DE CONFORMITÉ ÉCONOMIQUE &amp; CONVENTIONNELLE — IDCC 1351</h4>' +
-          '<div><b>Référentiel technique indépendant :</b> <code>idcc1351.fr</code> — Édité par <b>' + esc(cfg.issuer.enseigne || "Securiaxe") + '</b></div>' +
-          '<div>SIREN/SIRET : ' + esc(cfg.issuer.siren || "849 261 870 00018") + ' &middot; Siège : ' + esc(cfg.issuer.siege || "Albi (81)") + ' &middot; Hors activité CNAPS (art. L.611-1 CSI)</div>' +
+          '<div><b>Référentiel technique indépendant :</b> <code>idcc1351.fr</code> — Édité par <b>' + esc(cfg.issuer.enseigne || "Securiaxe") + ' (EI)</b></div>' +
+          '<div>SIREN/SIRET : ' + esc(cfg.issuer.siren || "849 261 870 00018") + ' &middot; Siège : ' + esc(cfg.issuer.siege || "Albi (81)") + ' &middot; Hors activité CNAPS (art. L.611-1 CSI &amp; art. L.121-1 C. com.)</div>' +
           '<div style="font-size:11.5px;color:#475569;margin-top:2px">Non affilié aux organisations paritaires de branche, au Ministère du Travail ou au CNAPS.</div>' +
         '</div>' +
         '<div style="text-align:right">' +
@@ -844,25 +852,25 @@
       '<table class="bc-table">' +
         '<thead><tr><th>Paramètre d\'exploitation &amp; Règle IDCC 1351</th><th>Valeur saisie / appliquée</th><th style="text-align:right">Incidence financière HT</th></tr></thead>' +
         '<tbody>' +
-          '<tr><td><b>Profil conventionnel (Annexe IV)</b><br><small>' + esc(d.profile.code + " — " + d.profile.nom) + ' · Plage : ' + esc(d.moment.toUpperCase()) + '</small></td><td>Volume : ' + fmtNum(d.hours, 0) + ' h / mois<br>Durée vacation : ' + fmtNum(d.vacHours, 1) + ' h</td><td style="text-align:right">Coût direct : <b>' + fmtMoney(d.directCostPerHour) + '/h</b></td></tr>' +
-          '<tr><td><b>Contrôle Avenant n° 2 (Plancher 6,0 h)</b><br><small>Arrêté du 27/05/2026 (JORF 05/06/2026) · Effet 01/07/2026</small></td><td>' + (d.avenantFloorApplied ? ('<b style="color:#991B1B">Plancher 6,0 h déclenché :</b> ' + fmtNum(d.paidHours, 1) + ' h payées pour ' + fmtNum(d.hours, 0) + ' h travaillées') : ('Conforme (vacation ≥ 6,0 h · ' + fmtNum(d.paidHours, 1) + ' h payées)')) + '</td><td style="text-align:right">Coût complet : <b>' + fmtMoney(d.fullCostPerHour) + '/h</b><br><small>(' + fmtMoney(d.fullCost) + ' / mois)</small></td></tr>' +
-          '<tr><td><b>Facturation Client vs Coût Complet</b><br><small>Objectif marge nette : ' + fmtNum(d.targetPct, 1) + ' %</small></td><td>Tarif facturé : <b>' + fmtMoney(d.sellPrice) + ' HT/h</b><br>Tarif plancher cible : <b>' + fmtMoney(d.targetPriceH) + ' HT/h</b></td><td style="text-align:right">CA mensuel : <b>' + fmtMoney(d.caTotal) + '</b></td></tr>' +
+          '<tr><td><b>Profil conventionnel (Annexe IV / V)</b><br><small>' + esc(d.profile.code + " — " + d.profile.nom) + ' · Plage : ' + esc(d.moment.toUpperCase()) + '</small></td><td>Volume : ' + fmtNum(d.hours, 0) + ' h / mois<br>Durée vacation : ' + fmtNum(d.vacHours, 1) + ' h</td><td style="text-align:right">Coût direct : <b>' + fmtMoney(d.directCostPerHour) + '/h</b></td></tr>' +
+          '<tr><td><b>Contrôle Avenant n° 2 (Art. 1 &amp; 2 — Plancher 6,0 h)</b><br><small>Arrêté du 27/05/2026 (JORF 05/06/2026) · Effet 01/07/2026 · Hors Annexe VIII &amp; astreintes</small></td><td>' + (d.avenantFloorApplied ? ('<b style="color:#991B1B">Plancher 6,0 h déclenché :</b> ' + fmtNum(d.paidHours, 1) + ' h payées pour ' + fmtNum(d.hours, 0) + ' h travaillées') : ('Conforme (vacation ≥ 6,0 h · ' + fmtNum(d.paidHours, 1) + ' h payées)')) + '<br><small>Seuil de rentabilité : ' + esc(beText) + '</small></td><td style="text-align:right">Coût complet : <b>' + fmtMoney(d.fullCostPerHour) + '/h</b><br><small>(' + fmtMoney(d.fullCost) + ' / mois)</small></td></tr>' +
+          '<tr><td><b>Facturation Client vs Coût Complet</b><br><small>Objectif marge opérationnelle sur CA : ' + fmtNum(d.targetPct, 1) + ' %</small></td><td>Tarif facturé : <b>' + fmtMoney(d.sellPrice) + ' HT/h</b><br>Tarif plancher cible : <b>' + fmtMoney(d.targetPriceH) + ' HT/h</b></td><td style="text-align:right">CA mensuel : <b>' + fmtMoney(d.caTotal) + '</b></td></tr>' +
         '</tbody>' +
       '</table>' +
       '<div class="bc-totals">' +
         '<div>' +
-          '<div><b>Projection Trésorerie sur 12 mois :</b> <span style="font-weight:700;color:' + (annualImpact < 0 ? '#991B1B' : '#166534') + '">' + (annualImpact >= 0 ? "+" : "") + fmtMoney(annualImpact) + ' / an</span></div>' +
-          '<div style="font-size:12px;color:#475569;margin-top:4px"><b>Sources officielles :</b> Avenant n° 2 du 03/09/2025 (KALITEXT000053576553) · Arrêté du 27/05/2026 (JORF n°0130 du 05/06/2026) · Repos quotidien 11h/12h (KALIARTI000029725763).</div>' +
+          '<div><b>Annualisation indicative du résultat mensuel sur 12 mois (à paramètres constants) :</b> <span style="font-weight:700;color:' + (annualImpact < 0 ? '#991B1B' : '#166534') + '">' + (annualImpact >= 0 ? "+" : "") + fmtMoney(annualImpact) + ' / an</span></div>' +
+          '<div style="font-size:12px;color:#475569;margin-top:4px"><b>Sources officielles :</b> Avenant n° 2 du 03/09/2025 (KALITEXT000053576553, Art. 1 &amp; 2 KALIARTI000053576557) · Arrêté du 27/05/2026 (JORF n°0130 du 05/06/2026) · Panier Annexe IV Art. 6 (4,48 € au 01/01/2026) · Repos quotidien 11,0 h (12,0 h sur cycles continus 12h — KALIARTI000029725763).</div>' +
         '</div>' +
         '<div style="text-align:right">' +
-          '<div>Écart mensuel net : <b style="font-size:16px;color:' + (d.netResult < 0 ? '#991B1B' : '#166534') + '">' + (d.netResult >= 0 ? "+" : "") + fmtMoney(d.netResult) + ' (' + fmtNum(d.netMarginPct, 2) + ' %)</b></div>' +
+          '<div>Résultat opérationnel mensuel : <b style="font-size:16px;color:' + (d.netResult < 0 ? '#991B1B' : '#166534') + '">' + (d.netResult >= 0 ? "+" : "") + fmtMoney(d.netResult) + ' (' + fmtNum(d.netMarginPct, 2) + ' %)</b></div>' +
           '<div style="margin-top:4px">Prix plancher recommandé : <b>' + fmtMoney(d.targetPriceH) + ' HT/h</b></div>' +
         '</div>' +
       '</div>' +
       '<div class="bc-cgv-box">' +
-        '<b>RÉSERVES MÉTHODOLOGIQUES &amp; PLAN D\'ACTION RECOMMANDÉ (POUR L\'EXPERT-COMPTABLE &amp; LA DIRECTION) :</b>' +
-        '<p>1. Ce rapport est généré par le moteur déterministe <i>Bouclier Anti-Pertes v3.2</i> (<code>idcc1351.fr</code>). Il constitue une simulation économique d\'aide à la décision et ne remplace ni un bulletin de paie officiel ni une consultation juridique ou comptable réglementée.</p>' +
-        '<p>2. En cas de résultat déficitaire ou d\'exposition au plancher conventionnel étendu de 6,0 h (Avenant n° 2 Annexe IV), il est recommandé de : (a) réorganiser les cycles de vacations pour limiter les vacations &lt; 6,0 h et le doublement des paniers/trajets ; (b) notifier une demande de révision BPU au donneur d\'ordre ; (c) verrouiller les futurs chiffrages BOAMP via la suite <b>COS Opérations / Securiaxe</b> (' + esc(cfg.channels.email || "nait.conv@gmail.com") + ' · ' + esc(cfg.channels.tel || "+33 6 17 17 99 74") + ').</p>' +
+        '<b>MÉTHODOLOGIE MATHÉMATIQUE, RÉSERVES &amp; PLAN D\'ACTION (POUR L\'EXPERT-COMPTABLE &amp; LA DIRECTION) :</b>' +
+        '<p>1. <b>Formules certifiées (Bouclier Anti-Pertes v3.2) :</b> En Mode Express, base annuelle <code>151,67 h × 12 = 1 820,04 h</code>, part non vendable 10 % (<code>1 638,036 h</code> productives), charges patronales modélisées à <code>50,37 %</code> (avant allègements Fillon/RGCP spécifiques à l\'entreprise), prime nuit <code>1,00 €/h</code>, structure <code>4,57 €/h</code>. En Mode Paie Réelle, seuil de rentabilité = <code>[(fixedCosts + ponctuel) × (1 + provPct/100)] / [sellPrice - varCostPerWorkHour]</code> (soit <code>1 155,00 € / 8,35625 € = 138,22 h</code> sur le scénario étalon P01 Jour 320h @ 35 €, et <code>1 155,00 € / 10,89375 € = 106,02 h</code> sur le scénario P07 Cynophile 320h @ 42 €). Ce document est une simulation économique indicative (art. L.121-1 C. com.) et ne remplace ni un bulletin de paie ni une consultation réglementée.</p>' +
+        '<p>2. <b>Actions recommandées :</b> En cas de résultat déficitaire ou d\'exposition au plancher conventionnel étendu de 6,0 h (Avenant n° 2 Art. 1 &amp; 2), il est recommandé de : (a) réorganiser les cycles pour limiter les vacations &lt; 6,0 h et le doublement des paniers/trajets ; (b) notifier une demande de révision BPU au donneur d\'ordre ; (c) verrouiller les futurs chiffrages BOAMP via la suite <b>COS Opérations / Securiaxe</b> (' + esc(cfg.channels.email || "nait.conv@gmail.com") + ' · ' + esc(cfg.channels.tel || "+33 6 17 17 99 74") + ').</p>' +
       '</div>';
   }
 

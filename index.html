@@ -163,10 +163,10 @@
                   Dispositions applicables (vérifiées le 23/11/2026)
                 </div>
                 <ul style="margin:0;padding-left:18px;color:#E2E8F0;display:grid;gap:8px">
-                  <li><b>Vacation minimale (6,0 h) :</b> Avenant n° 2 du 03/09/2025 étendu (JORF 05/06/2026), applicable au 01/07/2026 (Annexe IV, hors exceptions limitatives).</li>
+                  <li><b>Vacation minimale (6,0 h) :</b> Avenant n° 2 du 03/09/2025 étendu (JORF 05/06/2026), applicable au 01/07/2026 (Art. 1 &amp; 2 : Agents d'exploitation, Agents de maîtrise, hors Annexe VIII, astreintes et exceptions limitatives).</li>
                   <li><b>Majorations :</b> Nuit (21h–06h) <code>+10 %</code> &middot; Dimanche <code>+10 %</code> &middot; Jour férié <code>+100 %</code> (hors indemnités non soumises).</li>
-                  <li><b>Panier repas :</b> Déclenché dès <code>6,0 h</code> continues de travail effectif.</li>
-                  <li><b>Repos quotidien :</b> <code>11 h</code> de référence (<code>12 h</code> sur certains cycles conventionnels — Accord du 18/05/1993).</li>
+                  <li><b>Panier repas (4,48 € au 01/01/2026) :</b> 1 seule indemnité par vacation continue &ge; <code>6,0 h</code> de travail effectif.</li>
+                  <li><b>Repos quotidien (règle moteur : 11,0 h) :</b> <code>11,0 h</code> consécutives minimum entre deux vacations (porté à <code>12,0 h</code> uniquement sur les cycles continus incluant des vacations de 12 h — Accord du 18/05/1993 Art. 3).</li>
                 </ul>
               </div>
               <div class="hero-proof-footer">
@@ -208,14 +208,14 @@
         <div class="sim-shell no-print">
           <div class="sim-topbar">
             <div class="sim-topbar-title">
-              <span class="sim-topbar-code">IDCC 1351 &middot; Annexe IV</span>
+              <span class="sim-topbar-code">IDCC 1351 &middot; Art. 1 &amp; 2 Avenant n° 2</span>
               <h3>Calculateur de Coût Complet Horaire &amp; Plancher 6,0 h</h3>
             </div>
             <div class="preset-row" role="group" aria-label="Scénarios de référence vérifiés">
               <button id="prePiege23" class="preset-btn active" type="button">Piège 23 €/h (Nuit ADS)</button>
               <button id="preAvenant6h" class="preset-btn" type="button">Impact Avenant n° 2 (50×6h)</button>
               <button id="preRecette35" class="preset-btn" type="button">Équilibre P01 (320h @ 35 €)</button>
-              <button id="preCynoP07" class="preset-btn" type="button">Cynophile P07 (23,75 €/h)</button>
+              <button id="preCynoP07" class="preset-btn" type="button">Cynophile P07 (320h @ 42 €)</button>
             </div>
           </div>
 
@@ -262,7 +262,7 @@
                 <input id="simSellPrice" type="number" min="0" step="0.5" value="23" />
               </div>
               <div class="field full-span">
-                <label for="simTargetPct">Objectif marge nette cible (%)</label>
+                <label for="simTargetPct">Objectif marge sur CA cible (%)</label>
                 <input id="simTargetPct" type="number" min="0" max="60" step="0.5" value="10" />
               </div>
             </div>
@@ -356,12 +356,12 @@
 
         <div class="avenant-banner no-print">
           <div>
-            <strong>Point de vigilance Avenant n° 2 (IDCC 1351 &middot; Annexe IV) :</strong> à volume égal de <code>300 h/mois</code>, passer de <code>25 × 12h</code> à <code>50 × 6h</code> augmente le coût complet de <b>8 951,25 €</b> à <b>9 345,00 €</b> (+393,75 € en paniers et indemnités de transport non répercutés au tarif horaire de base).
+            <strong>Point de vigilance Avenant n° 2 (IDCC 1351 &middot; Art. 1 &amp; 2) :</strong> à volume égal de <code>300 h/mois</code>, passer de <code>25 × 12h</code> à <code>50 × 6h</code> augmente le coût complet modélisé de <b>8 951,25 €</b> à <b>9 345,00 €</b> (+393,75 € liés au doublement du nombre de prises de poste et d'indemnités par vacation).
           </div>
           <a class="btn btn-sm" href="boutique/index.html">Solutions Securiaxe &rarr;</a>
         </div>
         <div class="legal-callout no-print" style="margin-top:18px;margin-bottom:0">
-          <strong>Périmètre strictement B2B hors activité CNAPS :</strong> outil indépendant d'aide au chiffrage économique édité par <b>Securiaxe</b> (art. L.611-1 CSI). Une estimation de coût ou de marge demeure indicative et doit être vérifiée avec votre expert-comptable sur vos bulletins de paie réels.
+          <strong>Périmètre strictement B2B hors activité CNAPS (art. L.611-1 CSI &amp; art. L.121-1 C. com.) :</strong> outil indépendant d'aide au chiffrage économique édité par <b>Securiaxe</b>. Conformément à l'article L.121-1 du Code de commerce, les simulations et trames sont fournies à titre indicatif et ne constituent ni une promesse de gain, ni un conseil juridique ou comptable réglementé. À vérifier avec votre expert-comptable sur vos bulletins de paie réels.
         </div>
       </div>
     </section>
@@ -371,8 +371,8 @@
       <div class="container">
         <div class="section-head">
           <span class="section-tag">Référentiel réglementaire &middot; Sources Légifrance</span>
-          <h2>Règles conventionnelles appliquées par le moteur de calcul.</h2>
-          <p>Chaque paramètre du calculateur repose sur un texte officiel vérifié, avec distinction stricte entre sa date d'extension au Journal Officiel, sa date d'effet conventionnel et son champ d'application.</p>
+          <h2>Règles conventionnelles et méthodologie du moteur de calcul.</h2>
+          <p>Chaque paramètre du calculateur repose sur un texte officiel vérifié, avec distinction stricte entre sa date d'extension au Journal Officiel, sa date d'effet conventionnel et son champ d'application exact.</p>
         </div>
 
         <div class="compare-wrap" aria-label="Référentiel réglementaire versionné IDCC 1351">
@@ -382,33 +382,39 @@
                 <th>Règle &amp; Paramètre moteur</th>
                 <th>Texte officiel &amp; Référence Légifrance</th>
                 <th>Publication JORF &amp; Entrée en vigueur</th>
-                <th>Champ d'application &amp; Vigilance</th>
+                <th>Champ d'application exact &amp; Méthodologie</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><b>Plancher de vacation : 6,0 h minimum rémunérées</b></td>
-                <td><a href="https://www.legifrance.gouv.fr/conv_coll/id/KALITEXT000053576553" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;font-weight:600">Avenant n° 2 du 03/09/2025 ↗</a> à l'accord du 01/04/2021</td>
+                <td><a href="https://www.legifrance.gouv.fr/conv_coll/id/KALITEXT000053576553" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;font-weight:600">Avenant n° 2 du 03/09/2025 ↗</a> (<a href="https://www.legifrance.gouv.fr/conv_coll/article/KALIARTI000053576557" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">Art. 1 &amp; 2 ↗</a>)</td>
                 <td>Arrêté du 27/05/2026 (<a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054200800" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">JORF n°0130 du 05/06/2026 ↗</a>)<br><b>Effet : 01/07/2026</b></td>
-                <td><b>Annexe IV</b> (Agents d'exploitation, employés administratifs, techniciens) — temps plein et temps partiel, hors dérogations limitatives (ex. mi-temps thérapeutique).</td>
+                <td><b>Art. 1 :</b> Agents d'exploitation et Agents de maîtrise (ainsi que cadres/administratifs exerçant sur site des fonctions directes de protection), à l'exclusion de l'Annexe VIII, des astreintes et des cas dérogatoires de l'Art. 2. Interruption &le; 2 h : cumul du travail effectif ; interruption &gt; 2 h : calcul sur l'amplitude.</td>
               </tr>
               <tr>
                 <td><b>Majorations Nuit (+10 %), Dimanche (+10 %) &amp; Férié (+100 %)</b></td>
-                <td>Avenant du 25/09/2001 (Travail de nuit 21h–06h) &amp; Dispositions Annexe IV IDCC 1351</td>
+                <td>Avenant du 25/09/2001 (Travail de nuit 21h–06h) &amp; Dispositions IDCC 1351</td>
                 <td>En vigueur (Textes étendus brochure JO 3196)</td>
-                <td>Assiette calculée sur le taux horaire conventionnel hors indemnités non soumises aux cotisations (ex. remboursement forfaitaire chien P07 exclu de la majoration).</td>
+                <td>Assiette calculée sur le taux horaire conventionnel hors indemnités non soumises aux cotisations. Pour le profil <b>P07 Cynophile</b> (320 h @ 42,00 €/h : CA 13 440,00 €, Coût direct 27,94 €/h, Coût complet 34,72 €/h soit 11 109,00 €, Résultat +2 331,00 €/mois soit +17,34 %, Prix cible 10 % = 38,57 €/h, Seuil 106,02 h), l'indemnité chien (1,68 €/h dans le scénario ; minimum conventionnel 1,41 €/h au 01/01/2026) est exclue de l'assiette de majoration.</td>
               </tr>
               <tr>
                 <td><b>Indemnité de panier repas (seuil 6,0 h)</b></td>
                 <td><a href="https://www.legifrance.gouv.fr/conv_coll/article/KALIARTI000023567703" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">Annexe IV Art. 6 (KALIARTI000023567703) ↗</a></td>
-                <td>En vigueur (1 seule indemnité par vacation continue ≥ 6,0 h)</td>
-                <td>Octroyée dès 6,0 heures continues de service effectif. Le fractionnement d'un volume mensuel en vacations de 6h multiplie mécaniquement le nombre de paniers et trajets.</td>
+                <td>En vigueur (4,48 € au 01/01/2026 &middot; 1 seule indemnité par vacation continue &ge; 6,0 h)</td>
+                <td>Octroyée dès 6,0 heures continues de travail effectif (1 seule indemnité par vacation, même pour une vacation de 8 h ou 12 h). En Mode Paie Réelle, l'indemnité par vacation est paramétrée par défaut à 5,00 € (modifiable). Passer de 25 vacations de 12 h à 50 vacations de 6 h double le nombre de prises de poste (50 paniers et 50 trajets au lieu de 25).</td>
               </tr>
               <tr>
-                <td><b>Repos quotidien (11 h / 12 h) &amp; Amplitude (13 h)</b></td>
-                <td><a href="https://www.legifrance.gouv.fr/conv_coll/article/KALIARTI000029725763" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">Accord du 18/05/1993 (KALIARTI000029725763) ↗</a></td>
+                <td><b>Repos quotidien (règle moteur : 11,0 h) &amp; Amplitude (13,0 h)</b></td>
+                <td><a href="https://www.legifrance.gouv.fr/conv_coll/article/KALIARTI000029725763" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">Accord du 18/05/1993 Art. 3 (KALIARTI000029725763) ↗</a></td>
                 <td>Étendu par arrêté du 03/03/1994</td>
-                <td>Repos quotidien de référence de <b>11 h consécutives</b>, porté à <b>12 h</b> dans certaines organisations en cycles. Amplitude quotidienne max. 13 h (12 h de travail effectif).</td>
+                <td><b>Règle appliquée par le moteur :</b> repos quotidien minimum obligatoire de <b>11,0 h consécutives</b> entre deux vacations (C. trav. art. L.3131-1). <b>Cas particulier 12,0 h :</b> s'applique uniquement aux organisations du travail en cycles continus comportant des vacations de 12 heures. Amplitude quotidienne maximale : 13,0 h (12,0 h de travail effectif).</td>
+              </tr>
+              <tr>
+                <td><b>Formules de base &amp; Seuil de rentabilité</b></td>
+                <td>Méthodologie <i>Bouclier Anti-Pertes v3.2</i></td>
+                <td>Vérifiée le 23/11/2026</td>
+                <td>Base annuelle : <code>151,67 h/mois × 12 = 1 820,04 h/an</code> (taux de charges Mode Express 50,37 % avant allègements Fillon/RGCP spécifiques à l'entreprise). En Mode Paie Réelle, le socle fixe provisionné est <code>(fixedCosts + ponctuel) × (1 + provPct/100) = (1 000 € + 100 €) × 1,05 = 1 155,00 €</code>, divisé par la marge sur coût variable horaire (Scénario 3 P01 : <code>1 155 / 8,35625 = 138,22 h</code> ; Scénario 4 P07 : <code>1 155 / 10,89375 = 106,02 h</code>).</td>
               </tr>
             </tbody>
           </table>
@@ -475,7 +481,7 @@
           <strong>Licences B2B Securiaxe — Sans abonnement mensuel</strong>
           <ul class="offer-ul" style="margin-top:10px">
             <li><b>1. Arsenal Documentaire &amp; Chiffrage v3.2 (690 € HT)</b> : Classeur Excel + Web <i>Bouclier Anti-Pertes</i> (P01..P07, verrou Direction) + 6 Mémoires Techniques Word conformes Avenant n° 2 (6h) + trames DC4 et soutenance.</li>
-            <li><b>2. Suite COS Opérations + Sentinelle IA + Atelier Dirigeant 2h (980 € HT &middot; Recommandé)</b> : Poste de pilotage complet (cartes CNAPS/SST/SSIAP, contrôle des repos 11h/12h, Ordres de Mission L.612-9, copilote AO local BYOK) + 2h de paramétrage sur vos taux réels.</li>
+            <li><b>2. Suite COS Opérations + Atelier Dirigeant 2h (980 € HT &middot; Recommandé)</b> : Poste de pilotage complet (cartes CNAPS/SST/SSIAP, contrôle des repos 11h/12h, modèles d'Ordres de Mission &amp; contrôle des autorisations d'exercice CSI art. L.612-9, copilote AO local) + 2h de paramétrage sur vos taux réels.</li>
             <li><b>3. Commando Réponse Appel d'Offres 48h (1 450 € HT)</b> : Audit Go/No-Go du RC, chiffrage BPU/DPGF sur vos taux réels et rédaction complète de votre mémoire technique (1 lot ≤ 15 pages).</li>
           </ul>
           <div class="action-cluster" style="margin-top:16px">
