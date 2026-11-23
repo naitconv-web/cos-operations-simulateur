@@ -120,7 +120,7 @@
     var paidHours = vacationsCount * effectiveVacPaidHours;
     var avenantFloorApplied = vacHours < minPaidVacH;
     var vacWarning = avenantFloorApplied
-      ? ("Avenant n° 2 IDCC 1351 (effet 01/07/2026) : vacation de " + vacHours.toFixed(1) + " h < plancher 6,0 h — rémunération calculée sur " + paidHours.toFixed(1) + " h payées pour " + hours.toFixed(1) + " h travaillées (hors dérogations conventionnelles limitatives).")
+      ? ("Avenant n° 2 IDCC 1351 (Annexe IV · étendu JORF 05/06/2026, effet 01/07/2026) : vacation de " + vacHours.toFixed(1) + " h < plancher conventionnel étendu de 6,0 h — rémunération calculée sur " + paidHours.toFixed(1) + " h payées pour " + hours.toFixed(1) + " h travaillées (hors dérogations conventionnelles limitatives).")
       : "";
 
     // Supplément horaire (soit exact manuel Recette = 2,00 €/h, soit calculé selon majoration légale hors frais chien non soumis)
@@ -234,7 +234,7 @@
     var paidHours = vacationsCount * Math.max(vacHours, minPaidVacH);
     var avenantFloorApplied = vacHours < minPaidVacH;
     var vacWarning = avenantFloorApplied
-      ? ("Avenant n° 2 IDCC 1351 (effet 01/07/2026) : vacation de " + vacHours.toFixed(1) + " h < plancher 6,0 h — " + paidHours.toFixed(1) + " h rémunérées pour " + demoHours.toFixed(1) + " h travaillées.")
+      ? ("Avenant n° 2 IDCC 1351 (Annexe IV · étendu JORF 05/06/2026, effet 01/07/2026) : vacation de " + vacHours.toFixed(1) + " h < plancher conventionnel étendu de 6,0 h — " + paidHours.toFixed(1) + " h rémunérées pour " + demoHours.toFixed(1) + " h travaillées (hors dérogations conventionnelles limitatives).")
       : "";
 
     var caSim = demoHours * demoPrice;

@@ -15,9 +15,9 @@
     },
     2: {
       id: 2,
-      shortName: "Pack Dirigeant COS Opérations (Démo 15 min)",
-      label: "Pack Dirigeant COS Opérations — Démo personnalisée 15 min (sur devis)",
-      price: 990
+      shortName: "Pack 2 — Suite COS Opérations + Sentinelle IA + Atelier 2h",
+      label: "Pack 2 — Suite COS Opérations + Sentinelle IA + Atelier Dirigeant 2h (980 € HT)",
+      price: 980
     },
     3: {
       id: 3,
@@ -45,7 +45,7 @@
     },
     memoires: {
       title: "6 Mémoires Techniques Modulaires (.docx) + Guide & Trames B2B",
-      desc: "Six trames Word structurées par critère de notation BOAMP, purgées de toute sur-promesse illégale et intégrant l'Avenant n° 2 IDCC 1351 (durée minimale 6,0 h par vacation au 01/07/2026).",
+      desc: "Six trames Word structurées par critère de notation BOAMP, purgées de toute sur-promesse illégale et intégrant l'Avenant n° 2 IDCC 1351 (plancher conventionnel étendu de 6,0 h par vacation au 01/07/2026).",
       bullets: [
         "01 Gardiennage institutionnel • 02 Événementiel & interface AASC (L.725-3) • 03 Rondes & surveillance mobile.",
         "04 Contrôle d'accès / Accueil sécurisé • 05 Résidentiel & commerces multi-sites • 06 Télésurveillance L.611-1 1° / L.613-6 (niveaux N1 à N4).",
@@ -53,7 +53,7 @@
       ],
       specs: [
         ["Volume livré", "10 fichiers Word (.docx) mis en page avec tableaux verrouillés (cantSplit)"],
-        ["Plancher légal", "Avenant n° 2 (6,0 h min.) + accord 18/05/1993 Art. 2 (repos 12h / 11h dérog.)"],
+        ["Plancher conventionnel", "Avenant n° 2 Annexe IV (6,0 h min., JORF 05/06/2026) + repos 11h / 12h cycles"],
         ["Hygiène conformité", "0 promesse hors périmètre (équipements réglementés, faux labels ou véhicules spéciaux purgés)"],
         ["Usage", "Personnalisation rapide par balises [NOM SOCIETE] et [DELAI] avant dépôt"]
       ]
@@ -75,7 +75,7 @@
     },
     conformite: {
       title: "Architecture Juridique, Contractuelle & RGPD B2B",
-      desc: "Chaque document et outil commercial trace une frontière nette entre l'outillage/ingénierie méthodologique (COS Opérations) et les activités réglementées exercées exclusivement par les entreprises clientes.",
+      desc: "Chaque document et outil commercial trace une frontière nette entre l'outillage/ingénierie méthodologique (Securiaxe / COS Opérations) et les activités réglementées exercées exclusivement par les entreprises clientes.",
       bullets: [
         "Prestation 100 % hors champ CNAPS (art. L.611-1 CSI) : ni gardiennage, ni ronde, ni télésurveillance, ni intervention.",
         "Unicité stricte du régime TVA émetteur sur Bon de Commande (art. L. 223-3 du CIBS (ex-293 B CGI) OU TVA 20 %, jamais les deux).",
@@ -94,11 +94,11 @@
     var base = {
       issuer: {
         raison: "Mounir NAIT MOHAND (Entrepreneur Individuel)",
-        enseigne: "COS Opérations",
-        rep: "M. Mounir NAIT MOHAND, Président",
+        enseigne: "Securiaxe",
+        rep: "M. Mounir NAIT MOHAND, Fondateur",
         capital: "Entreprise Individuelle — Micro-entreprise (SIREN 849 261 870)",
         siege: "Albi (81)",
-        siren: "",
+        siren: "849 261 870 00018",
         tvaRegime: "293B",
         tvaNum: ""
       },
@@ -247,9 +247,11 @@
       if (pk === 1 || pk === 2 || pk === 3) p.pack = pk;
       var pr = (q.get("profil") || "").toUpperCase().trim();
       if (/^P0[1-7]$/.test(pr)) p.profil = pr;
-      var hr = Number(q.get("hours"));
+      var rawHr = q.get("hours");
+      var hr = (rawHr !== null && rawHr.trim() !== "") ? Number(rawHr) : NaN;
       if (Number.isFinite(hr) && hr >= 1 && hr <= 50000) p.hours = Math.round(hr);
-      var px = Number(q.get("price"));
+      var rawPx = q.get("price");
+      var px = (rawPx !== null && rawPx.trim() !== "") ? Number(rawPx) : NaN;
       if (Number.isFinite(px) && px >= 0 && px <= 500) p.price = px;
       var mo = (q.get("moment") || "").toLowerCase().trim();
       if (mo === "jour" || mo === "nuit" || mo === "dim" || mo === "ferie") p.moment = mo;
@@ -532,6 +534,8 @@
     pFill.style.width = Math.min(100, (res.sellPrice / maxRef) * 100).toFixed(1) + "%";
     pFill.className = "bar-fill " + (res.netResult >= 0 ? "price-ok" : "price-bad");
     $("barPriceLbl").textContent = fmtMoney(res.sellPrice) + "/h";
+
+    syncDiagnosticOutputs();
   }
 
   /* ================= X-RAY PRODUCT TABS ================= */
@@ -754,7 +758,7 @@
   function formatDiagTxt(d, soc, refAo) {
     return [
       "===============================================================",
-      "COS Opérations x BOUCLIER ANTI-PERTES v3.2 — NOTE DIAGNOSTIC CHIFFRAGE",
+      "IDCC1351.FR (ÉDITÉ PAR SECURIAXE) — DIAGNOSTIC DE CONFORMITÉ ÉCONOMIQUE",
       "Simulation indicative B2B (hors activités CNAPS art. L.611-1 CSI)",
       "===============================================================",
       "Date           : " + localIsoDate(),
@@ -768,14 +772,108 @@
       "Coût direct/h  : " + fmtMoney(d.directCostPerHour) + "/h",
       "Coût complet/h : " + fmtMoney(d.fullCostPerHour) + "/h (Complet total : " + fmtMoney(d.fullCost) + ")",
       "Chiffre d'aff. : " + fmtMoney(d.caTotal),
-      "Résultat net   : " + (d.netResult >= 0 ? "+" : "") + fmtMoney(d.netResult) + " (" + fmtNum(d.netMarginPct, 2) + " %)",
+      "Résultat net   : " + (d.netResult >= 0 ? "+" : "") + fmtMoney(d.netResult) + " / mois (" + fmtNum(d.netMarginPct, 2) + " %)",
+      "Impact 12 mois : " + (d.netResult >= 0 ? "+" : "") + fmtMoney(d.netResult * 12) + " / an",
       "Verdict moteur : " + d.verdict,
       "Prix cible " + fmtNum(d.targetPct, 1) + "%: " + fmtMoney(d.targetPriceH) + " HT/h",
       "---------------------------------------------------------------",
-      "Point vigilance Avenant n° 2 (IDCC 1351, effet 01/07/2026) :",
-      "Vacation min. 6,0h (rémunération min. 6,0 h par vacation). Sur 300h, passer de 25x12h à 50x6h ajoute +393,75 EUR.",
-      "À confirmer sur vos taux horaires chargés réels (verrou Direction)."
+      "Point vigilance Avenant n° 2 (IDCC 1351 Annexe IV, JORF 05/06/2026, effet 01/07/2026) :",
+      "Plancher conventionnel étendu de 6,0 h rémunérées par vacation. Sur 300h, passer de 25x12h à 50x6h ajoute +393,75 EUR/mois.",
+      "À confirmer avec votre expert-comptable sur vos bulletins de paie réels (verrou Direction)."
     ].filter(Boolean).join("\n");
+  }
+
+  function buildTrameRevisionText(d, soc) {
+    if (!d) return "";
+    var nomSoc = soc || "[VOTRE SOCIÉTÉ DE SÉCURITÉ PRIVÉE]";
+    var deltaH = Math.max(0, d.targetPriceH - d.sellPrice);
+    return [
+      "OBJET : Demande de réévaluation du Bordereau des Prix Unitaires (BPU) — Entrée en vigueur de l'Avenant n° 2 (IDCC 1351)",
+      "RÉFÉRENCES RÉGLEMENTAIRES : Avenant n° 2 du 3 septembre 2025 (IDCC 1351 · Annexe IV) étendu par Arrêté ministériel du 27 mai 2026 (NOR : TRST2612786A, JORF n°0130 du 5 juin 2026), d'application obligatoire au 1er juillet 2026.",
+      "--------------------------------------------------------------------------------",
+      "",
+      "Madame, Monsieur,",
+      "",
+      "Dans le cadre du suivi d'exécution de nos prestations de sécurité privée réalisées par " + nomSoc + ", nous portons à votre attention l'impact économique direct des dispositions conventionnelles étendues par l'Arrêté du 27 mai 2026 (publié au Journal Officiel le 5 juin 2026) applicables à l'ensemble des entreprises relevant de la Convention Collective Nationale des Entreprises de Prévention et de Sécurité (IDCC 1351 — Brochure JO 3196).",
+      "",
+      "1. INCIDENCE CONVENTIONNELLE SUR L'ORGANISATION DES VACATIONS (ANNEXE IV) :",
+      "- La durée minimale conventionnelle étendue d'une période de travail (vacation) est désormais fixée à 6,0 heures rémunérées minimum (contre 4,0 heures antérieurement à temps partiel), hors exceptions conventionnelles limitatives.",
+      "- Le seuil de déclenchement de l'indemnité de panier (6,0 h continues, Annexe IV art. 6) et la multiplication des vacations courtes alourdissent mécaniquement la structure des coûts directs et des indemnités de transport.",
+      "",
+      "2. ÉTAT COMPARATIF DU COÛT DE REVIENT SUR VOTRE PÉRIMÈTRE (" + d.profile.code + " — " + d.profile.nom + " · " + d.moment.toUpperCase() + ") :",
+      "- Volume mensuel considéré       : " + fmtNum(d.hours, 0) + " h travaillées (" + fmtNum(d.vacHours, 1) + " h/vacation -> " + fmtNum(d.paidHours, 1) + " h rémunérées au titre du plancher 6,0 h)",
+      "- Coût direct salarial chargé    : " + fmtMoney(d.directCostPerHour) + " HT / heure",
+      "- Coût de revient complet réel   : " + fmtMoney(d.fullCostPerHour) + " HT / heure (soit " + fmtMoney(d.fullCost) + " HT / mois)",
+      "- Tarif BPU actuellement facturé : " + fmtMoney(d.sellPrice) + " HT / heure (soit un écart net de " + (d.netResult >= 0 ? "+" : "") + fmtMoney(d.netResult) + " / mois)",
+      "- Tarif d'équilibre cible (" + fmtNum(d.targetPct, 1) + "%): " + fmtMoney(d.targetPriceH) + " HT / heure" + (deltaH > 0 ? (" (réajustement nécessaire de +" + fmtMoney(deltaH) + " HT/h)") : ""),
+      "",
+      "3. DEMANDE D'AVENANT TARIFAIRE :",
+      "Afin de garantir la pleine conformité sociale des prestations, la stabilité des équipes affectées à votre site et le respect de l'équilibre économique du contrat (interdiction de revente ou prestation structurellement déficitaire), nous sollicitons une réunion d'ajustement de notre BPU sur la base du tarif plancher de " + fmtMoney(d.targetPriceH) + " HT/h à compter du prochain cycle de facturation.",
+      "",
+      "Nous restons à votre disposition pour vous présenter le détail du diagnostic de conformité économique ci-joint.",
+      "",
+      "Veuillez agréer, Madame, Monsieur, l'expression de nos salutations distinguées.",
+      "",
+      "La Direction — " + nomSoc,
+      "--------------------------------------------------------------------------------",
+      "[AVERTISSEMENT : Trame technique et économique générée via idcc1351.fr (édité par Securiaxe). Ce modèle d'aide à la négociation commerciale B2B ne constitue pas une consultation juridique ; vérifiez les clauses de révision de prix de votre contrat avant envoi.]"
+    ].join("\n");
+  }
+
+  function renderDiagPdfSheet(d, soc, refAo) {
+    var sheet = $("diagPdfSheet");
+    if (!sheet || !d) return;
+    var cfg = loadCfg();
+    var nomSoc = soc || "Entreprise de Sécurité Privée (Diagnostic interne)";
+    var annualImpact = d.netResult * 12;
+    sheet.innerHTML =
+      '<div class="bc-head">' +
+        '<div>' +
+          '<h4>DIAGNOSTIC DE CONFORMITÉ ÉCONOMIQUE &amp; CONVENTIONNELLE — IDCC 1351</h4>' +
+          '<div><b>Référentiel technique indépendant :</b> <code>idcc1351.fr</code> — Édité par <b>' + esc(cfg.issuer.enseigne) + '</b> (' + esc(cfg.issuer.raison) + ')</div>' +
+          '<div>SIREN/SIRET : ' + esc(cfg.issuer.siren || "849 261 870 00018") + ' · Siège : ' + esc(cfg.issuer.siege || "Albi (81)") + ' · Hors activité CNAPS (art. L.611-1 CSI)</div>' +
+          '<div style="font-size:11.5px;color:#475569;margin-top:2px">Non affilié aux organisations paritaires de branche, au Ministère du Travail ou au CNAPS.</div>' +
+        '</div>' +
+        '<div style="text-align:right">' +
+          '<div><b>Date du diagnostic :</b> ' + esc(localIsoDate()) + '</div>' +
+          '<div><b>Structure auditée :</b> ' + esc(nomSoc) + '</div>' +
+          (refAo ? '<div><b>Marché / Lot :</b> ' + esc(refAo) + '</div>' : '') +
+          '<div><b>Verdict :</b> <span style="font-weight:700;color:' + (d.netResult < 0 ? '#991B1B' : '#166534') + '">' + esc(d.verdict) + '</span></div>' +
+        '</div>' +
+      '</div>' +
+      '<table class="bc-table">' +
+        '<thead><tr><th>Paramètre d\'exploitation &amp; Règle IDCC 1351</th><th>Valeur saisie / appliquée</th><th style="text-align:right">Incidence financière HT</th></tr></thead>' +
+        '<tbody>' +
+          '<tr><td><b>Profil conventionnel (Annexe IV)</b><br><small>' + esc(d.profile.code + " — " + d.profile.nom) + ' · Plage : ' + esc(d.moment.toUpperCase()) + '</small></td><td>Volume : ' + fmtNum(d.hours, 0) + ' h / mois<br>Durée vacation : ' + fmtNum(d.vacHours, 1) + ' h</td><td style="text-align:right">Coût direct : <b>' + fmtMoney(d.directCostPerHour) + '/h</b></td></tr>' +
+          '<tr><td><b>Contrôle Avenant n° 2 (Plancher 6,0 h)</b><br><small>Arrêté du 27/05/2026 (JORF 05/06/2026) · Effet 01/07/2026</small></td><td>' + (d.avenantFloorApplied ? ('<b style="color:#991B1B">Plancher 6,0 h déclenché :</b> ' + fmtNum(d.paidHours, 1) + ' h payées pour ' + fmtNum(d.hours, 0) + ' h travaillées') : ('Conforme (vacation ≥ 6,0 h · ' + fmtNum(d.paidHours, 1) + ' h payées)')) + '</td><td style="text-align:right">Coût complet : <b>' + fmtMoney(d.fullCostPerHour) + '/h</b><br><small>(' + fmtMoney(d.fullCost) + ' / mois)</small></td></tr>' +
+          '<tr><td><b>Facturation Client vs Coût Complet</b><br><small>Objectif marge nette : ' + fmtNum(d.targetPct, 1) + ' %</small></td><td>Tarif facturé : <b>' + fmtMoney(d.sellPrice) + ' HT/h</b><br>Tarif plancher cible : <b>' + fmtMoney(d.targetPriceH) + ' HT/h</b></td><td style="text-align:right">CA mensuel : <b>' + fmtMoney(d.caTotal) + '</b></td></tr>' +
+        '</tbody>' +
+      '</table>' +
+      '<div class="bc-totals">' +
+        '<div>' +
+          '<div><b>Projection Trésorerie sur 12 mois :</b> <span style="font-weight:700;color:' + (annualImpact < 0 ? '#991B1B' : '#166534') + '">' + (annualImpact >= 0 ? "+" : "") + fmtMoney(annualImpact) + ' / an</span></div>' +
+          '<div style="font-size:12px;color:#475569;margin-top:4px"><b>Sources officielles :</b> Avenant n° 2 du 03/09/2025 (KALITEXT000053576553) · Arrêté du 27/05/2026 (JORF n°0130 du 05/06/2026) · Repos quotidien 11h/12h (KALIARTI000029725763).</div>' +
+        '</div>' +
+        '<div style="text-align:right">' +
+          '<div>Écart mensuel net : <b style="font-size:16px;color:' + (d.netResult < 0 ? '#991B1B' : '#166534') + '">' + (d.netResult >= 0 ? "+" : "") + fmtMoney(d.netResult) + ' (' + fmtNum(d.netMarginPct, 2) + ' %)</b></div>' +
+          '<div style="margin-top:4px">Prix plancher recommandé : <b>' + fmtMoney(d.targetPriceH) + ' HT/h</b></div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="bc-cgv-box">' +
+        '<b>RÉSERVES MÉTHODOLOGIQUES &amp; PLAN D\'ACTION RECOMMANDÉ (POUR L\'EXPERT-COMPTABLE &amp; LA DIRECTION) :</b>' +
+        '<p>1. Ce rapport est généré par le moteur déterministe <i>Bouclier Anti-Pertes v3.2</i> (<code>idcc1351.fr</code>). Il constitue une simulation économique d\'aide à la décision et ne remplace ni un bulletin de paie officiel ni une consultation juridique ou comptable réglementée.</p>' +
+        '<p>2. En cas de résultat déficitaire ou d\'exposition au plancher conventionnel étendu de 6,0 h (Avenant n° 2 Annexe IV), il est recommandé de : (a) réorganiser les cycles de vacations pour limiter les vacations &lt; 6,0 h et le doublement des paniers/trajets ; (b) notifier une demande de révision BPU au donneur d\'ordre ; (c) verrouiller les futurs chiffrages BOAMP via la suite <b>COS Opérations / Securiaxe</b> (' + esc(cfg.channels.email || "nait.conv@gmail.com") + ' · ' + esc(cfg.channels.tel || "+33 6 17 17 99 74") + ').</p>' +
+      '</div>';
+  }
+
+  function syncDiagnosticOutputs() {
+    if (!LAST_DIAG) return;
+    var soc = $("leadSociete") ? $("leadSociete").value.trim() : "";
+    var refAo = $("leadBoampRef") ? $("leadBoampRef").value.trim() : "";
+    if ($("trameRevisionText")) {
+      $("trameRevisionText").textContent = buildTrameRevisionText(LAST_DIAG, soc);
+    }
+    renderDiagPdfSheet(LAST_DIAG, soc, refAo);
   }
 
   function copyWithFallback(txt, okMsg) {
@@ -1028,9 +1126,72 @@
         var soc = $("leadSociete") ? $("leadSociete").value.trim() : "";
         var refAo = $("leadBoampRef") ? $("leadBoampRef").value.trim() : "";
         var content = formatDiagTxt(LAST_DIAG, soc, refAo);
-        downloadFile("Diagnostic-Bouclier-" + (soc || LAST_DIAG.profile.code).replace(/[^a-zA-Z0-9_-]+/g, "-") + ".txt", content, "text/plain;charset=utf-8;");
+        downloadFile("Diagnostic-IDCC1351-" + (soc || LAST_DIAG.profile.code).replace(/[^a-zA-Z0-9_-]+/g, "-") + ".txt", content, "text/plain;charset=utf-8;");
         toast("Mémo diagnostic téléchargé (.txt).");
       });
+    }
+
+    if ($("btnPrintDiagPdf")) {
+      $("btnPrintDiagPdf").addEventListener("click", function () {
+        if (!LAST_DIAG) { toast("Complétez d'abord un calcul valide."); return; }
+        syncDiagnosticOutputs();
+        var sheet = $("diagPdfSheet");
+        if (sheet) {
+          sheet.classList.remove("hidden");
+          sheet.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        if ($("bcPreviewSheet")) $("bcPreviewSheet").classList.add("no-print");
+        setTimeout(function () {
+          window.print();
+          if ($("bcPreviewSheet")) $("bcPreviewSheet").classList.remove("no-print");
+        }, 250);
+      });
+    }
+
+    if ($("btnToggleTrameRevision")) {
+      $("btnToggleTrameRevision").addEventListener("click", function () {
+        if (!LAST_DIAG) { toast("Complétez d'abord un calcul valide."); return; }
+        syncDiagnosticOutputs();
+        var box = $("trameRevisionBox");
+        if (box) {
+          var isHidden = box.classList.contains("hidden");
+          box.classList.toggle("hidden");
+          if (isHidden) {
+            box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            toast("Trame de demande de révision BPU calibrée sur votre simulation.");
+          }
+        }
+      });
+    }
+
+    if ($("btnCloseTrameRevision")) {
+      $("btnCloseTrameRevision").addEventListener("click", function () {
+        if ($("trameRevisionBox")) $("trameRevisionBox").classList.add("hidden");
+      });
+    }
+
+    if ($("btnCopyTrameRevision")) {
+      $("btnCopyTrameRevision").addEventListener("click", function () {
+        if (!LAST_DIAG) return;
+        syncDiagnosticOutputs();
+        var txt = $("trameRevisionText") ? $("trameRevisionText").textContent : "";
+        copyWithFallback(txt, "Trame de révision BPU copiée dans le presse-papiers !");
+      });
+    }
+
+    if ($("btnDownloadTrameRevision")) {
+      $("btnDownloadTrameRevision").addEventListener("click", function () {
+        if (!LAST_DIAG) return;
+        syncDiagnosticOutputs();
+        var soc = $("leadSociete") ? $("leadSociete").value.trim() : "";
+        var txt = $("trameRevisionText") ? $("trameRevisionText").textContent : "";
+        downloadFile("Trame-Revision-BPU-Avenant2-IDCC1351-" + (soc || LAST_DIAG.profile.code).replace(/[^a-zA-Z0-9_-]+/g, "-") + ".txt", txt, "text/plain;charset=utf-8;");
+        toast("Trame de révision BPU téléchargée (.txt).");
+      });
+    }
+
+    if ($("leadSociete")) {
+      $("leadSociete").addEventListener("input", syncDiagnosticOutputs);
     }
 
     if ($("btnApplyProspectToFunnel")) {
@@ -1231,7 +1392,9 @@
 
     $("btnPrintBc").addEventListener("click", function () {
       setStepHighlight(3);
+      if ($("diagPdfSheet")) $("diagPdfSheet").classList.add("no-print");
       window.print();
+      if ($("diagPdfSheet")) $("diagPdfSheet").classList.remove("no-print");
     });
 
     $("btnDownloadBcTxt").addEventListener("click", function () {
