@@ -948,7 +948,7 @@
         p.ville ? ("Secteur : " + p.ville) : "",
         p.ref ? ("Référence : " + p.ref) : "",
         p.deadline ? ("Clôture : " + p.deadline) : "",
-        p.pack && OFFERS[p.pack] ? ("Formule suggérée : " + OFFERS[p.pack].shortName) : ""
+        "Simulation personnalisée — Pack Dirigeant COS Opérations"
       ].filter(Boolean);
       $("pbSub").textContent = subParts.join(" · ");
     }
