@@ -356,8 +356,27 @@
       </div>
     </section>
 
-    <!-- GAMME TARIFAIRE CROISSANTE (ZERO CANNIBALISATION) -->
-    <section id="offres" class="section">
+    <!-- PRESENTATION SOBRE COS OPERATIONS (OPTION B) -->
+    <section id="presentation-cos" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>COS Opérations — Pack Dirigeant</h2>
+          <p>Un poste de pilotage complet conçu pour les dirigeants de sécurité privée (IDCC 1351 / CSI) : démonstration personnalisée de 15 minutes et offre détaillée sur devis.</p>
+        </div>
+        <div class="saas-banner" style="margin-top:0">
+          <strong>Ce que comprend l’accompagnement Pack Dirigeant :</strong>
+          <ul class="offer-ul" style="margin-top:10px">
+            <li><b>COS Opérations Phase 1</b> : pilotage centralisé des agents, cartes CNAPS/SST, repos 12h/11h, plannings et ordres de mission.</li>
+            <li><b>Bouclier Anti-Pertes v3</b> : chiffrage déterministe des vacations, prix planchers et marges réelles IDCC 1351.</li>
+            <li><b>Arsenal du Dirigeant v3</b> : 5 modèles de Mémoires Techniques sectoriels + trames commerciales + guide utilisateur.</li>
+            <li><b>Paramétrage personnalisé &amp; formation dirigeant</b> : mise en service adaptée à votre structure (présentée en démonstration).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMME TARIFAIRE CROISSANTE (ARCHIVE OPTION B) -->
+    <section id="offres" class="section hidden">
       <div class="container">
         <div class="section-head">
           <h2>Trois formules B2B progressives, sans chevauchement</h2>
@@ -515,9 +534,7 @@
               <div class="field">
                 <label for="leadOffre">Formule ciblée</label>
                 <select id="leadOffre">
-                  <option value="1">Pack 1 — Arsenal v3.2 hors COS (690 € HT)</option>
-                  <option value="2" selected>Pack 2 — COS IA v4.2 + Atelier 2h (980 € HT)</option>
-                  <option value="3">Pack 3 — Commando AO 48h 1 lot (1 450 € HT)</option>
+                  <option value="2" selected>Démonstration COS Opérations — Pack Dirigeant (15 min)</option>
                 </select>
               </div>
               <div class="field">
@@ -557,17 +574,17 @@
 
             <label class="consent-check">
               <input id="leadRgpdConsent" type="checkbox" />
-              <span>J'accepte que ces données professionnelles soient utilisées exclusivement pour étudier mon besoin B2B et préparer l'offre OMNISECUR (RGPD art. 13 — responsable Mounir NAIT MOHAND (Entrepreneur Individuel), droit d'accès/opposition, aucune revente commerciale, anonymisation/purge sous 30 jours après clôture sans suite).</span>
+              <span>J'accepte que ces données professionnelles soient utilisées exclusivement pour étudier mon besoin B2B et préparer l'offre OMNISECUR (RGPD art. 13 — responsable OMNISECUR — COS Opérations (voir Mentions légales), droit d'accès/opposition, aucune revente commerciale, anonymisation/purge sous 30 jours après clôture sans suite).</span>
             </label>
 
             <div class="action-cluster">
-              <button id="btnSubmitWebhook" class="btn btn-emerald" type="button">🚀 Transmettre au CRM</button>
+              <button id="btnSubmitWebhook" class="btn btn-emerald hidden" type="button">🚀 Transmettre au CRM</button>
               <button id="btnSendEmail" class="btn btn-primary" type="button">✉️ Envoyer par Email</button>
               <button id="btnSendWhatsapp" class="btn" type="button">💬 WhatsApp</button>
-              <button id="btnOpenCal" class="btn" type="button">📅 Agenda en ligne</button>
+              <button id="btnOpenCal" class="btn hidden" type="button">📅 Agenda en ligne</button>
               <button id="btnDownloadIcs" class="btn" type="button">⬇️ Invitation RDV (.ics)</button>
               <button id="btnCopyFiche" class="btn" type="button">📋 Copier la fiche</button>
-              <button id="btnPushToBc" class="btn" type="button">📄 Reporter dans le BC</button>
+              <button id="btnPushToBc" class="btn hidden" type="button">📄 Reporter dans le BC</button>
             </div>
 
             <div id="webhookFeedback" class="status-box hidden"></div>
@@ -575,7 +592,7 @@
           </div>
 
           <!-- ÉTAPE 3 : PARAMÈTRES DU BON DE COMMANDE -->
-          <div id="bc-section" class="panel-card">
+          <div id="bc-section" class="panel-card hidden">
             <h3>Édition du Bon de Commande &amp; Paiement</h3>
             <p style="margin:0 0 12px;font-size:13px;color:var(--ink-muted)">
               Régime TVA appliqué : <b id="bcTvaHint">Franchise en base — art. L. 223-3 du CIBS (ex-293 B CGI)</b>
@@ -595,7 +612,7 @@
             </p>
 
             <div class="action-cluster" style="margin-top:16px">
-              <button id="btnPayStripe" class="btn btn-emerald" type="button">💳 Payer via Stripe</button>
+              <button id="btnPayStripe" class="btn btn-emerald hidden" type="button">💳 Payer via Stripe</button>
               <button id="btnPrintBc" class="btn btn-primary" type="button">🖨️ Imprimer / PDF A4</button>
               <button id="btnDownloadBcTxt" class="btn" type="button">⬇️ Télécharger BC + CGV (.txt)</button>
               <button id="btnExportLeadJson" class="btn" type="button">⬇️ Exporter dossier CRM (.json)</button>
@@ -604,7 +621,7 @@
         </div>
 
         <!-- APERÇU A4 BON DE COMMANDE -->
-        <article id="bcPreviewSheet" class="bc-sheet" aria-label="Aperçu A4 du Bon de Commande B2B et CGV"></article>
+        <article id="bcPreviewSheet" class="bc-sheet hidden" aria-label="Aperçu A4 du Bon de Commande B2B et CGV"></article>
       </div>
     </section>
 
@@ -624,7 +641,7 @@
             <p>Conformément à l'article 28 du RGPD, vos pièces servent uniquement au chiffrage ou à la rédaction du lot commandé, ne sont jamais envoyées pour entraîner un modèle IA tiers et sont détruites sous 30 jours après clôture.</p>
           </details>
           <details class="faq-item">
-            <summary>Pourquoi un COS Bureau IA local (980 € HT) plutôt qu'un SaaS mensuel ?</summary>
+            <summary>Pourquoi un environnement local COS Opérations plutôt qu'un SaaS mensuel ?</summary>
             <p>Le Pack 2 vous donne la souveraineté totale sur votre poste (aucun abonnement logiciel fournisseur ; vous ne réglez que votre consommation API directe, souvent quelques centimes par dossier).</p>
           </details>
           <details class="faq-item">
@@ -639,7 +656,7 @@
   <footer class="site-footer no-print">
     <div class="container footer-grid">
       <div>
-        <strong>OMNISECUR — Mounir NAIT MOHAND (Entrepreneur Individuel)</strong><br />
+        <strong>OMNISECUR — COS Opérations</strong><br />
         <span>Ingénierie AO &amp; Rentabilité B2B (hors activités réglementées CNAPS art. L.611-1 CSI) · Albi (81)</span>
       </div>
       <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
