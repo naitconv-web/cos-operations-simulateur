@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYNTESIA France — Ingénierie de Systèmes Opérationnels, Automatisation &amp; Agents IA</title>
+  <meta name="description" content="SYNTESIA accompagne les TPE et PME françaises dans la compréhension de leurs opérations, l'intégration de leurs outils existants, l'automatisation de leurs processus et le déploiement d'agents IA métiers.">
+  <meta property="og:title" content="SYNTESIA France — Ingénierie de Systèmes Opérationnels, Automatisation & Agents IA">
+  <meta property="og:description" content="Audit opérationnel, intégration d'outils existants, automatisation de processus et agents IA encadrés pour les TPE et PME en France (Sécurité Privée, Bâtiment/BTP/Rénovation, HCR, CGP).">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="SYNTESIA France">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' fill='%23161513'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FAF9F5' font-family='monospace' font-weight='600' font-size='14'%3ESY%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="shared/syntesia-design-system.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "SYNTESIA France",
+    "description": "Ingénierie de systèmes opérationnels, intégration logicielle, automatisation de processus et déploiement d'agents IA métiers sous supervision humaine pour TPE et PME.",
+    "areaServed": "FR",
+    "knowsAbout": [
+      "Sécurité Privée (CSI Livre VI & IDCC 1351)",
+      "Bâtiment, BTP et Rénovation",
+      "Hôtellerie, Cafés et Restauration (IDCC 1979)",
+      "Conseil en Gestion de Patrimoine (CGP)",
+      "Automatisation de processus B2B"
+    ]
+  }
+  </script>
+</head>
+<body class="selection:bg-stone-900 selection:text-stone-100">
+
+  <!-- Top Technical Bar -->
+  <div class="border-b border-[#D5D4CC] bg-[#EAE9E2] px-6 py-2">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center space-x-3">
+        <span class="syn-dot-blue"></span>
+        <span class="font-mono-mark text-[#464440]">[SYNTESIA // IMPLANTATION FRANCE] &middot; INGÉNIERIE OPÉRATIONNELLE &amp; SYSTÈMES IA</span>
+      </div>
+      <div class="flex items-center space-x-6">
+        <a href="securite-privee/index.html" class="font-mono-mark text-[#464440] hover:text-[#161513] underline-offset-4 hover:underline">Pôle Sécurité Privée</a>
+        <a href="batiment-renovation/index.html" class="font-mono-mark text-[#464440] hover:text-[#161513] underline-offset-4 hover:underline">Pôle Construction &amp; Rénovation</a>
+        <a href="algerie/index.html" class="font-mono-mark text-[#6E6B65] hover:text-[#161513]">Implantation Algérie &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Frosted Navigation (Refero Antimetal Rule) -->
+  <header class="sticky top-0 z-50 syn-nav-frost">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3.5 group">
+        <div class="w-9 h-9 bg-[#161513] text-[#FAF9F5] flex items-center justify-center font-mono text-sm font-medium tracking-tighter border border-[#161513]">
+          SY
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-lg tracking-tight text-[#161513] leading-none">SYNTESIA</span>
+          <span class="font-mono-mark text-[#6E6B65] mt-1">FRANCE &middot; ARCHITECTURE OPÉRATIONNELLE</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-[#464440]" aria-label="Navigation principale">
+        <a href="#approche" class="hover:text-[#161513] transition">Approche</a>
+        <a href="#architecture-systeme" class="hover:text-[#161513] transition">Système</a>
+        <a href="#verticales-prioritaires" class="hover:text-[#161513] transition font-semibold text-[#161513]">Verticales Prioritaires</a>
+        <a href="#catalogue-sectoriel" class="hover:text-[#161513] transition">Catalogue Sectoriel</a>
+        <a href="../boutique/index.html" class="hover:text-[#161513] transition font-semibold text-[#3F6212]">Boutique B2B</a>
+      </nav>
+
+      <div class="flex items-center space-x-2">
+        <button type="button" id="synMobileMenuBtn" aria-expanded="false" aria-controls="synMobileMenuPanel" class="lg:hidden syn-btn-secondary px-3 py-2 font-mono text-xs">
+          [MENU]
+        </button>
+        <a href="../boutique/index.html" class="syn-btn-secondary hidden sm:inline-flex">
+          <span>Boutique B2B</span>
+        </a>
+        <a href="#diagnostic" class="syn-btn-primary">
+          <span>Demander un diagnostic</span>
+          <span class="font-mono text-xs">&rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Panel (< 1024px) -->
+    <nav id="synMobileMenuPanel" class="hidden lg:hidden border-t border-[#D5D4CC] bg-[#FAF9F5] px-6 py-4 space-y-3 text-sm font-medium text-[#161513]" aria-label="Menu mobile">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <a href="#approche" class="py-1.5 border-b border-[#EAE9E2]">01. Approche &amp; Périmètre</a>
+        <a href="#architecture-systeme" class="py-1.5 border-b border-[#EAE9E2]">02. Architecture Système</a>
+        <a href="#verticales-prioritaires" class="py-1.5 border-b border-[#EAE9E2] font-semibold">03. Verticales Prioritaires</a>
+        <a href="#catalogue-sectoriel" class="py-1.5 border-b border-[#EAE9E2]">04. Catalogue Sectoriel</a>
+        <a href="#methode" class="py-1.5 border-b border-[#EAE9E2]">05. Démarche en 4 Étapes</a>
+        <a href="../boutique/index.html" class="py-1.5 border-b border-[#EAE9E2] text-[#3F6212] font-semibold">06. Boutique B2B &amp; Tarifs Directs</a>
+        <a href="shared/mentions-legales-confidentialite.html" class="py-1.5 border-b border-[#EAE9E2] text-[#6E6B65]">07. Mentions Légales &amp; RGPD</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION : Editorial Serif + Engineered Frame -->
+    <section class="max-w-7xl mx-auto px-6 pt-16 pb-20">
+      <div class="syn-frame syn-corner-tl syn-corner-br p-8 sm:p-14 lg:p-16">
+        <div class="flex flex-wrap items-center gap-3 mb-8">
+          <span class="syn-tag"><span class="syn-dot-blue"></span> [SYS-00 // PARTENAIRE DE TRANSFORMATION B2B]</span>
+          <span class="syn-tag">TPE &amp; PME &middot; FRANCE</span>
+          <span class="syn-tag"><span class="syn-dot-olive"></span> CONFORMITÉ &amp; SUPERVISION HUMAINE</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+          <div class="lg:col-span-8">
+            <h1 class="font-editorial text-4xl sm:text-6xl lg:text-[62px] text-[#161513]">
+              Nous transformons les opérations complexes de votre entreprise en <span class="font-editorial-italic text-[#1D4ED8]">systèmes intelligents, fiables et intégrés</span>.
+            </h1>
+            <p class="mt-6 text-lg sm:text-xl text-[#464440] max-w-3xl leading-relaxed">
+              SYNTESIA n'est pas un vendeur de chatbots isolés. Nous analysons vos processus métiers réels, connectons vos logiciels existants, automatisons vos flux administratifs répétitifs et déployons des agents IA encadrés par vos règles de gestion.
+            </p>
+
+            <div class="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <a href="#diagnostic" class="syn-btn-primary">
+                <span>Soumettre mes opérations à un diagnostic</span>
+                <span class="font-mono text-xs">&rarr;</span>
+              </a>
+              <a href="#verticales-prioritaires" class="syn-btn-secondary">
+                <span>[ Explorer nos pôles métiers ]</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Key Engineering Pillars Sidebar -->
+          <div class="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-[#D5D4CC] pt-8 lg:pt-0 lg:pl-8 space-y-5">
+            <div>
+              <div class="font-mono-mark text-[#8A8780]">01 // ARCHITECTURE</div>
+              <div class="text-sm font-semibold text-[#161513] mt-1">Intégration à l'existant</div>
+              <p class="text-xs text-[#6E6B65] mt-1 leading-relaxed">Connexion à vos tableurs, ERP, CRM et outils bureautiques sans imposer une refonte lourde.</p>
+            </div>
+            <div class="border-t border-dashed border-[#C2C1B8] pt-4">
+              <div class="font-mono-mark text-[#8A8780]">02 // RIGUEUR MÉTIER</div>
+              <div class="text-sm font-semibold text-[#161513] mt-1">Contrôles déterministes</div>
+              <p class="text-xs text-[#6E6B65] mt-1 leading-relaxed">Les règles légales et conventionnelles (horaires, habilitations, seuils financiers) sont codées de manière stricte, jamais laissées à l'improvisation d'un modèle.</p>
+            </div>
+            <div class="border-t border-dashed border-[#C2C1B8] pt-4">
+              <div class="font-mono-mark text-[#8A8780]">03 // GOUVERNANCE</div>
+              <div class="text-sm font-semibold text-[#161513] mt-1">Validation humaine souveraine</div>
+              <p class="text-xs text-[#6E6B65] mt-1 leading-relaxed">Nos agents préparent, vérifient et alertent ; le dirigeant conserve la validation finale de tout engagement commercial, juridique ou financier.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1 : CE QUE FAIT RÉELLEMENT SYNTESIA (7 CAPACITÉS OPÉRATIONNELLES) -->
+    <section id="approche" class="max-w-7xl mx-auto px-6 py-16 border-t border-[#D5D4CC]">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="font-mono-mark text-[#8A8780]">[CAP-01 // PÉRIMÈTRE D'INTERVENTION]</span>
+          <h2 class="font-editorial text-3xl sm:text-5xl text-[#161513] mt-2">
+            Une ingénierie complète, du diagnostic terrain au <span class="font-editorial-italic">pilotage quotidien</span>.
+          </h2>
+        </div>
+        <p class="text-sm text-[#464440] max-w-md leading-relaxed">
+          Chaque entreprise possède ses propres contraintes conventionnelles, ses habitudes d'équipe et ses goulots d'étranglement. Notre intervention couvre sept dimensions complémentaires :
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="syn-card p-6">
+          <div class="font-mono-mark text-[#1D4ED8] mb-3">[01 // AUDIT OPÉRATIONNEL]</div>
+          <h3 class="text-base font-bold text-[#161513] mb-2">Comprendre vos opérations</h3>
+          <p class="text-xs text-[#464440] leading-relaxed">Immersion dans vos flux réels (devis, plannings, dossiers réglementaires, facturation) pour cartographier comment l'information circule réellement.</p>
+        </div>
+
+        <div class="syn-card p-6">
+          <div class="font-mono-mark text-[#1D4ED8] mb-3">[02 // DIAGNOSTIC DE FRICTION]</div>
+          <h3 class="text-base font-bold text-[#161513] mb-2">Identifier les inefficacités</h3>
+          <p class="text-xs text-[#464440] leading-relaxed">Repérage des ressaisies manuelles, des devis dormants non relancés, des retards de collecte de pièces et des risques de non-conformité documentaire.</p>
+        </div>
+
+        <div class="syn-card p-6">
+          <div class="font-mono-mark text-[#1D4ED8] mb-3">[03 // ARCHITECTURE MÉTIER]</div>
+          <h3 class="text-base font-bold text-[#161513] mb-2">Concevoir des systèmes adaptés</h3>
+          <p class="text-xs text-[#464440] leading-relaxed">Élaboration d'une architecture sur mesure intégrant vos règles sectorielles (conventions collectives, obligations de vigilance, seuils de marge).</p>
+        </div>
+
+        <div class="syn-card p-6">
+          <div class="font-mono-mark text-[#1D4ED8] mb-3">[04 // INTEROPÉRABILITÉ]</div>
+          <h3 class="text-base font-bold text-[#161513] mb-2">Intégrer vos outils existants</h3>
+          <p class="text-xs text-[#464440] leading-relaxed">Raccordement de vos environnements actuels (Google Workspace, Microsoft 365, logiciels de devis/paie, CRM, messageries professionnelles) sans rupture.</p>
+        </div>
+
+        <div class="syn-card p-6">
+          <div class="font-mono-mark text-[#1D4ED8] mb-3">[05 // FLUX AUTOMATISÉS]</div>
+          <h3 class="text-base font-bold text-[#161513] mb-2">Automatiser les processus</h3>
+          <p class="text-xs text-[#464440] leading-relaxed">Suppression des tâches répétitives à faible valeur : génération documentaire (ordres de mission, contrats, rapports), alertes d'échéances et relances programmées.</p>
+        </div>
+
+        <div class="syn-card p-6">
+          <div class="font-mono-mark text-[#1D4ED8] mb-3">[06 // AGENTS SPÉCIALISÉS]</div>
+          <h3 class="text-base font-bold text-[#161513] mb-2">Déployer des agents IA encadrés</h3>
+          <p class="text-xs text-[#464440] leading-relaxed">Mise en œuvre d'assistants spécialisés (qualification de demandes, pré-analyse de dossiers, préparation de comptes-rendus) opérant sous garde-fous stricts.</p>
+        </div>
+
+        <div class="syn-card p-6 lg:col-span-2 bg-[#EAE9E2]">
+          <div class="font-mono-mark text-[#5C6B28] mb-3">[07 // ACCOMPAGNEMENT &amp; TRANSFERT]</div>
+          <h3 class="text-base font-bold text-[#161513] mb-2">Accompagner durablement vos équipes dans leur transformation</h3>
+          <p class="text-xs text-[#464440] leading-relaxed">Un système n'a de valeur que s'il est adopté par le terrain. Nous formons vos collaborateurs, documentons chaque procédure et assurons le contrôle de cohérence des données dans la durée.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 : ATMOSPHERIC NIGHT SYSTEM THEATER (Refero Antimetal Signature Scene) -->
+    <section id="architecture-systeme" class="syn-night-scene py-20 px-6 my-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+          <div>
+            <span class="font-mono-mark text-blue-400">[SYS-02 // ARCHITECTURE OPÉRATIONNELLE SYNTESIA]</span>
+            <h2 class="font-editorial text-3xl sm:text-5xl text-[#F4F4E7] mt-2">
+              Du fonctionnement dispersé au <span class="font-editorial-italic text-blue-300">système d'exploitation unifié</span>.
+            </h2>
+          </div>
+          <p class="text-sm text-[#94A3B8] max-w-md leading-relaxed">
+            Représentation schématique d'une architecture déployée par SYNTESIA : séparation stricte entre la capture des flux, le moteur de règles déterministes, l'assistance IA et le sas de décision du dirigeant.
+          </p>
+        </div>
+
+        <!-- Staged Product Window (1200px wide on dark scene) -->
+        <div class="syn-night-window p-6 sm:p-10">
+          <div class="flex flex-wrap items-center justify-between border-b border-slate-800 pb-4 mb-8 gap-4">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+              <span class="font-mono-mark text-slate-400 ml-2">SYNTESIA_OPERATIONAL_BLUEPRINT // MODE: SUPERVISED_AUTONOMY</span>
+            </div>
+            <div class="font-mono-mark text-emerald-400">[GARDE-FOU HORAIRE &amp; RGPD : ACTIF]</div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <!-- Step 1 -->
+            <div class="border border-slate-800 bg-[#090D13] p-5">
+              <div class="font-mono-mark text-slate-400 mb-2">COUCHE 01 // ENTRÉES</div>
+              <div class="text-base font-bold text-[#F4F4E7] mb-3">Flux Terrain &amp; Clients</div>
+              <ul class="text-xs text-slate-400 space-y-2.5 font-mono">
+                <li class="border-l-2 border-blue-500 pl-2.5">Formulaires de demandes &amp; cahiers des charges</li>
+                <li class="border-l-2 border-blue-500 pl-2.5">Devis émis &amp; situations de travaux</li>
+                <li class="border-l-2 border-blue-500 pl-2.5">Plannings d'équipes &amp; pointages</li>
+                <li class="border-l-2 border-blue-500 pl-2.5">Pièces réglementaires &amp; factures fournisseurs</li>
+              </ul>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="border border-slate-800 bg-[#090D13] p-5">
+              <div class="font-mono-mark text-amber-400 mb-2">COUCHE 02 // RÈGLES MÉTIER</div>
+              <div class="text-base font-bold text-[#F4F4E7] mb-3">Moteur Déterministe</div>
+              <ul class="text-xs text-slate-400 space-y-2.5 font-mono">
+                <li class="border-l-2 border-amber-500 pl-2.5">Contrôle validité titres (CNAPS, Décennale, URSSAF, KYC)</li>
+                <li class="border-l-2 border-amber-500 pl-2.5">Vérification amplitudes &amp; repos (IDCC 1351 / 1979 / 3127)</li>
+                <li class="border-l-2 border-amber-500 pl-2.5">Calcul de coût de revient &amp; marge plancher</li>
+                <li class="border-l-2 border-amber-500 pl-2.5">Gate de bienséance (8h30–19h00, jours ouvrés)</li>
+              </ul>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="border border-slate-800 bg-[#090D13] p-5">
+              <div class="font-mono-mark text-indigo-400 mb-2">COUCHE 03 // ASSISTANCE IA</div>
+              <div class="text-base font-bold text-[#F4F4E7] mb-3">Agents Spécialisés</div>
+              <ul class="text-xs text-slate-400 space-y-2.5 font-mono">
+                <li class="border-l-2 border-indigo-400 pl-2.5">Agent Qualification &amp; Pré-Diagnostic</li>
+                <li class="border-l-2 border-indigo-400 pl-2.5">Agent Préparation Devis, OM &amp; Comptes-Rendus</li>
+                <li class="border-l-2 border-indigo-400 pl-2.5">Agent Suivi &amp; Relance Courtoise (J+3 / J+7)</li>
+                <li class="border-l-2 border-indigo-400 pl-2.5">Agent Extraction Documentaire (BL, DPGF, Avis)</li>
+              </ul>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="border border-emerald-900/60 bg-emerald-950/20 p-5">
+              <div class="font-mono-mark text-emerald-400 mb-2">COUCHE 04 // GOUVERNANCE</div>
+              <div class="text-base font-bold text-[#F4F4E7] mb-3">Sas Décision Dirigeant</div>
+              <ul class="text-xs text-slate-300 space-y-2.5 font-mono">
+                <li class="border-l-2 border-emerald-400 pl-2.5">Validation des brouillons en 1 clic avant envoi</li>
+                <li class="border-l-2 border-emerald-400 pl-2.5">Tableau de bord KPI (CA encaissé réel vs prévisionnel)</li>
+                <li class="border-l-2 border-emerald-400 pl-2.5">Traçabilité complète des opérations &amp; audits</li>
+                <li class="border-l-2 border-emerald-400 pl-2.5">Zéro engagement financier ou juridique autonome</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 : VERTICALES PRIORITAIRES DE LANCEMENT (SÉCURITÉ PRIVÉE & FILIÈRE CONSTRUCTION DISTINGUÉE) -->
+    <section id="verticales-prioritaires" class="max-w-7xl mx-auto px-6 py-20">
+      <div class="mb-12">
+        <span class="syn-tag"><span class="syn-dot-blue"></span> [VERT-01 // MARCHÉS PRIORITAIRES DE LANCEMENT EN FRANCE]</span>
+        <h2 class="font-editorial text-3xl sm:text-5xl text-[#161513] mt-3">
+          Deux verticales prioritaires d'égale importance, <span class="font-editorial-italic">outillées et spécialisées</span>.
+        </h2>
+        <p class="mt-3 text-base text-[#464440] max-w-3xl leading-relaxed">
+          Notre déploiement commercial en France s'appuie sur deux domaines où les contraintes réglementaires, la planification opérationnelle et le suivi des devis exigent une ingénierie métier rigoureuse. Au sein de la filière construction, nous distinguons explicitement les processus du <strong>Bâtiment</strong>, du <strong>BTP (Travaux Publics)</strong> et de la <strong>Rénovation</strong>.
+        </p>
+      </div>
+
+      <!-- Verticale 1 : Sécurité Privée -->
+      <div class="syn-frame syn-corner-tl syn-corner-br p-8 sm:p-10 mb-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-5">
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+              <span class="syn-tag"><span class="syn-dot-blue"></span> VERTICALE PRIORITAIRE #1</span>
+              <span class="syn-tag">CSI LIVRE VI &middot; CNAPS &middot; IDCC 1351</span>
+            </div>
+            <h3 class="font-editorial text-3xl sm:text-4xl text-[#161513]">Sécurité Privée, Gardiennage &amp; Sûreté</h3>
+            <p class="mt-3 text-sm text-[#464440] leading-relaxed">
+              Conçu pour les dirigeants et directeurs d'exploitation d'entreprises de surveillance humaine, sécurité incendie (SSIAP), rondes mobiles et sécurité cynophile (10 à 150 agents).
+            </p>
+            <div class="mt-6">
+              <a href="securite-privee/index.html" class="syn-btn-primary">
+                <span>Accéder à l'Espace Sécurité Privée</span>
+                <span class="font-mono text-xs">&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t lg:border-t-0 lg:border-l border-[#D5D4CC] pt-6 lg:pt-0 lg:pl-8">
+            <div class="syn-card-alt p-4">
+              <div class="font-mono-mark text-[#1D4ED8] mb-2">CONFORMITÉ CNAPS</div>
+              <div class="text-sm font-bold text-[#161513] mb-1">Titres &amp; Habilitations</div>
+              <p class="text-xs text-[#464440] leading-relaxed">Contrôle de validité des cartes pro jusqu'à la fin de vacation, alertes recyclages MAC, SST et SSIAP avant échéance.</p>
+            </div>
+            <div class="syn-card-alt p-4">
+              <div class="font-mono-mark text-[#1D4ED8] mb-2">PLANIFICATION IDCC 1351</div>
+              <div class="text-sm font-bold text-[#161513] mb-1">Vacations &amp; Repos</div>
+              <p class="text-xs text-[#464440] leading-relaxed">Vérification des temps de repos quotidien, anti double-booking, recherche assistée de remplaçants qualifiés et Ordres de Mission (Art. L.612-9 CSI).</p>
+            </div>
+            <div class="syn-card-alt p-4">
+              <div class="font-mono-mark text-[#1D4ED8] mb-2">PILOTAGE &amp; MARGE</div>
+              <div class="text-sm font-bold text-[#161513] mb-1">Rentabilité &amp; Appels d'Offres</div>
+              <p class="text-xs text-[#464440] leading-relaxed">Calculateur de coût complet horaire (majorations nuit, dimanche, férié, Avenant 2) et assistance documentaire aux mémoires techniques.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verticale 2 : Filière Construction (Bâtiment, BTP, Rénovation séparés) -->
+      <div class="syn-frame syn-corner-tl syn-corner-br p-8 sm:p-10">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div>
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="syn-tag"><span class="syn-dot-rust"></span> VERTICALE PRIORITAIRE #2</span>
+              <span class="syn-tag">3 MÉTIERS DISTINGUÉS : BÂTIMENT &middot; BTP &middot; RÉNOVATION</span>
+            </div>
+            <h3 class="font-editorial text-3xl sm:text-4xl text-[#161513]">Filière Construction : Bâtiment, Travaux Publics &amp; Rénovation</h3>
+          </div>
+          <a href="batiment-renovation/index.html" class="syn-btn-primary">
+            <span>Accéder à l'Espace Bâtiment, BTP &amp; Rénovation</span>
+            <span class="font-mono text-xs">&rarr;</span>
+          </a>
+        </div>
+
+        <p class="text-sm text-[#464440] max-w-4xl leading-relaxed mb-8">
+          Parce qu'un artisan rénovateur intervenant chez un particulier ne travaille pas comme une PME de gros œuvre en marchés allotis ni comme une entreprise de Travaux Publics gérant un parc d'engins, SYNTESIA segmente ses solutions selon les trois réalités opérationnelles de la filière :
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Sous-secteur 2A : Bâtiment -->
+          <div class="syn-card p-6 border-t-4 border-t-[#161513]">
+            <div class="font-mono-mark text-[#8A8780] mb-2">[SOUS-SECTEUR 2A // BÂTIMENT NEUF &amp; CORPS D'ÉTAT]</div>
+            <h4 class="text-lg font-bold text-[#161513] mb-2">Bâtiment &amp; Entreprises Générales</h4>
+            <p class="text-xs text-[#6E6B65] mb-4">Gros œuvre, maçonnerie, charpente, menuiseries, lots techniques CVC/électricité en marchés privés (NF P 03-001) ou publics.</p>
+            <ul class="text-xs text-[#464440] space-y-2 border-t border-[#D5D4CC] pt-4">
+              <li>&bull; <strong>Vigilance sous-traitants (Art. L.8222-1) :</strong> collecte et relance semestrielle automatisée des attestations URSSAF, pièces d'identification légale, assurances décennales par lot et cartes BTP (DC4).</li>
+              <li>&bull; <strong>Situations de travaux :</strong> préparation et suivi des décomptes mensuels d'avancement sur DPGF.</li>
+              <li>&bull; <strong>Réception &amp; OPR :</strong> suivi documentaire de la levée des réserves pour libérer les retenues de garantie (5 %).</li>
+            </ul>
+          </div>
+
+          <!-- Sous-secteur 2B : BTP -->
+          <div class="syn-card p-6 border-t-4 border-t-[#B84A27]">
+            <div class="font-mono-mark text-[#B84A27] mb-2">[SOUS-SECTEUR 2B // TRAVAUX PUBLICS &amp; GÉNIE CIVIL]</div>
+            <h4 class="text-lg font-bold text-[#161513] mb-2">BTP, VRD, Terrassement &amp; Réseaux</h4>
+            <p class="text-xs text-[#6E6B65] mb-4">Entreprises d'infrastructures, voirie, assainissement, canalisations et réseaux travaillant avec collectivités et concessionnaires.</p>
+            <ul class="text-xs text-[#464440] space-y-2 border-t border-[#D5D4CC] pt-4">
+              <li>&bull; <strong>Conformité DT-DICT &amp; Habilitations :</strong> suivi de validité des DICT, autorisations AIPR, CACES engins et visites médicales.</li>
+              <li>&bull; <strong>Rapports journaliers de chantier :</strong> remontée mobile structurée des heures hommes, heures engins et bons de pesée/matériaux.</li>
+              <li>&bull; <strong>Appels d'offres publics (BPU / DQE) :</strong> assistance à la structuration des mémoires techniques et dossiers de candidature.</li>
+            </ul>
+          </div>
+
+          <!-- Sous-secteur 2C : Rénovation -->
+          <div class="syn-card p-6 border-t-4 border-t-[#5C6B28]">
+            <div class="font-mono-mark text-[#5C6B28] mb-2">[SOUS-SECTEUR 2C // SECOND ŒUVRE &amp; ÉNERGIE]</div>
+            <h4 class="text-lg font-bold text-[#161513] mb-2">Rénovation &amp; Artisans Spécialisés</h4>
+            <p class="text-xs text-[#6E6B65] mb-4">Plomberie-chauffage, menuiserie, carrelage, peinture, isolation RGE et rénovation tous corps d'état (cycles courts B2C/B2B).</p>
+            <ul class="text-xs text-[#464440] space-y-2 border-t border-[#D5D4CC] pt-4">
+              <li>&bull; <strong>Relance structurée des devis dormants :</strong> suivi courtois et programmé (J+3, J+7) aux horaires ouvrés (8h30–19h00) des devis restés sans réponse.</li>
+              <li>&bull; <strong>Sécurisation des acomptes :</strong> accélération du passage entre l'accord client et le règlement de l'acompte avant commande matériaux.</li>
+              <li>&bull; <strong>Suivi des heures chantier :</strong> comparaison simple entre le temps budgété au devis et le temps réellement passé.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 : CATALOGUE SECTORIEL SYNTESIA (AGIA-005 : SOCLE MÉTIER & 5 EXTENSIONS À L'ÉTUDE) -->
+    <section id="catalogue-sectoriel" class="max-w-7xl mx-auto px-6 py-20 border-t border-[#D5D4CC]">
+      <div class="mb-12">
+        <span class="syn-tag">[CAT-02 // PORTEFEUILLE SECTORIEL &amp; EXTENSIONS À L'ÉTUDE — RÉF. AGIA-005]</span>
+        <h2 class="font-editorial text-3xl sm:text-5xl text-[#161513] mt-3">
+          Pôles d'expertise du socle et <span class="font-editorial-italic">extensions sectorielles étudiées</span>.
+        </h2>
+        <p class="mt-3 text-sm text-[#464440] max-w-3xl leading-relaxed">
+          Conformément à notre gouvernance transparente, nous distinguons nos <strong>pôles d'expertise métier du socle fondateur</strong> (HCR et CGP, traités en missions d'ingénierie sur mesure) et les <strong>cinq extensions sectorielles étudiées</strong> dans notre catalogue stratégique pour un déploiement progressif par mutualisation de nos briques techniques.
+        </p>
+      </div>
+
+      <!-- Sous-bloc A : Socle Fondateur (HCR distinct & CGP) -->
+      <div class="mb-12">
+        <div class="font-mono-mark text-[#161513] mb-4 pb-2 border-b border-[#D5D4CC]">
+          A // PÔLES D'EXPERTISE DU SOCLE FONDATEUR (INGÉNIERIE &amp; CONSEIL SUR MESURE)
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- HCR (3 sous-secteurs distincts) -->
+          <div class="syn-card p-7">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <span class="syn-tag"><span class="syn-dot-olive"></span> SOCLE MÉTIER // IDCC 1979</span>
+              <span class="font-mono-mark text-[#6E6B65]">POSITIONNEMENT DISTINCT D'OMNISECUR</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#161513] mb-2">HCR : Hôtellerie, Cafés &amp; Restauration</h3>
+            <p class="text-xs text-[#464440] leading-relaxed mb-4">
+              Approche différenciée selon les trois modèles d'exploitation du secteur HCR, appuyée sur une connaissance directe des enjeux d'exploitation hôtelière :
+            </p>
+            <div class="space-y-3 text-xs text-[#464440] border-t border-[#D5D4CC] pt-4">
+              <div>
+                <strong class="text-[#161513] font-mono">[3A. HÔTELLERIE]</strong> &mdash; Reconquête du canal Direct Web et prospection structurée de comptes Corporate B2B locaux pour réduire le poids des commissions OTA ; veille et préparation assistée des réponses aux avis (TrustYou, Booking, Google) ; coordination housekeeping.
+              </div>
+              <div>
+                <strong class="text-[#161513] font-mono">[3B. CAFÉS, BARS &amp; BRASSERIES]</strong> &mdash; Suivi des plannings à horaires variables (contrôle des repos et amplitudes IDCC 1979) et rapprochement des bons de livraison brasseurs/grossistes avec les factures mensuelles.
+              </div>
+              <div>
+                <strong class="text-[#161513] font-mono">[3C. RESTAURATION &amp; TRAITEURS]</strong> &mdash; Sentinelle <em>Food Cost</em> par extraction des factures fournisseurs (alerte sur les hausses de prix unitaires d'ingrédients), qualification et devis rapides pour repas de groupes/séminaires (hors système de caisse NF525).
+              </div>
+            </div>
+          </div>
+
+          <!-- CGP -->
+          <div class="syn-card p-7">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <span class="syn-tag"><span class="syn-dot-olive"></span> SOCLE MÉTIER // ORIAS &middot; AMF &middot; ACPR</span>
+              <span class="font-mono-mark text-[#6E6B65]">MIDDLE-OFFICE PATRIMONIAL</span>
+            </div>
+            <h3 class="text-xl font-bold text-[#161513] mb-2">CGP : Conseillers en Gestion de Patrimoine</h3>
+            <p class="text-xs text-[#464440] leading-relaxed mb-4">
+              Optimisation du back-office et de la conformité documentaire pour les cabinets de CGP indépendants (CIF, IAS, IOBSP) et family offices, sans jamais empiéter sur le devoir de conseil humain :
+            </p>
+            <div class="space-y-3 text-xs text-[#464440] border-t border-[#D5D4CC] pt-4">
+              <div>
+                <strong class="text-[#161513] font-mono">[PARCOURS DDA / MIF 2]</strong> &mdash; Automatisation de la chaîne documentaire pré-contractuelle : pré-remplissage du DER (Document d'Entrée en Relation), de la Lettre de Mission et de la trame de Déclaration d'Adéquation à partir des données validées par le conseiller.
+              </div>
+              <div>
+                <strong class="text-[#161513] font-mono">[COLLECTE KYC &amp; LCB-FT]</strong> &mdash; Portail sécurisé de collecte des pièces justificatives clients, suivi des dates d'expiration (CNI/Passeport) et préparation des campagnes de revue annuelle d'adéquation.
+              </div>
+              <div>
+                <strong class="text-[#161513] font-mono">[EXTRACTION FISCALE]</strong> &mdash; Lecture structurée des avis d'imposition et tableaux d'amortissement pour éliminer la triple saisie entre le recueil client et les outils du cabinet.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sous-bloc B : Les 5 Extensions Sectorielles à l'Étude (AGIA-005) -->
+      <div>
+        <div class="font-mono-mark text-[#6E6B65] mb-4 pb-2 border-b border-[#D5D4CC]">
+          B // CINQ EXTENSIONS SECTORIELLES À L'ÉTUDE (PROGRAMME DE RECHERCHE &amp; MUTUALISATION AGIA-005)
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Extension 1 : Architecture & BET -->
+          <div class="syn-card-alt p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono-mark text-[#8A8780]">[EXT-01 // LOI MOP]</span>
+              <span class="syn-tag">EXTENSION À L'ÉTUDE</span>
+            </div>
+            <h4 class="text-base font-bold text-[#161513] mb-2">Architecture &amp; Bureaux d'Études (BET)</h4>
+            <p class="text-xs text-[#6E6B65] mb-3">Agences d'architecture, BET Structure/Fluides (RE2020)/VRD, économistes de la construction et maîtres d'œuvre (MOEX/OPC).</p>
+            <p class="text-xs text-[#464440] leading-relaxed border-t border-[#D5D4CC] pt-3">
+              <strong>Cas d'usage étudiés :</strong> structuration assistée des Comptes-Rendus de Chantier hebdomadaires (phase DET), alignement et comparaison des DPGF entreprises en phase d'appel d'offres (ACT), et relance automatisée pour la collecte des DOE et assurances en fin de chantier (AOR).
+            </p>
+          </div>
+
+          <!-- Extension 2 : Immobilier & Gestion de biens -->
+          <div class="syn-card-alt p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono-mark text-[#8A8780]">[EXT-02 // LOI HOGUET &amp; ALUR]</span>
+              <span class="syn-tag">EXTENSION À L'ÉTUDE</span>
+            </div>
+            <h4 class="text-base font-bold text-[#161513] mb-2">Immobilier, Gestion Locative &amp; Syndics</h4>
+            <p class="text-xs text-[#6E6B65] mb-3">Administrateurs de biens (ADB), syndics de copropriété professionnels, agences immobilières et conciergeries.</p>
+            <p class="text-xs text-[#464440] leading-relaxed border-t border-[#D5D4CC] pt-3">
+              <strong>Cas d'usage étudiés :</strong> automatisation du suivi des sinistres et Ordres de Service (OS) travaux entre locataires, syndics, artisans et bailleurs ; contrôle objectif de complétude des dossiers candidats locataires au regard des critères GLI (dans le strict respect de la liste limitative du décret n° 2015-1437).
+            </p>
+          </div>
+
+          <!-- Extension 3 : Services à la personne -->
+          <div class="syn-card-alt p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono-mark text-[#8A8780]">[EXT-03 // IDCC 3127]</span>
+              <span class="syn-tag">EXTENSION À L'ÉTUDE</span>
+            </div>
+            <h4 class="text-base font-bold text-[#161513] mb-2">Services à la Personne (SAP)</h4>
+            <p class="text-xs text-[#6E6B65] mb-3">Structures d'aide et maintien à domicile (SAAD), ménage/confort et garde d'enfants (indépendants et franchisés).</p>
+            <p class="text-xs text-[#464440] leading-relaxed border-t border-[#D5D4CC] pt-3">
+              <strong>Cas d'usage étudiés :</strong> transposition de notre moteur de remplacement d'urgence aux tournées à domicile (respect des amplitudes IDCC 3127 et proximité géographique), tunnel de pré-qualification RH en continu et accompagnement des familles à l'activation de l'Avance Immédiate URSSAF (hors données médicales RGPD Art. 9).
+            </p>
+          </div>
+
+          <!-- Extension 4 : Transport & Logistique -->
+          <div class="syn-card-alt p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono-mark text-[#8A8780]">[EXT-04 // IDCC 0016 &amp; DREAL]</span>
+              <span class="syn-tag">EXTENSION À L'ÉTUDE</span>
+            </div>
+            <h4 class="text-base font-bold text-[#161513] mb-2">Transport Routier &amp; Logistique (TRM)</h4>
+            <p class="text-xs text-[#6E6B65] mb-3">Transporteurs routiers de marchandises (&gt; 3,5 t et messagerie VUL), frigorifique ATP, commissionnaires et entrepositaires 3PL.</p>
+            <p class="text-xs text-[#464440] leading-relaxed border-t border-[#D5D4CC] pt-3">
+              <strong>Cas d'usage étudiés :</strong> accélération de la facturation par collecte et rattachement automatisé des photos de lettres de voiture (CMR / Bons de Livraison émargés), bouclier d'échéances couplé Conducteurs (FCO, ADR, Permis, Carte chrono) + Parc (Mines, VGP Hayon) + Sous-traitants (Licences DREAL), et suivi de l'indexation gasoil CNR.
+            </p>
+          </div>
+
+          <!-- Extension 5 : Nettoyage & Facility Management -->
+          <div class="syn-card-alt p-6 lg:col-span-2">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono-mark text-[#8A8780]">[EXT-05 // IDCC 3043 &middot; SYNERGIE SÉCURITÉ + BTP]</span>
+              <span class="syn-tag">EXTENSION À L'ÉTUDE (REBOND PRIORITAIRE)</span>
+            </div>
+            <h4 class="text-base font-bold text-[#161513] mb-2">Nettoyage Industriel, Propreté &amp; Facility Management</h4>
+            <p class="text-xs text-[#6E6B65] mb-3">Entreprises de propreté tertiaire et industrielle, entretien d'immeubles/copropriétés, remise en état de fin de chantier BTP et multiservices.</p>
+            <p class="text-xs text-[#464440] leading-relaxed border-t border-[#D5D4CC] pt-3">
+              <strong>Convergence directe avec nos 2 verticales de lancement :</strong> ce secteur mobilise simultanément notre brique de <em>gestion des remplacements en horaires décalés, suivi des titres de séjour et preuve de passage / rapport qualité inspecteur</em> (issue de la Sécurité Privée) et notre brique de <em>relance des devis de travaux spéciaux et remises en état de fin de chantier</em> (issue de la Rénovation). Il inclut également une check-list documentaire d'assistance aux transferts conventionnels de personnel (Article 7 de la CCN Propreté IDCC 3043).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 : DÉMARCHE D'INGÉNIERIE EN 4 PHASES -->
+    <section id="methode" class="max-w-7xl mx-auto px-6 py-16 border-t border-[#D5D4CC]">
+      <div class="mb-10">
+        <span class="font-mono-mark text-[#8A8780]">[METH-01 // PROTOCOLE D'EXÉCUTION]</span>
+        <h2 class="font-editorial text-3xl sm:text-5xl text-[#161513] mt-2">
+          Une méthodologie d'intégration <span class="font-editorial-italic">sobre, traçable et réversible</span>.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="syn-card p-6">
+          <div class="font-mono-mark text-[#8A8780] mb-2">PHASE 01</div>
+          <h3 class="text-base font-bold text-[#161513] mb-2">Diagnostic &amp; Cartographie</h3>
+          <p class="text-xs text-[#464440] leading-relaxed">Analyse de vos outils actuels, mesure des volumes traités et identification du premier levier opérationnel rentable sans perturber l'existant.</p>
+        </div>
+        <div class="syn-card p-6">
+          <div class="font-mono-mark text-[#8A8780] mb-2">PHASE 02</div>
+          <h3 class="text-base font-bold text-[#161513] mb-2">Cahier des Charges &amp; Règles</h3>
+          <p class="text-xs text-[#464440] leading-relaxed">Formalisation écrite des règles métier, des droits d'accès, de la politique RGPD et validation du périmètre fonctionnel par le dirigeant.</p>
+        </div>
+        <div class="syn-card p-6">
+          <div class="font-mono-mark text-[#8A8780] mb-2">PHASE 03</div>
+          <h3 class="text-base font-bold text-[#161513] mb-2">Construction &amp; Recette</h3>
+          <p class="text-xs text-[#464440] leading-relaxed">Paramétrage des connecteurs, des contrôles déterministes et des agents sur un environnement de test isolé avant toute mise en service.</p>
+        </div>
+        <div class="syn-card p-6">
+          <div class="font-mono-mark text-[#8A8780] mb-2">PHASE 04</div>
+          <h3 class="text-base font-bold text-[#161513] mb-2">Déploiement &amp; Supervision</h3>
+          <p class="text-xs text-[#464440] leading-relaxed">Formation opérationnelle des équipes, remise de la documentation technique et suivi continu de la fiabilité des flux.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6 : FORMULAIRE DE DIAGNOSTIC OPÉRATIONNEL & ORIENTATION COMMERCIALE -->
+    <section id="diagnostic" class="max-w-4xl mx-auto px-6 py-20">
+      <div class="syn-frame syn-corner-tl syn-corner-br p-8 sm:p-12">
+        <div class="border-b border-[#D5D4CC] pb-6 mb-8">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <span class="syn-tag"><span class="syn-dot-blue"></span> [DIAG-FR // DEMANDE D'ÉTUDE OPÉRATIONNELLE]</span>
+            <span class="font-mono-mark text-[#6E6B65]">SCHÉMA CRM 15 COLONNES &middot; MODE PRÉ-PRODUCTION</span>
+          </div>
+          <h2 class="font-editorial text-3xl sm:text-5xl text-[#161513]">
+            Initier un diagnostic de vos opérations
+          </h2>
+          <p class="text-sm text-[#464440] mt-2 leading-relaxed">
+            Sélectionnez votre secteur d'activité et décrivez vos difficultés opérationnelles actuelles. Cette qualification structurée prépare notre échange technique et commercial.
+          </p>
+        </div>
+
+        <form id="leadFormSyntesiaFr" class="space-y-6" novalidate>
+          <input type="hidden" name="marche" value="France">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="fr_nom" class="block font-mono-mark text-[#464440] mb-2">Nom &amp; Fonction du Décideur *</label>
+              <input type="text" id="fr_nom" name="nom" required placeholder="Ex: Marc Vauthier — Gérant / Dir. Exploitation" class="syn-input">
+            </div>
+            <div>
+              <label for="fr_entreprise" class="block font-mono-mark text-[#464440] mb-2">Raison Sociale de l'Entreprise *</label>
+              <input type="text" id="fr_entreprise" name="entreprise" required placeholder="Ex: Entreprise &amp; Services SAS" class="syn-input">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="fr_email" class="block font-mono-mark text-[#464440] mb-2">Adresse E-mail Professionnelle *</label>
+              <input type="email" id="fr_email" name="email" required placeholder="direction@entreprise.fr" class="syn-input">
+            </div>
+            <div>
+              <label for="fr_tel" class="block font-mono-mark text-[#464440] mb-2">Ligne Téléphonique Directe *</label>
+              <input type="tel" id="fr_tel" name="telephone" required placeholder="06 / 01 ..." class="syn-input">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="fr_verticale" class="block font-mono-mark text-[#464440] mb-2">Secteur d'Activité (Catalogue AGIA-005) *</label>
+              <select id="fr_verticale" name="verticale" required class="syn-input">
+                <optgroup label="1. Verticales Prioritaires de Lancement">
+                  <option value="Sécurité Privée">Sécurité Privée (CSI Livre VI &amp; IDCC 1351)</option>
+                  <option value="Rénovation (Second œuvre / Artisans)">Rénovation — Second œuvre, Artisans &amp; Énergie RGE</option>
+                  <option value="Bâtiment (Construction neuve / Gros œuvre)">Bâtiment — Construction neuve &amp; Corps d'état</option>
+                  <option value="BTP (Travaux Publics / VRD / Génie Civil)">BTP — Travaux Publics, VRD &amp; Génie Civil</option>
+                </optgroup>
+                <optgroup label="2. Pôles d'Expertise du Socle Fondateur">
+                  <option value="HCR — Hôtellerie">HCR — Hôtellerie (Indépendants, Gérance Mandat, Franchise)</option>
+                  <option value="HCR — Restauration & Traiteurs">HCR — Restauration &amp; Traiteurs</option>
+                  <option value="HCR — Cafés, Bars & Brasseries">HCR — Cafés, Bars &amp; Brasseries</option>
+                  <option value="CGP — Gestion de Patrimoine">CGP — Conseillers en Gestion de Patrimoine (CIF/IAS/IOBSP)</option>
+                </optgroup>
+                <optgroup label="3. Extensions Sectorielles à l'Étude">
+                  <option value="Nettoyage & Facility Management">Nettoyage Industriel, Propreté &amp; Facility Management (IDCC 3043)</option>
+                  <option value="Transport & Logistique">Transport Routier de Marchandises &amp; Logistique (IDCC 0016)</option>
+                  <option value="Immobilier, Gestion Locative & Syndics">Immobilier — Administration de Biens &amp; Syndics</option>
+                  <option value="Architecture & Bureaux d'Études">Architecture, BET &amp; Maîtrise d'Œuvre</option>
+                  <option value="Services à la Personne (SAP)">Services à la Personne &amp; Aide à Domicile (IDCC 3127)</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div>
+              <label for="fr_besoin" class="block font-mono-mark text-[#464440] mb-2">Problématique Opérationnelle Prioritaire *</label>
+              <select id="fr_besoin" name="besoin" required class="syn-input">
+                <option value="Suivi et relance structurée des devis en attente">Suivi et relance structurée des devis en attente</option>
+                <option value="Conformité des dossiers, titres, habilitations ou sous-traitants">Conformité des titres, habilitations, décennales ou KYC</option>
+                <option value="Planification d'équipes, heures et remplacements d'urgence">Planification d'équipes, heures et remplacements d'urgence</option>
+                <option value="Automatisation documentaire (Ordres de mission, CR chantier, AO)">Automatisation documentaire (OM, Comptes-Rendus, Appels d'Offres)</option>
+                <option value="Extraction et rapprochement de pièces (BL, CMR, Factures fournisseurs)">Extraction et rapprochement de pièces (BL, CMR, Factures)</option>
+                <option value="Audit opérationnel global et intégration inter-logiciels">Audit opérationnel global et intégration inter-logiciels</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="fr_maturite" class="block font-mono-mark text-[#464440] mb-2">Outils Actuellement Utilisés</label>
+              <input type="text" id="fr_maturite" name="maturite" placeholder="Ex: Excel, Batigest, Obat, Combo, O2S, ICS, WhatsApp..." class="syn-input">
+            </div>
+            <div>
+              <label for="fr_effectif" class="block font-mono-mark text-[#464440] mb-2">Taille de la Structure</label>
+              <select id="fr_effectif" name="budget" class="syn-input">
+                <option value="TPE (1 à 9 collaborateurs)">TPE (1 à 9 collaborateurs / intervenants)</option>
+                <option value="PME (10 à 49 collaborateurs)" selected>PME (10 à 49 collaborateurs / intervenants)</option>
+                <option value="PME (50 à 150 collaborateurs)">PME structurée (50 à 150 collaborateurs / intervenants)</option>
+                <option value="ETI / Groupe (> 150 collaborateurs)">Plus de 150 collaborateurs</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="fr_description" class="block font-mono-mark text-[#464440] mb-2">Description de vos processus actuels et goulots d'étranglement *</label>
+            <textarea id="fr_description" name="description" rows="3" required placeholder="Précisez les tâches répétitives qui mobilisent vos équipes ou les points de friction que vous souhaitez résoudre..." class="syn-input"></textarea>
+          </div>
+
+          <!-- Anti-Spam Honeypot -->
+          <div class="hidden" aria-hidden="true">
+            <input type="text" name="website_url" tabindex="-1" autocomplete="off">
+          </div>
+
+          <!-- Consentement RGPD -->
+          <div class="flex items-start space-x-3 pt-2 border-t border-[#D5D4CC]">
+            <input type="checkbox" id="fr_rgpd" name="rgpd_consent" required class="mt-1 h-4 w-4 border-[#B5B4AC] text-[#161513] focus:ring-[#161513]">
+            <label for="fr_rgpd" class="text-xs text-[#464440] leading-relaxed">
+              J'accepte que les informations saisies soient traitées par SYNTESIA dans l'unique but d'étudier ma demande professionnelle et de préparer un échange de diagnostic. Conformément au RGPD et à nos <a href="shared/mentions-legales-confidentialite.html" class="underline underline-offset-4 hover:text-[#161513]">Mentions légales &amp; Politique de confidentialité</a>, aucune donnée n'est cédée à des tiers ni utilisée pour entraîner des modèles publics. *
+            </label>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" id="btnSubmitFr" class="syn-btn-primary w-full py-4 text-base">
+              <span>Valider ma fiche de pré-diagnostic et préparer l'échange</span>
+              <span class="font-mono text-sm">&rarr;</span>
+            </button>
+          </div>
+
+          <!-- Feedback Panel -->
+          <div id="feedbackFr" class="hidden p-6 border border-[#161513] bg-[#EAE9E2] text-sm text-[#161513] space-y-2"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bracketed Editorial Footer (Refero Antimetal Rule) -->
+  <footer class="border-t border-[#D5D4CC] bg-[#EAE9E2] py-14 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-[#D5D4CC]">
+      <div class="md:col-span-5">
+        <div class="flex items-center space-x-3 mb-4">
+          <div class="w-7 h-7 bg-[#161513] text-[#FAF9F5] flex items-center justify-center font-mono text-xs font-medium">SY</div>
+          <span class="font-bold text-base tracking-tight text-[#161513]">SYNTESIA FRANCE</span>
+        </div>
+        <p class="font-editorial text-2xl text-[#161513] max-w-sm">
+          Architecture de systèmes opérationnels intelligents et automatisation métier pour les entreprises.
+        </p>
+        <p class="font-mono-mark text-[#6E6B65] mt-4">
+          [STATUT : INFRASTRUCTURE EN PRÉ-PRODUCTION &middot; PROJET EN COURS DE STRUCTURATION]
+        </p>
+      </div>
+
+      <div class="md:col-span-4 space-y-2">
+        <div class="font-mono-mark text-[#8A8780] mb-3">VERTICALES &amp; PÔLES MÉTIERS</div>
+        <ul class="text-xs text-[#464440] space-y-2">
+          <li><a href="securite-privee/index.html" class="hover:text-[#161513] underline-offset-4 hover:underline">Verticale 1 : Sécurité Privée (CSI Livre VI &amp; IDCC 1351)</a></li>
+          <li><a href="batiment-renovation/index.html" class="hover:text-[#161513] underline-offset-4 hover:underline">Verticale 2 : Bâtiment, BTP &amp; Rénovation</a></li>
+          <li><a href="#catalogue-sectoriel" class="hover:text-[#161513] underline-offset-4 hover:underline">Socle Métier : HCR (IDCC 1979) &amp; Cabinets CGP</a></li>
+          <li><a href="#catalogue-sectoriel" class="hover:text-[#161513] underline-offset-4 hover:underline">Extensions à l'étude : Nettoyage, Transport, Immobilier, Architecture, SAP</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-3 space-y-2">
+        <div class="font-mono-mark text-[#8A8780] mb-3">IMPLANTATIONS &amp; GOUVERNANCE</div>
+        <ul class="text-xs text-[#464440] space-y-2">
+          <li><a href="index.html" class="font-semibold text-[#161513]">SYNTESIA France (Marché prioritaire)</a></li>
+          <li><a href="algerie/index.html" class="hover:text-[#161513] underline-offset-4 hover:underline">SYNTESIA Algérie (Second marché)</a></li>
+          <li><a href="shared/mentions-legales-confidentialite.html" class="hover:text-[#161513] underline-offset-4 hover:underline">Mentions légales &amp; Politique de confidentialité (RGPD)</a></li>
+          <li><span class="text-[#6E6B65]">Horaires d'échanges : Jours ouvrés 08h30–19h00</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#6E6B65] gap-4">
+      <div>&copy; 2026 SYNTESIA. Tous droits réservés. Système de conception dérivé avec Refero Styles.</div>
+      <div class="font-mono-mark">REF: AGIA-007 // DESIGN-LOCK: ANTIMETAL-CURSOR-V2</div>
+    </div>
+  </footer>
+
+  <script src="shared/syntesia-forms.js"></script>
+  <script>
+    window.initSyntesiaForm('leadFormSyntesiaFr', 'feedbackFr', 'France', '#5C6B28');
+  </script>
+</body>
+</html>

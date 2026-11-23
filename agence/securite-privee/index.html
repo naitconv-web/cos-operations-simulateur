@@ -11,7 +11,7 @@
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="SYNTESIA France — Pôle Sécurité Privée">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' fill='%23161513'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FAF9F5' font-family='monospace' font-weight='600' font-size='14'%3ESY%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="../../shared/syntesia-design-system.css">
+  <link rel="stylesheet" href="../shared/syntesia-design-system.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -54,13 +54,16 @@
         <a href="#enjeux" class="hover:text-[#161513] transition">Contraintes Terrain</a>
         <a href="#solutions" class="hover:text-[#161513] transition">Architecture &amp; Modules</a>
         <a href="#cos-operations" class="hover:text-[#161513] transition text-[#1D4ED8] font-semibold">COS Opérations (LAB)</a>
-        <a href="#audit-secu" class="hover:text-[#161513] transition">Diagnostic</a>
+        <a href="../../boutique/index.html" class="hover:text-[#161513] transition font-semibold text-[#3F6212]">Boutique B2B</a>
       </nav>
 
       <div class="flex items-center space-x-2">
         <button type="button" id="synMobileMenuBtn" aria-expanded="false" aria-controls="synMobileMenuPanel" class="lg:hidden syn-btn-secondary px-3 py-2 font-mono text-xs">
           [MENU]
         </button>
+        <a href="../../boutique/index.html" class="syn-btn-secondary hidden sm:inline-flex">
+          <span>Boutique B2B</span>
+        </a>
         <a href="#audit-secu" class="syn-btn-primary">
           <span>Étude d'Exploitation</span>
           <span class="font-mono text-xs">&rarr;</span>
@@ -75,8 +78,9 @@
         <a href="#sous-metiers" class="py-1.5 border-b border-[#EAE9E2]">02. Six Spécialités Prises en Charge</a>
         <a href="#solutions" class="py-1.5 border-b border-[#EAE9E2] font-semibold">03. Quatre Modules d'Ingénierie</a>
         <a href="#cos-operations" class="py-1.5 border-b border-[#EAE9E2] text-[#1D4ED8] font-semibold">04. Avant-première COS Opérations</a>
-        <a href="#audit-secu" class="py-1.5 border-b border-[#EAE9E2]">05. Demander un Diagnostic</a>
-        <a href="../../shared/mentions-legales-confidentialite.html" class="py-1.5 border-b border-[#EAE9E2] text-[#6E6B65]">06. Mentions Légales &amp; RGPD</a>
+        <a href="../../boutique/index.html" class="py-1.5 border-b border-[#EAE9E2] text-[#3F6212] font-semibold">05. Boutique B2B &amp; Tarifs Directs</a>
+        <a href="#audit-secu" class="py-1.5 border-b border-[#EAE9E2]">06. Demander un Diagnostic</a>
+        <a href="../shared/mentions-legales-confidentialite.html" class="py-1.5 border-b border-[#EAE9E2] text-[#6E6B65]">07. Mentions Légales &amp; RGPD</a>
       </div>
     </nav>
   </header>
@@ -261,9 +265,12 @@
             </p>
 
             <div class="mt-8 flex flex-wrap items-center gap-4">
-              <a href="https://naitconv-web.github.io/cos-operations-simulateur/#simulateur" target="_blank" rel="noopener noreferrer" class="syn-btn-primary">
-                <span>Accéder au Simulateur de Rentabilité</span>
+              <a href="../../boutique/index.html" class="syn-btn-primary">
+                <span>Commander une formule (Virement / 4x / CB)</span>
                 <span class="font-mono text-xs">&rarr;</span>
+              </a>
+              <a href="https://naitconv-web.github.io/cos-operations-simulateur/#simulateur" target="_blank" rel="noopener noreferrer" class="syn-btn-secondary">
+                <span>[ Accéder au Simulateur de Rentabilité &rarr; ]</span>
               </a>
               <a href="https://cal.com/nait-p5qttl" target="_blank" rel="noopener noreferrer" class="syn-btn-secondary">
                 <span>[ Réserver une démonstration Dirigeant 15 min (Cal.com) &rarr; ]</span>
@@ -378,7 +385,7 @@
           <div class="flex items-start space-x-3 pt-2 border-t border-[#D5D4CC]">
             <input type="checkbox" id="rgpd_secu" name="rgpd_consent" required class="mt-1 h-4 w-4 border-[#B5B4AC] text-[#161513]">
             <label for="rgpd_secu" class="text-xs text-[#464440] leading-relaxed">
-              J'accepte que les données transmises soient traitées exclusivement par SYNTESIA pour l'étude confidentielle de ma demande professionnelle, conformément au RGPD et à nos <a href="../../shared/mentions-legales-confidentialite.html" class="underline underline-offset-4 hover:text-[#161513]">Mentions légales &amp; Politique de confidentialité</a>. *
+              J'accepte que les données transmises soient traitées exclusivement par SYNTESIA pour l'étude confidentielle de ma demande professionnelle, conformément au RGPD et à nos <a href="../shared/mentions-legales-confidentialite.html" class="underline underline-offset-4 hover:text-[#161513]">Mentions légales &amp; Politique de confidentialité</a>. *
             </label>
           </div>
 
@@ -399,12 +406,12 @@
       <div class="flex flex-wrap gap-6">
         <a href="../index.html" class="hover:text-[#161513] underline-offset-4 hover:underline">Accueil SYNTESIA France</a>
         <a href="../batiment-renovation/index.html" class="hover:text-[#161513] underline-offset-4 hover:underline">Pôle Bâtiment, BTP &amp; Rénovation</a>
-        <a href="../../shared/mentions-legales-confidentialite.html" class="hover:text-[#161513] underline-offset-4 hover:underline">Mentions légales &amp; RGPD</a>
+        <a href="../shared/mentions-legales-confidentialite.html" class="hover:text-[#161513] underline-offset-4 hover:underline">Mentions légales &amp; RGPD</a>
       </div>
     </div>
   </footer>
 
-  <script src="../../shared/syntesia-forms.js"></script>
+  <script src="../shared/syntesia-forms.js"></script>
   <script>
     window.initSyntesiaForm('formSecu', 'feedbackSecu', 'France', '#1D4ED8');
   </script>

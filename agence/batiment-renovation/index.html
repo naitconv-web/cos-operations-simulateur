@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYNTESIA Construction — Systèmes Opérationnels pour le Bâtiment, le BTP &amp; la Rénovation</title>
+  <meta name="description" content="Pôle spécialisé SYNTESIA pour la filière construction en France : approches distinctes pour le Bâtiment neuf (DPGF, DC4), le BTP (DT-DICT, AIPR) et la Rénovation (relance devis dormants, acomptes).">
+  <meta property="og:title" content="SYNTESIA Construction — Bâtiment Neuf, BTP / Travaux Publics & Rénovation">
+  <meta property="og:description" content="Systèmes d'automatisation et de suivi de chantier greffés sur vos logiciels existants (Obat, Batigest, EBP, Onaya) : relance des devis dormants, conformité sous-traitants et suivi des heures.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="SYNTESIA France — Pôle Construction & Rénovation">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' fill='%23161513'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FAF9F5' font-family='monospace' font-weight='600' font-size='14'%3ESY%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../shared/syntesia-design-system.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "SYNTESIA — Pôle Bâtiment, BTP & Rénovation (France)",
+    "serviceType": "Ingénierie de systèmes opérationnels, relance de devis, vigilance sous-traitance et suivi de chantier pour le Bâtiment, le BTP et la Rénovation",
+    "areaServed": "FR"
+  }
+  </script>
+</head>
+<body class="selection:bg-stone-900 selection:text-stone-100">
+
+  <!-- Top Technical Bar -->
+  <div class="border-b border-[#D5D4CC] bg-[#EAE9E2] px-6 py-2">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center space-x-3">
+        <span class="syn-dot-rust"></span>
+        <span class="font-mono-mark text-[#464440]">[SYNTESIA // VERTICALE PRIORITAIRE #2] &middot; BÂTIMENT &middot; BTP &middot; RÉNOVATION</span>
+      </div>
+      <div class="flex items-center space-x-6">
+        <a href="../index.html" class="font-mono-mark text-[#464440] hover:text-[#161513] underline-offset-4 hover:underline">&larr; Portail Principal SYNTESIA France</a>
+        <a href="../securite-privee/index.html" class="font-mono-mark text-[#6E6B65] hover:text-[#161513]">Pôle Sécurité Privée &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-50 syn-nav-frost">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center space-x-3.5">
+        <div class="w-9 h-9 bg-[#161513] text-[#FAF9F5] flex items-center justify-center font-mono text-sm font-medium">SY</div>
+        <div class="flex flex-col">
+          <span class="font-bold text-lg tracking-tight text-[#161513] leading-none">SYNTESIA</span>
+          <span class="font-mono-mark text-[#B84A27] mt-1">BÂTIMENT &middot; BTP &middot; RÉNOVATION</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-[#464440]" aria-label="Navigation verticale construction">
+        <a href="#trois-metiers" class="hover:text-[#161513] transition">3 Métiers Distingués</a>
+        <a href="#modules-operationnels" class="hover:text-[#161513] transition">Modules d'Automatisation</a>
+        <a href="#audit-btp" class="hover:text-[#161513] transition">Diagnostic</a>
+        <a href="../../boutique/index.html?pack=4" class="hover:text-[#161513] transition font-semibold text-[#3F6212]">Boutique B2B</a>
+      </nav>
+
+      <div class="flex items-center space-x-2">
+        <button type="button" id="synMobileMenuBtn" aria-expanded="false" aria-controls="synMobileMenuPanel" class="lg:hidden syn-btn-secondary px-3 py-2 font-mono text-xs">
+          [MENU]
+        </button>
+        <a href="../../boutique/index.html?pack=4" class="syn-btn-secondary hidden sm:inline-flex">
+          <span>Boutique B2B</span>
+        </a>
+        <a href="#audit-btp" class="syn-btn-primary">
+          <span>Demander une Étude</span>
+          <span class="font-mono text-xs">&rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Panel (< 1024px) -->
+    <nav id="synMobileMenuPanel" class="hidden lg:hidden border-t border-[#D5D4CC] bg-[#FAF9F5] px-6 py-4 space-y-3 text-sm font-medium text-[#161513]" aria-label="Menu mobile construction">
+      <div class="grid grid-cols-1 gap-2">
+        <a href="#trois-metiers" class="py-1.5 border-b border-[#EAE9E2] font-semibold">01. Distinction Rénovation / Bâtiment / BTP</a>
+        <a href="#modules-operationnels" class="py-1.5 border-b border-[#EAE9E2]">02. Compatibilité Logicielle &amp; Bienséance</a>
+        <a href="../../boutique/index.html?pack=4" class="py-1.5 border-b border-[#EAE9E2] text-[#3F6212] font-semibold">03. Boutique B2B (Kit Relance Devis 390 € HT)</a>
+        <a href="#audit-btp" class="py-1.5 border-b border-[#EAE9E2]">04. Demander un Diagnostic</a>
+        <a href="../shared/mentions-legales-confidentialite.html" class="py-1.5 border-b border-[#EAE9E2] text-[#6E6B65]">05. Mentions Légales &amp; RGPD</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-6 pt-16 pb-20">
+      <div class="syn-frame syn-corner-tl syn-corner-br p-8 sm:p-14">
+        <div class="flex flex-wrap items-center gap-3 mb-8">
+          <span class="syn-tag"><span class="syn-dot-rust"></span> [VERT-FR-02 // FILIÈRE CONSTRUCTION]</span>
+          <span class="syn-tag">2A. BÂTIMENT NEUF</span>
+          <span class="syn-tag">2B. TRAVAUX PUBLICS (BTP)</span>
+          <span class="syn-tag">2C. RÉNOVATION &amp; ARTISANS</span>
+        </div>
+
+        <h1 class="font-editorial text-4xl sm:text-6xl text-[#161513] max-w-4xl">
+          Des systèmes adaptés à votre réalité de chantier : <span class="font-editorial-italic text-[#B84A27]">devis relancés, sous-traitants conformes et suivi des heures</span>.
+        </h1>
+        <p class="mt-6 text-lg text-[#464440] max-w-3xl leading-relaxed">
+          SYNTESIA ne confond pas l'artisan rénovateur intervenant chez un particulier avec la PME de gros œuvre en marchés allotis ou l'entreprise de VRD/Travaux Publics. Nous déployons des processus ciblés qui se greffent sur vos logiciels actuels (Batigest, Obat, EBP, Onaya, Excel) pour supprimer la perte de devis et sécuriser l'administratif de chantier.
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <a href="#audit-btp" class="syn-btn-primary">
+            <span>Initier un diagnostic pour mon entreprise</span>
+            <span class="font-mono text-xs">&rarr;</span>
+          </a>
+          <a href="../../boutique/index.html?pack=4" class="syn-btn-secondary">
+            <span>[ Commander Kit Relance Devis (390 € HT) &rarr; ]</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1 : DISTINCTION EXPLICITE DES 3 SOUS-SECTEURS (AGIA-005) -->
+    <section id="trois-metiers" class="max-w-7xl mx-auto px-6 py-16 border-t border-[#D5D4CC]">
+      <div class="mb-12">
+        <span class="font-mono-mark text-[#B84A27]">[BTP-01 // SEGMENTATION OPÉRATIONNELLE]</span>
+        <h2 class="font-editorial text-3xl sm:text-5xl text-[#161513] mt-2">
+          Trois métiers distincts, <span class="font-editorial-italic">trois architectures de processus</span>.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- 2C : Rénovation -->
+        <div class="syn-card p-8 border-t-4 border-t-[#5C6B28]">
+          <div class="font-mono-mark text-[#5C6B28] mb-2">[PARCOURS 2C // CYCLES COURTS B2C &amp; B2B]</div>
+          <h3 class="text-xl font-bold text-[#161513] mb-2">Rénovation &amp; Artisans du Second Œuvre</h3>
+          <p class="text-xs text-[#6E6B65] mb-4">Plomberie-chauffage, menuiserie, carrelage, peinture, électricité, rénovation énergétique RGE et contractants généraux.</p>
+          <div class="space-y-3 text-xs text-[#464440] border-t border-[#D5D4CC] pt-4">
+            <p><strong>1. Qualification entrante :</strong> filtrage des demandes avant déplacement sur site (nature des travaux, surface, délai, budget indicatif).</p>
+            <p><strong>2. Relance des devis dormants :</strong> suivi opérationnel courtois (J+3, J+7, max 2 relances) émis au nom de l'artisan aux horaires de bureau (8h30–19h00).</p>
+            <p><strong>3. Acompte &amp; Heures chantier :</strong> sécurisation de l'acompte à la commande et suivi simple des heures passées par rapport au devis initial.</p>
+          </div>
+        </div>
+
+        <!-- 2A : Bâtiment -->
+        <div class="syn-card p-8 border-t-4 border-t-[#161513]">
+          <div class="font-mono-mark text-[#161513] mb-2">[PARCOURS 2A // MARCHÉS ALLOTIS &amp; PME]</div>
+          <h3 class="text-xl font-bold text-[#161513] mb-2">Bâtiment (Construction Neuve &amp; Corps d'État)</h3>
+          <p class="text-xs text-[#6E6B65] mb-4">Maçonnerie, gros œuvre, charpente-couverture, façades, lots techniques CVC/CFO-CFA travaillant pour promoteurs et maîtres d'ouvrage.</p>
+          <div class="space-y-3 text-xs text-[#464440] border-t border-[#D5D4CC] pt-4">
+            <p><strong>1. Vigilance sous-traitance (Art. L.8222-1) :</strong> collecte et contrôle semestriel automatisé des attestations URSSAF, pièces d'identification légale, décennales par activité, cartes CIBTP et actes DC4.</p>
+            <p><strong>2. Situations mensuelles sur DPGF :</strong> préparation des états d'avancement avant la date limite du maître d'œuvre pour éviter tout décalage de paiement.</p>
+            <p><strong>3. Réserves OPR &amp; Retenues 5 % :</strong> traçabilité photo des levées de réserves et constitution des DOE en fin de chantier.</p>
+          </div>
+        </div>
+
+        <!-- 2B : BTP / Travaux Publics -->
+        <div class="syn-card p-8 border-t-4 border-t-[#B84A27]">
+          <div class="font-mono-mark text-[#B84A27] mb-2">[PARCOURS 2B // INFRASTRUCTURES &amp; PARC ENGINS]</div>
+          <h3 class="text-xl font-bold text-[#161513] mb-2">BTP, Travaux Publics, VRD &amp; Génie Civil</h3>
+          <p class="text-xs text-[#6E6B65] mb-4">Terrassement, voirie et réseaux divers, canalisations, réseaux secs/humides et ouvrages d'art en marchés publics et contrats-cadres.</p>
+          <div class="space-y-3 text-xs text-[#464440] border-t border-[#D5D4CC] pt-4">
+            <p><strong>1. Suivi DT-DICT, AIPR &amp; CACES :</strong> tableau de bord d'échéances des déclarations de travaux à proximité de réseaux et des habilitations conducteurs d'engins.</p>
+            <p><strong>2. Rapports journaliers terrain :</strong> saisie mobile en fin de journée par le chef de chantier (effectif, heures machines, bons de pesée granulats/enrobés).</p>
+            <p><strong>3. Appels d'offres publics (BOAMP) :</strong> veille automatisée et assistance à la structuration des mémoires techniques BTP.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 : MODULES TRANSVERSAUX -->
+    <section id="modules-operationnels" class="max-w-7xl mx-auto px-6 py-16 border-t border-[#D5D4CC]">
+      <div class="mb-10">
+        <span class="font-mono-mark text-[#8A8780]">[BTP-02 // COMPATIBILITÉ LOGICIELLE]</span>
+        <h2 class="font-editorial text-3xl sm:text-5xl text-[#161513] mt-2">
+          Conçu pour s'intégrer à vos habitudes, <span class="font-editorial-italic">sans changer votre logiciel de devis</span>.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="syn-card-alt p-6">
+          <div class="font-mono-mark text-[#161513] mb-2">01 // ZÉRO MIGRATION COMPTABLE</div>
+          <p class="text-xs text-[#464440] leading-relaxed">Vous conservez votre outil actuel de chiffrage et de facturation (Obat, Batigest, EBP, Tolteck, Onaya). SYNTESIA intervient sur le suivi commercial, la collecte documentaire et la remontée terrain.</p>
+        </div>
+        <div class="syn-card-alt p-6">
+          <div class="font-mono-mark text-[#161513] mb-2">02 // RESPECT DE LA BIENSÉANCE</div>
+          <p class="text-xs text-[#464440] leading-relaxed">Toutes les relances de devis respectent notre Directive Globale : ton sobre et professionnel, émission strictement limitée aux jours ouvrés (08h30–19h00), maximum 2 relances par devis et faculté d'opposition simple.</p>
+        </div>
+        <div class="syn-card-alt p-6">
+          <div class="font-mono-mark text-[#161513] mb-2">03 // CONFORMITÉ DÉCENNALE</div>
+          <p class="text-xs text-[#464440] leading-relaxed">Préservation stricte de vos mentions légales et d'assurance décennale obligatoire (Loi Spinetta — Art. 1792 du Code civil) sur tous les documents échangés.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulaire d'Étude Bâtiment / BTP / Rénovation -->
+    <section id="audit-btp" class="max-w-4xl mx-auto px-6 py-20">
+      <div class="syn-frame syn-corner-tl syn-corner-br p-8 sm:p-12">
+        <div class="border-b border-[#D5D4CC] pb-6 mb-8">
+          <span class="syn-tag"><span class="syn-dot-rust"></span> [DIAG-BTP // ÉTUDE OPÉRATIONNELLE CONSTRUCTION &amp; RÉNOVATION]</span>
+          <h2 class="font-editorial text-3xl sm:text-5xl text-[#161513] mt-3">
+            Étudier les processus de votre entreprise
+          </h2>
+          <p class="text-sm text-[#464440] mt-2">
+            Indiquez votre sous-métier exact (Bâtiment, BTP ou Rénovation) et le point de friction prioritaire que vous souhaitez structurer.
+          </p>
+        </div>
+
+        <form id="formBtp" class="space-y-6" novalidate>
+          <input type="hidden" name="marche" value="France">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="btp_nom" class="block font-mono-mark text-[#464440] mb-2">Dirigeant / Chargé d'Affaires *</label>
+              <input type="text" id="btp_nom" name="nom" required placeholder="Nom &amp; Prénom" class="syn-input">
+            </div>
+            <div>
+              <label for="btp_entreprise" class="block font-mono-mark text-[#464440] mb-2">Nom de l'Entreprise *</label>
+              <input type="text" id="btp_entreprise" name="entreprise" required placeholder="Raison Sociale" class="syn-input">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="btp_email" class="block font-mono-mark text-[#464440] mb-2">E-mail Professionnel *</label>
+              <input type="email" id="btp_email" name="email" required placeholder="contact@entreprise-btp.fr" class="syn-input">
+            </div>
+            <div>
+              <label for="btp_tel" class="block font-mono-mark text-[#464440] mb-2">Téléphone Portable *</label>
+              <input type="tel" id="btp_tel" name="telephone" required placeholder="06 / 07 ..." class="syn-input">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="btp_verticale" class="block font-mono-mark text-[#464440] mb-2">Votre Métier Principal *</label>
+              <select id="btp_verticale" name="verticale" required class="syn-input">
+                <option value="Rénovation (Second œuvre / Artisans)">2C. Rénovation &amp; Second Œuvre (Plomberie, Menuiserie, Carrelage, RGE...)</option>
+                <option value="Bâtiment (Construction neuve / Gros œuvre)">2A. Bâtiment Neuf, Gros Œuvre &amp; Entreprise Générale</option>
+                <option value="BTP (Travaux Publics / VRD / Génie Civil)">2B. BTP, Travaux Publics, VRD &amp; Terrassement</option>
+              </select>
+            </div>
+            <div>
+              <label for="btp_besoin" class="block font-mono-mark text-[#464440] mb-2">Priorité Opérationnelle *</label>
+              <select id="btp_besoin" name="besoin" required class="syn-input">
+                <option value="Structurer la relance des devis en attente et les acomptes">Structurer la relance des devis en attente et les acomptes</option>
+                <option value="Collecte et contrôle de conformité des sous-traitants (URSSAF/Décennale)">Collecte et contrôle de conformité des sous-traitants (URSSAF/Décennale)</option>
+                <option value="Suivi des heures chantiers, engins et rapports journaliers">Suivi des heures chantiers, engins et rapports journaliers</option>
+                <option value="Suivi DT-DICT, habilitations AIPR/CACES ou appels d'offres">Suivi DT-DICT, habilitations AIPR/CACES ou appels d'offres</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="btp_description" class="block font-mono-mark text-[#464440] mb-2">Logiciel de devis actuel et volume approximatif de dossiers</label>
+            <textarea id="btp_description" name="description" rows="3" placeholder="Ex: Logiciel Obat / Batigest, environ 15 devis par mois ou 10 sous-traitants à suivre..." class="syn-input"></textarea>
+          </div>
+
+          <!-- Honeypot -->
+          <div class="hidden" aria-hidden="true">
+            <input type="text" name="business_site" tabindex="-1" autocomplete="off">
+          </div>
+
+          <!-- RGPD -->
+          <div class="flex items-start space-x-3 pt-2 border-t border-[#D5D4CC]">
+            <input type="checkbox" id="rgpd_btp" name="rgpd_consent" required class="mt-1 h-4 w-4 border-[#B5B4AC] text-[#161513]">
+            <label for="rgpd_btp" class="text-xs text-[#464440] leading-relaxed">
+              J'accepte que les données transmises soient utilisées par SYNTESIA pour l'étude confidentielle de ma demande professionnelle, conformément au RGPD et à nos <a href="../shared/mentions-legales-confidentialite.html" class="underline underline-offset-4 hover:text-[#161513]">Mentions légales &amp; Politique de confidentialité</a>. *
+            </label>
+          </div>
+
+          <button type="submit" class="syn-btn-primary w-full py-4 text-base">
+            <span>Transmettre ma demande d'étude Construction / Rénovation</span>
+            <span class="font-mono text-sm">&rarr;</span>
+          </button>
+
+          <div id="feedbackBtp" class="hidden p-6 border border-[#161513] bg-[#EAE9E2] text-xs text-[#161513]"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-[#D5D4CC] bg-[#EAE9E2] py-10 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-[#6E6B65] gap-4">
+      <div>&copy; 2026 SYNTESIA &middot; Pôle Bâtiment, BTP &amp; Rénovation (France). Projet en cours de structuration.</div>
+      <div class="flex flex-wrap gap-6">
+        <a href="../index.html" class="hover:text-[#161513] underline-offset-4 hover:underline">Accueil SYNTESIA France</a>
+        <a href="../securite-privee/index.html" class="hover:text-[#161513] underline-offset-4 hover:underline">Pôle Sécurité Privée</a>
+        <a href="../shared/mentions-legales-confidentialite.html" class="hover:text-[#161513] underline-offset-4 hover:underline">Mentions légales &amp; RGPD</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../shared/syntesia-forms.js"></script>
+  <script>
+    window.initSyntesiaForm('formBtp', 'feedbackBtp', 'France', '#B84A27');
+  </script>
+</body>
+</html>

@@ -24,7 +24,19 @@ window.COS_OPERATIONS_CONFIG = window.OMNISECUR_CONFIG = {
     calUrl: "https://cal.com/nait-p5qttl",
     crmWebhookUrl: "",
     stripeVerifyUrl: "",
+    bankName: "",
+    bic: "",
     iban: "",
+    cardGlobalUrl: "",
+    cardLinks: {
+      1: "",
+      2: "",
+      3: "",
+      4: "",
+      5: ""
+    },
+    paypalLink: "",
+    gocardlessLink: "",
     stripeLinks: {
       1: "",
       2: "",

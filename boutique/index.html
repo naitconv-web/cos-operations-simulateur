@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:; object-src 'none'; base-uri 'self';" />
+  <title>Boutique B2B &amp; Commande Directe — COS Opérations × SYNTESIA</title>
+  <meta name="description" content="Commandez nos formules B2B Sécurité Privée (IDCC 1351), BTP Relance Devis et Déploiement Agence SYNTESIA 7 Jours. Virement SEPA express, Proforma A4 instantanée, Carte Pro et paiement en 4x." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' fill='%23161513'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FAF9F5' font-family='monospace' font-weight='600' font-size='14'%3ECO%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="boutique.css" />
+</head>
+<body>
+
+  <!-- Barre technique supérieure -->
+  <div class="tech-topbar no-print">
+    <div class="container tech-topbar-inner">
+      <div class="tech-topbar-left">
+        <span class="tech-dot"></span>
+        <span>[PORTAIL B2B // COMMANDE DIRECTE &amp; FACTURATION PROFORMA] &middot; SÉCURITÉ PRIVÉE · BTP · AGENCE SYNTESIA</span>
+      </div>
+      <div class="tech-topbar-right">
+        <span>[VIREMENT SEPA 0% FRAIS]</span>
+        <span>[PAIEMENT 4X / CB PRO / ACOMPTE]</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- En-tête sticky -->
+  <header class="site-header no-print">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html">
+        <div class="brand-mark">CO</div>
+        <div class="brand-text">
+          <strong>COS Opérations × SYNTESIA</strong>
+          <span>Portail E-Commerce B2B &amp; Actifs Métiers</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Navigation boutique">
+        <a href="../index.html#simulateur">01. Simulateur IDCC 1351</a>
+        <a href="../agence/securite-privee/index.html">02. Page Sécurité Privée</a>
+        <a href="#catalogue" style="color:var(--ink);font-weight:700">03. Catalogue Formules (5)</a>
+        <a href="#checkout-section">04. Règlement &amp; Proforma</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm" href="#checkout-section">Commander &rarr;</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tiroir Config Opérateur (accessible par ?admin=1 ou bouton pied de page) -->
+  <section id="adminDrawer" class="admin-drawer hidden no-print" aria-label="Configuration bancaire et moyens de paiement">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+        <div>
+          <strong style="font-size:16px;color:var(--ink)">⚙️ Configuration Encaissements &amp; IBAN (Sans Stripe)</strong>
+          <div style="font-size:12.5px;color:var(--ink-muted)">Renseignez vos coordonnées bancaires et liens de paiement puis téléchargez <code>site-config.js</code> pour mettre à jour votre hébergement o2switch en 10 secondes.</div>
+        </div>
+        <button id="btnCloseAdmin" class="btn btn-sm" type="button">Fermer</button>
+      </div>
+
+      <div class="form-grid-2" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px">
+        <div class="field"><label>Nom de la Banque Pro</label><input id="admBankName" type="text" placeholder="Ex : Qonto / Crédit Agricole / Revolut Pro" /></div>
+        <div class="field"><label>IBAN Officiel (FR76...)</label><input id="admIban" type="text" placeholder="FR76 .... .... .... ...." /></div>
+        <div class="field"><label>Code BIC / SWIFT</label><input id="admBic" type="text" placeholder="Ex : QNTOFRP1XXX" /></div>
+        <div class="field"><label>Lien Carte Bancaire Pro (SumUp / Qonto / Mollie / PayPlug)</label><input id="admCardGlobal" type="url" placeholder="https://pay.sumup.com/..." /></div>
+        <div class="field"><label>Lien PayPal Business / PayPal 4x</label><input id="admPaypal" type="url" placeholder="https://www.paypal.com/paypalme/..." /></div>
+        <div class="field"><label>Lien Mandat / Prélèvement GoCardless</label><input id="admGc" type="url" placeholder="https://pay.gocardless.com/..." /></div>
+        <div class="field"><label>SIREN / SIRET émetteur</label><input id="admSiren" type="text" /></div>
+        <div class="field">
+          <label>Régime TVA unique</label>
+          <select id="admTvaRegime">
+            <option value="293B">Franchise en base — art. L. 223-3 du CIBS (ex-293 B CGI)</option>
+            <option value="20">TVA normale 20 %</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="action-cluster" style="margin-top:14px">
+        <button id="btnSaveAdmin" class="btn btn-primary" type="button">💾 Aperçu immédiat dans ce navigateur</button>
+        <button id="btnDownloadSiteCfg" class="btn btn-emerald" type="button">⬇️ Télécharger site-config.js (Pour o2switch / GitHub)</button>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- Hero Boutique -->
+    <section class="store-hero no-print">
+      <div class="container">
+        <div class="hero-frame" style="padding:36px 32px">
+          <span class="eyebrow">[CATALOGUE B2B DIRECT // LIVRAISON NUMÉRIQUE &amp; DÉPLOIEMENT CLÉ EN MAIN]</span>
+          <h1 style="margin:10px 0 12px;font-size:clamp(28px,4vw,44px);line-height:1.12">
+            Nos solutions prêtes à déployer. <span class="font-editorial-italic">Commande directe &amp; Facture Proforma immédiate.</span>
+          </h1>
+          <p class="hero-lead" style="margin-bottom:20px;max-width:820px">
+            Choisissez l'actif adapté à votre entreprise (<b>Sécurité Privée IDCC 1351</b>, <b>Bâtiment &amp; Rénovation</b> ou <b>Déploiement Agence SYNTESIA 7 Jours</b>), générez instantanément votre <b>Bon de Commande / Facture Proforma A4</b> et réglez selon votre préférence de trésorerie : virement bancaire instantané, acompte, carte pro européenne ou paiement en 4x.
+          </p>
+          <div class="hero-cta-row">
+            <a class="btn btn-primary btn-lg" href="#catalogue">Choisir ma formule (dès 390 € HT) &rarr;</a>
+            <a class="btn btn-lg" href="#checkout-section">[ Générer un Bon de Commande / Proforma ]</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catalogue des 5 Actifs -->
+    <section id="catalogue" class="section no-print" style="padding-top:16px">
+      <div class="container">
+        <div class="store-filter-bar">
+          <div>
+            <strong style="font-size:15px">Filtrer par domaine d'activité :</strong>
+          </div>
+          <div class="filter-pills" role="group" aria-label="Filtres catalogue">
+            <button class="filter-btn active" type="button" data-filter="all">Toutes nos formules (5)</button>
+            <button class="filter-btn" type="button" data-filter="securite">Sécurité Privée (3)</button>
+            <button class="filter-btn" type="button" data-filter="btp">BTP &amp; Rénovation (1)</button>
+            <button class="filter-btn" type="button" data-filter="agence">Agence Clé en Main (1)</button>
+          </div>
+        </div>
+
+        <div id="catalogGrid" class="catalog-grid">
+          <!-- Peuplé dynamiquement par boutique.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Avantages Paiement B2B pour Dirigeants (Night Theater) -->
+    <section class="night-advantages no-print">
+      <div class="container">
+        <span class="section-tag" style="color:#86efac;border-color:#1e293b;background:#101720">[MOYENS DE RÈGLEMENT PENSÉS POUR LES DIRIGEANTS B2B]</span>
+        <h2 style="color:var(--cream);margin:10px 0 6px;font-size:clamp(24px,3vw,34px)">Des modalités de paiement adaptées à votre gestion d'entreprise.</h2>
+        <p style="color:var(--cream-muted);max-width:740px;margin:0">Conservez le contrôle total de votre comptabilité et de votre trésorerie grâce à quatre circuits de règlement européens sécurisés.</p>
+
+        <div class="night-advantages-grid">
+          <div class="night-adv-card">
+            <span class="adv-tag">01 // RECOMMANDÉ B2B</span>
+            <h4>Virement SEPA Instantané</h4>
+            <p>Zéro frais supplémentaire, aucun plafond de carte bancaire bloquant, traçabilité comptable directe sur votre relevé société.</p>
+          </div>
+          <div class="night-adv-card">
+            <span class="adv-tag">02 // JUSTIFICATIF IMMÉDIAT</span>
+            <h4>Proforma &amp; BC A4 en 1 clic</h4>
+            <p>Téléchargez ou imprimez votre Facture Proforma / Bon de Commande complet (SIREN, CGV, TVA) avant même de lancer le règlement.</p>
+          </div>
+          <div class="night-adv-card">
+            <span class="adv-tag">03 // TRÉSORERIE MAÎTRISÉE</span>
+            <h4>Acompte 40/50 % ou 4x</h4>
+            <p>Démarrez votre atelier ou déploiement avec un acompte (solde uniquement à la livraison), ou étalez en 4 mensualités via PayPal 4x.</p>
+          </div>
+          <div class="night-adv-card">
+            <span class="adv-tag">04 // ALTERNATIVES CB EUROPÉENNES</span>
+            <h4>Carte Pro &amp; Prélèvement SEPA</h4>
+            <p>Règlement rapide par carte société (liens directs Banque Pro / Mollie / SumUp / PayPlug) ou mandat SEPA B2B (GoCardless).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tunnel de Commande & Paiement Multi-Moyens -->
+    <section id="checkout-section" class="section section-white">
+      <div class="container">
+        <div class="section-head no-print">
+          <span class="section-tag">[MOD-CHECKOUT // CONFIGURATION &amp; RÈGLEMENT DIRECT]</span>
+          <h2>Finaliser votre commande &amp; éditer votre <span class="font-editorial-italic">Bon de Commande A4</span>.</h2>
+          <p>Renseignez les coordonnées de votre société pour générer la pièce comptable officielle, puis sélectionnez votre mode de règlement.</p>
+        </div>
+
+        <div class="checkout-grid no-print">
+          <!-- Colonne Gauche : Paramètres commande & fiche entreprise -->
+          <div class="panel-card">
+            <h3>1. Votre formule &amp; échelonnement</h3>
+
+            <div class="form-grid-2">
+              <div class="field" style="grid-column:1/-1">
+                <label for="ordFormula">Formule sélectionnée</label>
+                <select id="ordFormula">
+                  <option value="1">Pack 1 (Sécurité) — Arsenal Documentaire &amp; Chiffrage v3.2 (690 € HT)</option>
+                  <option value="2" selected>Pack 2 (Sécurité ★) — COS Opérations (Sentinelle IA) + Atelier 2h (980 € HT)</option>
+                  <option value="3">Pack 3 (Sécurité) — Commando Réponse AO 48h (1 450 € HT)</option>
+                  <option value="4">Formule 4 (BTP) — Kit Relance Devis &amp; Bouclier Conformité (390 € HT)</option>
+                  <option value="5">Formule 5 (Agence) — Pack Déploiement Intégral 7 Jours SYNTESIA (1 490 € HT)</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="ordPaymentMode">Modalité de trésorerie</label>
+                <select id="ordPaymentMode">
+                  <option value="100">100 % Comptant (Livraison prioritaire)</option>
+                  <option value="50">Acompte 50 % à la commande + Solde 50 % à livraison</option>
+                  <option value="40">Acompte 40 % à la commande + Solde 60 % à recette J+7</option>
+                  <option value="4x">Paiement en 4 mensualités (via PayPal Business 4x)</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="ordRef">N° Référence Bon de Commande</label>
+                <input id="ordRef" type="text" />
+              </div>
+            </div>
+
+            <label id="ordMonthlyWrap" class="opt-check-box hidden">
+              <input id="ordIncludeMonthly" type="checkbox" />
+              <span id="ordMonthlyLabel">Ajouter le suivi mensuel optionnel</span>
+            </label>
+
+            <h3 style="margin-top:22px">2. Identification de votre entreprise (pour la Proforma)</h3>
+            <div class="form-grid-2">
+              <div class="field"><label for="ordClientNom">Raison sociale *</label><input id="ordClientNom" type="text" placeholder="Ex : Sécurité Occitanie SAS" /></div>
+              <div class="field"><label for="ordClientSiren">N° SIREN / SIRET</label><input id="ordClientSiren" type="text" placeholder="9 ou 14 chiffres" /></div>
+              <div class="field"><label for="ordClientRep">Nom &amp; Fonction Dirigeant *</label><input id="ordClientRep" type="text" placeholder="M. / Mme — Gérant / Président" /></div>
+              <div class="field"><label for="ordClientEmail">Email de livraison *</label><input id="ordClientEmail" type="email" placeholder="direction@entreprise.fr" /></div>
+              <div class="field"><label for="ordClientTel">Téléphone / WhatsApp *</label><input id="ordClientTel" type="text" placeholder="06 ..." /></div>
+              <div class="field"><label for="ordDate">Date du document</label><input id="ordDate" type="date" /></div>
+              <div class="field" style="grid-column:1/-1"><label for="ordClientAdresse">Adresse de facturation (Siège social)</label><input id="ordClientAdresse" type="text" placeholder="Adresse complète, Code postal et Ville" /></div>
+            </div>
+
+            <label class="consent-check" style="margin-top:12px">
+              <input id="ordRgpdConsent" type="checkbox" />
+              <span>J'accepte les Conditions Générales de Vente B2B et le traitement professionnel de mes coordonnées exclusivement pour cette commande (RGPD art. 13/28 — aucune revente commerciale).</span>
+            </label>
+          </div>
+
+          <!-- Colonne Droite : Récapitulatif & Choix Moyen de Paiement -->
+          <div class="panel-card">
+            <h3>3. Récapitulatif &amp; Règlement</h3>
+
+            <div class="summary-box">
+              <div class="summary-line">
+                <span>Formule</span>
+                <strong id="sumOfferName" style="text-align:right">COS Opérations (Sentinelle IA) + Atelier 2h</strong>
+              </div>
+              <div class="summary-line">
+                <span>Montant Total HT</span>
+                <span id="sumHt" class="num">980,00 €</span>
+              </div>
+              <div class="summary-line">
+                <span id="sumTvaLabel">TVA non applicable — art. L. 223-3 du CIBS</span>
+                <span id="sumTvaAmt" class="num">0,00 €</span>
+              </div>
+              <div id="sumMonthlyRow" class="summary-line hidden">
+                <span>Suivi mensuel optionnel</span>
+                <strong id="sumMonthlyVal" class="num">0,00 €</strong>
+              </div>
+              <div class="summary-line">
+                <span>Total TTC</span>
+                <strong id="sumTotalTtc" class="num">980,00 €</strong>
+              </div>
+              <div class="summary-line total">
+                <span id="sumDueLabel">Acompte à régler aujourd'hui</span>
+                <span id="sumDueNow" class="num">490,00 €</span>
+              </div>
+              <div id="sumSoldeRow" class="summary-line" style="font-size:12.5px;color:var(--ink-soft)">
+                <span>Reste dû ultérieurement</span>
+                <span id="sumSoldeVal" class="num">490,00 € à la livraison</span>
+              </div>
+            </div>
+
+            <label style="display:block;font-size:13px;font-weight:700;margin-bottom:8px">Choisissez votre moyen de paiement :</label>
+            <div class="pay-tabs" role="tablist">
+              <button id="tabPay_virement" class="pay-tab active" type="button">
+                <strong>🏦 Virement SEPA Express</strong>
+                <span>0 % frais · Copie IBAN 1 clic</span>
+              </button>
+              <button id="tabPay_carte" class="pay-tab" type="button">
+                <strong>💳 Carte Bancaire Pro</strong>
+                <span>Banque Pro / Mollie / SumUp</span>
+              </button>
+              <button id="tabPay_paypal" class="pay-tab" type="button">
+                <strong>📅 Paiement en 4x / PayPal</strong>
+                <span>Étalement trésorerie 4 mois</span>
+              </button>
+              <button id="tabPay_sepa" class="pay-tab" type="button">
+                <strong>🔄 Prélèvement SEPA B2B</strong>
+                <span>Mandat GoCardless sans plafond</span>
+              </button>
+            </div>
+
+            <!-- Panneau 1 : Virement Express -->
+            <div id="panelPay_virement" class="pay-panel">
+              <div id="bankReadyBox">
+                <div style="font-size:13.5px;margin-bottom:10px">
+                  <strong>Effectuez un virement instantané depuis votre banque pro</strong> avec les coordonnées officielles ci-dessous :
+                </div>
+                <div class="bank-coord-grid">
+                  <div class="bank-row">
+                    <div>
+                      <span class="bank-row-label">Titulaire du compte</span>
+                      <span id="valBankHolder" class="bank-row-val">Mounir NAIT MOHAND</span>
+                    </div>
+                  </div>
+                  <div class="bank-row">
+                    <div>
+                      <span class="bank-row-label">Domiciliation</span>
+                      <span id="valBankName" class="bank-row-val">Compte Pro</span>
+                    </div>
+                  </div>
+                  <div class="bank-row">
+                    <div>
+                      <span class="bank-row-label">IBAN (Zone SEPA)</span>
+                      <span id="valBankIban" class="bank-row-val"></span>
+                    </div>
+                    <button id="btnCopyIban" class="btn btn-sm" type="button">📋 Copier IBAN</button>
+                  </div>
+                  <div class="bank-row">
+                    <div>
+                      <span class="bank-row-label">BIC / SWIFT</span>
+                      <span id="valBankBic" class="bank-row-val"></span>
+                    </div>
+                    <button id="btnCopyBic" class="btn btn-sm" type="button">📋 Copier BIC</button>
+                  </div>
+                </div>
+              </div>
+
+              <div id="bankPendingBox" class="status-box warn" style="margin-bottom:12px">
+                <strong>RIB / IBAN officiel prêt à recevoir votre virement :</strong><br />
+                Téléchargez votre Proforma A4 ci-dessous puis cliquez sur un des boutons ci-dessous pour recevoir immédiatement notre IBAN officiel vérifié et lancer votre commande (réponse &lt; 2h ouvrées).
+                <div class="action-cluster" style="margin-top:10px">
+                  <button id="btnAskRibWa" class="btn btn-emerald btn-sm" type="button">💬 Recevoir l'IBAN par WhatsApp</button>
+                  <button id="btnAskRibMail" class="btn btn-primary btn-sm" type="button">✉️ Recevoir l'IBAN par Email</button>
+                </div>
+              </div>
+
+              <div class="bank-coord-grid" style="margin-top:10px">
+                <div class="bank-row">
+                  <div>
+                    <span class="bank-row-label">Motif / Référence obligatoire du virement</span>
+                    <span id="valBankRef" class="bank-row-val">BC-2026-01</span>
+                  </div>
+                  <button id="btnCopyRef" class="btn btn-sm" type="button">📋 Copier Réf</button>
+                </div>
+                <div class="bank-row">
+                  <div>
+                    <span class="bank-row-label">Montant exact à virer aujourd'hui</span>
+                    <span id="valBankAmount" class="bank-row-val">490,00 €</span>
+                  </div>
+                  <button id="btnCopyAmt" class="btn btn-sm" type="button">📋 Copier Montant</button>
+                </div>
+              </div>
+
+              <div class="action-cluster" style="margin-top:14px">
+                <button id="btnNotifyVirementWa" class="btn btn-emerald" style="flex:1;justify-content:center" type="button">✅ J'ai effectué le virement — Débloquer (WhatsApp)</button>
+                <button id="btnNotifyVirementMail" class="btn btn-primary" style="flex:1;justify-content:center" type="button">✉️ Confirmer par Email</button>
+              </div>
+            </div>
+
+            <!-- Panneau 2 : Carte Bancaire Pro (Sans Stripe) -->
+            <div id="panelPay_carte" class="pay-panel hidden">
+              <p id="cardHintMsg" style="margin:0 0 14px;font-size:13.5px;color:var(--ink-muted)"></p>
+              <div class="action-cluster">
+                <button id="btnOpenCardPay" class="btn btn-emerald" style="width:100%;justify-content:center" type="button">💳 Payer par Carte Bancaire Sécurisée &rarr;</button>
+                <button id="btnReqCardLinkWa" class="btn btn-emerald" style="flex:1;justify-content:center" type="button">💬 Recevoir mon lien CB direct (WhatsApp)</button>
+                <button id="btnReqCardLinkMail" class="btn btn-primary" style="flex:1;justify-content:center" type="button">✉️ Demander lien CB par Email</button>
+              </div>
+            </div>
+
+            <!-- Panneau 3 : PayPal Business / 4x -->
+            <div id="panelPay_paypal" class="pay-panel hidden">
+              <p style="margin:0 0 8px;font-size:13.5px"><strong>Réglez en 4 mensualités sans impacter votre trésorerie</strong> (sous réserve d'éligibilité PayPal 4x ou carte via PayPal Business).</p>
+              <div id="paypal4xPreview" class="status-box ok" style="margin-bottom:14px"></div>
+              <div class="action-cluster">
+                <button id="btnOpenPaypalPay" class="btn btn-emerald" style="width:100%;justify-content:center" type="button">📅 Payer avec PayPal / 4x &rarr;</button>
+                <button id="btnReqPaypalWa" class="btn btn-primary" style="width:100%;justify-content:center" type="button">💬 Recevoir le lien de règlement en 4x par WhatsApp</button>
+              </div>
+            </div>
+
+            <!-- Panneau 4 : Prélèvement SEPA GoCardless -->
+            <div id="panelPay_sepa" class="pay-panel hidden">
+              <p style="margin:0 0 14px;font-size:13.5px;color:var(--ink-muted)">
+                <strong>Zéro plafond de carte bancaire :</strong> idéal pour les commandes supérieures à 1 000 € ou l'activation du suivi mensuel sans engagement (69 € ou 190 €/mois) par mandat SEPA inter-entreprises (GoCardless).
+              </p>
+              <div class="action-cluster">
+                <button id="btnOpenGcPay" class="btn btn-emerald" style="width:100%;justify-content:center" type="button">🔄 Signer le mandat SEPA sécurisé &rarr;</button>
+                <button id="btnReqGcWa" class="btn btn-primary" style="width:100%;justify-content:center" type="button">💬 Recevoir mon mandat SEPA B2B par WhatsApp</button>
+              </div>
+            </div>
+
+            <!-- Actions documentaires & Agenda -->
+            <div style="border-top:1px solid var(--border);margin-top:18px;padding-top:14px">
+              <div style="font-size:12.5px;font-weight:700;color:var(--ink-muted);margin-bottom:8px">Pièces comptables &amp; échange dirigeant :</div>
+              <div class="action-cluster" style="margin-top:0">
+                <button id="btnPrintProforma" class="btn btn-primary btn-sm" type="button">🖨️ Imprimer / PDF Proforma A4</button>
+                <button id="btnDownloadProformaTxt" class="btn btn-sm" type="button">⬇️ Télécharger BC (.txt)</button>
+                <button id="btnOpenCalStore" class="btn btn-sm" type="button">📅 Prendre RDV Dirigeant (Cal.com)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- APERÇU A4 BON DE COMMANDE & PROFORMA -->
+        <div class="no-print" style="margin-top:34px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+          <span class="section-tag">[APERÇU EN DIRECT // PIECE COMPTABLE A4 PRÊTE POUR VOTRE COMPTABILITÉ]</span>
+          <span class="mono" style="font-size:11.5px;color:var(--ink-soft)">Cliquez sur « Imprimer / PDF Proforma A4 » puis « Enregistrer au format PDF ».</span>
+        </div>
+        <article id="proformaSheet" class="bc-sheet" aria-label="Bon de Commande et Facture Proforma B2B A4"></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer no-print">
+    <div class="container footer-grid">
+      <div>
+        <strong>COS Opérations × SYNTESIA</strong><br />
+        <span>Portail B2B · Hors activités réglementées CNAPS (art. L.611-1 CSI) · Albi (81)</span>
+      </div>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <a href="../index.html#simulateur">Simulateur IDCC 1351</a>
+        <a href="../agence/securite-privee/index.html">Volet Sécurité Agence</a>
+        <a href="../mentions-legales.html">Mentions légales</a>
+        <a href="../cgv-rgpd.html">CGV &amp; RGPD</a>
+        <button id="btnOpenStoreAdmin" class="btn btn-sm" type="button" style="background:rgba(255,255,255,0.08);color:#e2e8f0;border-color:rgba(255,255,255,0.22)">⚙️ Config Paiements &amp; IBAN</button>
+      </div>
+    </div>
+  </footer>
+
+  <div id="storeToast" class="toast hidden no-print" role="status"></div>
+
+  <script src="../site-config.js"></script>
+  <script src="boutique.js"></script>
+</body>
+</html>

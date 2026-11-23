@@ -1,0 +1,409 @@
+/* ==========================================================================
+   BOUTIQUE B2B & PORTAIL DE COMMANDE DIRECTE — SYNTESIA × COS OPÉRATIONS
+   Esthétique Refero Styles (Warm Engineering Paper + Atmospheric Night Theater)
+   ========================================================================== */
+
+.store-hero {
+  padding: 40px 0 28px;
+}
+
+.store-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-btn {
+  appearance: none;
+  border: 1px solid var(--border-strong);
+  background: var(--bg);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.filter-btn.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--cream);
+}
+
+.catalog-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.catalog-grid .catalog-card {
+  flex: 1 1 340px;
+  max-width: 390px;
+}
+
+.catalog-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.catalog-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.catalog-card.is-selected {
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-md);
+}
+
+.catalog-card.is-featured {
+  border-top: 3px solid var(--emerald);
+}
+
+.catalog-card-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.sector-pill {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
+
+.sector-pill.secu {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1e3a8a;
+}
+
+.sector-pill.btp {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  color: #9a3412;
+}
+
+.sector-pill.agence {
+  background: var(--emerald-bg);
+  border-color: var(--emerald-bd);
+  color: var(--emerald);
+}
+
+.catalog-badge-rec {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--emerald);
+}
+
+.catalog-card h3 {
+  margin: 0 0 8px;
+  font-size: 19px;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.catalog-price-block {
+  margin: 8px 0 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed var(--border-dashed);
+}
+
+.catalog-price-main {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.catalog-price-sub {
+  display: block;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+.catalog-ul {
+  margin: 0 0 16px;
+  padding-left: 18px;
+  font-size: 13.5px;
+  color: var(--ink-muted);
+}
+
+.catalog-ul li {
+  margin-bottom: 6px;
+}
+
+.catalog-footer-note {
+  font-size: 12px;
+  color: var(--ink-soft);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border-radius: var(--radius-sm);
+}
+
+/* ================= NIGHT ADVANTAGES BANNER (REFERO THEATER) ================= */
+.night-advantages {
+  background: var(--night);
+  color: var(--cream);
+  border-top: 1px solid var(--night-edge);
+  border-bottom: 1px solid var(--night-edge);
+  padding: 44px 0;
+}
+
+.night-advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.night-adv-card {
+  background: var(--night-panel);
+  border: 1px solid var(--night-edge);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.night-adv-card .adv-tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #86efac;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.night-adv-card h4 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: var(--cream);
+}
+
+.night-adv-card p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--cream-muted);
+  line-height: 1.5;
+}
+
+/* ================= CHECKOUT & PAYMENT PORTAL ================= */
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.summary-box {
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 7px 0;
+  font-size: 14px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.summary-line:last-child {
+  border-bottom: 0;
+}
+
+.summary-line.total {
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 2px solid var(--ink);
+  border-bottom: 0;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.pay-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.pay-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 12px 14px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.pay-tab:hover {
+  border-color: var(--ink);
+}
+
+.pay-tab.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--cream);
+}
+
+.pay-tab strong {
+  font-size: 13.5px;
+  line-height: 1.3;
+}
+
+.pay-tab span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  opacity: 0.78;
+  margin-top: 3px;
+}
+
+.pay-panel {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px;
+}
+
+.bank-coord-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.bank-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.bank-row-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  display: block;
+}
+
+.bank-row-val {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  word-break: break-all;
+}
+
+.opt-check-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--emerald-bg);
+  border: 1px solid var(--emerald-bd);
+  border-radius: var(--radius-sm);
+  margin: 14px 0;
+  cursor: pointer;
+  font-size: 13.5px;
+}
+
+.opt-check-box input {
+  margin-top: 3px;
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 980px) {
+  .catalog-grid,
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+  .night-advantages-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .night-advantages-grid,
+  .pay-tabs {
+    grid-template-columns: 1fr;
+  }
+  .bank-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
