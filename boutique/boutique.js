@@ -182,10 +182,10 @@
   function getBaseConfig() {
     var base = {
       issuer: {
-        raison: "Mounir NAIT MOHAND (Entrepreneur Individuel)",
+        raison: "Securiaxe",
         enseigne: "Securiaxe",
-        rep: "M. Mounir NAIT MOHAND",
-        capital: "Entreprise Individuelle — Micro-entreprise",
+        rep: "Direction Securiaxe",
+        capital: "Entreprise Individuelle (SIREN 849 261 870)",
         siege: "Albi (81)",
         siren: "849 261 870 00018",
         tvaRegime: "293B",
@@ -280,7 +280,7 @@
           '<div class="catalog-card-top">' +
             '<div class="catalog-meta-row">' +
               '<span class="sector-pill ' + secCls + '">' + esc(item.sectorLabel) + '</span>' +
-              (item.featured ? '<span class="catalog-badge-rec">★ Recommandé</span>' : '<span class="mono" style="font-size:10.5px;color:var(--ink-soft)">' + esc(item.code) + '</span>') +
+              (item.featured ? '<span class="catalog-badge-rec">Recommandé</span>' : '<span class="mono" style="font-size:10.5px;color:var(--ink-soft)">' + esc(item.code) + '</span>') +
             '</div>' +
             '<span class="offer-badge">' + esc(item.badge) + '</span>' +
             '<h3>' + esc(item.title) + '</h3>' +
@@ -295,7 +295,7 @@
           '<div>' +
             '<div class="catalog-footer-note">' + esc(item.scopeNote) + '</div>' +
             '<button class="btn ' + (isSel ? "btn-emerald" : "btn-primary") + '" style="width:100%;justify-content:center" type="button" data-select-offer="' + item.id + '">' +
-              (isSel ? "✓ Formule sélectionnée (Voir le règlement ↓)" : "Commander — " + item.priceHt.toLocaleString("fr-FR") + " € HT →") +
+              (isSel ? "Formule sélectionnée (Voir le règlement ↓)" : "Commander — " + item.priceHt.toLocaleString("fr-FR") + " € HT →") +
             '</button>' +
           '</div>' +
         '</article>'
@@ -433,7 +433,7 @@
     if ($("bankReadyBox")) $("bankReadyBox").classList.toggle("hidden", !hasIban);
     if ($("bankPendingBox")) $("bankPendingBox").classList.toggle("hidden", hasIban);
     if (hasIban) {
-      if ($("valBankHolder")) $("valBankHolder").textContent = cfg.issuer.raison + " (" + cfg.issuer.enseigne + ")";
+      if ($("valBankHolder")) $("valBankHolder").textContent = cfg.issuer.enseigne || cfg.issuer.raison;
       if ($("valBankName")) $("valBankName").textContent = cfg.channels.bankName || "Compte Professionnel France";
       if ($("valBankIban")) $("valBankIban").textContent = cfg.channels.iban.trim();
       if ($("valBankBic")) $("valBankBic").textContent = cfg.channels.bic ? cfg.channels.bic.trim() : "Non requis en zone SEPA";
@@ -497,8 +497,8 @@
       '<div class="bc-head">' +
         '<div>' +
           '<h4>BON DE COMMANDE &amp; PROFORMA B2B — ' + esc(o.ref) + '</h4>' +
-          '<div><b>' + esc(cfg.issuer.raison) + '</b> (' + esc(cfg.issuer.enseigne) + ')</div>' +
-          '<div>' + esc(cfg.issuer.capital) + ' · Siège : ' + esc(cfg.issuer.siege) + ' · SIREN : ' + esc(cfg.issuer.siren) + '</div>' +
+          '<div><b>' + esc(cfg.issuer.enseigne || cfg.issuer.raison) + '</b></div>' +
+          '<div>' + esc(cfg.issuer.capital) + ' &middot; Siège : ' + esc(cfg.issuer.siege) + ' &middot; SIREN : ' + esc(cfg.issuer.siren) + '</div>' +
           (contactParts.length ? '<div>Contact : ' + esc(contactParts.join(" · ")) + '</div>' : '') +
         '</div>' +
         '<div style="text-align:right">' +

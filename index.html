@@ -19,60 +19,46 @@
     <div class="container config-banner-inner">
       <div id="adminBannerText"></div>
       <div class="header-actions">
-        <button id="btnOpenAdminFromBanner" class="btn btn-sm" type="button">⚙️ Configurer maintenant</button>
-        <button id="btnHideAdminBanner" class="btn btn-sm" type="button">Masquer (aperçu prospect)</button>
+        <button id="btnOpenAdminFromBanner" class="btn btn-sm" type="button">Configurer</button>
+        <button id="btnHideAdminBanner" class="btn btn-sm" type="button">Masquer</button>
       </div>
     </div>
   </div>
 
-  <!-- Barre technique d'indépendance & sources officielles (Conformité Art. L.121-1 C. com) -->
-  <div class="tech-topbar no-print">
-    <div class="container tech-topbar-inner">
-      <div class="tech-topbar-left">
-        <span class="tech-dot"></span>
-        <span>[IDCC1351.FR // OUTIL INDÉPENDANT DE SIMULATION ÉCONOMIQUE] &middot; ÉDITÉ PAR SECURIAXE (SIREN 849 261 870)</span>
-      </div>
-      <div class="tech-topbar-right">
-        <span>[AVENANT N° 2 &middot; JORF 05/06/2026 &middot; EFFET 01/07/2026]</span>
-        <span>[NON AFFILIÉ CNAPS / BRANCHE]</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- En-tête sticky Option Alpha -->
+  <!-- En-tête principal -->
   <header class="site-header no-print">
     <div class="container header-inner">
       <a class="brand" href="#top">
         <div class="brand-mark">1351</div>
         <div class="brand-text">
           <strong>IDCC 1351 &middot; Référentiel</strong>
-          <span>Édité par Securiaxe (Outil indépendant)</span>
+          <span>Outil indépendant édité par Securiaxe</span>
         </div>
       </a>
 
       <nav class="nav-links" aria-label="Navigation principale">
-        <a href="#simulateur">01. Calculateur 6h</a>
-        <a href="#referentiel-1351">02. Sources JORF</a>
-        <a href="#presentation-cos">03. Solutions</a>
-        <a href="boutique/index.html" style="color:var(--emerald);font-weight:700">04. Boutique Securiaxe</a>
+        <a href="#simulateur">Calculateur 6h</a>
+        <a href="#referentiel-1351">Sources JORF</a>
+        <a href="#presentation-cos">Solutions</a>
+        <a href="boutique/index.html" style="color:var(--emerald);font-weight:700">Boutique Securiaxe</a>
       </nav>
 
       <div class="header-actions">
         <span id="slotStatusPill" class="slot-pill hidden"></span>
         <a class="btn btn-sm" href="boutique/index.html">Boutique B2B</a>
-        <a class="btn btn-primary btn-sm" href="#simulateur">Diagnostic 60 s &darr;</a>
+        <a class="btn btn-primary btn-sm" href="#simulateur">Calculateur &darr;</a>
       </div>
     </div>
   </header>
 
-  <!-- Bandeau permanent de transparence éditoriale & sources Légifrance (Visible sans défiler) -->
-  <div class="authority-disclaimer-bar no-print" role="note" aria-label="Avertissement d'indépendance et sources réglementaires">
+  <!-- Bandeau sobre d'indépendance & sources Légifrance -->
+  <div class="authority-disclaimer-bar no-print" role="note" aria-label="Information d'indépendance et sources réglementaires">
     <div class="container authority-disclaimer-inner">
       <div>
-        <strong>⚖️ Avertissement d'indépendance :</strong> <code>idcc1351.fr</code> est un outil technique privé d'aide au chiffrage édité par <b>Securiaxe</b> (Mounir NAIT MOHAND EI, SIREN 849 261 870, Albi — hors activités réglementées CNAPS art. L.611-1 CSI). Ce site n'est affilié ni aux partenaires sociaux, ni au Ministère du Travail, ni au CNAPS.
+        <strong>Information d'indépendance :</strong> <code>idcc1351.fr</code> est un outil technique privé d'aide au chiffrage édité par <b>Securiaxe</b> (SIREN 849 261 870 — hors activités réglementées CNAPS art. L.611-1 CSI). Ce site n'est affilié ni aux partenaires sociaux, ni au Ministère du Travail, ni au CNAPS.
       </div>
       <div class="authority-links">
-        <span>Sources vérifiées (23/11/2026) :</span>
+        <span>Textes officiels (23/11/2026) :</span>
         <a href="https://www.legifrance.gouv.fr/conv_coll/id/KALITEXT000053576553" target="_blank" rel="noopener noreferrer">Avenant n° 2 du 03/09/2025 ↗</a>
         <a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054200800" target="_blank" rel="noopener noreferrer">Arrêté du 27/05/2026 (JORF 05/06/2026) ↗</a>
         <a href="https://www.legifrance.gouv.fr/conv_coll/article/KALIARTI000029725763" target="_blank" rel="noopener noreferrer">Repos quotidien (Légifrance) ↗</a>
@@ -85,24 +71,24 @@
     <div class="container">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
         <div>
-          <strong style="font-size:16px;color:var(--navy-deep)">⚙️ Paramétrage Émetteur, TVA Unique &amp; Canaux de Vente Réels</strong>
-          <div style="font-size:12.5px;color:var(--ink-muted)">Aucun identifiant fictif n'est codé en dur. Renseignez vos liens puis cliquez sur « Télécharger site-config.js » pour déployer directement sur o2switch / Vercel.</div>
+          <strong style="font-size:16px;color:var(--navy-deep)">Paramétrage Émetteur, TVA &amp; Canaux de Vente</strong>
+          <div style="font-size:12.5px;color:var(--ink-muted)">Renseignez vos paramètres puis cliquez sur « Télécharger site-config.js » pour mettre à jour votre hébergement.</div>
           <div id="adminDrawerMissing" class="status-box warn hidden" style="margin-top:8px"></div>
         </div>
         <button id="btnCloseAdmin" class="btn btn-sm" type="button">Fermer</button>
       </div>
 
       <div class="form-grid-2" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
-        <div class="field"><label>Raison sociale</label><input id="admRaison" type="text" /></div>
+        <div class="field"><label>Raison sociale / Dénomination</label><input id="admRaison" type="text" /></div>
         <div class="field"><label>Enseigne</label><input id="admEnseigne" type="text" /></div>
-        <div class="field"><label>Représentant légal</label><input id="admRep" type="text" /></div>
-        <div class="field"><label>Forme &amp; Capital</label><input id="admCapital" type="text" /></div>
-        <div class="field"><label>Siège / Ville RCS</label><input id="admSiege" type="text" /></div>
-        <div class="field"><label>N° SIREN / SIRET</label><input id="admSiren" type="text" placeholder="Ex : 123 456 789 00010" /></div>
+        <div class="field"><label>Signataire / Direction</label><input id="admRep" type="text" /></div>
+        <div class="field"><label>Forme juridique</label><input id="admCapital" type="text" /></div>
+        <div class="field"><label>Siège / Ville</label><input id="admSiege" type="text" /></div>
+        <div class="field"><label>N° SIREN / SIRET</label><input id="admSiren" type="text" placeholder="Ex : 849 261 870 00018" /></div>
         <div class="field">
           <label>Régime TVA unique</label>
           <select id="admTvaRegime">
-            <option value="293B">Franchise en base (art. L. 223-3 du CIBS (ex-293 B CGI))</option>
+            <option value="293B">Franchise en base (art. L. 223-3 du CIBS / ex-293 B CGI)</option>
             <option value="20">TVA normale (20 %)</option>
           </select>
         </div>
@@ -110,14 +96,14 @@
         <div class="field"><label>Email réception leads</label><input id="admEmail" type="email" placeholder="contact@votre-domaine.fr" /></div>
         <div class="field"><label>Téléphone direct</label><input id="admTel" type="text" placeholder="+33 6 ..." /></div>
         <div class="field"><label>WhatsApp Business (indicatif sans +)</label><input id="admWhatsapp" type="text" placeholder="336..." /></div>
-        <div class="field"><label>Lien Agenda (Cal.com / Google Appointment)</label><input id="admCalUrl" type="url" placeholder="https://cal.com/..." /></div>
-        <div class="field"><label>Webhook CRM (Google Apps Script / PHP)</label><input id="admWebhookUrl" type="url" placeholder="https://script.google.com/macros/s/..." /></div>
-        <div class="field"><label>Vérification serveur Stripe (optionnel)</label><input id="admStripeVerifyUrl" type="url" placeholder="https://votre-domaine.fr/integrations/o2switch/stripe-verify-stub.php" /></div>
+        <div class="field"><label>Lien Agenda (Cal.com)</label><input id="admCalUrl" type="url" placeholder="https://cal.com/..." /></div>
+        <div class="field"><label>Webhook CRM</label><input id="admWebhookUrl" type="url" placeholder="https://script.google.com/macros/s/..." /></div>
+        <div class="field"><label>Vérification serveur paiement (optionnel)</label><input id="admStripeVerifyUrl" type="url" /></div>
         <div class="field"><label>Hébergeur du site (Mentions légales LCEN)</label><input id="admHostProvider" type="text" placeholder="Ex : o2switch SASU, Clermont-Ferrand (France)" /></div>
         <div class="field"><label>IBAN virement (BC A4)</label><input id="admIban" type="text" placeholder="FR76..." /></div>
-        <div class="field"><label>Stripe Link Pack 1 (690 € HT)</label><input id="admStripe1" type="url" placeholder="https://buy.stripe.com/..." /></div>
-        <div class="field"><label>Stripe Link Pack 2 (980 € HT)</label><input id="admStripe2" type="url" placeholder="https://buy.stripe.com/..." /></div>
-        <div class="field"><label>Stripe Link Pack 3 (1 450 € HT)</label><input id="admStripe3" type="url" placeholder="https://buy.stripe.com/..." /></div>
+        <div class="field"><label>Lien Paiement Pack 1 (690 € HT)</label><input id="admStripe1" type="url" /></div>
+        <div class="field"><label>Lien Paiement Pack 2 (980 € HT)</label><input id="admStripe2" type="url" /></div>
+        <div class="field"><label>Lien Paiement Pack 3 (1 450 € HT)</label><input id="admStripe3" type="url" /></div>
         <div class="field">
           <label>Créneaux Commando 48h ouverts (Max 2)</label>
           <select id="admSlotsOpen">
@@ -126,40 +112,36 @@
             <option value="0">0 slot (complet / file d'attente)</option>
           </select>
         </div>
-        <div class="field"><label>Meta Pixel ID (consentement RGPD requis)</label><input id="admPixelId" type="text" placeholder="ID numérique optionnel" /></div>
-      </div>
-
-      <div class="status-box warn" style="margin-top:10px;font-size:12px">
-        <strong>Astuce Stripe Payment Links :</strong> configurez la redirection après paiement de chaque lien vers <code>https://votre-domaine.fr/merci-paiement.html?pack=1&amp;session_id={CHECKOUT_SESSION_ID}</code> (690 €), <code>?pack=2&amp;session_id={CHECKOUT_SESSION_ID}</code> (980 €) et <code>?pack=3&amp;session_id={CHECKOUT_SESSION_ID}</code> (1 450 €), et renseignez <code>stripeVerifyUrl</code> (<code>stripe-verify-stub.php</code>) pour confirmer le paiement côté serveur avant l'événement <code>Purchase</code>.
+        <div class="field"><label>Meta Pixel ID (optionnel)</label><input id="admPixelId" type="text" /></div>
       </div>
 
       <div class="action-cluster" style="margin-top:14px">
-        <button id="btnSaveAdmin" class="btn btn-primary" type="button">💾 Enregistrer localement</button>
-        <button id="btnDownloadSiteCfg" class="btn btn-emerald" type="button">⬇️ Télécharger site-config.js (Prêt o2switch / Vercel)</button>
+        <button id="btnSaveAdmin" class="btn btn-primary" type="button">Enregistrer localement</button>
+        <button id="btnDownloadSiteCfg" class="btn btn-emerald" type="button">Télécharger site-config.js</button>
       </div>
     </div>
   </section>
 
-  <!-- HERO INSTITUTIONNEL OPTION ALPHA (IDCC 1351) -->
+  <!-- HERO SOBRE (IDCC 1351) -->
   <main id="top">
     <section class="hero no-print">
       <div class="container">
         <div class="hero-frame">
           <div class="hero-grid">
             <div>
-              <span class="eyebrow">[IDCC 1351 &middot; BROCHURE JO 3196 // DIAGNOSTIC DE CONFORMITÉ ÉCONOMIQUE]</span>
-              <h1>Mesurez en 60 secondes l'impact réel de l'<span class="font-editorial-italic">Avenant n° 2 (6h)</span> sur votre marge nette.</h1>
+              <span class="eyebrow">Convention collective IDCC 1351 &middot; Brochure JO 3196</span>
+              <h1>Mesurez l'impact réel de l'Avenant n° 2 (6h) sur votre marge nette.</h1>
               <p class="hero-lead">
-                Étendu par arrêté du 27 mai 2026 (<b>JORF du 5 juin 2026</b>, effet au <b>1er juillet 2026</b>), l'Avenant n° 2 fixe un <b>plancher conventionnel étendu de 6,0 heures rémunérées par vacation</b> (Annexe IV). À <b>23 €/h de nuit</b>, un contrat ADS de 320 h génère une perte estimée à <b>-1 941,42 €/mois</b>. Vérifiez vos coûts complets gratuitement et sans inscription obligatoire.
+                Étendu par arrêté du 27 mai 2026 (JORF du 5 juin 2026, effet au 1er juillet 2026), l'Avenant n° 2 fixe un plancher conventionnel étendu de 6,0 heures rémunérées par vacation (Annexe IV). À 23 €/h de nuit, un contrat ADS de 320 h génère une perte estimée à -1 941,42 €/mois. Vérifiez vos coûts complets en accès libre.
               </p>
               <div class="hero-cta-row">
-                <a class="btn btn-primary btn-lg" href="#simulateur">Calculer mon coût de revient réel (Accès libre) &darr;</a>
-                <a class="btn btn-lg" href="#referentiel-1351">[ Consulter les textes &amp; sources JORF ]</a>
+                <a class="btn btn-primary btn-lg" href="#simulateur">Calculer mon coût de revient &darr;</a>
+                <a class="btn btn-lg" href="#referentiel-1351">Consulter les textes JORF</a>
               </div>
               <div class="trust-strip">
                 <div class="trust-item">
                   <strong class="is-danger">-1 941,42 €</strong>
-                  <span>Écart mensuel · 320&nbsp;h nuit ADS à 23&nbsp;€/h</span>
+                  <span>Écart mensuel &middot; 320&nbsp;h nuit ADS à 23&nbsp;€/h</span>
                 </div>
                 <div class="trust-item">
                   <strong>6,0 h min.</strong>
@@ -167,23 +149,22 @@
                 </div>
                 <div class="trust-item">
                   <strong>+393,75 €</strong>
-                  <span>Surcoût 50×6h vs 25×12h (300&nbsp;h · paniers/transp.)</span>
+                  <span>Surcoût 50×6h vs 25×12h (300&nbsp;h &middot; paniers/transp.)</span>
                 </div>
               </div>
             </div>
 
             <div class="hero-visual-card">
               <div class="hero-window-bar">
-                <div class="hero-window-dots"><i></i><i></i><i></i></div>
-                <span>[SYNTHÈSE RÉGLEMENTAIRE // IDCC 1351 — ANNEXE IV]</span>
+                <span>Repères conventionnels &middot; IDCC 1351 (Annexe IV)</span>
               </div>
-              <div style="padding:18px;background:#0F172A;color:#F8FAFC;font-size:13px;line-height:1.6">
-                <div style="font-family:var(--font-mono);font-size:11px;color:#F59E0B;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">
-                  ⚡ Point de contrôle conventionnel (Vérifié le 23/11/2026)
+              <div style="padding:20px;background:#0F172A;color:#F8FAFC;font-size:13.5px;line-height:1.65">
+                <div style="font-family:var(--font-mono);font-size:11px;color:#F59E0B;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px">
+                  Dispositions applicables (vérifiées le 23/11/2026)
                 </div>
                 <ul style="margin:0;padding-left:18px;color:#E2E8F0;display:grid;gap:8px">
                   <li><b>Vacation minimale (6,0 h) :</b> Avenant n° 2 du 03/09/2025 étendu (JORF 05/06/2026), applicable au 01/07/2026 (Annexe IV, hors exceptions limitatives).</li>
-                  <li><b>Majorations :</b> Nuit (21h–06h) <code>+10 %</code> · Dimanche <code>+10 %</code> · Jour férié <code>+100 %</code> (hors indemnités non soumises).</li>
+                  <li><b>Majorations :</b> Nuit (21h–06h) <code>+10 %</code> &middot; Dimanche <code>+10 %</code> &middot; Jour férié <code>+100 %</code> (hors indemnités non soumises).</li>
                   <li><b>Panier repas :</b> Déclenché dès <code>6,0 h</code> continues de travail effectif.</li>
                   <li><b>Repos quotidien :</b> <code>11 h</code> de référence (<code>12 h</code> sur certains cycles conventionnels — Accord du 18/05/1993).</li>
                 </ul>
@@ -191,10 +172,10 @@
               <div class="hero-proof-footer">
                 <div class="proof-line">
                   <span>Accès au calculateur</span>
-                  <b class="pos">100 % Gratuit · Sans barrière e-mail</b>
+                  <b class="pos">Accès libre &middot; Sans inscription</b>
                 </div>
                 <div class="proof-line">
-                  <span>Éditeur technique</span>
+                  <span>Éditeur</span>
                   <b>Securiaxe (Hors activité CNAPS L.611-1)</b>
                 </div>
               </div>
@@ -204,30 +185,30 @@
       </div>
     </section>
 
-    <!-- SIMULATEUR DE PERTE DETERMINISTE (OPTION ALPHA + COCKPIT BETA) -->
+    <!-- SIMULATEUR DE PERTE DETERMINISTE -->
     <section id="simulateur" class="section">
       <div class="container">
         <div class="section-head no-print">
-          <span class="section-tag">[OUTIL 01 // CALCULATEUR BOUCLIER ANTI-PERTES — IDCC 1351]</span>
-          <h2>Diagnostic de conformité économique &amp; <span class="font-editorial-italic">seuil de rentabilité</span>.</h2>
-          <p>Renseignez vos paramètres d'exploitation ci-dessous. Le résultat s'affiche instantanément sans inscription, avec possibilité d'éditer le <b>Rapport PDF A4 pour votre expert-comptable</b> et la <b>Trame de demande de révision BPU</b>.</p>
+          <span class="section-tag">Simulateur de coût de revient &middot; IDCC 1351</span>
+          <h2>Diagnostic de conformité économique et seuil de rentabilité.</h2>
+          <p>Renseignez vos paramètres d'exploitation ci-dessous. Le résultat s'affiche instantanément, avec possibilité d'éditer le rapport PDF A4 pour votre expert-comptable et la trame de demande de révision BPU.</p>
         </div>
 
         <div id="personalizedBanner" class="prospect-banner hidden no-print" role="region" aria-label="Diagnostic personnalisé pré-rempli">
           <div class="prospect-banner-main">
-            <span class="prospect-tag">[DIAGNOSTIC PRÉ-CALIBRÉ // SIMULATION PERSONNALISÉE]</span>
+            <span class="prospect-tag">Simulation pré-calibrée</span>
             <strong id="pbTitle"></strong>
             <div id="pbSub" class="prospect-sub"></div>
           </div>
           <div class="header-actions">
-            <button id="btnApplyProspectToFunnel" class="btn btn-emerald btn-sm" type="button">Contacter Securiaxe (Démo 15 min) &rarr;</button>
+            <button id="btnApplyProspectToFunnel" class="btn btn-emerald btn-sm" type="button">Contacter Securiaxe (15 min) &rarr;</button>
           </div>
         </div>
 
         <div class="sim-shell no-print">
           <div class="sim-topbar">
             <div class="sim-topbar-title">
-              <span class="sim-topbar-code">[IDCC 1351 · ANNEXE IV]</span>
+              <span class="sim-topbar-code">IDCC 1351 &middot; Annexe IV</span>
               <h3>Calculateur de Coût Complet Horaire &amp; Plancher 6,0 h</h3>
             </div>
             <div class="preset-row" role="group" aria-label="Scénarios de référence vérifiés">
@@ -328,33 +309,33 @@
 
               <div class="diag-actions">
                 <button id="btnPrintDiagPdf" class="btn btn-primary" type="button">
-                  🖨️ Rapport PDF A4 (Pour mon Expert-Comptable)
+                  Imprimer le rapport PDF A4 (Expert-Comptable)
                 </button>
-                <button id="btnToggleTrameRevision" class="btn" type="button" style="background:#FFFBEB;color:#92400E;border-color:#F59E0B;font-weight:700">
-                  ⚖️ Obtenir la Trame de révision BPU (Avenant n° 2)
+                <button id="btnToggleTrameRevision" class="btn" type="button" style="background:#FFFBEB;color:#92400E;border-color:#F59E0B;font-weight:600">
+                  Afficher la trame de révision BPU (Avenant n° 2)
                 </button>
                 <button id="btnInjectDiagToFunnel" class="btn btn-emerald" type="button">
-                  ➡️ Demander un audit opérationnel Securiaxe (15 min)
+                  Demander un audit Securiaxe (15 min) &rarr;
                 </button>
                 <button id="btnDownloadDiagTxt" class="btn btn-sm" type="button">
-                  ⬇️ Mémo (.txt)
+                  Télécharger synthèse (.txt)
                 </button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- TIROIR INTERACTIF : TRAME DE DEMANDE DE RÉVISION TARIFAIRE BPU (LEAD MAGNET D) -->
+        <!-- TIROIR INTERACTIF : TRAME DE DEMANDE DE RÉVISION TARIFAIRE BPU -->
         <div id="trameRevisionBox" class="trame-revision-drawer hidden no-print" role="region" aria-label="Trame de demande de réévaluation tarifaire BPU">
           <div class="trame-revision-head">
             <div>
-              <span class="section-tag" style="margin-bottom:4px">[OUTIL 02 // ARGUMENTAIRE &amp; TRAME DE RÉÉVALUATION TARIFAIRE BPU]</span>
+              <span class="section-tag" style="margin-bottom:4px">Argumentaire &amp; Trame de réévaluation BPU</span>
               <h3 style="margin:0;font-size:18px;color:var(--navy-deep)">Trame administrative de demande de révision BPU (Avenant n° 2 IDCC 1351)</h3>
               <p style="margin:4px 0 0;font-size:13px;color:var(--ink-muted)">
                 Modèle opérationnel pré-calibré sur votre simulation ci-dessus pour notifier à vos donneurs d'ordres privés ou acheteurs publics l'incidence de l'Arrêté d'extension du 27 mai 2026 (JORF du 5 juin 2026).
               </p>
             </div>
-            <button id="btnCloseTrameRevision" class="btn btn-sm" type="button">Fermer ✕</button>
+            <button id="btnCloseTrameRevision" class="btn btn-sm" type="button">Fermer</button>
           </div>
 
           <div class="status-box warn" style="margin:12px 0;font-size:12.5px">
@@ -364,9 +345,9 @@
           <pre id="trameRevisionText" class="trame-pre mono"></pre>
 
           <div class="action-cluster" style="margin-top:12px">
-            <button id="btnCopyTrameRevision" class="btn btn-primary" type="button">📋 Copier la trame personnalisée</button>
-            <button id="btnDownloadTrameRevision" class="btn" type="button">⬇️ Télécharger la trame (.txt)</button>
-            <a class="btn btn-emerald" href="boutique/index.html">🛡️ Obtenir l'Arsenal Complet (6 Mémoires Word + Bouclier Excel) &rarr;</a>
+            <button id="btnCopyTrameRevision" class="btn btn-primary" type="button">Copier la trame</button>
+            <button id="btnDownloadTrameRevision" class="btn" type="button">Télécharger (.txt)</button>
+            <a class="btn btn-emerald" href="boutique/index.html">Obtenir l'Arsenal complet (6 Mémoires Word + Bouclier Excel) &rarr;</a>
           </div>
         </div>
 
@@ -375,9 +356,9 @@
 
         <div class="avenant-banner no-print">
           <div>
-            <strong>Point de vigilance Avenant n° 2 (IDCC 1351 · Annexe IV) :</strong> à volume égal de <code>300 h/mois</code>, passer de <code>25 × 12h</code> à <code>50 × 6h</code> augmente le coût complet de <b>8 951,25 €</b> à <b>9 345,00 €</b> (+393,75 € en paniers et indemnités de transport non répercutés au tarif horaire de base).
+            <strong>Point de vigilance Avenant n° 2 (IDCC 1351 &middot; Annexe IV) :</strong> à volume égal de <code>300 h/mois</code>, passer de <code>25 × 12h</code> à <code>50 × 6h</code> augmente le coût complet de <b>8 951,25 €</b> à <b>9 345,00 €</b> (+393,75 € en paniers et indemnités de transport non répercutés au tarif horaire de base).
           </div>
-          <a class="btn btn-sm" href="boutique/index.html">Solutions Securiaxe →</a>
+          <a class="btn btn-sm" href="boutique/index.html">Solutions Securiaxe &rarr;</a>
         </div>
         <div class="legal-callout no-print" style="margin-top:18px;margin-bottom:0">
           <strong>Périmètre strictement B2B hors activité CNAPS :</strong> outil indépendant d'aide au chiffrage économique édité par <b>Securiaxe</b> (art. L.611-1 CSI). Une estimation de coût ou de marge demeure indicative et doit être vérifiée avec votre expert-comptable sur vos bulletins de paie réels.
@@ -385,12 +366,12 @@
       </div>
     </section>
 
-    <!-- RÉFÉRENTIEL RÉGLEMENTAIRE VERSIONNÉ & MÉTHODOLOGIE (RECOMMANDATION GPT-6 / CLAUDE / GROK) -->
+    <!-- RÉFÉRENTIEL RÉGLEMENTAIRE VERSIONNÉ & MÉTHODOLOGIE -->
     <section id="referentiel-1351" class="section section-white no-print">
       <div class="container">
         <div class="section-head">
-          <span class="section-tag">[RÉFÉRENTIEL VERSIONNÉ // MÉTHODOLOGIE &amp; SOURCES LÉGIFRANCE]</span>
-          <h2>Règles conventionnelles appliquées par le <span class="font-editorial-italic">moteur de calcul</span>.</h2>
+          <span class="section-tag">Référentiel réglementaire &middot; Sources Légifrance</span>
+          <h2>Règles conventionnelles appliquées par le moteur de calcul.</h2>
           <p>Chaque paramètre du calculateur repose sur un texte officiel vérifié, avec distinction stricte entre sa date d'extension au Journal Officiel, sa date d'effet conventionnel et son champ d'application.</p>
         </div>
 
@@ -461,7 +442,7 @@
 
         <div class="boundary-grid">
           <div class="boundary-card in">
-            <h4>✅ Ce que fait COS Opérations</h4>
+            <h4>Ce que fait COS Opérations</h4>
             <ul class="check-list">
               <li>Fiabiliser vos marges avant soumission grâce à des formules auditées.</li>
               <li>Fournir 6 mémoires techniques modulaires structurés par critères BOAMP.</li>
@@ -470,7 +451,7 @@
             </ul>
           </div>
           <div class="boundary-card out">
-            <h4>🚫 Ce que COS Opérations ne fait pas</h4>
+            <h4>Ce que COS Opérations ne fait pas</h4>
             <ul class="check-list">
               <li>Aucune activité réglementée CNAPS (gardiennage, rondes, télésurveillance, intervention).</li>
               <li>Aucun conseil juridique, social ou d'expertise-comptable réglementé.</li>
@@ -486,21 +467,21 @@
     <section id="presentation-cos" class="section no-print">
       <div class="container">
         <div class="section-head">
-          <span class="section-tag">[ESPACE PROFESSIONNEL SECURIAXE // PASSER DU DIAGNOSTIC À L'ACTION]</span>
-          <h2>Corrigez vos écarts de marge et <span class="font-editorial-italic">sécurisez vos opérations</span>.</h2>
-          <p>Une fois vos coûts vérifiés sur <code>idcc1351.fr</code>, notre agence opérationnelle <b>Securiaxe</b> équipe votre direction pour chiffrer sans perte, répondre aux appels d'offres BOAMP et contrôler vos plannings — sans abonnement mensuel.</p>
+          <span class="section-tag">Solutions opérationnelles Securiaxe</span>
+          <h2>Corrigez vos écarts de marge et sécurisez vos opérations.</h2>
+          <p>Une fois vos coûts vérifiés sur <code>idcc1351.fr</code>, l'agence <b>Securiaxe</b> équipe votre direction pour chiffrer sans perte, répondre aux appels d'offres BOAMP et contrôler vos plannings — sans abonnement mensuel.</p>
         </div>
         <div class="saas-banner" style="margin-top:0">
-          <strong>[SOLUTIONS OPÉRATIONNELLES SECURIAXE — LICENCES B2B SANS ABONNEMENT]</strong>
+          <strong>Licences B2B Securiaxe — Sans abonnement mensuel</strong>
           <ul class="offer-ul" style="margin-top:10px">
             <li><b>1. Arsenal Documentaire &amp; Chiffrage v3.2 (690 € HT)</b> : Classeur Excel + Web <i>Bouclier Anti-Pertes</i> (P01..P07, verrou Direction) + 6 Mémoires Techniques Word conformes Avenant n° 2 (6h) + trames DC4 et soutenance.</li>
-            <li><b>2. Suite COS Opérations + Sentinelle IA + Atelier Dirigeant 2h (980 € HT · Recommandé)</b> : Poste de pilotage complet (cartes CNAPS/SST/SSIAP, contrôle des repos 11h/12h, Ordres de Mission L.612-9, copilote AO local BYOK) + 2h de paramétrage sur vos taux réels.</li>
+            <li><b>2. Suite COS Opérations + Sentinelle IA + Atelier Dirigeant 2h (980 € HT &middot; Recommandé)</b> : Poste de pilotage complet (cartes CNAPS/SST/SSIAP, contrôle des repos 11h/12h, Ordres de Mission L.612-9, copilote AO local BYOK) + 2h de paramétrage sur vos taux réels.</li>
             <li><b>3. Commando Réponse Appel d'Offres 48h (1 450 € HT)</b> : Audit Go/No-Go du RC, chiffrage BPU/DPGF sur vos taux réels et rédaction complète de votre mémoire technique (1 lot ≤ 15 pages).</li>
           </ul>
           <div class="action-cluster" style="margin-top:16px">
             <a class="btn btn-emerald" href="boutique/index.html">Accéder à la Boutique Securiaxe (Virement SEPA &amp; Proforma A4) &rarr;</a>
-            <a class="btn" href="#tunnel-section">Réserver un diagnostic 15 min avec Securiaxe</a>
-            <a class="btn btn-sm" href="agence/securite-privee/index.html">Voir la présentation complète de l'agence Securiaxe ↗</a>
+            <a class="btn" href="#tunnel-section">Réserver un échange 15 min</a>
+            <a class="btn btn-sm" href="agence/securite-privee/index.html">Présentation de l'agence Securiaxe ↗</a>
           </div>
         </div>
       </div>
@@ -517,7 +498,7 @@
         <div class="offers-grid">
           <article class="offer-card">
             <div>
-              <span class="offer-badge">Pack 1 · Outillage autonome</span>
+              <span class="offer-badge">Pack 1 &middot; Outillage autonome</span>
               <h3>Arsenal Documentaire &amp; Chiffrage v3.2</h3>
               <div class="offer-price">690 € HT <small>Licence mono-entité sans abonnement</small></div>
               <ul class="offer-ul">
@@ -535,7 +516,7 @@
 
           <article class="offer-card featured">
             <div>
-              <span class="offer-badge">Pack 2 · Le plus complet (Recommandé)</span>
+              <span class="offer-badge">Pack 2 &middot; Le plus complet (Recommandé)</span>
               <h3>Déploiement COS Bureau IA v4.2 + Atelier 2h</h3>
               <div class="offer-price">980 € HT <small>Déploiement local BYOK + 2h dirigeant inclus</small></div>
               <ul class="offer-ul">
@@ -553,7 +534,7 @@
 
           <article class="offer-card">
             <div>
-              <span class="offer-badge">Pack 3 · Urgence marché (Max 2 actifs)</span>
+              <span class="offer-badge">Pack 3 &middot; Urgence marché (Max 2 actifs)</span>
               <h3>Commando Réponse AO 48h (1 lot)</h3>
               <div class="offer-price">1 450 € HT <small>Forfait 1 lot unique ≤ 15 pages</small></div>
               <ul class="offer-ul">
@@ -579,9 +560,9 @@
             <thead>
               <tr>
                 <th>Critère opérationnel dirigeant</th>
-                <th>Pack 1 · 690 € HT</th>
-                <th class="col-rec">Pack 2 · 980 € HT (Recommandé)</th>
-                <th>Pack 3 · 1 450 € HT (Commando)</th>
+                <th>Pack 1 &middot; 690 € HT</th>
+                <th class="col-rec">Pack 2 &middot; 980 € HT (Recommandé)</th>
+                <th>Pack 3 &middot; 1 450 € HT (Commando)</th>
               </tr>
             </thead>
             <tbody>
@@ -606,7 +587,7 @@
               <tr>
                 <td>COS Bureau IA Sécurité v4.2 (BYOK local)</td>
                 <td>Non inclus</td>
-                <td class="col-rec">Inclus (5 postes AO · clé API en session)</td>
+                <td class="col-rec">Inclus (5 postes AO &middot; clé API en session)</td>
                 <td>Restitution exploitable après mission</td>
               </tr>
               <tr>
@@ -625,7 +606,7 @@
                 <td>Périmètre légal (art. L.611-1 CSI)</td>
                 <td>Hors activité CNAPS</td>
                 <td class="col-rec">Hors activité CNAPS (BYOK sans veille cloud)</td>
-                <td>Hors activité CNAPS · obligation de moyens</td>
+                <td>Hors activité CNAPS &middot; obligation de moyens</td>
               </tr>
             </tbody>
           </table>
@@ -637,9 +618,9 @@
     <section id="tunnel-section" class="section section-white">
       <div class="container">
         <div class="section-head no-print">
-          <span class="section-tag">[MOD-03 // PRISE DE RENDEZ-VOUS &amp; QUALIFICATION B2B]</span>
-          <h2>Demander votre démonstration <span class="font-editorial-italic">personnalisée (15 min)</span>.</h2>
-          <p>Choisissez votre créneau ci-dessous pour recevoir une démonstration de 15 minutes adaptée à votre société, ou contactez-nous directement par Email / WhatsApp.</p>
+          <span class="section-tag">Contact &amp; Démonstration B2B</span>
+          <h2>Demander une démonstration personnalisée (15 min).</h2>
+          <p>Choisissez votre créneau ci-dessous pour recevoir une démonstration adaptée à votre société, ou contactez-nous directement par Email ou WhatsApp.</p>
         </div>
 
         <div class="stepper no-print hidden">
@@ -706,17 +687,17 @@
 
             <label class="consent-check">
               <input id="leadRgpdConsent" type="checkbox" />
-              <span>J'accepte que ces données professionnelles soient utilisées exclusivement pour étudier mon besoin B2B et préparer l'offre COS Opérations (RGPD art. 13 — responsable COS Opérations (voir Mentions légales), droit d'accès/opposition, aucune revente commerciale, anonymisation/purge sous 30 jours après clôture sans suite).</span>
+              <span>J'accepte que ces données professionnelles soient utilisées exclusivement pour étudier mon besoin B2B et préparer l'offre Securiaxe / COS Opérations (RGPD art. 13 — voir Mentions légales, droit d'accès/opposition, aucune revente commerciale, anonymisation/purge sous 30 jours après clôture sans suite).</span>
             </label>
 
             <div class="action-cluster">
-              <button id="btnOpenCal" class="btn btn-emerald" type="button">📅 Réserver mon créneau (Cal.com)</button>
-              <button id="btnSubmitWebhook" class="btn btn-emerald hidden" type="button">🚀 Transmettre au CRM</button>
-              <button id="btnSendEmail" class="btn btn-primary" type="button">✉️ Envoyer ma demande de démo &rarr;</button>
-              <button id="btnSendWhatsapp" class="btn" type="button">[ 💬 WhatsApp direct ]</button>
-              <button id="btnDownloadIcs" class="btn btn-sm" type="button">⬇️ Ajouter au calendrier (.ics)</button>
-              <button id="btnCopyFiche" class="btn btn-sm" type="button">📋 Copier ma demande</button>
-              <button id="btnPushToBc" class="btn hidden" type="button">📄 Reporter dans le BC</button>
+              <button id="btnOpenCal" class="btn btn-emerald" type="button">Réserver un créneau (Cal.com)</button>
+              <button id="btnSubmitWebhook" class="btn btn-emerald hidden" type="button">Transmettre au CRM</button>
+              <button id="btnSendEmail" class="btn btn-primary" type="button">Envoyer par Email &rarr;</button>
+              <button id="btnSendWhatsapp" class="btn" type="button">WhatsApp direct</button>
+              <button id="btnDownloadIcs" class="btn btn-sm" type="button">Ajouter au calendrier (.ics)</button>
+              <button id="btnCopyFiche" class="btn btn-sm" type="button">Copier ma demande</button>
+              <button id="btnPushToBc" class="btn hidden" type="button">Reporter dans le BC</button>
             </div>
 
             <div id="webhookFeedback" class="status-box hidden"></div>
@@ -739,15 +720,12 @@
               <div class="field"><label for="bcAcomptePct">Acompte commande (%)</label><input id="bcAcomptePct" type="number" min="0" max="100" step="5" value="50" /></div>
               <div class="field" style="grid-column:1/-1"><label for="bcDelai">Modalité de livraison</label><input id="bcDelai" type="text" value="Pack 1-2 : immédiate dès commande ; Pack 3 : 48h ouvrées après dossier complet" /></div>
             </div>
-            <p style="margin:10px 0 0;font-size:12px;color:var(--ink-muted)">
-              Note règlement : le bouton <b>Payer via Stripe</b> encaisse le forfait catalogue sélectionné (<code>690 / 980 / 1 450 € HT</code>, règlement comptant 100 %) ; les montants et l'échéancier acompte/solde ci-dessus s'appliquent au Bon de Commande réglé par virement IBAN.
-            </p>
 
             <div class="action-cluster" style="margin-top:16px">
-              <button id="btnPayStripe" class="btn btn-emerald hidden" type="button">💳 Payer via Stripe</button>
-              <button id="btnPrintBc" class="btn btn-primary" type="button">🖨️ Imprimer / PDF A4</button>
-              <button id="btnDownloadBcTxt" class="btn" type="button">⬇️ Télécharger BC + CGV (.txt)</button>
-              <button id="btnExportLeadJson" class="btn" type="button">⬇️ Exporter dossier CRM (.json)</button>
+              <button id="btnPayStripe" class="btn btn-emerald hidden" type="button">Régler par carte</button>
+              <button id="btnPrintBc" class="btn btn-primary" type="button">Imprimer / PDF A4</button>
+              <button id="btnDownloadBcTxt" class="btn" type="button">Télécharger BC + CGV (.txt)</button>
+              <button id="btnExportLeadJson" class="btn" type="button">Exporter dossier (.json)</button>
             </div>
           </div>
         </div>
@@ -761,13 +739,13 @@
     <section class="section no-print">
       <div class="container">
         <div class="section-head">
-          <span class="section-tag">[MOD-04 // CADRE OPÉRATIONNEL &amp; RÉGLEMENTAIRE]</span>
-          <h2>Questions fréquentes des <span class="font-editorial-italic">dirigeants</span>.</h2>
+          <span class="section-tag">Cadre opérationnel &amp; réglementaire</span>
+          <h2>Questions fréquentes des dirigeants.</h2>
         </div>
         <div class="faq-grid">
           <details class="faq-item">
             <summary>Ce simulateur idcc1351.fr est-il affilié à un syndicat ou au CNAPS ?</summary>
-            <p>Non : <code>idcc1351.fr</code> est un outil technique privé et indépendant édité par <b>Securiaxe</b> (Mounir NAIT MOHAND EI, SIREN 849 261 870, Albi). Il n'est affilié à aucune organisation syndicale ou patronale de branche, ni au Ministère du Travail, ni au CNAPS. Toutes les références pointent directement vers les textes officiels Légifrance / JORF.</p>
+            <p>Non : <code>idcc1351.fr</code> est un outil technique privé et indépendant édité par <b>Securiaxe</b> (SIREN 849 261 870). Il n'est affilié à aucune organisation syndicale ou patronale de branche, ni au Ministère du Travail, ni au CNAPS. Toutes les références pointent directement vers les textes officiels Légifrance / JORF.</p>
           </details>
           <details class="faq-item">
             <summary>Les taux et majorations sont-ils fiables si nos primes maison diffèrent ?</summary>
@@ -789,15 +767,15 @@
   <footer class="site-footer no-print">
     <div class="container footer-grid">
       <div>
-        <strong>idcc1351.fr &middot; Édité par Securiaxe (Pôle Sécurité Privée SYNTESIA)</strong><br />
-        <span>Outil indépendant d'audit conventionnel &amp; suite COS Opérations — Mounir NAIT MOHAND EI (SIREN 849 261 870 · Albi 81) — Non affilié aux organismes paritaires, au Ministère du Travail ou au CNAPS (hors art. L.611-1 CSI)</span>
+        <strong>idcc1351.fr &middot; Édité par Securiaxe</strong><br />
+        <span>Outil indépendant d'audit conventionnel &amp; suite COS Opérations (SIREN 849 261 870 &middot; Albi) — Non affilié aux organismes paritaires, au Ministère du Travail ou au CNAPS (hors art. L.611-1 CSI)</span>
       </div>
       <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
         <a href="mentions-legales.html">Mentions légales</a>
         <a href="cgv-rgpd.html">CGV &amp; RGPD (Art. 13/28)</a>
         <a href="#simulateur">Calculateur Avenant n° 2</a>
         <a href="boutique/index.html">Boutique Securiaxe</a>
-        <button id="btnToggleAdmin" class="btn btn-sm hidden" type="button" style="background:rgba(255,255,255,0.08);color:#e2e8f0;border-color:rgba(255,255,255,0.22)" title="Paramètres émetteur, TVA et canaux">⚙️ Config Opérateur</button>
+        <button id="btnToggleAdmin" class="btn btn-sm hidden" type="button" style="background:rgba(255,255,255,0.08);color:#e2e8f0;border-color:rgba(255,255,255,0.22)" title="Paramètres émetteur, TVA et canaux">Config Opérateur</button>
       </div>
     </div>
   </footer>

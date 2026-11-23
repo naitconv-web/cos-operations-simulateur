@@ -55,12 +55,12 @@
         : "Franchise en base de TVA — art. L. 223-3 du CIBS (ancien art. 293 B du CGI) (régime unique)";
 
       var rows = [
-        ["Raison sociale", iss.raison || "Mounir NAIT MOHAND (Entrepreneur Individuel)"],
-        ["Nom commercial", iss.enseigne || "COS Opérations"],
-        ["Forme & Capital", iss.capital || "Entreprise Individuelle — Micro-entreprise (SIREN 849 261 870)"],
-        ["Directeur de publication", iss.rep || "M. Mounir NAIT MOHAND, Président"],
+        ["Enseigne & Nom commercial", iss.enseigne || "Securiaxe"],
+        ["Titulaire légal (LCEN art. 6-III)", "Mounir NAIT MOHAND (Entrepreneur Individuel)"],
+        ["Forme juridique", iss.capital || "Entreprise Individuelle (SIREN 849 261 870)"],
+        ["Directeur de la publication", "Mounir NAIT MOHAND"],
         ["Siège social / Ressort", iss.siege || "Albi (81)"],
-        ["Identifiant SIREN / SIRET", iss.siren ? iss.siren : "[À compléter dans site-config.js avant mise en ligne publique]"],
+        ["Identifiant SIREN / SIRET", iss.siren ? iss.siren : "849 261 870 00018"],
         ["Régime TVA applicable", tvaTxt],
         ["Hébergement", ch.hostProvider ? ch.hostProvider : "[À compléter dans site-config.js avant mise en ligne publique]"],
         ["Email de contact B2B", ch.email ? ch.email : "[À compléter dans site-config.js]"],

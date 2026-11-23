@@ -93,10 +93,10 @@
   function getBaseConfig() {
     var base = {
       issuer: {
-        raison: "Mounir NAIT MOHAND (Entrepreneur Individuel)",
+        raison: "Securiaxe",
         enseigne: "Securiaxe",
-        rep: "M. Mounir NAIT MOHAND, Fondateur",
-        capital: "Entreprise Individuelle — Micro-entreprise (SIREN 849 261 870)",
+        rep: "Direction Securiaxe",
+        capital: "Entreprise Individuelle (SIREN 849 261 870)",
         siege: "Albi (81)",
         siren: "849 261 870 00018",
         tvaRegime: "293B",
@@ -366,12 +366,12 @@
 
     return {
       issuer: {
-        raison: $("admRaison").value.trim() || "Mounir NAIT MOHAND (Entrepreneur Individuel)",
-        enseigne: $("admEnseigne").value.trim() || "COS Opérations",
-        rep: $("admRep").value.trim() || "M. Mounir NAIT MOHAND, Président",
-        capital: $("admCapital").value.trim() || "Entreprise Individuelle — Micro-entreprise (SIREN 849 261 870)",
+        raison: $("admRaison").value.trim() || "Securiaxe",
+        enseigne: $("admEnseigne").value.trim() || "Securiaxe",
+        rep: $("admRep").value.trim() || "Direction Securiaxe",
+        capital: $("admCapital").value.trim() || "Entreprise Individuelle (SIREN 849 261 870)",
         siege: $("admSiege").value.trim() || "Albi (81)",
-        siren: $("admSiren").value.trim(),
+        siren: $("admSiren").value.trim() || "849 261 870 00018",
         tvaRegime: $("admTvaRegime").value === "20" ? "20" : "293B",
         tvaNum: $("admTvaNum").value.trim()
       },
@@ -655,8 +655,8 @@
     if (stripeBtn) {
       var hasStripe = Boolean(cfg.channels.stripeLinks[CURRENT_PACK]);
       stripeBtn.textContent = hasStripe
-        ? ("💳 Régler " + OFFERS[CURRENT_PACK].shortName.split("—")[0].trim() + " (" + OFFERS[CURRENT_PACK].price + " € HT) via Stripe")
-        : "🏦 Virement / Paiement sur Bon de Commande";
+        ? ("Régler " + OFFERS[CURRENT_PACK].shortName.split("—")[0].trim() + " (" + OFFERS[CURRENT_PACK].price + " € HT)")
+        : "Virement / Paiement sur Bon de Commande";
     }
   }
 
@@ -830,8 +830,8 @@
       '<div class="bc-head">' +
         '<div>' +
           '<h4>DIAGNOSTIC DE CONFORMITÉ ÉCONOMIQUE &amp; CONVENTIONNELLE — IDCC 1351</h4>' +
-          '<div><b>Référentiel technique indépendant :</b> <code>idcc1351.fr</code> — Édité par <b>' + esc(cfg.issuer.enseigne) + '</b> (' + esc(cfg.issuer.raison) + ')</div>' +
-          '<div>SIREN/SIRET : ' + esc(cfg.issuer.siren || "849 261 870 00018") + ' · Siège : ' + esc(cfg.issuer.siege || "Albi (81)") + ' · Hors activité CNAPS (art. L.611-1 CSI)</div>' +
+          '<div><b>Référentiel technique indépendant :</b> <code>idcc1351.fr</code> — Édité par <b>' + esc(cfg.issuer.enseigne || "Securiaxe") + '</b></div>' +
+          '<div>SIREN/SIRET : ' + esc(cfg.issuer.siren || "849 261 870 00018") + ' &middot; Siège : ' + esc(cfg.issuer.siege || "Albi (81)") + ' &middot; Hors activité CNAPS (art. L.611-1 CSI)</div>' +
           '<div style="font-size:11.5px;color:#475569;margin-top:2px">Non affilié aux organisations paritaires de branche, au Ministère du Travail ou au CNAPS.</div>' +
         '</div>' +
         '<div style="text-align:right">' +
