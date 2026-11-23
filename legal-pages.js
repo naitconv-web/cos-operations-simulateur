@@ -9,7 +9,7 @@
 
   function loadCfg() {
     var cfg = { issuer: {}, channels: {} };
-    var ext = window.OMNISECUR_CONFIG || {};
+    var ext = window.COS Opérations_CONFIG || {};
     if (ext.issuer) cfg.issuer = Object.assign({}, ext.issuer);
     if (ext.channels) cfg.channels = Object.assign({}, ext.channels);
     try {
@@ -56,7 +56,7 @@
 
       var rows = [
         ["Raison sociale", iss.raison || "Mounir NAIT MOHAND (Entrepreneur Individuel)"],
-        ["Nom commercial", iss.enseigne || "OMNISECUR"],
+        ["Nom commercial", iss.enseigne || "COS Opérations"],
         ["Forme & Capital", iss.capital || "Entreprise Individuelle — Micro-entreprise (SIREN 849 261 870)"],
         ["Directeur de publication", iss.rep || "M. Mounir NAIT MOHAND, Président"],
         ["Siège social / Ressort", iss.siege || "Albi (81)"],

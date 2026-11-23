@@ -75,7 +75,7 @@
     },
     conformite: {
       title: "Architecture Juridique, Contractuelle & RGPD B2B",
-      desc: "Chaque document et outil commercial trace une frontière nette entre l'outillage/ingénierie méthodologique (OMNISECUR) et les activités réglementées exercées exclusivement par les entreprises clientes.",
+      desc: "Chaque document et outil commercial trace une frontière nette entre l'outillage/ingénierie méthodologique (COS Opérations) et les activités réglementées exercées exclusivement par les entreprises clientes.",
       bullets: [
         "Prestation 100 % hors champ CNAPS (art. L.611-1 CSI) : ni gardiennage, ni ronde, ni télésurveillance, ni intervention.",
         "Unicité stricte du régime TVA émetteur sur Bon de Commande (art. L. 223-3 du CIBS (ex-293 B CGI) OU TVA 20 %, jamais les deux).",
@@ -94,7 +94,7 @@
     var base = {
       issuer: {
         raison: "Mounir NAIT MOHAND (Entrepreneur Individuel)",
-        enseigne: "OMNISECUR",
+        enseigne: "COS Opérations",
         rep: "M. Mounir NAIT MOHAND, Président",
         capital: "Entreprise Individuelle — Micro-entreprise (SIREN 849 261 870)",
         siege: "Albi (81)",
@@ -117,7 +117,7 @@
         metaPixelId: ""
       }
     };
-    var ext = window.OMNISECUR_CONFIG;
+    var ext = window.COS Opérations_CONFIG;
     if (ext && typeof ext === "object") {
       if (ext.issuer) Object.assign(base.issuer, ext.issuer);
       if (ext.channels) {
@@ -365,7 +365,7 @@
     return {
       issuer: {
         raison: $("admRaison").value.trim() || "Mounir NAIT MOHAND (Entrepreneur Individuel)",
-        enseigne: $("admEnseigne").value.trim() || "OMNISECUR",
+        enseigne: $("admEnseigne").value.trim() || "COS Opérations",
         rep: $("admRep").value.trim() || "M. Mounir NAIT MOHAND, Président",
         capital: $("admCapital").value.trim() || "Entreprise Individuelle — Micro-entreprise (SIREN 849 261 870)",
         siege: $("admSiege").value.trim() || "Albi (81)",
@@ -451,7 +451,7 @@
   }
 
   function refreshSimulator() {
-    var eng = window.OMNISECUR_ENGINE;
+    var eng = window.COS Opérations_ENGINE;
     if (!eng) return;
 
     var prof = $("simProfile").value;
@@ -754,7 +754,7 @@
   function formatDiagTxt(d, soc, refAo) {
     return [
       "===============================================================",
-      "OMNISECUR x BOUCLIER ANTI-PERTES v3.2 — NOTE DIAGNOSTIC CHIFFRAGE",
+      "COS Opérations x BOUCLIER ANTI-PERTES v3.2 — NOTE DIAGNOSTIC CHIFFRAGE",
       "Simulation indicative B2B (hors activités CNAPS art. L.611-1 CSI)",
       "===============================================================",
       "Date           : " + localIsoDate(),
@@ -821,7 +821,7 @@
     return [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//OMNISECUR//Arsenal B2B//FR",
+      "PRODID:-//COS Opérations//Arsenal B2B//FR",
       "BEGIN:VTIMEZONE",
       "TZID:Europe/Paris",
       "BEGIN:DAYLIGHT",
@@ -844,7 +844,7 @@
       "DTSTAMP:" + stamp,
       "DTSTART;TZID=Europe/Paris:" + startNum,
       "DTEND;TZID=Europe/Paris:" + endNum,
-      "SUMMARY:" + escapeIcsText("Cadrage & Démo Bouclier OMNISECUR — " + (payload.societe || "Dirigeant Sécurité Privée")),
+      "SUMMARY:" + escapeIcsText("Cadrage & Démo Bouclier COS Opérations — " + (payload.societe || "Dirigeant Sécurité Privée")),
       "LOCATION:" + escapeIcsText(payload.modalite || "Visio / Sur site Occitanie"),
       "DESCRIPTION:" + escapeIcsText(formatLeadFiche(payload) + (cfg.channels.email ? "\nContact organisateur : " + cfg.channels.email : "")),
       "END:VEVENT",
@@ -1093,7 +1093,7 @@
         saveCfg(nextCfg);
         renderAdminStatus(nextCfg);
         renderBonCommande();
-        var content = "/* Généré depuis OMNISECUR Config Opérateur */\nwindow.OMNISECUR_CONFIG = " + JSON.stringify(nextCfg, null, 2) + ";\n";
+        var content = "/* Généré depuis COS Opérations Config Opérateur */\nwindow.COS Opérations_CONFIG = " + JSON.stringify(nextCfg, null, 2) + ";\n";
         downloadFile("site-config.js", content, "application/javascript;charset=utf-8;");
         toast("site-config.js généré — déposez-le à la racine o2switch/Vercel.");
       } catch (e) {
@@ -1151,7 +1151,7 @@
         }
         fb.classList.remove("warn");
         fb.classList.add("ok");
-        fb.textContent = "Demande transmise au CRM OMNISECUR — Réponse écrite sous 2h ouvrées (24h max week-end/JF).";
+        fb.textContent = "Demande transmise au CRM COS Opérations — Réponse écrite sous 2h ouvrées (24h max week-end/JF).";
         if (window.fbq) window.fbq("track", "Lead");
       }).catch(function () {
         fb.classList.remove("warn");
@@ -1201,7 +1201,7 @@
       var cfgNow = loadCfg();
       var p = collectLeadPayload();
       var ics = buildIcsContent(p, cfgNow);
-      downloadFile("RDV-OMNISECUR-" + (p.societe || "Cadrage").replace(/[^a-zA-Z0-9_-]+/g, "-") + ".ics", ics, "text/calendar;charset=utf-8;");
+      downloadFile("RDV-COS Opérations-" + (p.societe || "Cadrage").replace(/[^a-zA-Z0-9_-]+/g, "-") + ".ics", ics, "text/calendar;charset=utf-8;");
       toast("Fichier agenda .ics téléchargé.");
     });
 

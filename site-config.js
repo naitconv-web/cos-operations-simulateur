@@ -1,13 +1,13 @@
 /**
- * OMNISECUR — Configuration Production Émetteur & Canaux de Vente
+ * COS Opérations — Configuration Production Émetteur & Canaux de Vente
  * -----------------------------------------------------------------
  * Émetteur légal actif : Entreprise Individuelle (Micro-entreprise)
  * Mounir NAIT MOHAND — SIREN 849 261 870
  */
-window.OMNISECUR_CONFIG = {
+window.COS Opérations_CONFIG = {
   issuer: {
     raison: "Mounir NAIT MOHAND (Entrepreneur Individuel)",
-    enseigne: "OMNISECUR — COS Opérations",
+    enseigne: "COS Opérations",
     rep: "M. Mounir NAIT MOHAND",
     capital: "Entreprise Individuelle — Micro-entreprise",
     siege: "Albi (81)",
@@ -16,7 +16,7 @@ window.OMNISECUR_CONFIG = {
     tvaNum: ""
   },
   channels: {
-    domainUrl: "https://naitconv-web.github.io/omnisecur-simulateur",
+    domainUrl: "https://naitconv-web.github.io/cos-operations-simulateur",
     hostProvider: "GitHub Pages (GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA)",
     email: "nait.conv@gmail.com",
     tel: "+33 6 17 17 99 74",
