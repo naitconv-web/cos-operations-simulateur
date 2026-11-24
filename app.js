@@ -343,7 +343,7 @@
     $("admStripe2").value = cfg.channels.stripeLinks[2];
     $("admStripe3").value = cfg.channels.stripeLinks[3];
     $("admSlotsOpen").value = String(cfg.channels.commandoSlotsOpen);
-    $("admPixelId").value = cfg.channels.metaPixelId || "";
+    
   }
 
   function readAdminInputs() {
@@ -362,7 +362,7 @@
     if ((s1Raw && !sanitizeExternalUrl(s1Raw)) || (s2Raw && !sanitizeExternalUrl(s2Raw)) || (s3Raw && !sanitizeExternalUrl(s3Raw))) {
       throw new Error("Lien Stripe invalide (https://buy.stripe.com/... requis).");
     }
-    var pix = $("admPixelId").value.trim().replace(/[^0-9]/g, "");
+    var pix = "";
 
     return {
       issuer: {
@@ -869,7 +869,7 @@
       '</div>' +
       '<div class="bc-cgv-box">' +
         '<b>MÉTHODOLOGIE MATHÉMATIQUE, RÉSERVES &amp; PLAN D\'ACTION (POUR L\'EXPERT-COMPTABLE &amp; LA DIRECTION) :</b>' +
-        '<p>1. <b>Formules certifiées (Bouclier Anti-Pertes v3.2) :</b> En Mode Express, base annuelle <code>151,67 h × 12 = 1 820,04 h</code>, part non vendable 10 % (<code>1 638,036 h</code> productives), salaire brut Coeff. 120 au 01/01/2026 = <code>1 883,74 € / 151,67 h = 12,42 € brut/h</code>, charges patronales modélisées à <code>50,37 %</code> (<code>baseJour = 20,75106 €/h</code>, <code>suppNuit = (12,42 × 0,10 + 1,00) × 1,5037 = 3,3712954 €/h</code>, <code>unitEmp = 24,1223554 €/h</code>, structure <code>4,57 €/h</code> -> coût complet <code>9 181,55 €</code> soit <code>28,69 €/h</code>, résultat <code>-1 821,55 €/mois</code> à 23 €/h ; sensibilité selon charges nettes après allègements RGCP/Fillon : <code>-880 €/mois</code> à 30 %, <code>-1 140 €/mois</code> à 35 %). En Mode Paie Réelle, <code>baseHoraire = 19,50 €/h</code> correspond à ce même salaire de <code>12,42 € brut/h</code> chargé à ~41,30 % avec 10 % de CP (<code>12,42 × 1,41304 / 0,90 = 19,50 €/h</code>), et seuil de rentabilité = <code>[(fixedCosts + ponctuel) × (1 + provPct/100)] / [sellPrice - varCostPerWorkHour]</code> (P01 : <code>138,22 h</code> ; P07 : <code>106,02 h</code>). Simulation économique indicative sans promesse de résultat (art. 1104 et 1112-1 C. civ.).</p>' +
+        '<p>1. <b>Formules certifiées (Bouclier Anti-Pertes v3.2) :</b> En Mode Express, base annuelle <code>151,67 h × 12 = 1 820,04 h</code>, part non vendable 10 % (<code>1 638,036 h</code> productives), salaire brut Coeff. 120 au 01/01/2026 = <code>1 883,85 € / 151,67 h = 12,42 € brut/h</code>, charges patronales modélisées à <code>50,37 %</code> (<code>baseJour = 20,75106 €/h</code>, <code>suppNuit = (12,42 × 0,10 + 1,00) × 1,5037 = 3,3712954 €/h</code>, <code>unitEmp = 24,1223554 €/h</code>, structure <code>4,57 €/h</code> -> coût complet <code>9 181,55 €</code> soit <code>28,69 €/h</code>, résultat <code>-1 821,55 €/mois</code> à 23 €/h ; sensibilité selon charges nettes après allègements RGCP/Fillon : <code>-880 €/mois</code> à 30 %, <code>-1 140 €/mois</code> à 35 %). En Mode Paie Réelle, <code>baseHoraire = 19,50 €/h</code> correspond à ce même salaire de <code>12,42 € brut/h</code> chargé à ~41,30 % avec 10 % de CP (<code>12,42 × 1,41304 / 0,90 = 19,50 €/h</code>), et seuil de rentabilité = <code>[(fixedCosts + ponctuel) × (1 + provPct/100)] / [sellPrice - varCostPerWorkHour]</code> (P01 : <code>138,22 h</code> ; P07 : <code>106,02 h</code>). Simulation économique indicative sans promesse de résultat (art. 1104 et 1112-1 C. civ.).</p>' +
         '<p>2. <b>Actions recommandées :</b> En cas de résultat déficitaire ou d\'exposition au plancher conventionnel étendu de 6,0 h (Avenant n° 2 Art. 1 &amp; 2), il est recommandé de : (a) réorganiser les cycles pour limiter les vacations &lt; 6,0 h et la multiplication des prises de poste ; (b) notifier une demande de révision BPU au donneur d\'ordre ; (c) verrouiller les futurs chiffrages BOAMP via la suite <b>COS Opérations / Securiaxe</b> (' + esc(cfg.channels.email || "nait.conv@gmail.com") + ' · ' + esc(cfg.channels.tel || "+33 6 17 17 99 74") + ').</p>' +
       '</div>';
   }
@@ -970,18 +970,7 @@
     setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
   }
 
-  function maybeLoadMetaPixel(cfg, hasConsent) {
-    if (!hasConsent || !cfg.channels.metaPixelId) return;
-    if (window.fbq) return;
-    /* Chargement différé du Pixel Meta strictement conditionné au consentement explicite */
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
-      t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
-    }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-    window.fbq("init", cfg.channels.metaPixelId);
-    window.fbq("track", "PageView");
-  }
+  function maybeLoadMetaPixel() { /* Zéro traceur tiers — RGPD strict */ }
 
   function initConsent() {
     var cfg = loadCfg();
