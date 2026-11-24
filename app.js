@@ -114,7 +114,7 @@
         iban: "",
         stripeLinks: { 1: "", 2: "", 3: "" },
         commandoSlotsOpen: 2,
-        metaPixelId: ""
+        trackingDisabled: true
       }
     };
     var ext = window.COS_OPERATIONS_CONFIG || window.OMNISECUR_CONFIG;
@@ -391,7 +391,7 @@
           3: sanitizeExternalUrl(s3Raw)
         },
         commandoSlotsOpen: Number($("admSlotsOpen").value),
-        metaPixelId: pix
+        trackingDisabled: true
       }
     };
   }
@@ -869,7 +869,7 @@
       '</div>' +
       '<div class="bc-cgv-box">' +
         '<b>MÉTHODOLOGIE MATHÉMATIQUE, RÉSERVES &amp; PLAN D\'ACTION (POUR L\'EXPERT-COMPTABLE &amp; LA DIRECTION) :</b>' +
-        '<p>1. <b>Formules certifiées (Bouclier Anti-Pertes v3.2) :</b> En Mode Express, base annuelle <code>151,67 h × 12 = 1 820,04 h</code>, part non vendable 10 % (<code>1 638,036 h</code> productives), salaire brut Coeff. 120 au 01/01/2026 = <code>1 883,85 € / 151,67 h = 12,42 € brut/h</code>, charges patronales modélisées à <code>50,37 %</code> (<code>baseJour = 20,75106 €/h</code>, <code>suppNuit = (12,42 × 0,10 + 1,00) × 1,5037 = 3,3712954 €/h</code>, <code>unitEmp = 24,1223554 €/h</code>, structure <code>4,57 €/h</code> -> coût complet <code>9 181,55 €</code> soit <code>28,69 €/h</code>, résultat <code>-1 821,55 €/mois</code> à 23 €/h ; sensibilité selon charges nettes après allègements RGCP/Fillon : <code>-880 €/mois</code> à 30 %, <code>-1 140 €/mois</code> à 35 %). En Mode Paie Réelle, <code>baseHoraire = 19,50 €/h</code> correspond à ce même salaire de <code>12,42 € brut/h</code> chargé à ~41,30 % avec 10 % de CP (<code>12,42 × 1,41304 / 0,90 = 19,50 €/h</code>), et seuil de rentabilité = <code>[(fixedCosts + ponctuel) × (1 + provPct/100)] / [sellPrice - varCostPerWorkHour]</code> (P01 : <code>138,22 h</code> ; P07 : <code>106,02 h</code>). Simulation économique indicative sans promesse de résultat (art. 1104 et 1112-1 C. civ.).</p>' +
+        '<p>1. <b>Formules certifiées (Bouclier Anti-Pertes v3.2) :</b> En Mode Express, base annuelle <code>151,67 h × 12 = 1 820,04 h</code>, part non vendable 10 % (<code>1 638,036 h</code> productives), salaire brut Coeff. 120 au 01/01/2026 = <code>1 883,85 € / 151,67 h = 12,4207 €/h (arrondi à 12,42 € brut/h)</code>, charges patronales modélisées à <code>50,37 %</code> (<code>baseJour = 20,75106 €/h</code>, <code>suppNuit = (12,42 × 0,10 + 1,00) × 1,5037 = 3,3712954 €/h</code>, <code>unitEmp = 24,1223554 €/h</code>, structure <code>4,57 €/h</code> -> coût complet <code>9 181,55 €</code> soit <code>28,69 €/h</code>, résultat <code>-1 821,55 €/mois</code> à 23 €/h ; sensibilité selon charges nettes après allègements RGCP/Fillon : cas de référence réconcilié 41,304 % : <code>-1 356,16 €/mois</code> (27,24 €/h), sensibilité what-if 35 % : <code>-1 032,54 €/mois</code> (26,23 €/h), 30 % : <code>-775,87 €/mois</code> (25,42 €/h)). En Mode Paie Réelle, <code>baseHoraire = 19,50 €/h</code> correspond à ce même salaire de <code>12,42 € brut/h</code> chargé à ~41,30 % avec 10 % de CP (<code>12,42 × 1,41304 / 0,90 = 19,50 €/h</code>), et seuil de rentabilité = <code>[(fixedCosts + ponctuel) × (1 + provPct/100)] / [sellPrice - varCostPerWorkHour]</code> (P01 : <code>138,22 h</code> ; P07 : <code>106,02 h</code>). Simulation économique indicative sans promesse de résultat (art. 1104 et 1112-1 C. civ.).</p>' +
         '<p>2. <b>Actions recommandées :</b> En cas de résultat déficitaire ou d\'exposition au plancher conventionnel étendu de 6,0 h (Avenant n° 2 Art. 1 &amp; 2), il est recommandé de : (a) réorganiser les cycles pour limiter les vacations &lt; 6,0 h et la multiplication des prises de poste ; (b) notifier une demande de révision BPU au donneur d\'ordre ; (c) verrouiller les futurs chiffrages BOAMP via la suite <b>COS Opérations / Securiaxe</b> (' + esc(cfg.channels.email || "nait.conv@gmail.com") + ' · ' + esc(cfg.channels.tel || "+33 6 17 17 99 74") + ').</p>' +
       '</div>';
   }
@@ -977,7 +977,7 @@
     var bar = $("cookieConsentBar");
     var c = null;
     try { c = localStorage.getItem(LS_CONSENT); } catch (e) {}
-    if (!cfg.channels.metaPixelId) {
+    if (true) {
       if (bar) bar.classList.add("hidden");
       return;
     }
