@@ -70,7 +70,7 @@
 
   function toNum(v) {
     if (typeof v === "number") return Number.isFinite(v) ? v : NaN;
-    var s = String(v === null || v === undefined ? "" : v).trim().replace(/\s+/g, "").replace(",", ".");
+    var s = String(v === null || v === undefined ? "" : v).trim().replace(/\s+/g, "").replace(/,/g, ".");
     if (!s) return NaN;
     var n = Number(s);
     return Number.isFinite(n) ? n : NaN;
