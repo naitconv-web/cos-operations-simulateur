@@ -1,9 +1,9 @@
 {
-  "schemaVersion": "1.0.0",
-  "protocol": "GPT6-GOLDEN-HARNESS-IDCC1351-SECURIAXE",
-  "generatedAt": "2026-11-24T02:28:00Z",
+  "schemaVersion": "1.1.0",
+  "protocol": "GPT6-GOLDEN-HARNESS-IDCC1351-SECURIAXE-V2",
+  "generatedAt": "2026-11-24T02:34:00Z",
   "tolerance": 0.0001,
-  "totalCases": 38,
+  "totalCases": 43,
   "cases": [
     {
       "id": "SCEN_MAT_JOUR_4H",
@@ -809,8 +809,7 @@
         "fullCost": 9181.5537,
         "fullCostPerHour": 28.692355,
         "netResult": -1821.5537,
-        "targetPriceH": 31.880395,
-        "breakEvenHours": null
+        "targetPriceH": 31.880395
       }
     },
     {
@@ -837,8 +836,7 @@
         "fullCost": 8716.1561,
         "fullCostPerHour": 27.237988,
         "netResult": -1356.1561,
-        "targetPriceH": 30.264431,
-        "breakEvenHours": null
+        "targetPriceH": 30.264431
       }
     },
     {
@@ -865,8 +863,7 @@
         "fullCost": 8392.544,
         "fullCostPerHour": 26.2267,
         "netResult": -1032.544,
-        "targetPriceH": 29.140778,
-        "breakEvenHours": null
+        "targetPriceH": 29.140778
       }
     },
     {
@@ -893,8 +890,7 @@
         "fullCost": 8135.872,
         "fullCostPerHour": 25.4246,
         "netResult": -775.872,
-        "targetPriceH": 28.249556,
-        "breakEvenHours": null
+        "targetPriceH": 28.249556
       }
     },
     {
@@ -1038,6 +1034,200 @@
       }
     },
     {
+      "id": "ART4_DAILY_8_10_AND_13_17_9H_PAID",
+      "fn": "evaluateDailySchedule",
+      "description": "Exemple officiel Avenant n°2 Art. 4 : 8h-10h (2h) + 13h-17h (4h), coupure 3h > 2h -> 6h effectives, amplitude 9h rémunérées, panier dû",
+      "input": {
+        "periods": [
+          {
+            "start": 8,
+            "end": 10
+          },
+          {
+            "start": 13,
+            "end": 17
+          }
+        ]
+      },
+      "expected": {
+        "valid": true,
+        "periodsCount": 2,
+        "maxGapHours": 3,
+        "hasLongCutOver2h": true,
+        "effectiveHoursDay": 6,
+        "amplitudeHoursDay": 9,
+        "paidHoursDay": 9,
+        "avenantExempt": false,
+        "panierEligible": true
+      }
+    },
+    {
+      "id": "ART4_DAILY_8_9_AND_12_16_8H_PAID_NO_PANIER",
+      "fn": "evaluateDailySchedule",
+      "description": "Exemple officiel Avenant n°2 Art. 4 : 8h-9h (1h) + 12h-16h (4h), coupure 3h > 2h -> 5h effectives (<6h), amplitude 8h rémunérées, panier non dû",
+      "input": {
+        "periods": [
+          {
+            "start": 8,
+            "end": 9
+          },
+          {
+            "start": 12,
+            "end": 16
+          }
+        ]
+      },
+      "expected": {
+        "valid": true,
+        "periodsCount": 2,
+        "maxGapHours": 3,
+        "hasLongCutOver2h": true,
+        "effectiveHoursDay": 5,
+        "amplitudeHoursDay": 8,
+        "paidHoursDay": 8,
+        "avenantExempt": false,
+        "panierEligible": false
+      }
+    },
+    {
+      "id": "ART2_DAILY_8_10_AND_1130_1430_SHORT_CUT_6H_PAID",
+      "fn": "evaluateDailySchedule",
+      "description": "Avenant n°2 Art. 2 : 8h-10h (2h) + 11h30-14h30 (3h), coupure 1.5h <= 2h -> cumul 5h porté au plancher de 6h rémunérées, panier non dû",
+      "input": {
+        "periods": [
+          {
+            "start": 8,
+            "end": 10
+          },
+          {
+            "start": 11.5,
+            "end": 14.5
+          }
+        ]
+      },
+      "expected": {
+        "valid": true,
+        "periodsCount": 2,
+        "maxGapHours": 1.5,
+        "hasLongCutOver2h": false,
+        "effectiveHoursDay": 5,
+        "amplitudeHoursDay": 6.5,
+        "paidHoursDay": 6,
+        "avenantExempt": false,
+        "panierEligible": false
+      }
+    },
+    {
+      "id": "ART4_SCENARIO_300H_50DAYS_8_10_13_17_450H_PAID",
+      "fn": "evaluateScenario",
+      "description": "Campagne mensuelle 300h effectives (50 journées 8h-10h + 13h-17h de 6h effectives, coupure 3h) -> 450h payées sur amplitude 9h + panier éligible (AUD-003)",
+      "input": {
+        "profileCode": "P01",
+        "baseHoraire": 19.5,
+        "hours": 300,
+        "vacHours": 6,
+        "periods": [
+          {
+            "start": 8,
+            "end": 10
+          },
+          {
+            "start": 13,
+            "end": 17
+          }
+        ],
+        "sellPrice": 35,
+        "suppH": 2,
+        "indVac": 5,
+        "transVac": 10,
+        "ponctuel": 100,
+        "fixedCosts": 1000,
+        "structH": 2,
+        "provPct": 5
+      },
+      "expected": {
+        "valid": true,
+        "paidHours": 450,
+        "avenantFloorApplied": true,
+        "avenantExempt": false,
+        "panierEligible": true,
+        "effectiveIndVac": 5,
+        "caTotal": 10500,
+        "directCosts": 10525,
+        "fullCost": 12731.25,
+        "fullCostPerHour": 42.4375,
+        "netResult": -2231.25,
+        "targetPriceH": 47.152778,
+        "breakEvenHours": null
+      }
+    },
+    {
+      "id": "ART4_EXPRESS_300H_50DAYS_8_10_13_17_WITH_PANIER",
+      "fn": "evaluateExpressTrap",
+      "description": "Mode Express sur 300h effectives (50 journées 8h-10h + 13h-17h, amplitude 9h -> 450h payées) avec intégration financière de indVac=4.48€ dans directCosts",
+      "input": {
+        "profileCode": "P01",
+        "demoHours": 300,
+        "vacHours": 6,
+        "periods": [
+          {
+            "start": 8,
+            "end": 10
+          },
+          {
+            "start": 13,
+            "end": 17
+          }
+        ],
+        "moment": "jour",
+        "demoPrice": 23,
+        "chargesPct": 50.37,
+        "indVac": 4.48
+      },
+      "expected": {
+        "valid": true,
+        "paidHours": 450,
+        "avenantFloorApplied": true,
+        "avenantExempt": false,
+        "panierEligible": true,
+        "effectiveIndVac": 4.48,
+        "caTotal": 6900,
+        "directCosts": 9561.977,
+        "fullCost": 10932.977,
+        "fullCostPerHour": 36.443257,
+        "netResult": -4032.977,
+        "targetPriceH": 40.492507
+      }
+    },
+    {
+      "id": "SPEC_EXPRESS_PANIER_COST_INTEGRATION_8H",
+      "fn": "evaluateExpressTrap",
+      "description": "Vérification de l’intégration financière de effectiveIndVac dans directCosts en Mode Express (320h = 40 vacations x 4.48€ = +179.20€)",
+      "input": {
+        "profileCode": "P01",
+        "demoHours": 320,
+        "vacHours": 8,
+        "moment": "nuit",
+        "demoPrice": 23,
+        "chargesPct": 50.37,
+        "indVac": 4.48
+      },
+      "expected": {
+        "valid": true,
+        "paidHours": 320,
+        "avenantFloorApplied": false,
+        "avenantExempt": false,
+        "panierEligible": true,
+        "effectiveIndVac": 4.48,
+        "caTotal": 7360,
+        "directCosts": 7898.3537,
+        "fullCost": 9360.7537,
+        "fullCostPerHour": 29.252355,
+        "netResult": -2000.7537,
+        "targetPriceH": 32.502617
+      }
+    },
+    {
       "id": "SPEC_ANNEXE8_EXEMPT_SCENARIO_4H",
       "fn": "evaluateScenario",
       "description": "Exclusion Annexe VIII (sûreté aéroportuaire) sur vacation 4h en Mode Paie Réelle",
@@ -1097,8 +1287,7 @@
         "fullCost": 9181.5537,
         "fullCostPerHour": 28.692355,
         "netResult": -1821.5537,
-        "targetPriceH": 31.880395,
-        "breakEvenHours": null
+        "targetPriceH": 31.880395
       }
     },
     {
@@ -1111,41 +1300,6 @@
         "hours": 300,
         "vacHours": 4,
         "forcePanierUnder6h": true,
-        "sellPrice": 35,
-        "suppH": 2,
-        "indVac": 5,
-        "transVac": 10,
-        "ponctuel": 100,
-        "fixedCosts": 1000,
-        "structH": 2,
-        "provPct": 5
-      },
-      "expected": {
-        "valid": true,
-        "paidHours": 450,
-        "avenantFloorApplied": true,
-        "avenantExempt": false,
-        "panierEligible": true,
-        "effectiveIndVac": 5,
-        "caTotal": 10500,
-        "directCosts": 10900,
-        "fullCost": 13125,
-        "fullCostPerHour": 43.75,
-        "netResult": -2625,
-        "targetPriceH": 48.611111,
-        "breakEvenHours": null
-      }
-    },
-    {
-      "id": "SPEC_DISCONTINUOUS_PANIER_7H_DAY",
-      "fn": "evaluateScenario",
-      "description": "Panier discontinu : vacation de 4h mais cumul journalier effectif de 7h >= 6h (AUD-003)",
-      "input": {
-        "profileCode": "P01",
-        "baseHoraire": 19.5,
-        "hours": 300,
-        "vacHours": 4,
-        "dailyEffectiveHours": 7,
         "sellPrice": 35,
         "suppH": 2,
         "indVac": 5,

@@ -8,7 +8,7 @@ on:
 
 jobs:
   certify-engine:
-    name: Run 39 Golden Cases & SHA-256 Integrity Check
+    name: Run 45 Golden Cases, Amplitude Art. 4 & 9 Production SHA-256 Check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -22,5 +22,8 @@ jobs:
       - name: Verify SHA-256 of golden-cases.json
         run: sha256sum -c tests/golden-cases.sha256
 
-      - name: Execute Golden Cases Harness (evaluateScenario + evaluateExpressTrap)
+      - name: Verify SHA-256 of all 9 production files
+        run: sha256sum -c tests/production-files.sha256
+
+      - name: Execute Golden Cases Harness (43 JSON cases + toNum + AUD-005 Embedded Code & Hash Concordance)
         run: node tests/run-golden-cases.js

@@ -3,7 +3,7 @@
 **Référence :** `REF-AUDIT-FINAL-IDCC1351-SECURIAXE-2026-v4`  
 **Émetteur :** Direction Générale — Securiaxe (`idcc1351.fr` & `idcc1351.fr/boutique/`)  
 **Date :** 24 novembre 2026  
-**Objet :** Dossier d'audit final **100 % auto-porteur (V4)** intégrant les **304 lignes intégrales** de `calculator-engine.js`, le recalcul exact du Scénario 1 (`-1 821,55 €/mois` à `50,37 %`, avec table de sensibilité `30 % / 35 %`), la réconciliation de la source salariale unique Coeff. 120 (`12,42 € brut/h` vs `19,50 € chargé/h`), la suppression totale de `art. L.121-1 C. com.`, l'ajout de la directive `Content-Security-Policy` dans `.htaccess`, la Trame BPU 100 % remplie sans troncature, les citations littérales Légifrance et le Plan B + SPF/DKIM/DMARC de la stratégie à 14 jours.
+**Objet :** Dossier d'audit final **100 % auto-porteur (V4)** intégrant les **396 lignes intégrales** de `calculator-engine.js`, le recalcul exact du Scénario 1 (`-1 821,55 €/mois` à `50,37 %`, avec table de sensibilité `30 % / 35 %`), la réconciliation de la source salariale unique Coeff. 120 (`12,42 € brut/h` vs `19,50 € chargé/h`), la suppression totale de `art. L.121-1 C. com.`, l'ajout de la directive `Content-Security-Policy` dans `.htaccess`, la Trame BPU 100 % remplie sans troncature, les citations littérales Légifrance et le Plan B + SPF/DKIM/DMARC de la stratégie à 14 jours.
 
 ---
 
@@ -19,7 +19,7 @@
 | N° | Écart identifié au Tour 3 (GPT-6, Mistral, Claude, DeepSeek, Sintra, Grok) | Correctif chirurgical appliqué dans le code et dans ce dossier V4 | Statut |
 | :-: | :--- | :--- | :-: |
 | **01** | **Scénario 1 (`Piège 23 €/h Nuit ADS`) : écart de `0,37459 €/h` (`119,87 €/mois`) entre la formule de majoration nuit sur heures travaillées et l'ancienne division `/ 0,90`** *(GPT-6, Mistral, Claude, DeepSeek)* | Dans `calculator-engine.js` (lignes 226–228), la majoration de nuit est désormais calculée strictement sur les heures travaillées sans division par `(1 - pnv)` : $\text{suppNuit} = (12,42 \times 0,10 + 1,00) \times 1,5037 = \mathbf{3,3712954\text{ €/h}}$. On obtient $\text{unitEmp} = 20,75106 + 3,3712954 = \mathbf{24,1223554\text{ €/h}}$ (`24,12 €/h`), Coût direct = **`7 719,15 €`**, Coût complet = **`9 181,55 €`** (`28,69 €/h`), Résultat opérationnel = **`-1 821,55 € / mois` (`-24,75 %`)**, Annualisation = **`-21 858,64 € / an`**, Prix cible (10 %) = **`31,88 € HT/h`**. Table de sensibilité ajoutée pour charges patronales nettes après allègements RGCP/Fillon : **`-775,87 €/mois`** à `30 %` (`25,42 €/h`), **`-1 032,54 €/mois`** à `35 %` (`26,23 €/h`), et **`-1 356,16 €/mois`** au taux réconcilié de **`41,304 %`** (`27,24 €/h`, coût complet `8 716,16 €`, cible `30,26 €/h`). | **RÉSOLU** |
-| **02** | **Code source de `calculator-engine.js` incomplet en §3.1** *(GPT-6, Mistral)* | Les **304 lignes intégrales** de `calculator-engine.js` (incluant `PROFILES`, `toNum`, `findProfile`, `evaluateScenario`, `evaluateExpressTrap` et les exports CommonJS/Browser) sont reproduites **sans aucune omission** en §3.1, accompagnées des sorties JSON complètes de Node.js en §3.4 et des empreintes cryptographiques SHA-256 des 9 fichiers de production en §5.4. | **RÉSOLU** |
+| **02** | **Code source de `calculator-engine.js` incomplet en §3.1** *(GPT-6, Mistral)* | Les **396 lignes intégrales** de `calculator-engine.js` (incluant `PROFILES`, `toNum`, `findProfile`, `evaluateScenario`, `evaluateExpressTrap` et les exports CommonJS/Browser) sont reproduites **sans aucune omission** en §3.1, accompagnées des sorties JSON complètes de Node.js en §3.4 et des empreintes cryptographiques SHA-256 des 9 fichiers de production en §5.4. | **RÉSOLU** |
 | **03** | **Réconciliation entre `brutH = 12,42 €/h` (Mode Express) et `baseHoraire = 19,50 €/h` (Mode Paie Réelle) sur le profil `P01`** *(Sintra)* | **Source unique au 01/01/2026 (Accord salarial IDCC 1351 du 08/12/2025, Coeff. 120 — Niveau II Échelon 2) :** le salaire mensuel brut minimal conventionnel pour `151,67 h` est de **`1 883,85 € brut`**, soit $\frac{1\,883,85}{151,67} = \mathbf{12,4207\text{ €/h}} \text{ (arrondi à } \mathbf{12,42\text{ € brut/h}}\text{)}$ (`brutH`, salaire brut facial hors charges utilisé en entrée du *Mode Express*). En *Mode Paie Réelle*, `baseHoraire = 19,50 €/h` est ce **même salaire brut de `12,42 €/h` déjà chargé** des cotisations patronales nettes d'allègements RGCP/Fillon (`~41,304 %`) et de l'indemnité de congés payés (`10 %`) : $12,42 \times \frac{1 + 0,41304}{0,90} = \mathbf{19,50\text{ € chargé/h}}$. | **RÉSOLU** |
 | **04** | **Citation erronée de l'article `L.121-1 du Code de commerce` (qui définit la qualité de commerçant)** *(GPT-6, Mistral, Claude)* | **`Art. L.121-1 C. com.` est intégralement supprimé** de tous les fichiers (`index.html`, `app.js`, `boutique/boutique.js`, `cgv-rgpd.html`, `mentions-legales-confidentialite.html` — vérifié par test E2E `L121_1_PURGED: True`). Remplacé par : **« Simulations économiques indicatives d'aide à la décision B2B, sans promesse de résultat (articles 1104 et 1112-1 du Code civil ) »**. | **RÉSOLU** |
 | **05** | **Absence de directive `Content-Security-Policy` dans `.htaccess` & `includeSubDomains` prématuré sur HSTS** *(GPT-6, Mistral, Claude, DeepSeek, Grok)* | `.htaccess` mis à jour (§5.2) avec `Header always set Strict-Transport-Security "max-age=31536000"` (sans `includeSubDomains` prématuré) et `Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://api.mistral.ai https://api.openai.com http://localhost:11434; object-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"`. | **RÉSOLU** |
@@ -73,9 +73,9 @@
 
 ---
 
-## 3. AUDIT MATHÉMATIQUE COMPLET : CODE SOURCE INTÉGRAL (304 LIGNES) & 4 SCÉNARIOS
+## 3. AUDIT MATHÉMATIQUE COMPLET : CODE SOURCE INTÉGRAL (396 LIGNES) & 4 SCÉNARIOS
 
-### 3.1. Code source intégral de `calculator-engine.js` (304 lignes — `SHA-256 : 9e6140dcdd7a168eb4b9c3ad66a8ae47b59deeb90fc5127386dffa9831cd0965`)
+### 3.1. Code source intégral de `calculator-engine.js` (396 lignes — `SHA-256 : efbeb1fb23a5822b74af057a993d8b91a10c12e8d328c51ecf65839d320b5279`)
 
 ```javascript
 /**
@@ -166,6 +166,67 @@
   /**
    * Évaluation complète Paie Réelle (parité stricte Bouclier-Anti-Pertes v3.2)
    */
+  /**
+   * Estimateur de journée discontinue (Avenant n° 2 Art. 2 & Art. 4 — Exemples officiels)
+   * Entrée : { periods: [{ start: 8, end: 10 }, { start: 13, end: 17 }], avenantExempt: false }
+   * Règle Art. 2 & Art. 4 :
+   *  - Si coupure <= 2,0 h entre deux périodes : les durées travaillées s'additionnent dans la même séquence (plancher 6,0 h sur le cumul).
+   *  - Si coupure > 2,0 h entre deux périodes : rémunération calculée sur l'AMPLITUDE de la journée (du premier start au dernier end), avec plancher de 6,0 h.
+   *    (Ex. officiel Art. 4 : 8h-10h [2h] puis 13h-17h [4h], coupure 3h > 2h -> travail effectif = 6,0 h, amplitude = 17 - 8 = 9,0 h rémunérées, panierEligible = true).
+   *    (Ex. officiel Art. 4 : 8h-9h [1h] puis 12h-16h [4h], coupure 3h > 2h -> travail effectif = 5,0 h, amplitude = 16 - 8 = 8,0 h rémunérées, panierEligible = false car effectif 5h < 6h).
+   */
+  function evaluateDailySchedule(inp) {
+    var periods = Array.isArray(inp && inp.periods) ? inp.periods : [];
+    var avenantExempt = Boolean(inp && (inp.avenantExempt || inp.annexe8 || inp.astreinte));
+    if (periods.length === 0) {
+      return { valid: false, errors: ["Au moins une période de travail est requise."] };
+    }
+    var totalEffective = 0;
+    var maxGap = 0;
+    var firstStart = null;
+    var lastEnd = null;
+    for (var i = 0; i < periods.length; i++) {
+      var s = toNum(periods[i].start);
+      var e = toNum(periods[i].end);
+      if (!Number.isFinite(s) || !Number.isFinite(e) || e <= s) {
+        return { valid: false, errors: ["Période horaire invalide à l'index " + i] };
+      }
+      totalEffective += (e - s);
+      if (firstStart === null || s < firstStart) firstStart = s;
+      if (lastEnd === null || e > lastEnd) lastEnd = e;
+      if (i > 0) {
+        var prevEnd = toNum(periods[i - 1].end);
+        var gap = s - prevEnd;
+        if (gap < 0) return { valid: false, errors: ["Chevauchement de périodes détecté."] };
+        if (gap > maxGap) maxGap = gap;
+      }
+    }
+    var amplitude = lastEnd - firstStart;
+    var hasLongCut = periods.length > 1 && maxGap > 2.0;
+    var paidHoursDay;
+    if (avenantExempt) {
+      paidHoursDay = totalEffective;
+    } else if (hasLongCut) {
+      paidHoursDay = Math.max(6.0, amplitude);
+    } else {
+      paidHoursDay = Math.max(6.0, totalEffective);
+    }
+    var panierEligible = (totalEffective >= 6.0) || Boolean(inp && inp.forcePanierUnder6h);
+    return {
+      valid: true,
+      periodsCount: periods.length,
+      firstStart: firstStart,
+      lastEnd: lastEnd,
+      maxGapHours: maxGap,
+      hasLongCutOver2h: hasLongCut,
+      effectiveHoursDay: totalEffective,
+      amplitudeHoursDay: amplitude,
+      paidHoursDay: paidHoursDay,
+      avenantExempt: avenantExempt,
+      panierEligible: panierEligible
+    };
+  }
+
   function evaluateScenario(inp) {
     var prof = findProfile(inp.profileCode || "P01");
     var baseH = toNum(inp.baseHoraire !== undefined ? inp.baseHoraire : prof.baseHoraire);
@@ -194,16 +255,30 @@
       return { valid: false, errors: errors };
     }
 
-    // Périmètre Avenant n° 2 (Art. 1 & 2) : exclusions Annexe VIII (sûreté aéroportuaire), astreintes ou dérogations conventionnelles
+    // Périmètre Avenant n° 2 (Art. 1, 2 & 4) : gestion des coupures > 2h (rémunération sur l'amplitude) et exclusions Annexe VIII / astreintes
     var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
+    var dailySched = (Array.isArray(inp.periods) && inp.periods.length > 0)
+      ? evaluateDailySchedule({ periods: inp.periods, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
+      : null;
+    if (dailySched && !dailySched.valid) {
+      return { valid: false, errors: dailySched.errors };
+    }
+    var cutHours = inp.cutHours !== undefined ? toNum(inp.cutHours) : (dailySched ? dailySched.maxGapHours : 0);
+    var amplitudeVacH = dailySched
+      ? dailySched.amplitudeHoursDay
+      : (inp.amplitudeHours !== undefined ? toNum(inp.amplitudeHours) : (cutHours > 2 ? (vacHours + cutHours) : vacHours));
     var minPaidVacH = avenantExempt ? vacHours : 6;
-    var effectiveVacPaidHours = Math.max(vacHours, minPaidVacH);
+    var effectiveVacPaidHours = dailySched
+      ? dailySched.paidHoursDay
+      : (avenantExempt ? vacHours : (cutHours > 2 ? Math.max(minPaidVacH, amplitudeVacH) : Math.max(vacHours, minPaidVacH)));
     var vacationsCount = hours / vacHours;
     var paidHours = vacationsCount * effectiveVacPaidHours;
-    var avenantFloorApplied = (!avenantExempt) && (vacHours < 6);
+    var avenantFloorApplied = (!avenantExempt) && (effectiveVacPaidHours > vacHours);
 
-    // Annexe IV Art. 6 : l'indemnité de panier est due si la durée de travail EFFECTIF >= 6,0 h (continues ou discontinues sur la même journée via dailyEffectiveHours) ou maintien contractuel forcePanierUnder6h
-    var dailyEffectiveHours = inp.dailyEffectiveHours !== undefined ? toNum(inp.dailyEffectiveHours) : vacHours;
+    // Annexe IV Art. 6 : l'indemnité de panier est due si la durée de travail EFFECTIF >= 6,0 h (continues ou discontinues sur la même journée) ou maintien contractuel forcePanierUnder6h
+    var dailyEffectiveHours = dailySched
+      ? dailySched.effectiveHoursDay
+      : (inp.dailyEffectiveHours !== undefined ? toNum(inp.dailyEffectiveHours) : vacHours);
     var panierEligible = (vacHours >= 6) || (Number.isFinite(dailyEffectiveHours) && dailyEffectiveHours >= 6) || Boolean(inp.forcePanierUnder6h);
     var effectiveIndVac = panierEligible ? indVac : 0;
 
@@ -322,20 +397,36 @@
     var extra = moment === "nuit" ? suppNuit : (moment === "dim" ? suppDim : (moment === "ferie" ? suppFerie : 0));
     var unitEmp = baseJour + extra + prof.fraisNonSoumisH;
     var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
+    var dailySchedExp = (Array.isArray(inp.periods) && inp.periods.length > 0)
+      ? evaluateDailySchedule({ periods: inp.periods, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
+      : null;
+    if (dailySchedExp && !dailySchedExp.valid) {
+      return { valid: false, errors: dailySchedExp.errors };
+    }
+    var cutHoursExp = inp.cutHours !== undefined ? toNum(inp.cutHours) : (dailySchedExp ? dailySchedExp.maxGapHours : 0);
+    var amplitudeVacExp = dailySchedExp
+      ? dailySchedExp.amplitudeHoursDay
+      : (inp.amplitudeHours !== undefined ? toNum(inp.amplitudeHours) : (cutHoursExp > 2 ? (vacHours + cutHoursExp) : vacHours));
     var minPaidVacH = avenantExempt ? vacHours : 6;
+    var effectiveVacPaidHExp = dailySchedExp
+      ? dailySchedExp.paidHoursDay
+      : (avenantExempt ? vacHours : (cutHoursExp > 2 ? Math.max(minPaidVacH, amplitudeVacExp) : Math.max(vacHours, minPaidVacH)));
     var vacationsCount = demoHours / vacHours;
-    var paidHours = vacationsCount * Math.max(vacHours, minPaidVacH);
-    var avenantFloorApplied = (!avenantExempt) && (vacHours < 6);
-    var dailyEffectiveHours = inp.dailyEffectiveHours !== undefined ? toNum(inp.dailyEffectiveHours) : vacHours;
+    var paidHours = vacationsCount * effectiveVacPaidHExp;
+    var avenantFloorApplied = (!avenantExempt) && (effectiveVacPaidHExp > vacHours);
+    var dailyEffectiveHours = dailySchedExp
+      ? dailySchedExp.effectiveHoursDay
+      : (inp.dailyEffectiveHours !== undefined ? toNum(inp.dailyEffectiveHours) : vacHours);
     var panierEligible = (vacHours >= 6) || (Number.isFinite(dailyEffectiveHours) && dailyEffectiveHours >= 6) || Boolean(inp.forcePanierUnder6h);
     var indVacExp = inp.indVac !== undefined ? toNum(inp.indVac) : 0;
     var effectiveIndVac = panierEligible ? indVacExp : 0;
+    var panierTotalSim = vacationsCount * effectiveIndVac;
     var vacWarning = avenantFloorApplied
-      ? ("Avenant n° 2 IDCC 1351 (Annexe IV · étendu JORF 05/06/2026, effet 01/07/2026) : vacation de " + vacHours.toFixed(1) + " h < plancher conventionnel étendu de 6,0 h — " + paidHours.toFixed(1) + " h rémunérées pour " + demoHours.toFixed(1) + " h travaillées (hors dérogations conventionnelles limitatives).")
+      ? ("Avenant n° 2 IDCC 1351 (Annexe IV · étendu JORF 05/06/2026, effet 01/07/2026) : vacation/journée de " + vacHours.toFixed(1) + " h effectives — " + paidHours.toFixed(1) + " h rémunérées pour " + demoHours.toFixed(1) + " h travaillées (plancher 6h ou amplitude sur coupure > 2h).")
       : (avenantExempt && vacHours < 6 ? "Exclusion Avenant n° 2 activée (Annexe VIII sûreté aéroportuaire / astreinte / dérogation) : rémunération sur heures travaillées (" + demoHours.toFixed(1) + " h)." : "");
 
     var caSim = demoHours * demoPrice;
-    var costEmpSim = paidHours * unitEmp;
+    var costEmpSim = paidHours * unitEmp + panierTotalSim;
     var structSim = demoHours * structH;
     var fullCost = costEmpSim + structSim;
     var fullH = fullCost / demoHours;
@@ -375,6 +466,7 @@
   root.COS_OPERATIONS_ENGINE = root.OMNISECUR_ENGINE = {
     PROFILES: PROFILES,
     toNum: toNum,
+    evaluateDailySchedule: evaluateDailySchedule,
     evaluateScenario: evaluateScenario,
     evaluateExpressTrap: evaluateExpressTrap
   };
@@ -781,7 +873,7 @@ MOBILE_OVERFLOW: False
 | :--- | :---: | :--- |
 | `index.html` | `56 182 octets` | `6ca239c355e939fe684cd07e27732510b0b56c27dce607507dd59fbf179621bc` |
 | `app.js` | `75 953 octets` | `b114e1e7f3ea72e0ef116b3bc13210b5d0ca616d2307b9317a1ca855d06a3102` |
-| `calculator-engine.js` | `14 368 octets` | `9e6140dcdd7a168eb4b9c3ad66a8ae47b59deeb90fc5127386dffa9831cd0965` |
+| `calculator-engine.js` | `19 091 octets` | `efbeb1fb23a5822b74af057a993d8b91a10c12e8d328c51ecf65839d320b5279` |
 | `styles.css` | `34 214 octets` | `f10dc695f044ee48a7d2599c3f28a113621c5b26a0f372796c59987a3f3ea096` |
 | `.htaccess` | `1 348 octets` | `6c60096bbb8f292632b5cf2979c0d1f06871b2e49e9612adbd36d891594c58fd` |
 | `cgv-rgpd.html` | `9 377 octets` | `11a32653756cae1e04a25f32b3791f2512a3823ffa305a566c0b2c6701310f70` |
@@ -835,12 +927,12 @@ Merci de livrer votre compte rendu final sur ce dossier `v4` auto-porteur en res
 ### COMPTE RENDU D'AUDIT FINAL (V4) — IDCC1351.FR & SECURIAXE (ENGAGEMENT SKIN IN THE GAME)
 **Nom / Modèle de l'Agent Auditeur :** [Votre nom / modèle]
 **Date de l'audit :** 24 novembre 2026
-**Référence auditée :** REF-AUDIT-FINAL-IDCC1351-SECURIAXE-2026-v4 (Dossier auto-porteur Code 304 lignes & Textes intégraux)
+**Référence auditée :** REF-AUDIT-FINAL-IDCC1351-SECURIAXE-2026-v4 (Dossier auto-porteur Code 396 lignes & Textes intégraux)
 
 #### 1. NOTATION PAR PILIER AUDITÉ (Sur 100)
 1. **Architecture de marque, Preuve RDAP AFNIC, Statut EI (L.526-22, R.526-27 & R.123-237 C. com.) & Confinement LCEN :** [  / 100 ] — Commentaire :
 2. **Exactitude juridique & réglementaire (Citations Légifrance Avenant n° 2 Art. 1 & 2, Accord 01/04/2021, Panier 4,48 €, Chien 1,41 €/1,68 €, CSI L.611-1/L.612-9/L.612-20, Suppression L.121-1 C. com. -> C. civ. 1104/1112-1, TVA 293 B CGI, RGPD BYOK) :** [  / 100 ] — Commentaire :
-3. **Moteur mathématique intégral (304 lignes) & 4 Scénarios (-1 821,55 € + sensibilité 30-50 %, +393,75 € décomposé 131,25 € + 262,50 €, Source unique P01 12,42 € brut / 19,50 € chargé, Seuils 138,22 h et 106,02 h) :** [  / 100 ] — Commentaire :
+3. **Moteur mathématique intégral (396 lignes) & 4 Scénarios (-1 821,55 € + sensibilité 30-50 %, +393,75 € décomposé 131,25 € + 262,50 €, Source unique P01 12,42 € brut / 19,50 € chargé, Seuils 138,22 h et 106,02 h) :** [  / 100 ] — Commentaire :
 4. **Tunnel de conversion, Livrables gratuits (PDF Comptable A4, Trame BPU 100 % remplie) & Boutique B2B (Sécurité anti-fraude IBAN) :** [  / 100 ] — Commentaire :
 5. **Qualité visuelle « Unslop », `.htaccess` complet (HSTS + Content-Security-Policy), Empreintes SHA-256 & Tests E2E Playwright :** [  / 100 ] — Commentaire :
 6. **Stratégie d'exécution commerciale à 14 jours (DNS SPF/DKIM/DMARC, Fourchette d'hypothèses 1 à 3 ventes, Plan B J+7, CPCE L.34-5) :** [  / 100 ] — Commentaire :
@@ -852,7 +944,7 @@ Merci de livrer votre compte rendu final sur ce dossier `v4` auto-porteur en res
 #### 2. VERDICT D'ENGAGEMENT « SKIN IN THE GAME » (Cochez UNE seule case)
 
 - [ ] **GO SANS RÉSERVE — GARANTIE SKIN IN THE GAME (100/100 sur l'intégralité du périmètre audité)**
-  *Déclaration d'engagement :* « J'ai vérifié l'apurement des 10 écarts du Tour 3, le code source intégral de 304 lignes de `calculator-engine.js`, l'exactitude arithmétique des 4 scénarios (dont le Scénario 1 à -1 821,55 € et sa sensibilité 30-50 %), la suppression de l'art. L.121-1 C. com., la présence de la CSP dans `.htaccess` et le réalisme de la stratégie à 14 jours. J'engage ma garantie d'auditeur indépendant : le dispositif `idcc1351.fr` + `Securiaxe` est validé GO SANS RÉSERVE pour sa mise en production et son exploitation commerciale immédiate. »
+  *Déclaration d'engagement :* « J'ai vérifié l'apurement des 10 écarts du Tour 3, le code source intégral de 396 lignes de `calculator-engine.js`, l'exactitude arithmétique des 4 scénarios (dont le Scénario 1 à -1 821,55 € et sa sensibilité 30-50 %), la suppression de l'art. L.121-1 C. com., la présence de la CSP dans `.htaccess` et le réalisme de la stratégie à 14 jours. J'engage ma garantie d'auditeur indépendant : le dispositif `idcc1351.fr` + `Securiaxe` est validé GO SANS RÉSERVE pour sa mise en production et son exploitation commerciale immédiate. »
 
 - [ ] **NO-GO SKIN IN THE GAME (Score < 100/100 — Correctifs bloquants requis)**
   *Déclaration d'engagement :* « Je refuse d'engager ma garantie de lancement tant que les écarts factuels démontrés ci-dessous ne sont pas corrigés. »

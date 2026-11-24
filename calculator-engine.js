@@ -86,6 +86,67 @@
   /**
    * Évaluation complète Paie Réelle (parité stricte Bouclier-Anti-Pertes v3.2)
    */
+  /**
+   * Estimateur de journée discontinue (Avenant n° 2 Art. 2 & Art. 4 — Exemples officiels)
+   * Entrée : { periods: [{ start: 8, end: 10 }, { start: 13, end: 17 }], avenantExempt: false }
+   * Règle Art. 2 & Art. 4 :
+   *  - Si coupure <= 2,0 h entre deux périodes : les durées travaillées s'additionnent dans la même séquence (plancher 6,0 h sur le cumul).
+   *  - Si coupure > 2,0 h entre deux périodes : rémunération calculée sur l'AMPLITUDE de la journée (du premier start au dernier end), avec plancher de 6,0 h.
+   *    (Ex. officiel Art. 4 : 8h-10h [2h] puis 13h-17h [4h], coupure 3h > 2h -> travail effectif = 6,0 h, amplitude = 17 - 8 = 9,0 h rémunérées, panierEligible = true).
+   *    (Ex. officiel Art. 4 : 8h-9h [1h] puis 12h-16h [4h], coupure 3h > 2h -> travail effectif = 5,0 h, amplitude = 16 - 8 = 8,0 h rémunérées, panierEligible = false car effectif 5h < 6h).
+   */
+  function evaluateDailySchedule(inp) {
+    var periods = Array.isArray(inp && inp.periods) ? inp.periods : [];
+    var avenantExempt = Boolean(inp && (inp.avenantExempt || inp.annexe8 || inp.astreinte));
+    if (periods.length === 0) {
+      return { valid: false, errors: ["Au moins une période de travail est requise."] };
+    }
+    var totalEffective = 0;
+    var maxGap = 0;
+    var firstStart = null;
+    var lastEnd = null;
+    for (var i = 0; i < periods.length; i++) {
+      var s = toNum(periods[i].start);
+      var e = toNum(periods[i].end);
+      if (!Number.isFinite(s) || !Number.isFinite(e) || e <= s) {
+        return { valid: false, errors: ["Période horaire invalide à l'index " + i] };
+      }
+      totalEffective += (e - s);
+      if (firstStart === null || s < firstStart) firstStart = s;
+      if (lastEnd === null || e > lastEnd) lastEnd = e;
+      if (i > 0) {
+        var prevEnd = toNum(periods[i - 1].end);
+        var gap = s - prevEnd;
+        if (gap < 0) return { valid: false, errors: ["Chevauchement de périodes détecté."] };
+        if (gap > maxGap) maxGap = gap;
+      }
+    }
+    var amplitude = lastEnd - firstStart;
+    var hasLongCut = periods.length > 1 && maxGap > 2.0;
+    var paidHoursDay;
+    if (avenantExempt) {
+      paidHoursDay = totalEffective;
+    } else if (hasLongCut) {
+      paidHoursDay = Math.max(6.0, amplitude);
+    } else {
+      paidHoursDay = Math.max(6.0, totalEffective);
+    }
+    var panierEligible = (totalEffective >= 6.0) || Boolean(inp && inp.forcePanierUnder6h);
+    return {
+      valid: true,
+      periodsCount: periods.length,
+      firstStart: firstStart,
+      lastEnd: lastEnd,
+      maxGapHours: maxGap,
+      hasLongCutOver2h: hasLongCut,
+      effectiveHoursDay: totalEffective,
+      amplitudeHoursDay: amplitude,
+      paidHoursDay: paidHoursDay,
+      avenantExempt: avenantExempt,
+      panierEligible: panierEligible
+    };
+  }
+
   function evaluateScenario(inp) {
     var prof = findProfile(inp.profileCode || "P01");
     var baseH = toNum(inp.baseHoraire !== undefined ? inp.baseHoraire : prof.baseHoraire);
@@ -114,16 +175,30 @@
       return { valid: false, errors: errors };
     }
 
-    // Périmètre Avenant n° 2 (Art. 1 & 2) : exclusions Annexe VIII (sûreté aéroportuaire), astreintes ou dérogations conventionnelles
+    // Périmètre Avenant n° 2 (Art. 1, 2 & 4) : gestion des coupures > 2h (rémunération sur l'amplitude) et exclusions Annexe VIII / astreintes
     var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
+    var dailySched = (Array.isArray(inp.periods) && inp.periods.length > 0)
+      ? evaluateDailySchedule({ periods: inp.periods, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
+      : null;
+    if (dailySched && !dailySched.valid) {
+      return { valid: false, errors: dailySched.errors };
+    }
+    var cutHours = inp.cutHours !== undefined ? toNum(inp.cutHours) : (dailySched ? dailySched.maxGapHours : 0);
+    var amplitudeVacH = dailySched
+      ? dailySched.amplitudeHoursDay
+      : (inp.amplitudeHours !== undefined ? toNum(inp.amplitudeHours) : (cutHours > 2 ? (vacHours + cutHours) : vacHours));
     var minPaidVacH = avenantExempt ? vacHours : 6;
-    var effectiveVacPaidHours = Math.max(vacHours, minPaidVacH);
+    var effectiveVacPaidHours = dailySched
+      ? dailySched.paidHoursDay
+      : (avenantExempt ? vacHours : (cutHours > 2 ? Math.max(minPaidVacH, amplitudeVacH) : Math.max(vacHours, minPaidVacH)));
     var vacationsCount = hours / vacHours;
     var paidHours = vacationsCount * effectiveVacPaidHours;
-    var avenantFloorApplied = (!avenantExempt) && (vacHours < 6);
+    var avenantFloorApplied = (!avenantExempt) && (effectiveVacPaidHours > vacHours);
 
-    // Annexe IV Art. 6 : l'indemnité de panier est due si la durée de travail EFFECTIF >= 6,0 h (continues ou discontinues sur la même journée via dailyEffectiveHours) ou maintien contractuel forcePanierUnder6h
-    var dailyEffectiveHours = inp.dailyEffectiveHours !== undefined ? toNum(inp.dailyEffectiveHours) : vacHours;
+    // Annexe IV Art. 6 : l'indemnité de panier est due si la durée de travail EFFECTIF >= 6,0 h (continues ou discontinues sur la même journée) ou maintien contractuel forcePanierUnder6h
+    var dailyEffectiveHours = dailySched
+      ? dailySched.effectiveHoursDay
+      : (inp.dailyEffectiveHours !== undefined ? toNum(inp.dailyEffectiveHours) : vacHours);
     var panierEligible = (vacHours >= 6) || (Number.isFinite(dailyEffectiveHours) && dailyEffectiveHours >= 6) || Boolean(inp.forcePanierUnder6h);
     var effectiveIndVac = panierEligible ? indVac : 0;
 
@@ -242,20 +317,36 @@
     var extra = moment === "nuit" ? suppNuit : (moment === "dim" ? suppDim : (moment === "ferie" ? suppFerie : 0));
     var unitEmp = baseJour + extra + prof.fraisNonSoumisH;
     var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
+    var dailySchedExp = (Array.isArray(inp.periods) && inp.periods.length > 0)
+      ? evaluateDailySchedule({ periods: inp.periods, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
+      : null;
+    if (dailySchedExp && !dailySchedExp.valid) {
+      return { valid: false, errors: dailySchedExp.errors };
+    }
+    var cutHoursExp = inp.cutHours !== undefined ? toNum(inp.cutHours) : (dailySchedExp ? dailySchedExp.maxGapHours : 0);
+    var amplitudeVacExp = dailySchedExp
+      ? dailySchedExp.amplitudeHoursDay
+      : (inp.amplitudeHours !== undefined ? toNum(inp.amplitudeHours) : (cutHoursExp > 2 ? (vacHours + cutHoursExp) : vacHours));
     var minPaidVacH = avenantExempt ? vacHours : 6;
+    var effectiveVacPaidHExp = dailySchedExp
+      ? dailySchedExp.paidHoursDay
+      : (avenantExempt ? vacHours : (cutHoursExp > 2 ? Math.max(minPaidVacH, amplitudeVacExp) : Math.max(vacHours, minPaidVacH)));
     var vacationsCount = demoHours / vacHours;
-    var paidHours = vacationsCount * Math.max(vacHours, minPaidVacH);
-    var avenantFloorApplied = (!avenantExempt) && (vacHours < 6);
-    var dailyEffectiveHours = inp.dailyEffectiveHours !== undefined ? toNum(inp.dailyEffectiveHours) : vacHours;
+    var paidHours = vacationsCount * effectiveVacPaidHExp;
+    var avenantFloorApplied = (!avenantExempt) && (effectiveVacPaidHExp > vacHours);
+    var dailyEffectiveHours = dailySchedExp
+      ? dailySchedExp.effectiveHoursDay
+      : (inp.dailyEffectiveHours !== undefined ? toNum(inp.dailyEffectiveHours) : vacHours);
     var panierEligible = (vacHours >= 6) || (Number.isFinite(dailyEffectiveHours) && dailyEffectiveHours >= 6) || Boolean(inp.forcePanierUnder6h);
     var indVacExp = inp.indVac !== undefined ? toNum(inp.indVac) : 0;
     var effectiveIndVac = panierEligible ? indVacExp : 0;
+    var panierTotalSim = vacationsCount * effectiveIndVac;
     var vacWarning = avenantFloorApplied
-      ? ("Avenant n° 2 IDCC 1351 (Annexe IV · étendu JORF 05/06/2026, effet 01/07/2026) : vacation de " + vacHours.toFixed(1) + " h < plancher conventionnel étendu de 6,0 h — " + paidHours.toFixed(1) + " h rémunérées pour " + demoHours.toFixed(1) + " h travaillées (hors dérogations conventionnelles limitatives).")
+      ? ("Avenant n° 2 IDCC 1351 (Annexe IV · étendu JORF 05/06/2026, effet 01/07/2026) : vacation/journée de " + vacHours.toFixed(1) + " h effectives — " + paidHours.toFixed(1) + " h rémunérées pour " + demoHours.toFixed(1) + " h travaillées (plancher 6h ou amplitude sur coupure > 2h).")
       : (avenantExempt && vacHours < 6 ? "Exclusion Avenant n° 2 activée (Annexe VIII sûreté aéroportuaire / astreinte / dérogation) : rémunération sur heures travaillées (" + demoHours.toFixed(1) + " h)." : "");
 
     var caSim = demoHours * demoPrice;
-    var costEmpSim = paidHours * unitEmp;
+    var costEmpSim = paidHours * unitEmp + panierTotalSim;
     var structSim = demoHours * structH;
     var fullCost = costEmpSim + structSim;
     var fullH = fullCost / demoHours;
@@ -295,6 +386,7 @@
   root.COS_OPERATIONS_ENGINE = root.OMNISECUR_ENGINE = {
     PROFILES: PROFILES,
     toNum: toNum,
+    evaluateDailySchedule: evaluateDailySchedule,
     evaluateScenario: evaluateScenario,
     evaluateExpressTrap: evaluateExpressTrap
   };
