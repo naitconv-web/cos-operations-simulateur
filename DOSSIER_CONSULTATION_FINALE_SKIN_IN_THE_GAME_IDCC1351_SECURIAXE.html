@@ -333,7 +333,7 @@
     var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
     var parsedPeriods = parsePeriodsInput(inp.periods);
     var dailySched = (parsedPeriods.length &gt; 0)
-      ? evaluateDailySchedule({ periods: parsedPeriods, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
+      ? evaluateDailySchedule({ periods: parsedPeriods, nextShiftStart: inp.nextShiftStart, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
       : null;
     if (dailySched &amp;&amp; !dailySched.valid) {
       return { valid: false, errors: dailySched.errors };
@@ -411,6 +411,11 @@
       dailyEffectiveHours: dailyEffectiveHours,
       panierEligible: panierEligible,
       effectiveIndVac: effectiveIndVac,
+      legalLimitWarning: dailySched ? dailySched.legalLimitWarning : (vacHours &gt; 12 ? &quot;Alerte : vacation &gt; 12,0 h effectives (max L.3121-19).&quot; : &quot;&quot;),
+      exceedsMaxEffective12h: dailySched ? dailySched.exceedsMaxEffective12h : (vacHours &gt; 12),
+      exceedsMaxAmplitude13h: dailySched ? dailySched.exceedsMaxAmplitude13h : (vacHours &gt; 13),
+      dailyRestHours: dailySched ? dailySched.dailyRestHours : (24 - vacHours),
+      restUnder11h: dailySched ? dailySched.restUnder11h : ((24 - vacHours) &lt; 11.0),
       vacHours: vacHours,
       vacationsCount: vacationsCount,
       vacWarning: vacWarning,
@@ -474,7 +479,7 @@
     var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
     var parsedPeriodsExp = parsePeriodsInput(inp.periods);
     var dailySchedExp = (parsedPeriodsExp.length &gt; 0)
-      ? evaluateDailySchedule({ periods: parsedPeriodsExp, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
+      ? evaluateDailySchedule({ periods: parsedPeriodsExp, nextShiftStart: inp.nextShiftStart, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
       : null;
     if (dailySchedExp &amp;&amp; !dailySchedExp.valid) {
       return { valid: false, errors: dailySchedExp.errors };
@@ -953,9 +958,9 @@ MOBILE_OVERFLOW: False
 
 | Fichier de production | Taille exacte | Empreinte cryptographique `SHA-256` |
 | :--- | :---: | :--- |
-| `index.html` | `57 035 octets` | `be1c74e196fc65e9525ea7285572e928b878279d951502c0177b45c9aacf3503` |
-| `app.js` | `76 734 octets` | `7bb77833e23c51154567b16f8dc52a7b0f4e8cf5dbd5f65eb8d45a419977b271` |
-| `calculator-engine.js` | `21 779 octets` | `044e9313aa0647eee8fbe6378292e0db8bc4e3b5211100d8afff4e40dc1123f2` |
+| `index.html` | `57 290 octets` | `9ffa9646b7cea1c403622abd38253534f89f7a1744fdfab6278e3878c5501513` |
+| `app.js` | `77 003 octets` | `d5dbc65d3826d0ddfc28b42e45494acef59c84ea9ad6682184236945efe04857` |
+| `calculator-engine.js` | `22 358 octets` | `2350892bb95f7b4271105d553d9ade03a101e4ad769b62759cfd9c8114506b21` |
 | `styles.css` | `34 214 octets` | `f10dc695f044ee48a7d2599c3f28a113621c5b26a0f372796c59987a3f3ea096` |
 | `.htaccess` | `1 348 octets` | `6c60096bbb8f292632b5cf2979c0d1f06871b2e49e9612adbd36d891594c58fd` |
 | `cgv-rgpd.html` | `9 377 octets` | `11a32653756cae1e04a25f32b3791f2512a3823ffa305a566c0b2c6701310f70` |

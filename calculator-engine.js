@@ -225,7 +225,7 @@
     var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
     var parsedPeriods = parsePeriodsInput(inp.periods);
     var dailySched = (parsedPeriods.length > 0)
-      ? evaluateDailySchedule({ periods: parsedPeriods, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
+      ? evaluateDailySchedule({ periods: parsedPeriods, nextShiftStart: inp.nextShiftStart, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
       : null;
     if (dailySched && !dailySched.valid) {
       return { valid: false, errors: dailySched.errors };
@@ -303,6 +303,11 @@
       dailyEffectiveHours: dailyEffectiveHours,
       panierEligible: panierEligible,
       effectiveIndVac: effectiveIndVac,
+      legalLimitWarning: dailySched ? dailySched.legalLimitWarning : (vacHours > 12 ? "Alerte : vacation > 12,0 h effectives (max L.3121-19)." : ""),
+      exceedsMaxEffective12h: dailySched ? dailySched.exceedsMaxEffective12h : (vacHours > 12),
+      exceedsMaxAmplitude13h: dailySched ? dailySched.exceedsMaxAmplitude13h : (vacHours > 13),
+      dailyRestHours: dailySched ? dailySched.dailyRestHours : (24 - vacHours),
+      restUnder11h: dailySched ? dailySched.restUnder11h : ((24 - vacHours) < 11.0),
       vacHours: vacHours,
       vacationsCount: vacationsCount,
       vacWarning: vacWarning,
@@ -366,7 +371,7 @@
     var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
     var parsedPeriodsExp = parsePeriodsInput(inp.periods);
     var dailySchedExp = (parsedPeriodsExp.length > 0)
-      ? evaluateDailySchedule({ periods: parsedPeriodsExp, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
+      ? evaluateDailySchedule({ periods: parsedPeriodsExp, nextShiftStart: inp.nextShiftStart, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
       : null;
     if (dailySchedExp && !dailySchedExp.valid) {
       return { valid: false, errors: dailySchedExp.errors };

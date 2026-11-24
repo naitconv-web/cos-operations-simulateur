@@ -449,6 +449,7 @@
       setActivePresetBtn("preAvenant6h");
     }
     if ($("simPeriods")) $("simPeriods").value = "";
+    if ($("simNextShiftStart")) $("simNextShiftStart").value = "";
     if ($("simAvenantExempt")) $("simAvenantExempt").value = "0";
     if ($("simModeSelect")) $("simModeSelect").value = SIM_MODE;
     refreshSimulator();
@@ -465,6 +466,7 @@
     var sellPrice = $("simSellPrice").value;
     var targetPct = $("simTargetPct").value;
     var periodsRaw = $("simPeriods") ? $("simPeriods").value.trim() : "";
+    var nextShiftStartRaw = $("simNextShiftStart") ? $("simNextShiftStart").value.trim() : "";
     var avenantExemptFlag = $("simAvenantExempt") ? ($("simAvenantExempt").value === "1") : false;
     if ($("simModeSelect") && $("simModeSelect").value !== SIM_MODE) {
       $("simModeSelect").value = SIM_MODE;
@@ -480,6 +482,7 @@
         demoPrice: sellPrice,
         targetPct: targetPct,
         periods: periodsRaw,
+        nextShiftStart: nextShiftStartRaw,
         avenantExempt: avenantExemptFlag
       });
     } else {
@@ -491,6 +494,7 @@
         sellPrice: sellPrice,
         targetPct: targetPct,
         periods: periodsRaw,
+        nextShiftStart: nextShiftStartRaw,
         avenantExempt: avenantExemptFlag
       }, CUSTOM_PARAMS || {});
       res = eng.evaluateScenario(opts);
@@ -1110,7 +1114,7 @@
       });
     }
 
-    ["simProfile", "simMoment", "simHours", "simVacHours", "simSellPrice", "simTargetPct", "simPeriods", "simAvenantExempt"].forEach(function (id) {
+    ["simProfile", "simMoment", "simHours", "simVacHours", "simSellPrice", "simTargetPct", "simPeriods", "simNextShiftStart", "simAvenantExempt"].forEach(function (id) {
       var el = $(id);
       el.addEventListener(el.tagName === "SELECT" ? "change" : "input", function () {
         if (id === "simMoment" && CUSTOM_PARAMS && Object.prototype.hasOwnProperty.call(CUSTOM_PARAMS, "suppH")) {

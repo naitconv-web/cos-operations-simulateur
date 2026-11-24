@@ -165,20 +165,38 @@ try {
     moment: "jour", demoPrice: 23, chargesPct: 50.37, indVac: 4.48
   });
 
-  // Vérification UI : présence de #simPeriods, #simAvenantExempt ET #simLegalAlert
+  // Vérification UI : présence de #simPeriods, #simNextShiftStart, #simAvenantExempt ET #simLegalAlert
+  const hasUiNextShiftField = indexHtml.includes('id="simNextShiftStart"') && appJs.includes('nextShiftStartRaw') &&
+                              appJs.includes('nextShiftStart: nextShiftStartRaw');
   const hasUiLegalAlert = indexHtml.includes('id="simLegalAlert"') && appJs.includes('legalBox') && appJs.includes('legalLimitWarning');
-  // Test d'un planning avec repos quotidien insuffisant (< 11,0h)
-  const restUnder11Res = engine.evaluateDailySchedule({ periods: [{ start: 14, end: 22 }], nextShiftStart: 7 });
-  const hasRestWarning = restUnder11Res.valid && restUnder11Res.restUnder11h === true && restUnder11Res.legalLimitWarning.includes("11,0 h");
 
-  if (hasUiFields && hasUiLegalAlert && hasRestWarning &&
+  // Test du parcours complet utilisateur : vacation finissant à 22h suivie d'une reprise le lendemain à 07h (saisie "14-22" et nextShiftStart "7")
+  const uiFullJourneyScen = engine.evaluateScenario({
+    profileCode: "P01", baseHoraire: 19.50, hours: 320, vacHours: 8,
+    periods: "14-22", nextShiftStart: "7",
+    sellPrice: 35, suppH: 2, indVac: 5, transVac: 10, ponctuel: 100, fixedCosts: 1000, structH: 2, provPct: 5
+  });
+  const uiFullJourneyExp = engine.evaluateExpressTrap({
+    profileCode: "P01", demoHours: 320, vacHours: 8,
+    periods: "14-22", nextShiftStart: "7",
+    moment: "nuit", demoPrice: 23, chargesPct: 50.37
+  });
+
+  const journeyConform = uiFullJourneyScen.valid && uiFullJourneyScen.restUnder11h === true &&
+                         uiFullJourneyScen.dailyRestHours === 9 &&
+                         uiFullJourneyScen.legalLimitWarning.includes("9.0 h < minimum légal 11,0 h") &&
+                         uiFullJourneyExp.valid && uiFullJourneyExp.restUnder11h === true &&
+                         uiFullJourneyExp.dailyRestHours === 9 &&
+                         uiFullJourneyExp.legalLimitWarning.includes("9.0 h < minimum légal 11,0 h");
+
+  if (hasUiFields && hasUiNextShiftField && hasUiLegalAlert && journeyConform &&
       uiSimRes.valid && uiSimRes.paidHours === 450 && uiSimRes.panierEligible === true &&
       uiExpRes.valid && uiExpRes.paidHours === 450 && Math.abs(uiExpRes.directCosts - 9561.977) < 1e-3) {
     passed++;
-    console.log(`[PASS] AUD003_UI_FORM_TO_ENGINE_INTEGRATION_AND_LEGAL_ALERTS`);
+    console.log(`[PASS] AUD003_UI_NEXT_SHIFT_START_AND_REST_9H_WARNING_CONCORDANCE`);
   } else {
     failed++;
-    console.error(`[FAIL] AUD003_UI_FORM_TO_ENGINE_INTEGRATION_AND_LEGAL_ALERTS`);
+    console.error(`[FAIL] AUD003_UI_NEXT_SHIFT_START_AND_REST_9H_WARNING_CONCORDANCE`);
   }
 } catch (e) {
   failed++;
