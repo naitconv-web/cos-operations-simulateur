@@ -122,8 +122,9 @@
     var paidHours = vacationsCount * effectiveVacPaidHours;
     var avenantFloorApplied = (!avenantExempt) && (vacHours < 6);
 
-    // Annexe IV Art. 6 : l'indemnité de panier n'est conventionnellement due que si la durée de travail EFFECTIF >= 6,0 h (sauf maintien contractuel explicite forcePanierUnder6h)
-    var panierEligible = (vacHours >= 6) || Boolean(inp.forcePanierUnder6h);
+    // Annexe IV Art. 6 : l'indemnité de panier est due si la durée de travail EFFECTIF >= 6,0 h (continues ou discontinues sur la même journée via dailyEffectiveHours) ou maintien contractuel forcePanierUnder6h
+    var dailyEffectiveHours = inp.dailyEffectiveHours !== undefined ? toNum(inp.dailyEffectiveHours) : vacHours;
+    var panierEligible = (vacHours >= 6) || (Number.isFinite(dailyEffectiveHours) && dailyEffectiveHours >= 6) || Boolean(inp.forcePanierUnder6h);
     var effectiveIndVac = panierEligible ? indVac : 0;
 
     var vacWarning = avenantFloorApplied
@@ -177,6 +178,7 @@
       paidHours: paidHours,
       avenantFloorApplied: avenantFloorApplied,
       avenantExempt: avenantExempt,
+      dailyEffectiveHours: dailyEffectiveHours,
       panierEligible: panierEligible,
       effectiveIndVac: effectiveIndVac,
       vacHours: vacHours,
@@ -239,13 +241,18 @@
 
     var extra = moment === "nuit" ? suppNuit : (moment === "dim" ? suppDim : (moment === "ferie" ? suppFerie : 0));
     var unitEmp = baseJour + extra + prof.fraisNonSoumisH;
-    var minPaidVacH = 6;
+    var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
+    var minPaidVacH = avenantExempt ? vacHours : 6;
     var vacationsCount = demoHours / vacHours;
     var paidHours = vacationsCount * Math.max(vacHours, minPaidVacH);
-    var avenantFloorApplied = vacHours < minPaidVacH;
+    var avenantFloorApplied = (!avenantExempt) && (vacHours < 6);
+    var dailyEffectiveHours = inp.dailyEffectiveHours !== undefined ? toNum(inp.dailyEffectiveHours) : vacHours;
+    var panierEligible = (vacHours >= 6) || (Number.isFinite(dailyEffectiveHours) && dailyEffectiveHours >= 6) || Boolean(inp.forcePanierUnder6h);
+    var indVacExp = inp.indVac !== undefined ? toNum(inp.indVac) : 0;
+    var effectiveIndVac = panierEligible ? indVacExp : 0;
     var vacWarning = avenantFloorApplied
       ? ("Avenant n° 2 IDCC 1351 (Annexe IV · étendu JORF 05/06/2026, effet 01/07/2026) : vacation de " + vacHours.toFixed(1) + " h < plancher conventionnel étendu de 6,0 h — " + paidHours.toFixed(1) + " h rémunérées pour " + demoHours.toFixed(1) + " h travaillées (hors dérogations conventionnelles limitatives).")
-      : "";
+      : (avenantExempt && vacHours < 6 ? "Exclusion Avenant n° 2 activée (Annexe VIII sûreté aéroportuaire / astreinte / dérogation) : rémunération sur heures travaillées (" + demoHours.toFixed(1) + " h)." : "");
 
     var caSim = demoHours * demoPrice;
     var costEmpSim = paidHours * unitEmp;
@@ -265,6 +272,7 @@
       vacHours: vacHours,
       avenantFloorApplied: avenantFloorApplied,
       avenantExempt: avenantExempt,
+      dailyEffectiveHours: dailyEffectiveHours,
       panierEligible: panierEligible,
       effectiveIndVac: effectiveIndVac,
       vacWarning: vacWarning,

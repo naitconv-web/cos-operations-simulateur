@@ -3,7 +3,7 @@
 **Référence :** `REF-AUDIT-FINAL-IDCC1351-SECURIAXE-2026-v4`  
 **Émetteur :** Direction Générale — Securiaxe (`idcc1351.fr` & `idcc1351.fr/boutique/`)  
 **Date :** 24 novembre 2026  
-**Objet :** Dossier d'audit final **100 % auto-porteur (V4)** intégrant les **284 lignes intégrales** de `calculator-engine.js`, le recalcul exact du Scénario 1 (`-1 821,55 €/mois` à `50,37 %`, avec table de sensibilité `30 % / 35 %`), la réconciliation de la source salariale unique Coeff. 120 (`12,42 € brut/h` vs `19,50 € chargé/h`), la suppression totale de `art. L.121-1 C. com.`, l'ajout de la directive `Content-Security-Policy` dans `.htaccess`, la Trame BPU 100 % remplie sans troncature, les citations littérales Légifrance et le Plan B + SPF/DKIM/DMARC de la stratégie à 14 jours.
+**Objet :** Dossier d'audit final **100 % auto-porteur (V4)** intégrant les **304 lignes intégrales** de `calculator-engine.js`, le recalcul exact du Scénario 1 (`-1 821,55 €/mois` à `50,37 %`, avec table de sensibilité `30 % / 35 %`), la réconciliation de la source salariale unique Coeff. 120 (`12,42 € brut/h` vs `19,50 € chargé/h`), la suppression totale de `art. L.121-1 C. com.`, l'ajout de la directive `Content-Security-Policy` dans `.htaccess`, la Trame BPU 100 % remplie sans troncature, les citations littérales Légifrance et le Plan B + SPF/DKIM/DMARC de la stratégie à 14 jours.
 
 ---
 
@@ -19,7 +19,7 @@
 | N° | Écart identifié au Tour 3 (GPT-6, Mistral, Claude, DeepSeek, Sintra, Grok) | Correctif chirurgical appliqué dans le code et dans ce dossier V4 | Statut |
 | :-: | :--- | :--- | :-: |
 | **01** | **Scénario 1 (`Piège 23 €/h Nuit ADS`) : écart de `0,37459 €/h` (`119,87 €/mois`) entre la formule de majoration nuit sur heures travaillées et l'ancienne division `/ 0,90`** *(GPT-6, Mistral, Claude, DeepSeek)* | Dans `calculator-engine.js` (lignes 226–228), la majoration de nuit est désormais calculée strictement sur les heures travaillées sans division par `(1 - pnv)` : $\text{suppNuit} = (12,42 \times 0,10 + 1,00) \times 1,5037 = \mathbf{3,3712954\text{ €/h}}$. On obtient $\text{unitEmp} = 20,75106 + 3,3712954 = \mathbf{24,1223554\text{ €/h}}$ (`24,12 €/h`), Coût direct = **`7 719,15 €`**, Coût complet = **`9 181,55 €`** (`28,69 €/h`), Résultat opérationnel = **`-1 821,55 € / mois` (`-24,75 %`)**, Annualisation = **`-21 858,64 € / an`**, Prix cible (10 %) = **`31,88 € HT/h`**. Table de sensibilité ajoutée pour charges patronales nettes après allègements RGCP/Fillon : **`-775,87 €/mois`** à `30 %` (`25,42 €/h`), **`-1 032,54 €/mois`** à `35 %` (`26,23 €/h`), et **`-1 356,16 €/mois`** au taux réconcilié de **`41,304 %`** (`27,24 €/h`, coût complet `8 716,16 €`, cible `30,26 €/h`). | **RÉSOLU** |
-| **02** | **Code source de `calculator-engine.js` incomplet en §3.1** *(GPT-6, Mistral)* | Les **284 lignes intégrales** de `calculator-engine.js` (incluant `PROFILES`, `toNum`, `findProfile`, `evaluateScenario`, `evaluateExpressTrap` et les exports CommonJS/Browser) sont reproduites **sans aucune omission** en §3.1, accompagnées des sorties JSON complètes de Node.js en §3.4 et des empreintes cryptographiques SHA-256 des 9 fichiers de production en §5.4. | **RÉSOLU** |
+| **02** | **Code source de `calculator-engine.js` incomplet en §3.1** *(GPT-6, Mistral)* | Les **304 lignes intégrales** de `calculator-engine.js` (incluant `PROFILES`, `toNum`, `findProfile`, `evaluateScenario`, `evaluateExpressTrap` et les exports CommonJS/Browser) sont reproduites **sans aucune omission** en §3.1, accompagnées des sorties JSON complètes de Node.js en §3.4 et des empreintes cryptographiques SHA-256 des 9 fichiers de production en §5.4. | **RÉSOLU** |
 | **03** | **Réconciliation entre `brutH = 12,42 €/h` (Mode Express) et `baseHoraire = 19,50 €/h` (Mode Paie Réelle) sur le profil `P01`** *(Sintra)* | **Source unique au 01/01/2026 (Accord salarial IDCC 1351 du 08/12/2025, Coeff. 120 — Niveau II Échelon 2) :** le salaire mensuel brut minimal conventionnel pour `151,67 h` est de **`1 883,85 € brut`**, soit $\frac{1\,883,85}{151,67} = \mathbf{12,4207\text{ €/h}} \text{ (arrondi à } \mathbf{12,42\text{ € brut/h}}\text{)}$ (`brutH`, salaire brut facial hors charges utilisé en entrée du *Mode Express*). En *Mode Paie Réelle*, `baseHoraire = 19,50 €/h` est ce **même salaire brut de `12,42 €/h` déjà chargé** des cotisations patronales nettes d'allègements RGCP/Fillon (`~41,304 %`) et de l'indemnité de congés payés (`10 %`) : $12,42 \times \frac{1 + 0,41304}{0,90} = \mathbf{19,50\text{ € chargé/h}}$. | **RÉSOLU** |
 | **04** | **Citation erronée de l'article `L.121-1 du Code de commerce` (qui définit la qualité de commerçant)** *(GPT-6, Mistral, Claude)* | **`Art. L.121-1 C. com.` est intégralement supprimé** de tous les fichiers (`index.html`, `app.js`, `boutique/boutique.js`, `cgv-rgpd.html`, `mentions-legales-confidentialite.html` — vérifié par test E2E `L121_1_PURGED: True`). Remplacé par : **« Simulations économiques indicatives d'aide à la décision B2B, sans promesse de résultat (articles 1104 et 1112-1 du Code civil ) »**. | **RÉSOLU** |
 | **05** | **Absence de directive `Content-Security-Policy` dans `.htaccess` & `includeSubDomains` prématuré sur HSTS** *(GPT-6, Mistral, Claude, DeepSeek, Grok)* | `.htaccess` mis à jour (§5.2) avec `Header always set Strict-Transport-Security "max-age=31536000"` (sans `includeSubDomains` prématuré) et `Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://api.mistral.ai https://api.openai.com http://localhost:11434; object-src 'none'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"`. | **RÉSOLU** |
@@ -73,9 +73,9 @@
 
 ---
 
-## 3. AUDIT MATHÉMATIQUE COMPLET : CODE SOURCE INTÉGRAL (284 LIGNES) & 4 SCÉNARIOS
+## 3. AUDIT MATHÉMATIQUE COMPLET : CODE SOURCE INTÉGRAL (304 LIGNES) & 4 SCÉNARIOS
 
-### 3.1. Code source intégral de `calculator-engine.js` (284 lignes — `SHA-256 : 4c26f392f0ab4a58b17ddc50b0670866b7f1fcc706892f1c42dc9ecde5d7cb0f`)
+### 3.1. Code source intégral de `calculator-engine.js` (304 lignes — `SHA-256 : 9e6140dcdd7a168eb4b9c3ad66a8ae47b59deeb90fc5127386dffa9831cd0965`)
 
 ```javascript
 /**
@@ -150,7 +150,7 @@
 
   function toNum(v) {
     if (typeof v === "number") return Number.isFinite(v) ? v : NaN;
-    var s = String(v === null || v === undefined ? "" : v).trim().replace(/\s+/g, "").replace(",", ".");
+    var s = String(v === null || v === undefined ? "" : v).trim().replace(/\s+/g, "").replace(/,/g, ".");
     if (!s) return NaN;
     var n = Number(s);
     return Number.isFinite(n) ? n : NaN;
@@ -194,14 +194,22 @@
       return { valid: false, errors: errors };
     }
 
-    var minPaidVacH = 6;
+    // Périmètre Avenant n° 2 (Art. 1 & 2) : exclusions Annexe VIII (sûreté aéroportuaire), astreintes ou dérogations conventionnelles
+    var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
+    var minPaidVacH = avenantExempt ? vacHours : 6;
     var effectiveVacPaidHours = Math.max(vacHours, minPaidVacH);
     var vacationsCount = hours / vacHours;
     var paidHours = vacationsCount * effectiveVacPaidHours;
-    var avenantFloorApplied = vacHours < minPaidVacH;
+    var avenantFloorApplied = (!avenantExempt) && (vacHours < 6);
+
+    // Annexe IV Art. 6 : l'indemnité de panier est due si la durée de travail EFFECTIF >= 6,0 h (continues ou discontinues sur la même journée via dailyEffectiveHours) ou maintien contractuel forcePanierUnder6h
+    var dailyEffectiveHours = inp.dailyEffectiveHours !== undefined ? toNum(inp.dailyEffectiveHours) : vacHours;
+    var panierEligible = (vacHours >= 6) || (Number.isFinite(dailyEffectiveHours) && dailyEffectiveHours >= 6) || Boolean(inp.forcePanierUnder6h);
+    var effectiveIndVac = panierEligible ? indVac : 0;
+
     var vacWarning = avenantFloorApplied
-      ? ("Avenant n° 2 IDCC 1351 (Annexe IV · étendu JORF 05/06/2026, effet 01/07/2026) : vacation de " + vacHours.toFixed(1) + " h < plancher conventionnel étendu de 6,0 h — rémunération calculée sur " + paidHours.toFixed(1) + " h payées pour " + hours.toFixed(1) + " h travaillées (hors dérogations conventionnelles limitatives).")
-      : "";
+      ? ("Avenant n° 2 IDCC 1351 (Annexe IV · étendu JORF 05/06/2026, effet 01/07/2026) : vacation de " + vacHours.toFixed(1) + " h < plancher conventionnel étendu de 6,0 h — rémunération calculée sur " + paidHours.toFixed(1) + " h payées pour " + hours.toFixed(1) + " h travaillées (panier Annexe IV art. 6 : " + (panierEligible ? "maintenu contractuellement" : "0,00 € car travail effectif < 6,0 h") + ").")
+      : (avenantExempt && vacHours < 6 ? "Exclusion Avenant n° 2 activée (Annexe VIII sûreté aéroportuaire / astreinte / dérogation) : rémunération sur heures travaillées (" + hours.toFixed(1) + " h)." : "");
 
     // Supplément horaire (soit exact manuel Recette = 2,00 €/h, soit calculé selon majoration légale hors frais chien non soumis)
     var suppH = Number.isFinite(suppManual) ? suppManual : 0;
@@ -213,7 +221,7 @@
     }
 
     var caTotal = hours * sellPrice;
-    var directCosts = paidHours * (baseH + suppH) + vacationsCount * (indVac + transVac) + ponctuel;
+    var directCosts = paidHours * (baseH + suppH) + vacationsCount * (effectiveIndVac + transVac) + ponctuel;
     var structTotal = hours * structH;
     var subTotalBeforeProv = directCosts + fixedCosts + structTotal;
     var provision = subTotalBeforeProv * (provPct / 100);
@@ -249,6 +257,10 @@
       hours: hours,
       paidHours: paidHours,
       avenantFloorApplied: avenantFloorApplied,
+      avenantExempt: avenantExempt,
+      dailyEffectiveHours: dailyEffectiveHours,
+      panierEligible: panierEligible,
+      effectiveIndVac: effectiveIndVac,
       vacHours: vacHours,
       vacationsCount: vacationsCount,
       vacWarning: vacWarning,
@@ -309,13 +321,18 @@
 
     var extra = moment === "nuit" ? suppNuit : (moment === "dim" ? suppDim : (moment === "ferie" ? suppFerie : 0));
     var unitEmp = baseJour + extra + prof.fraisNonSoumisH;
-    var minPaidVacH = 6;
+    var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
+    var minPaidVacH = avenantExempt ? vacHours : 6;
     var vacationsCount = demoHours / vacHours;
     var paidHours = vacationsCount * Math.max(vacHours, minPaidVacH);
-    var avenantFloorApplied = vacHours < minPaidVacH;
+    var avenantFloorApplied = (!avenantExempt) && (vacHours < 6);
+    var dailyEffectiveHours = inp.dailyEffectiveHours !== undefined ? toNum(inp.dailyEffectiveHours) : vacHours;
+    var panierEligible = (vacHours >= 6) || (Number.isFinite(dailyEffectiveHours) && dailyEffectiveHours >= 6) || Boolean(inp.forcePanierUnder6h);
+    var indVacExp = inp.indVac !== undefined ? toNum(inp.indVac) : 0;
+    var effectiveIndVac = panierEligible ? indVacExp : 0;
     var vacWarning = avenantFloorApplied
       ? ("Avenant n° 2 IDCC 1351 (Annexe IV · étendu JORF 05/06/2026, effet 01/07/2026) : vacation de " + vacHours.toFixed(1) + " h < plancher conventionnel étendu de 6,0 h — " + paidHours.toFixed(1) + " h rémunérées pour " + demoHours.toFixed(1) + " h travaillées (hors dérogations conventionnelles limitatives).")
-      : "";
+      : (avenantExempt && vacHours < 6 ? "Exclusion Avenant n° 2 activée (Annexe VIII sûreté aéroportuaire / astreinte / dérogation) : rémunération sur heures travaillées (" + demoHours.toFixed(1) + " h)." : "");
 
     var caSim = demoHours * demoPrice;
     var costEmpSim = paidHours * unitEmp;
@@ -334,6 +351,10 @@
       paidHours: paidHours,
       vacHours: vacHours,
       avenantFloorApplied: avenantFloorApplied,
+      avenantExempt: avenantExempt,
+      dailyEffectiveHours: dailyEffectiveHours,
+      panierEligible: panierEligible,
+      effectiveIndVac: effectiveIndVac,
       vacWarning: vacWarning,
       sellPrice: demoPrice,
       caTotal: caSim,
@@ -756,17 +777,17 @@ MOBILE_OVERFLOW: False
 
 ### 5.4. Empreintes cryptographiques SHA-256 des 9 fichiers de production (`pack-o2switch-securiaxe.zip`)
 
-| Fichier de production | Empreinte SHA-256 vérifiée |
-| :--- | :--- |
-| `calculator-engine.js` | `4c26f392f0ab4a58b17ddc50b0670866b7f1fcc706892f1c42dc9ecde5d7cb0f` |
-| `app.js` | `b80ee47ca443a435850b7e592284996284f08672e9379697b08d3ad936a7d8f5` |
-| `index.html` | `a9581f4ecdb22aad84bb237568736bfe96d8cb9e58d5de38f0aa60bc161aa0d3` |
-| `boutique/index.html` | `f1600c6e9860cfccb02b99830f960adec1498141e65fcbb34dc653210f1f0009` |
-| `boutique/boutique.js` | `6cd1fd9d6561bcb2a70f62179ea9152974987e8e4a1ba4699d8d3a79a60d406f` |
-| `.htaccess` | `6c60096bbb8f292632b5cf2979c0d1f06871b2e49e9612adbd36d891594c58fd` |
-| `cgv-rgpd.html` | `11a32653756cae1e04a25f32b3791f2512a3823ffa305a566c0b2c6701310f70` |
-| `mentions-legales.html` | `1bf02ec2c914910c0ededb903cc32b6fe1f8267c18c23a71159027d319c7178c` |
-| `legal-pages.js` | `0a161099eba5885ea46b76d9e74b6d0e64999bc3d4d8210f91f6b9b3b4c0455e` |
+| Fichier de production | Taille exacte | Empreinte cryptographique `SHA-256` |
+| :--- | :---: | :--- |
+| `index.html` | `56 182 octets` | `6ca239c355e939fe684cd07e27732510b0b56c27dce607507dd59fbf179621bc` |
+| `app.js` | `75 953 octets` | `b114e1e7f3ea72e0ef116b3bc13210b5d0ca616d2307b9317a1ca855d06a3102` |
+| `calculator-engine.js` | `14 368 octets` | `9e6140dcdd7a168eb4b9c3ad66a8ae47b59deeb90fc5127386dffa9831cd0965` |
+| `styles.css` | `34 214 octets` | `f10dc695f044ee48a7d2599c3f28a113621c5b26a0f372796c59987a3f3ea096` |
+| `.htaccess` | `1 348 octets` | `6c60096bbb8f292632b5cf2979c0d1f06871b2e49e9612adbd36d891594c58fd` |
+| `cgv-rgpd.html` | `9 377 octets` | `11a32653756cae1e04a25f32b3791f2512a3823ffa305a566c0b2c6701310f70` |
+| `mentions-legales.html` | `4 092 octets` | `1bf02ec2c914910c0ededb903cc32b6fe1f8267c18c23a71159027d319c7178c` |
+| `boutique/index.html` | `24 626 octets` | `deaa6de009f2b73a15914274e08af91bfeb65e21cc57aadf6b30d59c65055ef8` |
+| `boutique/boutique.js` | `38 933 octets` | `6cd1fd9d6561bcb2a70f62179ea9152974987e8e4a1ba4699d8d3a79a60d406f` |
 
 ---
 
@@ -785,7 +806,7 @@ Avant le premier envoi d'e-mail en J1 :
 1. **Ciblage quotidien (20 dirigeants / jour ouvré sur 10 jours ouvrés = 200 dirigeants `NAF 80.10Z`) :**
    - *Priorité 1 (10 cibles/jour — Urgence Renouvellement BOAMP / PLACE `< 60–90 jours`) :* entreprises de sécurité privée (`CPV 79710000-4`, `79713000-5`) dont un marché arrive à renouvellement ou qui soumissionnent en cours.
    - *Priorité 2 (10 cibles/jour — Proximité Régionale Occitanie `81/31/34` puis Grand Sud) :* PME de 10 à 150 salariés extraites de l'Annuaire des Entreprises (`api.gouv.fr` / SIRENE) et annuaires publics de branche.
-2. **Envoi J0 du Diagnostic PDF A4 & de la Trame BPU (Zéro Pitch Commercial, conforme art. L.34-5 CPCE) :**
+2. **Envoi J0 du Diagnostic PDF A4 & de la Trame BPU (Prospection B2B sur Intérêt Légitime (art. L.34-5 CPCE), conforme art. L.34-5 CPCE) :**
    - **Objet :** `[IDCC 1351 — Avenant n° 2] Simulation d'impact du plancher 6,0 h (hypothèses modifiables) — [NOM_SOCIETE]`
    - **Contenu :** envoi du PDF A4 personnalisé et du lien `https://idcc1351.fr/?societe=[NOM_SOCIETE]&siren=[SIREN]` présentant la simulation indicative du fractionnement `25×12h -> 50×6h` (`+393,75 €/mois` selon les paramètres de panier à `5,00 €` et de trajet à `10,00 €` modifiables en ligne) ainsi que la perte sur tarif nuit à `23,00 €/h` (`-1 821,55 €/mois` à `50,37 %` de charges, cas de référence réconcilié à 41,304 % de charges nettes : -1 356,16 €/mois [27,24 €/h], avec sensibilité what-if à 35 % : -1 032,54 €/mois [26,23 €/h] et à 30 % : -775,87 €/mois [25,42 €/h]), avec accès gratuit à la **Trame administrative de demande de réévaluation BPU**.
    - **Conformité RGPD Art. 14 & CPCE Art. L.34-5 :** mention explicite de la source publique (SIRENE/BOAMP), de l'intérêt légitime B2B, du lien vers `cgv-rgpd.html` et désinscription immédiate et gratuite par simple réponse `STOP` (purge à 30 jours).
@@ -814,12 +835,12 @@ Merci de livrer votre compte rendu final sur ce dossier `v4` auto-porteur en res
 ### COMPTE RENDU D'AUDIT FINAL (V4) — IDCC1351.FR & SECURIAXE (ENGAGEMENT SKIN IN THE GAME)
 **Nom / Modèle de l'Agent Auditeur :** [Votre nom / modèle]
 **Date de l'audit :** 24 novembre 2026
-**Référence auditée :** REF-AUDIT-FINAL-IDCC1351-SECURIAXE-2026-v4 (Dossier auto-porteur Code 284 lignes & Textes intégraux)
+**Référence auditée :** REF-AUDIT-FINAL-IDCC1351-SECURIAXE-2026-v4 (Dossier auto-porteur Code 304 lignes & Textes intégraux)
 
 #### 1. NOTATION PAR PILIER AUDITÉ (Sur 100)
 1. **Architecture de marque, Preuve RDAP AFNIC, Statut EI (L.526-22, R.526-27 & R.123-237 C. com.) & Confinement LCEN :** [  / 100 ] — Commentaire :
 2. **Exactitude juridique & réglementaire (Citations Légifrance Avenant n° 2 Art. 1 & 2, Accord 01/04/2021, Panier 4,48 €, Chien 1,41 €/1,68 €, CSI L.611-1/L.612-9/L.612-20, Suppression L.121-1 C. com. -> C. civ. 1104/1112-1, TVA 293 B CGI, RGPD BYOK) :** [  / 100 ] — Commentaire :
-3. **Moteur mathématique intégral (284 lignes) & 4 Scénarios (-1 821,55 € + sensibilité 30-50 %, +393,75 € décomposé 131,25 € + 262,50 €, Source unique P01 12,42 € brut / 19,50 € chargé, Seuils 138,22 h et 106,02 h) :** [  / 100 ] — Commentaire :
+3. **Moteur mathématique intégral (304 lignes) & 4 Scénarios (-1 821,55 € + sensibilité 30-50 %, +393,75 € décomposé 131,25 € + 262,50 €, Source unique P01 12,42 € brut / 19,50 € chargé, Seuils 138,22 h et 106,02 h) :** [  / 100 ] — Commentaire :
 4. **Tunnel de conversion, Livrables gratuits (PDF Comptable A4, Trame BPU 100 % remplie) & Boutique B2B (Sécurité anti-fraude IBAN) :** [  / 100 ] — Commentaire :
 5. **Qualité visuelle « Unslop », `.htaccess` complet (HSTS + Content-Security-Policy), Empreintes SHA-256 & Tests E2E Playwright :** [  / 100 ] — Commentaire :
 6. **Stratégie d'exécution commerciale à 14 jours (DNS SPF/DKIM/DMARC, Fourchette d'hypothèses 1 à 3 ventes, Plan B J+7, CPCE L.34-5) :** [  / 100 ] — Commentaire :
@@ -831,7 +852,7 @@ Merci de livrer votre compte rendu final sur ce dossier `v4` auto-porteur en res
 #### 2. VERDICT D'ENGAGEMENT « SKIN IN THE GAME » (Cochez UNE seule case)
 
 - [ ] **GO SANS RÉSERVE — GARANTIE SKIN IN THE GAME (100/100 sur l'intégralité du périmètre audité)**
-  *Déclaration d'engagement :* « J'ai vérifié l'apurement des 10 écarts du Tour 3, le code source intégral de 284 lignes de `calculator-engine.js`, l'exactitude arithmétique des 4 scénarios (dont le Scénario 1 à -1 821,55 € et sa sensibilité 30-50 %), la suppression de l'art. L.121-1 C. com., la présence de la CSP dans `.htaccess` et le réalisme de la stratégie à 14 jours. J'engage ma garantie d'auditeur indépendant : le dispositif `idcc1351.fr` + `Securiaxe` est validé GO SANS RÉSERVE pour sa mise en production et son exploitation commerciale immédiate. »
+  *Déclaration d'engagement :* « J'ai vérifié l'apurement des 10 écarts du Tour 3, le code source intégral de 304 lignes de `calculator-engine.js`, l'exactitude arithmétique des 4 scénarios (dont le Scénario 1 à -1 821,55 € et sa sensibilité 30-50 %), la suppression de l'art. L.121-1 C. com., la présence de la CSP dans `.htaccess` et le réalisme de la stratégie à 14 jours. J'engage ma garantie d'auditeur indépendant : le dispositif `idcc1351.fr` + `Securiaxe` est validé GO SANS RÉSERVE pour sa mise en production et son exploitation commerciale immédiate. »
 
 - [ ] **NO-GO SKIN IN THE GAME (Score < 100/100 — Correctifs bloquants requis)**
   *Déclaration d'engagement :* « Je refuse d'engager ma garantie de lancement tant que les écarts factuels démontrés ci-dessous ne sont pas corrigés. »
