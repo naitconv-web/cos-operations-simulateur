@@ -95,8 +95,33 @@
    *    (Ex. officiel Art. 4 : 8h-10h [2h] puis 13h-17h [4h], coupure 3h > 2h -> travail effectif = 6,0 h, amplitude = 17 - 8 = 9,0 h rémunérées, panierEligible = true).
    *    (Ex. officiel Art. 4 : 8h-9h [1h] puis 12h-16h [4h], coupure 3h > 2h -> travail effectif = 5,0 h, amplitude = 16 - 8 = 8,0 h rémunérées, panierEligible = false car effectif 5h < 6h).
    */
+  /**
+   * Parseur de chaîne de périodes horaires (ex: "8-10, 13-17" ou "08:00-10:00 ; 13:00-17:00")
+   */
+  function parsePeriodsInput(raw) {
+    if (Array.isArray(raw)) return raw;
+    if (typeof raw !== "string" || !raw.trim()) return [];
+    var parts = raw.split(/[,;]+/);
+    var out = [];
+    for (var i = 0; i < parts.length; i++) {
+      var seg = parts[i].trim();
+      if (!seg) continue;
+      var m = seg.match(/^(\d+(?:[.,]\d+)?|\d+:\d+)\s*[-–aàto]+\s*(\d+(?:[.,]\d+)?|\d+:\d+)$/i);
+      if (!m) return [{ start: NaN, end: NaN }];
+      var toH = function (tok) {
+        if (tok.indexOf(":") !== -1) {
+          var hm = tok.split(":");
+          return Number(hm[0]) + Number(hm[1]) / 60;
+        }
+        return toNum(tok);
+      };
+      out.push({ start: toH(m[1]), end: toH(m[2]) });
+    }
+    return out;
+  }
+
   function evaluateDailySchedule(inp) {
-    var periods = Array.isArray(inp && inp.periods) ? inp.periods : [];
+    var periods = parsePeriodsInput(inp && inp.periods);
     var avenantExempt = Boolean(inp && (inp.avenantExempt || inp.annexe8 || inp.astreinte));
     if (periods.length === 0) {
       return { valid: false, errors: ["Au moins une période de travail est requise."] };
@@ -132,8 +157,16 @@
       paidHoursDay = Math.max(6.0, totalEffective);
     }
     var panierEligible = (totalEffective >= 6.0) || Boolean(inp && inp.forcePanierUnder6h);
+    var exceedsMaxEffective12h = totalEffective > 12.0;
+    var exceedsMaxAmplitude13h = amplitude > 13.0;
+    var legalLimitWarning = (exceedsMaxEffective12h || exceedsMaxAmplitude13h)
+      ? ("Dépassement des plafonds CCN 1351 : travail effectif " + totalEffective.toFixed(1) + " h (max 12,0 h) / amplitude " + amplitude.toFixed(1) + " h (max 13,0 h ; repos quotidien min 11,0 h requis).")
+      : "";
     return {
       valid: true,
+      exceedsMaxEffective12h: exceedsMaxEffective12h,
+      exceedsMaxAmplitude13h: exceedsMaxAmplitude13h,
+      legalLimitWarning: legalLimitWarning,
       periodsCount: periods.length,
       firstStart: firstStart,
       lastEnd: lastEnd,
@@ -177,8 +210,9 @@
 
     // Périmètre Avenant n° 2 (Art. 1, 2 & 4) : gestion des coupures > 2h (rémunération sur l'amplitude) et exclusions Annexe VIII / astreintes
     var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
-    var dailySched = (Array.isArray(inp.periods) && inp.periods.length > 0)
-      ? evaluateDailySchedule({ periods: inp.periods, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
+    var parsedPeriods = parsePeriodsInput(inp.periods);
+    var dailySched = (parsedPeriods.length > 0)
+      ? evaluateDailySchedule({ periods: parsedPeriods, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
       : null;
     if (dailySched && !dailySched.valid) {
       return { valid: false, errors: dailySched.errors };
@@ -317,8 +351,9 @@
     var extra = moment === "nuit" ? suppNuit : (moment === "dim" ? suppDim : (moment === "ferie" ? suppFerie : 0));
     var unitEmp = baseJour + extra + prof.fraisNonSoumisH;
     var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
-    var dailySchedExp = (Array.isArray(inp.periods) && inp.periods.length > 0)
-      ? evaluateDailySchedule({ periods: inp.periods, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
+    var parsedPeriodsExp = parsePeriodsInput(inp.periods);
+    var dailySchedExp = (parsedPeriodsExp.length > 0)
+      ? evaluateDailySchedule({ periods: parsedPeriodsExp, avenantExempt: avenantExempt, forcePanierUnder6h: inp.forcePanierUnder6h })
       : null;
     if (dailySchedExp && !dailySchedExp.valid) {
       return { valid: false, errors: dailySchedExp.errors };
@@ -386,6 +421,7 @@
   root.COS_OPERATIONS_ENGINE = root.OMNISECUR_ENGINE = {
     PROFILES: PROFILES,
     toNum: toNum,
+    parsePeriodsInput: parsePeriodsInput,
     evaluateDailySchedule: evaluateDailySchedule,
     evaluateScenario: evaluateScenario,
     evaluateExpressTrap: evaluateExpressTrap

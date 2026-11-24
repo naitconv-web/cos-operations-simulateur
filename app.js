@@ -448,6 +448,8 @@
       $("simTargetPct").value = "10";
       setActivePresetBtn("preAvenant6h");
     }
+    if ($("simPeriods")) $("simPeriods").value = "";
+    if ($("simAvenantExempt")) $("simAvenantExempt").value = "0";
     if ($("simModeSelect")) $("simModeSelect").value = SIM_MODE;
     refreshSimulator();
   }
@@ -462,6 +464,8 @@
     var vacHours = $("simVacHours").value;
     var sellPrice = $("simSellPrice").value;
     var targetPct = $("simTargetPct").value;
+    var periodsRaw = $("simPeriods") ? $("simPeriods").value.trim() : "";
+    var avenantExemptFlag = $("simAvenantExempt") ? ($("simAvenantExempt").value === "1") : false;
     if ($("simModeSelect") && $("simModeSelect").value !== SIM_MODE) {
       $("simModeSelect").value = SIM_MODE;
     }
@@ -474,7 +478,9 @@
         demoHours: hours,
         vacHours: vacHours,
         demoPrice: sellPrice,
-        targetPct: targetPct
+        targetPct: targetPct,
+        periods: periodsRaw,
+        avenantExempt: avenantExemptFlag
       });
     } else {
       var opts = Object.assign({
@@ -483,7 +489,9 @@
         hours: hours,
         vacHours: vacHours,
         sellPrice: sellPrice,
-        targetPct: targetPct
+        targetPct: targetPct,
+        periods: periodsRaw,
+        avenantExempt: avenantExemptFlag
       }, CUSTOM_PARAMS || {});
       res = eng.evaluateScenario(opts);
     }
@@ -1091,7 +1099,7 @@
       });
     }
 
-    ["simProfile", "simMoment", "simHours", "simVacHours", "simSellPrice", "simTargetPct"].forEach(function (id) {
+    ["simProfile", "simMoment", "simHours", "simVacHours", "simSellPrice", "simTargetPct", "simPeriods", "simAvenantExempt"].forEach(function (id) {
       var el = $(id);
       el.addEventListener(el.tagName === "SELECT" ? "change" : "input", function () {
         if (id === "simMoment" && CUSTOM_PARAMS && Object.prototype.hasOwnProperty.call(CUSTOM_PARAMS, "suppH")) {

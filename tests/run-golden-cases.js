@@ -94,45 +94,88 @@ if (engine.toNum("21,50") !== 21.5 || engine.toNum("1 234,56") !== 1234.56) {
 }
 
 
-// Vérification AUD-005 : Concordance exacte entre calculator-engine.js, tests/production-files.sha256 et le code/hashes embarqués dans le Dossier MD & HTML
+// Vérification AUD-005 (MD + HTML §5.4 + Code §3.1) & AUD-003 (Intégration UI index.html + app.js)
 try {
   const rootDir = path.resolve(__dirname, "..");
   const engineSrc = fs.readFileSync(path.join(rootDir, "calculator-engine.js"), "utf8").trim();
   const dossierMd = fs.readFileSync(path.join(rootDir, "DOSSIER_CONSULTATION_FINALE_SKIN_IN_THE_GAME_IDCC1351_SECURIAXE.md"), "utf8");
+  const dossierHtml = fs.readFileSync(path.join(rootDir, "DOSSIER_CONSULTATION_FINALE_SKIN_IN_THE_GAME_IDCC1351_SECURIAXE.html"), "utf8");
+  const indexHtml = fs.readFileSync(path.join(rootDir, "index.html"), "utf8");
+  const appJs = fs.readFileSync(path.join(rootDir, "app.js"), "utf8");
   const prodShaLines = fs.readFileSync(path.join(__dirname, "production-files.sha256"), "utf8").trim().split(/\r?\n/);
 
-  // 1. Check all 9 production files against production-files.sha256 AND check that each hash appears in DOSSIER.md §5.4
+  // Extract section 5.4 specifically from MD and HTML
+  const md54 = dossierMd.slice(dossierMd.indexOf("### 5.4."), dossierMd.indexOf("## 6. STRATÉGIE"));
+  const html54 = dossierHtml.slice(dossierHtml.indexOf("### 5.4."), dossierHtml.indexOf("## 6. STRATÉGIE"));
+
   let allHashesMatch = true;
   for (const line of prodShaLines) {
     const [expectedHash, relPath] = line.trim().split(/\s+/);
     const fileBytes = fs.readFileSync(path.join(rootDir, relPath));
     const actualHash = crypto.createHash("sha256").update(fileBytes).digest("hex");
     if (actualHash !== expectedHash) {
-      console.error(`[FAIL] AUD005_PROD_SHA256_MISMATCH: ${relPath} (attendu=${expectedHash}, obtenu=${actualHash})`);
+      console.error(`[FAIL] AUD005_PROD_SHA256_MISMATCH: ${relPath}`);
       allHashesMatch = false;
     }
-    if (!dossierMd.includes(actualHash)) {
-      console.error(`[FAIL] AUD005_DOSSIER_MISSING_HASH: ${relPath} (${actualHash} absent du dossier MD)`);
+    if (!md54.includes(actualHash)) {
+      console.error(`[FAIL] AUD005_MD_SECTION54_MISSING_HASH: ${relPath}`);
+      allHashesMatch = false;
+    }
+    if (!html54.includes(actualHash)) {
+      console.error(`[FAIL] AUD005_HTML_SECTION54_MISSING_HASH: ${relPath}`);
       allHashesMatch = false;
     }
   }
 
-  // 2. Check that the embedded javascript block in §3.1 of DOSSIER.md is byte-for-byte identical to calculator-engine.js
-  const m = dossierMd.match(/### 3\.1\. Code source intégral de `calculator-engine\.js`[^\n]*\n\n```javascript\n([\s\S]*?)\n```/);
-  if (!m || m[1].trim() !== engineSrc) {
-    console.error(`[FAIL] AUD005_EMBEDDED_ENGINE_MISMATCH: le code embarqué en §3.1 diffère de calculator-engine.js`);
+  // Decode HTML entities inside <pre id="rawMd"> of DOSSIER.html and compare embedded §3.1 code in both MD and HTML
+  const decodeHtml = (s) => s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&amp;/g, "&");
+  const htmlPreMatch = dossierHtml.match(/<pre id="rawMd" class="dossier-raw">([\s\S]*?)<\/pre>/);
+  const decodedHtmlMd = htmlPreMatch ? decodeHtml(htmlPreMatch[1]) : "";
+
+  const mMd = dossierMd.match(/### 3\.1\. Code source intégral de `calculator-engine\.js`[^\n]*\n\n```javascript\n([\s\S]*?)\n```/);
+  const mHtml = decodedHtmlMd.match(/### 3\.1\. Code source intégral de `calculator-engine\.js`[^\n]*\n\n```javascript\n([\s\S]*?)\n```/);
+
+  if (!mMd || mMd[1].trim() !== engineSrc) {
+    console.error(`[FAIL] AUD005_MD_EMBEDDED_ENGINE_MISMATCH`);
+    allHashesMatch = false;
+  }
+  if (!mHtml || mHtml[1].trim() !== engineSrc) {
+    console.error(`[FAIL] AUD005_HTML_EMBEDDED_ENGINE_MISMATCH`);
     allHashesMatch = false;
   }
 
   if (allHashesMatch) {
     passed++;
-    console.log(`[PASS] AUD005_DOC_AND_9_PROD_SHA256_CONCORDANCE`);
+    console.log(`[PASS] AUD005_MD_AND_HTML_SECTION54_AND_EMBEDDED_CODE_CONCORDANCE`);
   } else {
     failed++;
   }
+
+  // AUD-003 UI Integration Test: check #simPeriods & #simAvenantExempt in index.html & app.js + execute string input "8-10, 13-17"
+  const hasUiFields = indexHtml.includes('id="simPeriods"') && indexHtml.includes('id="simAvenantExempt"') &&
+                      appJs.includes('periods: periodsRaw') && appJs.includes('avenantExempt: avenantExemptFlag');
+  const uiSimRes = engine.evaluateScenario({
+    profileCode: "P01", baseHoraire: 19.50, hours: 300, vacHours: 6,
+    periods: "8-10, 13-17", avenantExempt: false,
+    sellPrice: 35, suppH: 2, indVac: 5, transVac: 10, ponctuel: 100, fixedCosts: 1000, structH: 2, provPct: 5
+  });
+  const uiExpRes = engine.evaluateExpressTrap({
+    profileCode: "P01", demoHours: 300, vacHours: 6,
+    periods: "8-10, 13-17", avenantExempt: false,
+    moment: "jour", demoPrice: 23, chargesPct: 50.37, indVac: 4.48
+  });
+
+  if (hasUiFields && uiSimRes.valid && uiSimRes.paidHours === 450 && uiSimRes.panierEligible === true &&
+      uiExpRes.valid && uiExpRes.paidHours === 450 && Math.abs(uiExpRes.directCosts - 9561.977) < 1e-3) {
+    passed++;
+    console.log(`[PASS] AUD003_UI_FORM_TO_ENGINE_INTEGRATION_8_10_13_17_450H_PAID`);
+  } else {
+    failed++;
+    console.error(`[FAIL] AUD003_UI_FORM_TO_ENGINE_INTEGRATION`);
+  }
 } catch (e) {
   failed++;
-  console.error(`[EXCEPTION] AUD005_VERIFICATION: ${e.message}`);
+  console.error(`[EXCEPTION] AUD005_AUD003_VERIFICATION: ${e.message}`);
 }
 
 console.log(`\n=== BILAN CERTIFICATION : ${passed} PASS / ${failed} FAIL ===`);

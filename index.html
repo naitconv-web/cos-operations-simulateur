@@ -260,9 +260,20 @@
                 <label for="simSellPrice">Votre prix facturé (€ HT/h)</label>
                 <input id="simSellPrice" type="number" min="0" step="0.5" value="23" />
               </div>
-              <div class="field full-span">
+              <div class="field">
                 <label for="simTargetPct">Objectif marge sur CA cible (%)</label>
                 <input id="simTargetPct" type="number" min="0" max="60" step="0.5" value="10" />
+              </div>
+              <div class="field">
+                <label for="simPeriods">Périodes discontinues (ex. 8-10, 13-17)</label>
+                <input id="simPeriods" type="text" placeholder="Continu (ou ex: 8-10, 13-17)" value="" />
+              </div>
+              <div class="field full-span">
+                <label for="simAvenantExempt">Périmètre conventionnel Avenant n° 2 (Art. 1 &amp; 2)</label>
+                <select id="simAvenantExempt">
+                  <option value="0">Standard Annexe IV / V — Plancher 6,0 h &amp; Amplitude sur coupure &gt; 2 h (plafonds 12h eff. / 13h ampl.)</option>
+                  <option value="1">Exclusion Avenant n° 2 (Annexe VIII sûreté aéroportuaire / astreinte / dérogation)</option>
+                </select>
               </div>
             </div>
 
