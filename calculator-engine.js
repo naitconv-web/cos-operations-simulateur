@@ -114,14 +114,21 @@
       return { valid: false, errors: errors };
     }
 
-    var minPaidVacH = 6;
+    // Périmètre Avenant n° 2 (Art. 1 & 2) : exclusions Annexe VIII (sûreté aéroportuaire), astreintes ou dérogations conventionnelles
+    var avenantExempt = Boolean(inp.avenantExempt || inp.annexe8 || inp.astreinte);
+    var minPaidVacH = avenantExempt ? vacHours : 6;
     var effectiveVacPaidHours = Math.max(vacHours, minPaidVacH);
     var vacationsCount = hours / vacHours;
     var paidHours = vacationsCount * effectiveVacPaidHours;
-    var avenantFloorApplied = vacHours < minPaidVacH;
+    var avenantFloorApplied = (!avenantExempt) && (vacHours < 6);
+
+    // Annexe IV Art. 6 : l'indemnité de panier n'est conventionnellement due que si la durée de travail EFFECTIF >= 6,0 h (sauf maintien contractuel explicite forcePanierUnder6h)
+    var panierEligible = (vacHours >= 6) || Boolean(inp.forcePanierUnder6h);
+    var effectiveIndVac = panierEligible ? indVac : 0;
+
     var vacWarning = avenantFloorApplied
-      ? ("Avenant n° 2 IDCC 1351 (Annexe IV · étendu JORF 05/06/2026, effet 01/07/2026) : vacation de " + vacHours.toFixed(1) + " h < plancher conventionnel étendu de 6,0 h — rémunération calculée sur " + paidHours.toFixed(1) + " h payées pour " + hours.toFixed(1) + " h travaillées (hors dérogations conventionnelles limitatives).")
-      : "";
+      ? ("Avenant n° 2 IDCC 1351 (Annexe IV · étendu JORF 05/06/2026, effet 01/07/2026) : vacation de " + vacHours.toFixed(1) + " h < plancher conventionnel étendu de 6,0 h — rémunération calculée sur " + paidHours.toFixed(1) + " h payées pour " + hours.toFixed(1) + " h travaillées (panier Annexe IV art. 6 : " + (panierEligible ? "maintenu contractuellement" : "0,00 € car travail effectif < 6,0 h") + ").")
+      : (avenantExempt && vacHours < 6 ? "Exclusion Avenant n° 2 activée (Annexe VIII sûreté aéroportuaire / astreinte / dérogation) : rémunération sur heures travaillées (" + hours.toFixed(1) + " h)." : "");
 
     // Supplément horaire (soit exact manuel Recette = 2,00 €/h, soit calculé selon majoration légale hors frais chien non soumis)
     var suppH = Number.isFinite(suppManual) ? suppManual : 0;
@@ -133,7 +140,7 @@
     }
 
     var caTotal = hours * sellPrice;
-    var directCosts = paidHours * (baseH + suppH) + vacationsCount * (indVac + transVac) + ponctuel;
+    var directCosts = paidHours * (baseH + suppH) + vacationsCount * (effectiveIndVac + transVac) + ponctuel;
     var structTotal = hours * structH;
     var subTotalBeforeProv = directCosts + fixedCosts + structTotal;
     var provision = subTotalBeforeProv * (provPct / 100);
@@ -169,6 +176,9 @@
       hours: hours,
       paidHours: paidHours,
       avenantFloorApplied: avenantFloorApplied,
+      avenantExempt: avenantExempt,
+      panierEligible: panierEligible,
+      effectiveIndVac: effectiveIndVac,
       vacHours: vacHours,
       vacationsCount: vacationsCount,
       vacWarning: vacWarning,
@@ -254,6 +264,9 @@
       paidHours: paidHours,
       vacHours: vacHours,
       avenantFloorApplied: avenantFloorApplied,
+      avenantExempt: avenantExempt,
+      panierEligible: panierEligible,
+      effectiveIndVac: effectiveIndVac,
       vacWarning: vacWarning,
       sellPrice: demoPrice,
       caTotal: caSim,
