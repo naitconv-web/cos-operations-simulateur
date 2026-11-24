@@ -1,0 +1,26 @@
+name: Golden Cases Certification CI (IDCC 1351 & Securiaxe)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  certify-engine:
+    name: Run 39 Golden Cases & SHA-256 Integrity Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify SHA-256 of golden-cases.json
+        run: sha256sum -c tests/golden-cases.sha256
+
+      - name: Execute Golden Cases Harness (evaluateScenario + evaluateExpressTrap)
+        run: node tests/run-golden-cases.js
