@@ -1,10 +1,10 @@
 /**
- * OMNISECUR — Moteur de Chiffrage Déterministe (Parité Bouclier Anti-Pertes v3.2)
+ * OMNISECUR / SECURIAXE — Moteur de Chiffrage Déterministe (Bouclier Anti-Pertes v3.2)
  * Aligné sur :
- *   - Recette P01 (320h @ 35,00 €/h) = CA 11 200 €, Direct 7 580 €, Complet 9 681 €, Net +1 519,00 € (13,5625 %), Prix cible 33,6145833 €/h, Seuil 138,22 h
- *   - Piège 23 €/h (SAISIE_EXPRESS Nuit ADS P01 320h) = -1 941,42 € net
- *   - Cynophile P07 (frais chien 1,68 €/h non soumis en H10) = base 23,75 €/h
- *   - Avenant n° 2 IDCC 1351 (vacation min 6h) 300h = 8 951,25 € (25x12h) vs 9 345,00 € (50x6h) -> écart +393,75 €
+ *   - Scénario 1 Piège 23 €/h (Mode Express Nuit ADS P01 320h, brutH 12,42 €) = CA 7 360 €, Direct 7 719,15 € (24,12 €/h), Complet 9 181,55 € (28,69 €/h), Résultat -1 821,55 € (-24,75 %), Prix cible 10% = 31,88 €/h
+ *   - Scénario 2 Avenant n° 2 IDCC 1351 (vacation min 6h) 300h = 8 951,25 € (25x12h) vs 9 345,00 € (50x6h) -> écart +393,75 € (+131,25 € paniers + 262,50 € trajets paramétrés)
+ *   - Scénario 3 Recette P01 (320h @ 35,00 €/h, coût horaire chargé baseHoraire 19,50 €/h) = CA 11 200 €, Direct 7 580 €, Complet 9 681 €, Résultat +1 519,00 € (13,5625 %), Prix cible 33,61 €/h, Seuil 138,22 h
+ *   - Scénario 4 Cynophile P07 (320h @ 42,00 €/h, baseHoraire 23,75 €/h dont 1,68 €/h chien non soumis) = CA 13 440 €, Direct 8 940 €, Complet 11 109 €, Résultat +2 331,00 € (17,34 %), Prix cible 38,57 €/h, Seuil 106,02 h
  */
 (function (root) {
   "use strict";
@@ -223,9 +223,9 @@
     var baseMens = b * 151.67;
     var cotisAnn = 12 * baseMens * T;
     var baseJour = hProd > 0 ? (12 * baseMens + cotisAnn) / hProd : 0;
-    var suppNuit = (b * 0.10 + primeNuitH) * (1 + T) / (1 - pnv);
-    var suppDim = (b * 0.10) * (1 + T) / (1 - pnv);
-    var suppFerie = (b * 1.00) * (1 + T) / (1 - pnv);
+    var suppNuit = (b * 0.10 + primeNuitH) * (1 + T);
+    var suppDim = (b * 0.10) * (1 + T);
+    var suppFerie = (b * 1.00) * (1 + T);
 
     var extra = moment === "nuit" ? suppNuit : (moment === "dim" ? suppDim : (moment === "ferie" ? suppFerie : 0));
     var unitEmp = baseJour + extra + prof.fraisNonSoumisH;

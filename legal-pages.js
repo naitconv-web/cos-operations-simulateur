@@ -56,12 +56,12 @@
 
       var rows = [
         ["Enseigne & Nom commercial", iss.enseigne || "Securiaxe"],
-        ["Dénomination légale (art. L.526-22 & R.123-237 C. com.)", "Mounir NAIT MOHAND EI (Entrepreneur Individuel)"],
+        ["Dénomination légale (art. L.526-22, R.526-27 & R.123-237 C. com.)", "Mounir NAIT MOHAND EI (Entrepreneur Individuel)"],
         ["Titulaire légal (LCEN art. 6-III-1)", "Mounir NAIT MOHAND — Entrepreneur Individuel (EI)"],
         ["Forme juridique & Registre", "Entreprise Individuelle (EI) inscrite au Répertoire SIRENE / RNE (SIREN 849 261 870)"],
         ["Directeur de la publication", "Mounir NAIT MOHAND"],
-        ["Siège social / Domiciliation", iss.siege || "81000 Albi (Tarn — France)"],
-        ["Identifiant SIREN / SIRET", iss.siren ? iss.siren : "849 261 870 00018 (Code NAF/APE : 70.22Z / Ingénierie & conseil B2B)"],
+        ["Domiciliation / Siège (RNE)", iss.siege || "81000 Albi (Tarn — France · adresse postale complète du siège RNE figurant sur toute facture/devis émis et communicable sur simple demande B2B)"],
+        ["Identifiant SIREN / SIRET", iss.siren ? iss.siren : "849 261 870 00018 (Activité : Conseil, ingénierie documentaire & édition d'outils B2B)"],
         ["Régime TVA applicable", tvaTxt],
         ["Hébergeur (Raison, Adresse, Tél.)", ch.hostProvider ? ch.hostProvider : "o2switch SASU — Chemin des Pardiaux, 63000 Clermont-Ferrand, France (Tél. : +33 4 44 44 60 40)"],
         ["Email de contact B2B", ch.email ? ch.email : "nait.conv@gmail.com"],

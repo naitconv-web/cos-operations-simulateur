@@ -45,7 +45,7 @@
     },
     memoires: {
       title: "6 Mémoires Techniques Modulaires (.docx) + Guide & Trames B2B",
-      desc: "Six trames Word structurées par critère de notation BOAMP, purgées de toute sur-promesse illégale et intégrant l'Avenant n° 2 IDCC 1351 (plancher conventionnel étendu de 6,0 h par vacation au 01/07/2026).",
+      desc: "Six trames Word structurées par critère de notation BOAMP, purgées de toute sur-promesse illégale et mises à jour pour l'Avenant n° 2 IDCC 1351 (plancher conventionnel étendu de 6,0 h par vacation au 01/07/2026).",
       bullets: [
         "01 Gardiennage institutionnel • 02 Événementiel & interface AASC (L.725-3) • 03 Rondes & surveillance mobile.",
         "04 Contrôle d'accès / Accueil sécurisé • 05 Résidentiel & commerces multi-sites • 06 Télésurveillance L.611-1 1° / L.613-6 (niveaux N1 à N4).",
@@ -54,17 +54,17 @@
       specs: [
         ["Volume livré", "10 fichiers Word (.docx) mis en page avec tableaux verrouillés (cantSplit)"],
         ["Plancher conventionnel", "Avenant n° 2 Art. 1 & 2 (6,0 h min., JORF 05/06/2026) + repos 11,0 h (12,0 h cycles 12h)"],
-        ["Hygiène conformité", "0 promesse hors périmètre (art. L.121-1 C. com. — équipements et labels non détenus purgés)"],
+        ["Hygiène conformité", "0 promesse hors périmètre (art. 1104 et 1112-1 C. civ. — équipements et labels non détenus purgés)"],
         ["Usage", "Personnalisation rapide par balises [NOM SOCIETE] et [DELAI] avant dépôt"]
       ]
     },
     cos: {
       title: "COS Bureau IA Sécurité v4.2 — Copilote AO Local Mono-Poste (BYOK)",
-      desc: "Application HTML autonome mono-poste exécutée dans votre navigateur, branchée directement sur votre propre fournisseur API (OpenAI, Mistral, Groq, OpenRouter ou Ollama local) sans abonnement fournisseur.",
+      desc: "Application HTML autonome mono-poste exécutée dans votre navigateur, branchée directement sur votre propre fournisseur API (OpenAI, Mistral, Groq, OpenRouter ou Ollama local) sans transit par un serveur Securiaxe.",
       bullets: [
         "5 postes spécialisés AO sécurité privée (audit RC, analyse mémoire, conformité CSI/IDCC, synthèse Direction, contrôle BPU).",
-        "Clé API conservée en sessionStorage par défaut (effacée à la fermeture de l'onglet), zéro secret stocké dans le fichier livré.",
-        "Défense anti-injection de second ordre (neutralisation des balises délimitantes sur tout DCE importé, historique isolé hors prompt système, auto-formation OFF par défaut)."
+        "Clé API conservée en sessionStorage local (effacée à la fermeture de l'onglet, protégée par CSP stricte sans script tiers).",
+        "Défense anti-injection de second ordre (neutralisation des balises délimitantes sur tout DCE importé, historique isolé hors prompt système)."
       ],
       specs: [
         ["Sécurité applicative", "CSP stricte + sanitizeExternalUrl() HTTPS/localhost + esc() complet"],
@@ -77,9 +77,9 @@
       title: "Architecture Juridique, Contractuelle & RGPD B2B",
       desc: "Chaque document et outil commercial trace une frontière nette entre l'outillage/ingénierie méthodologique (Securiaxe / COS Opérations) et les activités réglementées exercées exclusivement par les entreprises clientes.",
       bullets: [
-        "Prestation 100 % hors champ CNAPS (art. L.611-1 CSI & art. L.121-1 C. com.) : ni gardiennage, ni ronde, ni télésurveillance, ni intervention.",
+        "Éditeur logiciel 100 % hors champ CNAPS (art. L.611-1 CSI) : ni gardiennage, ni ronde, ni télésurveillance, ni intervention.",
         "Unicité stricte du régime TVA émetteur sur Bon de Commande (art. 293 B du CGI / art. L. 223-3 du CIBS OU TVA 20 %, jamais les deux).",
-        "CGV B2B intégrées : obligation de moyens (zéro promesse d'attribution), plafond de responsabilité au montant HT, L.441-10 + 40 €, et clause RGPD art. 28 avec purge à 30 jours."
+        "CGV B2B intégrées : obligation de moyens (zéro promesse d'attribution, art. 1104 et 1112-1 C. civ.), plafond de responsabilité au montant HT, L.441-10 + 40 €, et clause RGPD art. 28 avec purge à 30 jours."
       ],
       specs: [
         ["Références CSI", "L.611-1 1°, L.612-9 (autorisation d'exercice), L.612-20 (cartes pro), L.613-6, L.612-5-1 (DC4)"],
@@ -570,12 +570,12 @@
   function getCgvParagraphs(cfg) {
     var iss = cfg.issuer;
     return [
-      "Art. 1 — Objet & Périmètre (hors CSI Livre VI & art. L.121-1 C. com.) : " + iss.raison + " (" + iss.enseigne + ") fournit des outils de gestion, chiffrages financiers et prestations d'ingénierie documentaire AO B2B. Ces prestations n'emportent ni exercice d'activité réglementée CNAPS (art. L.611-1 CSI) ni conseil juridique, comptable ou social réglementé.",
-      "Art. 2 — Prix, TVA, Sécurité IBAN & Règlement : Prix en euros HT. Régime fiscal émetteur actif : " + (iss.tvaRegime === "20" ? "TVA normale 20 %" : "TVA non applicable — art. 293 B du CGI / art. L. 223-3 du CIBS (franchise en base de TVA, sous réserve des seuils légaux)") + ". Virement SEPA sur Bon de Commande : acompte à la commande et solde à livraison (Sécurité anti-fraude B2B : vérifiez systématiquement la concordance du RIB officiel Securiaxe rattaché au SIREN 849 261 870 avant tout virement). Conformément aux art. L.441-10 et D.441-5 C. com., tout retard entraîne de plein droit des pénalités (3 × taux d'intérêt légal) et une indemnité forfaitaire de 40 €.",
+      "Art. 1 — Objet & Périmètre (hors CSI Livre VI & art. 1104 / 1112-1 C. civ.) : " + iss.raison + " (" + iss.enseigne + ") fournit des outils logiciels et documentaires de gestion, chiffrages financiers et prestations d'ingénierie documentaire AO B2B. Ces prestations n'emportent ni exercice d'activité réglementée CNAPS (art. L.611-1 CSI) ni conseil juridique, comptable ou social réglementé.",
+      "Art. 2 — Prix, TVA, Sécurité IBAN & Règlement : Prix en euros HT. Régime fiscal émetteur actif : " + (iss.tvaRegime === "20" ? "TVA normale 20 %" : "TVA non applicable — art. 293 B du CGI (codifié à l'art. L. 223-3 du CIBS, franchise en base de TVA)") + ". Virement SEPA sur Bon de Commande : acompte à la commande et solde à livraison (Sécurité anti-fraude B2B : vérifiez systématiquement la concordance du RIB officiel Securiaxe rattaché au SIREN 849 261 870 avant tout virement). Conformément aux art. L.441-10 et D.441-5 C. com., tout retard entraîne de plein droit des pénalités (3 × taux d'intérêt légal) et une indemnité forfaitaire de 40 €.",
       "Art. 3 — Délais & Obligation de moyens : Les délais (dont 48h ouvrées pour Pack 3 limité à 1 lot <= 15 p.) courent à réception intégrale des pièces requises (DCE, paie, agréments). Le prestataire est tenu à une obligation de moyens sans garantie d'attribution de marché.",
       "Art. 4 — Propriété intellectuelle : Licence d'usage interne, personnelle, non exclusive et non transférable accordée au Client après paiement complet. Toute revente, partage externe ou mise en ligne publique des gabarits est interdite.",
       "Art. 5 — Limitation de responsabilité : Sauf faute lourde ou dol, la responsabilité cumulée du prestataire est strictement plafonnée au montant total HT payé au titre du présent bon de commande, à l'exclusion de tout préjudice indirect, perte d'exploitation ou perte de chance commerciale.",
-      "Art. 6 — Protection des données (RGPD) : 6.1 Prospects (Art. 13 RGPD & L.34-5 CPCE) : qualification B2B sans revente, droit d'accès/opposition et anonymisation J+30 si sans suite. 6.2 Sous-traitance DCE/Paie (Art. 28 RGPD) : traitement exclusif pour l'exécution de la commande, sans entraînement de modèle IA tiers, et suppression sous 30 jours après clôture.",
+      "Art. 6 — Protection des données (RGPD) : 6.1 Prospects (Art. 13 RGPD & L.34-5 CPCE) : qualification B2B sans revente, droit d'accès/opposition et anonymisation J+30 si sans suite. 6.2 Sous-traitance & BYOK (Art. 28 RGPD) : Securiaxe n'entraîne aucun modèle IA sur vos données ; en mode BYOK local, la clé API reste en sessionStorage sur le poste du Client sans transit par un serveur Securiaxe (le traitement par le fournisseur API choisi relevant des conditions de ce fournisseur). Purge des pièces confiées sous 30 jours après clôture.",
       "Art. 7 — Droit applicable & Juridiction : Droit français ; compétence du Tribunal de commerce du ressort du siège social du prestataire (" + (iss.siege || "Albi") + ") à défaut de résolution amiable."
     ];
   }
@@ -599,7 +599,7 @@
       ht: ht,
       tvaPct: tvaPct,
       tvaAmt: tvaAmt,
-      tvaMention: tvaPct === 0 ? "TVA non applicable — art. 293 B du CGI / art. L. 223-3 du CIBS (franchise en base)" : ("TVA 20 % (" + (cfg.issuer.tvaNum || "n° TVA à renseigner") + ") : " + fmtMoney(tvaAmt)),
+      tvaMention: tvaPct === 0 ? "TVA non applicable — art. 293 B du CGI (codifié à l'art. L. 223-3 du CIBS, franchise en base)" : ("TVA 20 % (" + (cfg.issuer.tvaNum || "n° TVA à renseigner") + ") : " + fmtMoney(tvaAmt)),
       ttc: ttc,
       acPct: acPct,
       acTtc: acTtc,
@@ -621,7 +621,7 @@
           '<h4>BON DE COMMANDE B2B — N° ' + esc(bc.ref) + '</h4>' +
           '<div><b>' + esc(cfg.issuer.raison) + ' — EI</b> (' + esc(cfg.issuer.enseigne) + ') — ' + esc(cfg.issuer.capital) + '</div>' +
           '<div>Siège : ' + esc(cfg.issuer.siege) + ' · SIREN/SIRET : ' + sirenHtml + '</div>' +
-          '<div style="font-size:11.5px;color:#475569">Mention légale EI (art. L.526-22 &amp; R.123-237 C. com.) : identité complète de l\'entrepreneur individuel figurant aux Mentions légales et sur la facture définitive émise.</div>' +
+          '<div style="font-size:11.5px;color:#475569">Mention légale EI (art. L.526-22, R.526-27 &amp; R.123-237 C. com.) : identité complète de l\'entrepreneur individuel figurant aux Mentions légales et sur la facture définitive émise.</div>' +
           '<div>Représentée par : <b>' + esc(cfg.issuer.rep) + '</b></div>' +
           (contactParts.length ? '<div>Contact : ' + esc(contactParts.join(" · ")) + '</div>' : '') +
         '</div>' +
@@ -761,7 +761,7 @@
     return [
       "===============================================================",
       "IDCC1351.FR (ÉDITÉ PAR SECURIAXE) — DIAGNOSTIC DE CONFORMITÉ ÉCONOMIQUE",
-      "Simulation indicative B2B (hors activités CNAPS art. L.611-1 CSI & art. L.121-1 C. com.)",
+      "Simulation indicative B2B sans promesse de résultat (hors activités CNAPS art. L.611-1 CSI · art. 1104 et 1112-1 C. civ.)",
       "===============================================================",
       "Date           : " + localIsoDate(),
       soc ? ("Société cible  : " + soc) : "",
@@ -781,7 +781,7 @@
       "---------------------------------------------------------------",
       "Point vigilance Avenant n° 2 (IDCC 1351 Art. 1 & 2 — KALITEXT000053576553 / KALIARTI000053576557, JORF 05/06/2026, effet 01/07/2026) :",
       "Plancher conventionnel étendu de 6,0 h rémunérées par vacation (Agents d'exploitation, Agents de maîtrise, hors Annexe VIII et astreintes ; coupure <= 2 h : cumul ; coupure > 2 h : nouvelle vacation).",
-      "Sur 300 h, passer de 25x12h à 50x6h ajoute +393,75 EUR/mois (doublement des prises de poste, paniers et trajets).",
+      "Simulation indicative sur 300 h : passer de 25x12h à 50x6h ajoute +393,75 EUR/mois selon les paramètres renseignés (+131,25 EUR paniers + 262,50 EUR trajets, provision 5 % incluse).",
       "À confirmer avec votre expert-comptable sur vos bulletins de paie réels (verrou Direction)."
     ].filter(Boolean).join("\n");
   }
@@ -792,7 +792,7 @@
     var deltaH = Math.max(0, d.targetPriceH - d.sellPrice);
     return [
       "OBJET : Demande de réévaluation du Bordereau des Prix Unitaires (BPU) — Entrée en vigueur de l'Avenant n° 2 (IDCC 1351)",
-      "RÉFÉRENCES RÉGLEMENTAIRES : Avenant n° 2 du 3 septembre 2025 (IDCC 1351 · Art. 1 & 2 — KALITEXT000053576553 / KALIARTI000053576557) étendu par Arrêté ministériel du 27 mai 2026 (NOR : TRST2612786A, JORF n°0130 du 5 juin 2026, JORFTEXT000054200800), d'application obligatoire au 1er juillet 2026.",
+      "RÉFÉRENCES RÉGLEMENTAIRES : Avenant n° 2 du 3 septembre 2025 (IDCC 1351 · Art. 1 & 2 — KALITEXT000053576553 / KALIARTI000053576557) modifiant l'Art. 7.06.2 de l'Accord du 1er avril 2021 (KALITEXT000043881018), étendu par Arrêté ministériel du 27 mai 2026 (NOR : TRST2612786A, JORF n°0130 du 5 juin 2026, JORFTEXT000054200800), d'application obligatoire au 1er juillet 2026.",
       "--------------------------------------------------------------------------------",
       "",
       "Madame, Monsieur,",
@@ -801,7 +801,7 @@
       "",
       "1. INCIDENCE CONVENTIONNELLE SUR L'ORGANISATION DES VACATIONS (ART. 1 & 2 AVENANT N° 2) :",
       "- La durée minimale conventionnelle étendue d'une période de travail (vacation) est désormais fixée à 6,0 heures rémunérées minimum (contre 4,0 heures antérieurement à temps partiel) pour les Agents d'exploitation et Agents de maîtrise (hors Annexe VIII, astreintes et exceptions conventionnelles limitatives ; deux vacations séparées par une coupure <= 2 h forment une seule période, toute coupure > 2 h ouvrant une nouvelle période soumise au plancher de 6,0 h).",
-      "- Le seuil de déclenchement de l'indemnité de panier (1 seule indemnité par vacation continue >= 6,0 h de travail effectif — Annexe IV art. 6, minimum conventionnel 4,48 € au 01/01/2026) et la multiplication des vacations de 6,0 h alourdissent mécaniquement la structure des coûts directs et des indemnités de transport.",
+      "- L'indemnité de panier (1 seule indemnité par vacation/journée comportant au moins 6,0 h de travail effectif — Annexe IV art. 6, minimum conventionnel 4,48 € au 01/01/2026) et la multiplication des prises de poste liées aux vacations de 6,0 h alourdissent mécaniquement la structure des coûts directs.",
       "",
       "2. ÉTAT COMPARATIF DU COÛT DE REVIENT SUR VOTRE PÉRIMÈTRE (" + d.profile.code + " — " + d.profile.nom + " · " + d.moment.toUpperCase() + ") :",
       "- Volume mensuel considéré       : " + fmtNum(d.hours, 0) + " h travaillées (" + fmtNum(d.vacHours, 1) + " h/vacation -> " + fmtNum(d.paidHours, 1) + " h rémunérées au titre du plancher 6,0 h)",
@@ -819,7 +819,7 @@
       "",
       "La Direction — " + nomSoc,
       "--------------------------------------------------------------------------------",
-      "[AVERTISSEMENT : Trame technique et économique générée via idcc1351.fr (édité par Securiaxe — hors activités CNAPS L.611-1 CSI & conforme art. L.121-1 C. com.). Ce modèle d'aide à la négociation commerciale B2B ne constitue pas une consultation juridique ; vérifiez les clauses de révision de prix de votre contrat avant envoi.]"
+      "[AVERTISSEMENT : Trame technique et économique générée via idcc1351.fr (édité par Securiaxe — hors activités CNAPS L.611-1 CSI · information loyale art. 1104 et 1112-1 C. civ.). Ce modèle indicatif d'aide à la négociation commerciale B2B ne constitue pas une consultation juridique ; vérifiez les clauses de révision de prix de votre contrat avant envoi.]"
     ].join("\n");
   }
 
@@ -839,7 +839,7 @@
         '<div>' +
           '<h4>DIAGNOSTIC DE CONFORMITÉ ÉCONOMIQUE &amp; CONVENTIONNELLE — IDCC 1351</h4>' +
           '<div><b>Référentiel technique indépendant :</b> <code>idcc1351.fr</code> — Édité par <b>' + esc(cfg.issuer.enseigne || "Securiaxe") + ' (EI)</b></div>' +
-          '<div>SIREN/SIRET : ' + esc(cfg.issuer.siren || "849 261 870 00018") + ' &middot; Siège : ' + esc(cfg.issuer.siege || "Albi (81)") + ' &middot; Hors activité CNAPS (art. L.611-1 CSI &amp; art. L.121-1 C. com.)</div>' +
+          '<div>SIREN/SIRET : ' + esc(cfg.issuer.siren || "849 261 870 00018") + ' &middot; Siège : ' + esc(cfg.issuer.siege || "Albi (81)") + ' &middot; Hors activité CNAPS (art. L.611-1 CSI &amp; art. 1104 / 1112-1 C. civ.)</div>' +
           '<div style="font-size:11.5px;color:#475569;margin-top:2px">Non affilié aux organisations paritaires de branche, au Ministère du Travail ou au CNAPS.</div>' +
         '</div>' +
         '<div style="text-align:right">' +
@@ -869,8 +869,8 @@
       '</div>' +
       '<div class="bc-cgv-box">' +
         '<b>MÉTHODOLOGIE MATHÉMATIQUE, RÉSERVES &amp; PLAN D\'ACTION (POUR L\'EXPERT-COMPTABLE &amp; LA DIRECTION) :</b>' +
-        '<p>1. <b>Formules certifiées (Bouclier Anti-Pertes v3.2) :</b> En Mode Express, base annuelle <code>151,67 h × 12 = 1 820,04 h</code>, part non vendable 10 % (<code>1 638,036 h</code> productives), charges patronales modélisées à <code>50,37 %</code> (avant allègements Fillon/RGCP spécifiques à l\'entreprise), prime nuit <code>1,00 €/h</code>, structure <code>4,57 €/h</code>. En Mode Paie Réelle, seuil de rentabilité = <code>[(fixedCosts + ponctuel) × (1 + provPct/100)] / [sellPrice - varCostPerWorkHour]</code> (soit <code>1 155,00 € / 8,35625 € = 138,22 h</code> sur le scénario étalon P01 Jour 320h @ 35 €, et <code>1 155,00 € / 10,89375 € = 106,02 h</code> sur le scénario P07 Cynophile 320h @ 42 €). Ce document est une simulation économique indicative (art. L.121-1 C. com.) et ne remplace ni un bulletin de paie ni une consultation réglementée.</p>' +
-        '<p>2. <b>Actions recommandées :</b> En cas de résultat déficitaire ou d\'exposition au plancher conventionnel étendu de 6,0 h (Avenant n° 2 Art. 1 &amp; 2), il est recommandé de : (a) réorganiser les cycles pour limiter les vacations &lt; 6,0 h et le doublement des paniers/trajets ; (b) notifier une demande de révision BPU au donneur d\'ordre ; (c) verrouiller les futurs chiffrages BOAMP via la suite <b>COS Opérations / Securiaxe</b> (' + esc(cfg.channels.email || "nait.conv@gmail.com") + ' · ' + esc(cfg.channels.tel || "+33 6 17 17 99 74") + ').</p>' +
+        '<p>1. <b>Formules certifiées (Bouclier Anti-Pertes v3.2) :</b> En Mode Express, base annuelle <code>151,67 h × 12 = 1 820,04 h</code>, part non vendable 10 % (<code>1 638,036 h</code> productives), salaire brut Coeff. 120 au 01/01/2026 = <code>1 883,74 € / 151,67 h = 12,42 € brut/h</code>, charges patronales modélisées à <code>50,37 %</code> (<code>baseJour = 20,75106 €/h</code>, <code>suppNuit = (12,42 × 0,10 + 1,00) × 1,5037 = 3,3712954 €/h</code>, <code>unitEmp = 24,1223554 €/h</code>, structure <code>4,57 €/h</code> -> coût complet <code>9 181,55 €</code> soit <code>28,69 €/h</code>, résultat <code>-1 821,55 €/mois</code> à 23 €/h ; sensibilité selon charges nettes après allègements RGCP/Fillon : <code>-880 €/mois</code> à 30 %, <code>-1 140 €/mois</code> à 35 %). En Mode Paie Réelle, <code>baseHoraire = 19,50 €/h</code> correspond à ce même salaire de <code>12,42 € brut/h</code> chargé à ~41,30 % avec 10 % de CP (<code>12,42 × 1,41304 / 0,90 = 19,50 €/h</code>), et seuil de rentabilité = <code>[(fixedCosts + ponctuel) × (1 + provPct/100)] / [sellPrice - varCostPerWorkHour]</code> (P01 : <code>138,22 h</code> ; P07 : <code>106,02 h</code>). Simulation économique indicative sans promesse de résultat (art. 1104 et 1112-1 C. civ.).</p>' +
+        '<p>2. <b>Actions recommandées :</b> En cas de résultat déficitaire ou d\'exposition au plancher conventionnel étendu de 6,0 h (Avenant n° 2 Art. 1 &amp; 2), il est recommandé de : (a) réorganiser les cycles pour limiter les vacations &lt; 6,0 h et la multiplication des prises de poste ; (b) notifier une demande de révision BPU au donneur d\'ordre ; (c) verrouiller les futurs chiffrages BOAMP via la suite <b>COS Opérations / Securiaxe</b> (' + esc(cfg.channels.email || "nait.conv@gmail.com") + ' · ' + esc(cfg.channels.tel || "+33 6 17 17 99 74") + ').</p>' +
       '</div>';
   }
 
