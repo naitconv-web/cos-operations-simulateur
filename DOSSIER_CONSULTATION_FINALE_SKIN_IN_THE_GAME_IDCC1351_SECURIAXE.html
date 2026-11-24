@@ -265,15 +265,28 @@
       paidHoursDay = Math.max(6.0, totalEffective);
     }
     var panierEligible = (totalEffective &gt;= 6.0) || Boolean(inp &amp;&amp; inp.forcePanierUnder6h);
+
+    var nextStart = (inp &amp;&amp; inp.nextShiftStart !== undefined) ? toNum(inp.nextShiftStart) : NaN;
+    var dailyRestHours = Number.isFinite(nextStart)
+      ? (nextStart &gt;= lastEnd ? (nextStart - lastEnd) : (nextStart + 24 - lastEnd))
+      : (24.0 - amplitude);
+    var restUnder11h = dailyRestHours &lt; 11.0;
     var exceedsMaxEffective12h = totalEffective &gt; 12.0;
     var exceedsMaxAmplitude13h = amplitude &gt; 13.0;
-    var legalLimitWarning = (exceedsMaxEffective12h || exceedsMaxAmplitude13h)
-      ? (&quot;Dépassement des plafonds CCN 1351 : travail effectif &quot; + totalEffective.toFixed(1) + &quot; h (max 12,0 h) / amplitude &quot; + amplitude.toFixed(1) + &quot; h (max 13,0 h ; repos quotidien min 11,0 h requis).&quot;)
+
+    var warnParts = [];
+    if (exceedsMaxEffective12h) warnParts.push(&quot;travail effectif &quot; + totalEffective.toFixed(1) + &quot; h &gt; max légal 12,0 h (L.3121-19)&quot;);
+    if (exceedsMaxAmplitude13h) warnParts.push(&quot;amplitude &quot; + amplitude.toFixed(1) + &quot; h &gt; max CCN 1351 13,0 h&quot;);
+    if (restUnder11h) warnParts.push(&quot;repos quotidien consécutif &quot; + dailyRestHours.toFixed(1) + &quot; h &lt; minimum légal 11,0 h (L.3131-1)&quot;);
+    var legalLimitWarning = warnParts.length &gt; 0
+      ? (&quot;Alerte conformité planning (CCN 1351 &amp; Code du travail) : &quot; + warnParts.join(&quot; ; &quot;) + &quot;.&quot;)
       : &quot;&quot;;
     return {
       valid: true,
       exceedsMaxEffective12h: exceedsMaxEffective12h,
       exceedsMaxAmplitude13h: exceedsMaxAmplitude13h,
+      dailyRestHours: dailyRestHours,
+      restUnder11h: restUnder11h,
       legalLimitWarning: legalLimitWarning,
       periodsCount: periods.length,
       firstStart: firstStart,
@@ -509,6 +522,11 @@
       dailyEffectiveHours: dailyEffectiveHours,
       panierEligible: panierEligible,
       effectiveIndVac: effectiveIndVac,
+      legalLimitWarning: dailySchedExp ? dailySchedExp.legalLimitWarning : (vacHours &gt; 12 ? &quot;Alerte : vacation &gt; 12,0 h effectives (max L.3121-19).&quot; : &quot;&quot;),
+      exceedsMaxEffective12h: dailySchedExp ? dailySchedExp.exceedsMaxEffective12h : (vacHours &gt; 12),
+      exceedsMaxAmplitude13h: dailySchedExp ? dailySchedExp.exceedsMaxAmplitude13h : (vacHours &gt; 13),
+      dailyRestHours: dailySchedExp ? dailySchedExp.dailyRestHours : (24 - vacHours),
+      restUnder11h: dailySchedExp ? dailySchedExp.restUnder11h : ((24 - vacHours) &lt; 11.0),
       vacWarning: vacWarning,
       sellPrice: demoPrice,
       caTotal: caSim,
@@ -935,9 +953,9 @@ MOBILE_OVERFLOW: False
 
 | Fichier de production | Taille exacte | Empreinte cryptographique `SHA-256` |
 | :--- | :---: | :--- |
-| `index.html` | `56 960 octets` | `acde78bd14c341334e617ab0d3a256ef6479fa47af473bf8d765aa704d24dcc3` |
-| `app.js` | `76 421 octets` | `1392c5c9a4b5cc15c48715232e9f3c8544591a23b421d04ed3e2392e6033fb22` |
-| `calculator-engine.js` | `20 583 octets` | `151d63869fd8b5aa18b04fe0eb590a2091c2defe4f604385ab3a14f3cdcf00d8` |
+| `index.html` | `57 035 octets` | `be1c74e196fc65e9525ea7285572e928b878279d951502c0177b45c9aacf3503` |
+| `app.js` | `76 734 octets` | `7bb77833e23c51154567b16f8dc52a7b0f4e8cf5dbd5f65eb8d45a419977b271` |
+| `calculator-engine.js` | `21 779 octets` | `044e9313aa0647eee8fbe6378292e0db8bc4e3b5211100d8afff4e40dc1123f2` |
 | `styles.css` | `34 214 octets` | `f10dc695f044ee48a7d2599c3f28a113621c5b26a0f372796c59987a3f3ea096` |
 | `.htaccess` | `1 348 octets` | `6c60096bbb8f292632b5cf2979c0d1f06871b2e49e9612adbd36d891594c58fd` |
 | `cgv-rgpd.html` | `9 377 octets` | `11a32653756cae1e04a25f32b3791f2512a3823ffa305a566c0b2c6701310f70` |

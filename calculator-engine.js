@@ -157,15 +157,28 @@
       paidHoursDay = Math.max(6.0, totalEffective);
     }
     var panierEligible = (totalEffective >= 6.0) || Boolean(inp && inp.forcePanierUnder6h);
+
+    var nextStart = (inp && inp.nextShiftStart !== undefined) ? toNum(inp.nextShiftStart) : NaN;
+    var dailyRestHours = Number.isFinite(nextStart)
+      ? (nextStart >= lastEnd ? (nextStart - lastEnd) : (nextStart + 24 - lastEnd))
+      : (24.0 - amplitude);
+    var restUnder11h = dailyRestHours < 11.0;
     var exceedsMaxEffective12h = totalEffective > 12.0;
     var exceedsMaxAmplitude13h = amplitude > 13.0;
-    var legalLimitWarning = (exceedsMaxEffective12h || exceedsMaxAmplitude13h)
-      ? ("Dépassement des plafonds CCN 1351 : travail effectif " + totalEffective.toFixed(1) + " h (max 12,0 h) / amplitude " + amplitude.toFixed(1) + " h (max 13,0 h ; repos quotidien min 11,0 h requis).")
+
+    var warnParts = [];
+    if (exceedsMaxEffective12h) warnParts.push("travail effectif " + totalEffective.toFixed(1) + " h > max légal 12,0 h (L.3121-19)");
+    if (exceedsMaxAmplitude13h) warnParts.push("amplitude " + amplitude.toFixed(1) + " h > max CCN 1351 13,0 h");
+    if (restUnder11h) warnParts.push("repos quotidien consécutif " + dailyRestHours.toFixed(1) + " h < minimum légal 11,0 h (L.3131-1)");
+    var legalLimitWarning = warnParts.length > 0
+      ? ("Alerte conformité planning (CCN 1351 & Code du travail) : " + warnParts.join(" ; ") + ".")
       : "";
     return {
       valid: true,
       exceedsMaxEffective12h: exceedsMaxEffective12h,
       exceedsMaxAmplitude13h: exceedsMaxAmplitude13h,
+      dailyRestHours: dailyRestHours,
+      restUnder11h: restUnder11h,
       legalLimitWarning: legalLimitWarning,
       periodsCount: periods.length,
       firstStart: firstStart,
@@ -401,6 +414,11 @@
       dailyEffectiveHours: dailyEffectiveHours,
       panierEligible: panierEligible,
       effectiveIndVac: effectiveIndVac,
+      legalLimitWarning: dailySchedExp ? dailySchedExp.legalLimitWarning : (vacHours > 12 ? "Alerte : vacation > 12,0 h effectives (max L.3121-19)." : ""),
+      exceedsMaxEffective12h: dailySchedExp ? dailySchedExp.exceedsMaxEffective12h : (vacHours > 12),
+      exceedsMaxAmplitude13h: dailySchedExp ? dailySchedExp.exceedsMaxAmplitude13h : (vacHours > 13),
+      dailyRestHours: dailySchedExp ? dailySchedExp.dailyRestHours : (24 - vacHours),
+      restUnder11h: dailySchedExp ? dailySchedExp.restUnder11h : ((24 - vacHours) < 11.0),
       vacWarning: vacWarning,
       sellPrice: demoPrice,
       caTotal: caSim,

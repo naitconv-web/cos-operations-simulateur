@@ -1,9 +1,9 @@
 {
-  "schemaVersion": "1.1.0",
-  "protocol": "GPT6-GOLDEN-HARNESS-IDCC1351-SECURIAXE-V2",
-  "generatedAt": "2026-11-24T02:34:00Z",
+  "schemaVersion": "1.2.0",
+  "protocol": "GPT6-GOLDEN-HARNESS-IDCC1351-SECURIAXE-V3",
+  "generatedAt": "2026-11-24T03:20:00Z",
   "tolerance": 0.0001,
-  "totalCases": 43,
+  "totalCases": 47,
   "cases": [
     {
       "id": "SCEN_MAT_JOUR_4H",
@@ -1353,6 +1353,128 @@
       "expected": {
         "valid": false,
         "hasErrors": true
+      }
+    },
+    {
+      "id": "SPEC_REST_UNDER_11H_EXPLICIT_NEXT_START",
+      "fn": "evaluateDailySchedule",
+      "description": "Contrôle repos quotidien entre deux journées : fin à 22h et reprise le lendemain à 07h -> repos 9,0 h < minimum légal 11,0 h (L.3131-1)",
+      "input": {
+        "periods": [
+          {
+            "start": 14,
+            "end": 22
+          }
+        ],
+        "nextShiftStart": 7
+      },
+      "expected": {
+        "valid": true,
+        "periodsCount": 1,
+        "maxGapHours": 0,
+        "hasLongCutOver2h": false,
+        "effectiveHoursDay": 8,
+        "amplitudeHoursDay": 8,
+        "paidHoursDay": 8,
+        "dailyRestHours": 9,
+        "restUnder11h": true,
+        "exceedsMaxEffective12h": false,
+        "exceedsMaxAmplitude13h": false,
+        "avenantExempt": false,
+        "panierEligible": true
+      }
+    },
+    {
+      "id": "SPEC_REST_CONFORM_11H_NEXT_START",
+      "fn": "evaluateDailySchedule",
+      "description": "Contrôle repos quotidien conforme : fin à 20h et reprise le lendemain à 08h -> repos 12,0 h >= 11,0 h (conforme)",
+      "input": {
+        "periods": [
+          {
+            "start": 12,
+            "end": 20
+          }
+        ],
+        "nextShiftStart": 8
+      },
+      "expected": {
+        "valid": true,
+        "periodsCount": 1,
+        "maxGapHours": 0,
+        "hasLongCutOver2h": false,
+        "effectiveHoursDay": 8,
+        "amplitudeHoursDay": 8,
+        "paidHoursDay": 8,
+        "dailyRestHours": 12,
+        "restUnder11h": false,
+        "exceedsMaxEffective12h": false,
+        "exceedsMaxAmplitude13h": false,
+        "avenantExempt": false,
+        "panierEligible": true
+      }
+    },
+    {
+      "id": "SPEC_EXCEEDS_MAX_EFFECTIVE_12H",
+      "fn": "evaluateDailySchedule",
+      "description": "Dépassement travail effectif maximal : 8h-15h (7h) + 16h-22h (6h) = 13,0 h effectives > max 12,0 h (L.3121-19)",
+      "input": {
+        "periods": [
+          {
+            "start": 8,
+            "end": 15
+          },
+          {
+            "start": 16,
+            "end": 22
+          }
+        ]
+      },
+      "expected": {
+        "valid": true,
+        "periodsCount": 2,
+        "maxGapHours": 1,
+        "hasLongCutOver2h": false,
+        "effectiveHoursDay": 13,
+        "amplitudeHoursDay": 14,
+        "paidHoursDay": 13,
+        "dailyRestHours": 10,
+        "restUnder11h": true,
+        "exceedsMaxEffective12h": true,
+        "exceedsMaxAmplitude13h": true,
+        "avenantExempt": false,
+        "panierEligible": true
+      }
+    },
+    {
+      "id": "SPEC_EXCEEDS_MAX_AMPLITUDE_13H",
+      "fn": "evaluateDailySchedule",
+      "description": "Dépassement amplitude maximale CCN 1351 : 07h-11h (4h) puis 17h-21h30 (4.5h) -> amplitude 14,5 h > max 13,0 h",
+      "input": {
+        "periods": [
+          {
+            "start": 7,
+            "end": 11
+          },
+          {
+            "start": 17,
+            "end": 21.5
+          }
+        ]
+      },
+      "expected": {
+        "valid": true,
+        "periodsCount": 2,
+        "maxGapHours": 6,
+        "hasLongCutOver2h": true,
+        "effectiveHoursDay": 8.5,
+        "amplitudeHoursDay": 14.5,
+        "paidHoursDay": 14.5,
+        "dailyRestHours": 9.5,
+        "restUnder11h": true,
+        "exceedsMaxEffective12h": false,
+        "exceedsMaxAmplitude13h": true,
+        "avenantExempt": false,
+        "panierEligible": true
       }
     }
   ]

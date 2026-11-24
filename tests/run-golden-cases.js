@@ -165,13 +165,20 @@ try {
     moment: "jour", demoPrice: 23, chargesPct: 50.37, indVac: 4.48
   });
 
-  if (hasUiFields && uiSimRes.valid && uiSimRes.paidHours === 450 && uiSimRes.panierEligible === true &&
+  // Vérification UI : présence de #simPeriods, #simAvenantExempt ET #simLegalAlert
+  const hasUiLegalAlert = indexHtml.includes('id="simLegalAlert"') && appJs.includes('legalBox') && appJs.includes('legalLimitWarning');
+  // Test d'un planning avec repos quotidien insuffisant (< 11,0h)
+  const restUnder11Res = engine.evaluateDailySchedule({ periods: [{ start: 14, end: 22 }], nextShiftStart: 7 });
+  const hasRestWarning = restUnder11Res.valid && restUnder11Res.restUnder11h === true && restUnder11Res.legalLimitWarning.includes("11,0 h");
+
+  if (hasUiFields && hasUiLegalAlert && hasRestWarning &&
+      uiSimRes.valid && uiSimRes.paidHours === 450 && uiSimRes.panierEligible === true &&
       uiExpRes.valid && uiExpRes.paidHours === 450 && Math.abs(uiExpRes.directCosts - 9561.977) < 1e-3) {
     passed++;
-    console.log(`[PASS] AUD003_UI_FORM_TO_ENGINE_INTEGRATION_8_10_13_17_450H_PAID`);
+    console.log(`[PASS] AUD003_UI_FORM_TO_ENGINE_INTEGRATION_AND_LEGAL_ALERTS`);
   } else {
     failed++;
-    console.error(`[FAIL] AUD003_UI_FORM_TO_ENGINE_INTEGRATION`);
+    console.error(`[FAIL] AUD003_UI_FORM_TO_ENGINE_INTEGRATION_AND_LEGAL_ALERTS`);
   }
 } catch (e) {
   failed++;

@@ -498,6 +498,17 @@
 
     var errBox = $("simErrorBox");
     var vacBox = $("simVacAlert");
+    var legalBox = $("simLegalAlert");
+
+    if (legalBox) {
+      if (res.valid && res.legalLimitWarning) {
+        legalBox.classList.remove("hidden");
+        legalBox.textContent = res.legalLimitWarning;
+      } else {
+        legalBox.classList.add("hidden");
+        legalBox.textContent = "";
+      }
+    }
 
     var vhNum = eng.toNum(vacHours);
     if (res.valid && res.vacWarning) {
